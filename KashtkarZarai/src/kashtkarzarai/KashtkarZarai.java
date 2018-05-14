@@ -6,6 +6,7 @@
 package kashtkarzarai;
 
 import javax.swing.UIManager;
+import kashtkarzarai.db.DbConnection;
 import kashtkarzarai.frames.Login;
 
 /**
@@ -34,6 +35,7 @@ public class KashtkarZarai {
             java.util.logging.Logger.getLogger(KashtkarZarai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
          new Login().setVisible(true);
+         DbConnection.load();
     }
     
 }

@@ -10,11 +10,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableRowSorter;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.dao.CustomerDao;
 import kashtkarzarai.daoImpl.CustomerDaoImpl;
+import kashtkarzarai.util.playAudio;
 
 /**
  *
@@ -27,13 +31,17 @@ public class CustomerPage extends javax.swing.JFrame {
      */
     DefaultTableModel tableModelCustomer;
     public ArrayList<CustomerBeans> customers_list;
+    TableRowSorter<DefaultTableModel> rowSorter = null;
 
     CustomerDao customerDao;
 
     public CustomerPage() {
         initComponents();
+
         customerDao = new CustomerDaoImpl();
         tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
+        this.jTableCustomer.setRowSorter(rowSorter);
 
         JTableHeader header = this.jTableCustomer.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
@@ -138,6 +146,9 @@ public class CustomerPage extends javax.swing.JFrame {
         jTextFieldSerach.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldSerachKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldSerachKeyReleased(evt);
             }
         });
         jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 430, -1));
@@ -307,7 +318,12 @@ public class CustomerPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
-        // TODO add your handling code here:
+        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+        CustomerBeans customer = customerDao.getCustomerById(customer_id);
+        this.jTextFieldCustomerAddress.setText(customer.getAddress());
+        this.jTextFieldCustomername.setText(customer.getCustomer_name());
+        this.jTextFieldCustomerCnic.setText(customer.getCnic());
+        this.jTextFieldCustomerContact.setText(customer.getContact());
 
     }//GEN-LAST:event_jTableCustomerMouseClicked
 
@@ -320,46 +336,27 @@ public class CustomerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSerachActionPerformed
 
     private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
-        // TODO add your handling code here:
-        //        if (this.jTextFieldUsername.getText().equalsIgnoreCase("Enter Username")) {
-        //            this.jTextFieldUsername.setText("");
-        //        }
-        //
-        //        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-        //
-        //            if (!(this.jTextFieldUsername.getText().equals("Enter Username")
-        //                && this.jPasswordFieldPassword.getText().equals("@Enter_Password"))) {
-        //
-        //            user = dbManager.userAuthentication(this.jTextFieldUsername.getText(),
-        //                this.jPasswordFieldPassword.getText());
-        //            if (user == null) {
-        //                JOptionPane.showMessageDialog(this, "Invalid Password or username!");
-        //                this.jTextFieldUsername.setText("Enter Username");
-        //                this.jPasswordFieldPassword.setText("@Enter_Password");
-        //            } else if ((user.getUser_name().equals(this.jTextFieldUsername.getText()))
-        //                && (user.getPassword().equals(this.jPasswordFieldPassword.getText()))) {
-        //                this.jTextFieldUsername.setText("");
-        //                this.jPasswordFieldPassword.setText("@Enter_Password");
-        //                user_id = user.getUser_id();
-        //                user_cat_id = user.getUser_cat_id();
-        //                new HomePage(user_id, user_cat_id).setVisible(true);// if pass correct than open homepage
-        //                this.dispose();
-        //            }
-        //        } else {
-        //            JOptionPane.showMessageDialog(this, "Please type Userna        this.jLabelExit.setBackground(new Color(0,0,51));\n" +
-        //                "me & Password");
-        //        }
-        //        }
+
     }//GEN-LAST:event_jTextFieldSerachKeyPressed
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
+        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+        String cust_name = customerDao.getCustomerById(customer_id).getCustomer_name();
+
+        if (customerDao.removeCustomer(new CustomerBeans(customer_id, "", "", "", "", "")) >= 0) {
+            JOptionPane.showMessageDialog(this, cust_name + " deleted succesfully ", "deleted", JOptionPane.OK_OPTION);
+            this.jTextFieldCustomerAddress.setText("");
+            this.jTextFieldCustomername.setText("");
+            this.jTextFieldCustomerCnic.setText("");
+            this.jTextFieldCustomerContact.setText("");
+            showInTable();
+        }
+
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jTextFieldCustomernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCustomernameMouseClicked
-        if (this.jTextFieldCustomername.getText().equalsIgnoreCase("Enter Username")) {
-            this.jTextFieldCustomername.setText("");
-        }
+
     }//GEN-LAST:event_jTextFieldCustomernameMouseClicked
 
     private void jTextFieldCustomernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCustomernameActionPerformed
@@ -367,36 +364,7 @@ public class CustomerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCustomernameActionPerformed
 
     private void jTextFieldCustomernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCustomernameKeyPressed
-        // TODO add your handling code here:
-        //        if (this.jTextFieldUsername.getText().equalsIgnoreCase("Enter Username")) {
-        //            this.jTextFieldUsername.setText("");
-        //        }
-        //
-        //        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-        //
-        //            if (!(this.jTextFieldUsername.getText().equals("Enter Username")
-        //                && this.jPasswordFieldPassword.getText().equals("@Enter_Password"))) {
-        //
-        //            user = dbManager.userAuthentication(this.jTextFieldUsername.getText(),
-        //                this.jPasswordFieldPassword.getText());
-        //            if (user == null) {
-        //                JOptionPane.showMessageDialog(this, "Invalid Password or username!");
-        //                this.jTextFieldUsername.setText("Enter Username");
-        //                this.jPasswordFieldPassword.setText("@Enter_Password");
-        //            } else if ((user.getUser_name().equals(this.jTextFieldUsername.getText()))
-        //                && (user.getPassword().equals(this.jPasswordFieldPassword.getText()))) {
-        //                this.jTextFieldUsername.setText("");
-        //                this.jPasswordFieldPassword.setText("@Enter_Password");
-        //                user_id = user.getUser_id();
-        //                user_cat_id = user.getUser_cat_id();
-        //                new HomePage(user_id, user_cat_id).setVisible(true);// if pass correct than open homepage
-        //                this.dispose();
-        //            }
-        //        } else {
-        //            JOptionPane.showMessageDialog(this, "Please type Userna        this.jLabelExit.setBackground(new Color(0,0,51));\n" +
-        //                "me & Password");
-        //        }
-        //        }
+
     }//GEN-LAST:event_jTextFieldCustomernameKeyPressed
 
     private void jTextFieldCustomerCnicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCustomerCnicMouseClicked
@@ -442,18 +410,52 @@ public class CustomerPage extends javax.swing.JFrame {
         String address = this.jTextFieldCustomerAddress.getText();
 
         if (customerDao.saveCustomer(new CustomerBeans(0, customer_name, contact, cnic, address, CurrentDate.getCurrentDate())) >= 0) {
-            showInTable();        }
+            this.jTextFieldCustomerAddress.setText("");
+            this.jTextFieldCustomername.setText("");
+            this.jTextFieldCustomerCnic.setText("");
+            this.jTextFieldCustomerContact.setText("");
+
+            JOptionPane.showMessageDialog(this, customer_name + " saved succesfully ", "Added", JOptionPane.DEFAULT_OPTION);
+            showInTable();
+
+        }
 
 
     }//GEN-LAST:event_jButtoSaveActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
         // TODO add your handling code here:
+        this.jTextFieldCustomerAddress.setText("");
+        this.jTextFieldCustomername.setText("");
+        this.jTextFieldCustomerCnic.setText("");
+        this.jTextFieldCustomerContact.setText("");
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-        // TODO add your handling code here:
+
+        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+        String customer_name = this.jTextFieldCustomername.getText();
+        String cnic = this.jTextFieldCustomerCnic.getText();
+        String contact = this.jTextFieldCustomerContact.getText();
+        String address = this.jTextFieldCustomerAddress.getText();
+
+        customerDao.modifyCustomers(new CustomerBeans(customer_id, customer_name, contact, cnic, address, CurrentDate.getCurrentDate()));
+        JOptionPane.showMessageDialog(this, customer_name + " records updated succesfully ", "Update", JOptionPane.PLAIN_MESSAGE);
+        this.jTextFieldCustomerAddress.setText("");
+        this.jTextFieldCustomername.setText("");
+        this.jTextFieldCustomerCnic.setText("");
+        this.jTextFieldCustomerContact.setText("");
+        showInTable();
+
     }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
+        // TODO add your handling code here:
+        String searchData = this.jTextFieldSerach.getText();
+        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
+
+
+    }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
     /**
      * @param args the command line arguments

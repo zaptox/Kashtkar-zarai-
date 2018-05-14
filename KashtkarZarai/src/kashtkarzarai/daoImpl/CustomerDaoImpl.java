@@ -25,7 +25,7 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public int saveCustomer(CustomerBeans customer) {
         int i = 0;
-        String query = "INSERT INTO customer (customer_name, contact, cnic, address,creation_date) VALUES (?,?,?,?)";
+        String query = "INSERT INTO customer (customer_name, contact, cnic, address,creation_date) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, customer.getCustomer_name());
@@ -60,7 +60,7 @@ public class CustomerDaoImpl implements CustomerDao {
                 String cnic = rs.getString("cnic");
 
                 int active = rs.getInt("active");
-                String creation_date = rs.getString("created_date");
+                String creation_date = rs.getString("creation_date");
 
                 customers_list.add(new CustomerBeans(customer_id, customer_name, contact, cnic, address, creation_date));
 
@@ -128,7 +128,7 @@ public class CustomerDaoImpl implements CustomerDao {
                 String cnic = rs.getString("cnic");
 
                 int active = rs.getInt("active");
-                String creation_date = rs.getString("created_date");
+                String creation_date = rs.getString("creation_date");
 
                 customer = new CustomerBeans(customer_id, customer_name, contact, cnic, address, creation_date);
 
