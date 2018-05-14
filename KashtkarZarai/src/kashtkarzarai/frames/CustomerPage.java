@@ -5,6 +5,10 @@
  */
 package kashtkarzarai.frames;
 
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.table.JTableHeader;
+
 /**
  *
  * @author Vksoni
@@ -16,6 +20,11 @@ public class CustomerPage extends javax.swing.JFrame {
      */
     public CustomerPage() {
         initComponents();
+        
+        JTableHeader header = this.jTableCustomer.getTableHeader();
+        header.setBackground(new Color(0,204,0));
+        header.setForeground(new Color(255,255,255));
+        header.setFont(new Font("SansSerif", Font.BOLD, 18));
     }
 
     /**
@@ -29,6 +38,11 @@ public class CustomerPage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButtonLogin1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableCustomer = new javax.swing.JTable();
+        jTextFieldSerach = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,7 +63,71 @@ public class CustomerPage extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 160, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
+        jTableCustomer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTableCustomer.setForeground(new java.awt.Color(0, 0, 51));
+        jTableCustomer.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Sr #", "Customer Id", "Customer Name", "Contact #", "CNIC", "Address", "Creation Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableCustomer.setToolTipText("Products");
+        jTableCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTableCustomer.setGridColor(new java.awt.Color(0, 0, 51));
+        jTableCustomer.setSelectionBackground(new java.awt.Color(0, 0, 51));
+        jTableCustomer.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCustomerMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTableCustomer);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 910, 510));
+
+        jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldSerach.setBorder(null);
+        jTextFieldSerach.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jTextFieldSerach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldSerachMouseClicked(evt);
+            }
+        });
+        jTextFieldSerach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSerachActionPerformed(evt);
+            }
+        });
+        jTextFieldSerach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldSerachKeyPressed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 370, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 40, 370, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Search");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 60, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 570));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -58,7 +136,7 @@ public class CustomerPage extends javax.swing.JFrame {
         jLabel1.setText("All right reserved|2017");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1010, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1220, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -67,6 +145,52 @@ public class CustomerPage extends javax.swing.JFrame {
     private void jButtonLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLogin1ActionPerformed
+
+    private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jTableCustomerMouseClicked
+
+    private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
+        
+    }//GEN-LAST:event_jTextFieldSerachMouseClicked
+
+    private void jTextFieldSerachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerachActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSerachActionPerformed
+
+    private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
+        // TODO add your handling code here:
+        //        if (this.jTextFieldUsername.getText().equalsIgnoreCase("Enter Username")) {
+            //            this.jTextFieldUsername.setText("");
+            //        }
+        //
+        //        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            //
+            //            if (!(this.jTextFieldUsername.getText().equals("Enter Username")
+                //                && this.jPasswordFieldPassword.getText().equals("@Enter_Password"))) {
+            //
+            //            user = dbManager.userAuthentication(this.jTextFieldUsername.getText(),
+                //                this.jPasswordFieldPassword.getText());
+            //            if (user == null) {
+                //                JOptionPane.showMessageDialog(this, "Invalid Password or username!");
+                //                this.jTextFieldUsername.setText("Enter Username");
+                //                this.jPasswordFieldPassword.setText("@Enter_Password");
+                //            } else if ((user.getUser_name().equals(this.jTextFieldUsername.getText()))
+                //                && (user.getPassword().equals(this.jPasswordFieldPassword.getText()))) {
+                //                this.jTextFieldUsername.setText("");
+                //                this.jPasswordFieldPassword.setText("@Enter_Password");
+                //                user_id = user.getUser_id();
+                //                user_cat_id = user.getUser_cat_id();
+                //                new HomePage(user_id, user_cat_id).setVisible(true);// if pass correct than open homepage
+                //                this.dispose();
+                //            }
+            //        } else {
+            //            JOptionPane.showMessageDialog(this, "Please type Userna        this.jLabelExit.setBackground(new Color(0,0,51));\n" +
+                //                "me & Password");
+            //        }
+        //        }
+    }//GEN-LAST:event_jTextFieldSerachKeyPressed
 
     /**
      * @param args the command line arguments
@@ -107,6 +231,11 @@ public class CustomerPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogin1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTableCustomer;
+    private javax.swing.JTextField jTextFieldSerach;
     // End of variables declaration//GEN-END:variables
 }

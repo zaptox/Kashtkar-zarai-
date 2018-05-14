@@ -138,6 +138,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonLogin6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin6ActionPerformed
         // TODO add your handling code here:
+        new CustomerPage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonLogin6ActionPerformed
 
     private void jButtonLogin7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin7ActionPerformed

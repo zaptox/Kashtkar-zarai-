@@ -219,6 +219,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         new HomePage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     /**
