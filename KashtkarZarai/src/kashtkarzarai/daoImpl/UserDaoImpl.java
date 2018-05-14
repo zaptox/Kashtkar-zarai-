@@ -8,7 +8,7 @@ package kashtkarzarai.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import kashtkarzarai.bean.UserBean;
+import kashtkarzarai.bean.UserBeans;
 import kashtkarzarai.dao.UserDao;
 import kashtkarzarai.db.DbConnection;
 
@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
     public Connection con = DbConnection.conn;
 
     @Override
-    public boolean userLogin(UserBean e) {
+    public boolean userLogin(UserBeans e) {
         boolean check = false;
         String query = "SELECT * FROM USER WHERE user_name=? AND PASSWORD=?";
         try {

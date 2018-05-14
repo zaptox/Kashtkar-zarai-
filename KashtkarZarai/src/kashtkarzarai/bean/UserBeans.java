@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kashtkarzarai.dao;
-
-import kashtkarzarai.bean.UserBeans;
+package kashtkarzarai.bean;
 
 /**
  *
  * @author hp
  */
-public interface UserDao {
-    
-    public boolean userLogin(UserBeans e);
-    
+public class UserBeans {
+   private int id ;
+   private String name ;
+   private String password;
+           
 }
