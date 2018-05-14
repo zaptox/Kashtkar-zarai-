@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public boolean userLogin(UserBeans e) {
         boolean check = false;
-        String query = "SELECT * FROM USER WHERE user_name=? AND PASSWORD=?";
+        String query = "SELECT * FROM USER WHERE u_name=? AND u_password=?";
         try {
 
             PreparedStatement ps = con.prepareStatement(query);

@@ -34,6 +34,7 @@ public class KashtkarZarai {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(KashtkarZarai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+         DbConnection.load();
          new Login().setVisible(true);
          DbConnection.load();
     }

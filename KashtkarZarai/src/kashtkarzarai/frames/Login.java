@@ -18,14 +18,19 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.LineBorder;
+import kashtkarzarai.bean.UserBeans;
+import kashtkarzarai.dao.UserDao;
+import kashtkarzarai.daoImpl.UserDaoImpl;
+import kashtkarzarai.util.playAudio;
 
 
 /**
  *
  * @author Vksoni
  */
-public class Login extends javax.swing.JFrame {
 
+public class Login extends javax.swing.JFrame {
+ 
   
 
     /**
@@ -33,6 +38,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+       
+        
   
 
     }
@@ -217,9 +224,29 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         // TODO add your handling code here:
+        String name =  this.jTextFieldUsername.getText();
+        String pass=  this.jPasswordFieldPassword.getText();
+        if(!this.jTextFieldUsername.getText().matches("^([A-Za-z_][A-Za-z_]*)$")){
+            new playAudio().playErrorSound();
+               JOptionPane.showMessageDialog(rootPane, "Username doesn not contain number");
+        }
+        else{
+      
+            UserDao user = new UserDaoImpl();
+           if( user.userLogin(new UserBeans(0, name, pass))){
+               
+               new playAudio().playSuccessSound();
+               JOptionPane.showMessageDialog(rootPane, "Login");
+               new HomePage().setVisible(true);
+               this.dispose();
+            
+           }
+           else{
+                new playAudio().playErrorSound();
+                   JOptionPane.showMessageDialog(rootPane, "Incorrect Password");
+           }
+        }
         
-        new HomePage().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     /**
