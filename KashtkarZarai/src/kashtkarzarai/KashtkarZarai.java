@@ -6,6 +6,7 @@
 package kashtkarzarai;
 
 import javax.swing.UIManager;
+import kashtkarzarai.db.DbConnection;
 import kashtkarzarai.frames.Login;
 
 /**
@@ -33,6 +34,7 @@ public class KashtkarZarai {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(KashtkarZarai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+         DbConnection.load();
          new Login().setVisible(true);
     }
     
