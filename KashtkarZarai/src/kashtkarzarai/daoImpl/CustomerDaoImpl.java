@@ -27,18 +27,14 @@ public class CustomerDaoImpl implements CustomerDao {
         int i = 0;
         String query = "INSERT INTO customer (customer_name, contact, cnic, address,creation_date) VALUES (?,?,?,?)";
         try {
-            PreparedStatement ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, customer.getCustomer_name());
             ps.setString(2, customer.getContact());
             ps.setString(3, customer.getCnic());
             ps.setString(4, customer.getAddress());
             ps.setString(5, customer.getCreation_date());
 
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                i = rs.getInt(1);
-            }
+            i = ps.executeUpdate();
 
         } catch (Exception e) {
 
