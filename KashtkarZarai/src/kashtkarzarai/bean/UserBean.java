@@ -10,18 +10,42 @@ package kashtkarzarai.bean;
  * @author hp
  */
 public class UserBean {
-    private int  u_id ;
-    private String u_name ;
-    private String u_password;
+    private int  id ;
+    private String name ;
+    private String password;
     private int  active;
 
-    public UserBean(int u_id, String u_name, String u_password, int active) {
-        this.u_id = u_id;
-        this.u_name = u_name;
-        this.u_password = u_password;
+    public UserBean(int id, String name, String password, int active) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
         this.active = active;
     }
-            
+    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getActive() {
         return active;
@@ -30,30 +54,6 @@ public class UserBean {
     public void setActive(int active) {
         this.active = active;
     }
-    
 
-    public int getU_id() {
-        return u_id;
-    }
-
-    public void setU_id(int u_id) {
-        this.u_id = u_id;
-    }
-
-    public String getU_name() {
-        return u_name;
-    }
-
-    public void setU_name(String u_name) {
-        this.u_name = u_name;
-    }
-
-    public String getU_password() {
-        return u_password;
-    }
-
-    public void setU_password(String u_password) {
-        this.u_password = u_password;
-    }
     
 }
