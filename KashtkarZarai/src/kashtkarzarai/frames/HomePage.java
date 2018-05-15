@@ -109,7 +109,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin10.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonLogin10.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin10.setText("Customer");
+        jButtonLogin10.setText("Sale");
         jButtonLogin10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogin10ActionPerformed(evt);
@@ -156,6 +156,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonLogin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin10ActionPerformed
         // TODO add your handling code here:
+        new SalePage().setVisible(true);
     }//GEN-LAST:event_jButtonLogin10ActionPerformed
 
     /**
