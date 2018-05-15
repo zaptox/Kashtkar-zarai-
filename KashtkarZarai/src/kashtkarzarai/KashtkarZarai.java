@@ -36,7 +36,6 @@ public class KashtkarZarai {
         }
          DbConnection.load();
          new Login().setVisible(true);
-         DbConnection.load();
     }
     
 }
