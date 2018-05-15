@@ -3,10 +3,13 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1280, 570]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -23,10 +26,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1270" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="1356" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="43" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jButtonBack" min="-2" pref="110" max="-2" attributes="0"/>
@@ -59,7 +62,7 @@
                           <Component id="jScrollPane3" min="-2" pref="1000" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="43" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -69,7 +72,7 @@
           <EmptySpace min="0" pref="654" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="72" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButtonBack" min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
@@ -109,7 +112,7 @@
                       </Group>
                       <Component id="jScrollPane3" min="-2" pref="470" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="72" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -321,14 +324,13 @@
               <Color blue="33" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="0">
+              <Table columnCount="6" rowCount="0">
                 <Column editable="false" title="Sr #" type="java.lang.String"/>
-                <Column editable="false" title="Customer Id" type="java.lang.String"/>
-                <Column editable="false" title="Customer Name" type="java.lang.String"/>
-                <Column editable="false" title="CNIC" type="java.lang.String"/>
-                <Column editable="false" title="Contact #" type="java.lang.String"/>
-                <Column editable="false" title="Address" type="java.lang.String"/>
-                <Column editable="false" title="Creation Date" type="java.lang.String"/>
+                <Column editable="false" title="Company_Id" type="java.lang.String"/>
+                <Column editable="false" title="Company_name" type="java.lang.String"/>
+                <Column editable="false" title="Company_contact" type="java.lang.String"/>
+                <Column editable="false" title="Company_address" type="java.lang.String"/>
+                <Column editable="false" title="Dealer_name" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Products"/>

@@ -47,7 +47,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin1.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonLogin1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin1.setText("Customer");
+        jButtonLogin1.setText("Company");
         jButtonLogin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogin1ActionPerformed(evt);
@@ -76,7 +76,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin7.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonLogin7.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin7.setText("Customer");
+        jButtonLogin7.setText("Products");
         jButtonLogin7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogin7ActionPerformed(evt);
@@ -87,7 +87,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin8.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonLogin8.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin8.setText("Customer");
+        jButtonLogin8.setText("User");
         jButtonLogin8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogin8ActionPerformed(evt);
@@ -133,6 +133,7 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin1ActionPerformed
+        new CompanyForm().setVisible(true);        // TODO add your handling code here:
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLogin1ActionPerformed
 
@@ -147,8 +148,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonLogin7ActionPerformed
 
     private void jButtonLogin8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLogin8ActionPerformed
+new UserPage().setVisible(true);    }//GEN-LAST:event_jButtonLogin8ActionPerformed
 
     private void jButtonLogin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin9ActionPerformed
         // TODO add your handling code here:

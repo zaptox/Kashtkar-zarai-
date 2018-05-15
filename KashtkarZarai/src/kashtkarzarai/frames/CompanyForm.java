@@ -5,7 +5,18 @@
  */
 package kashtkarzarai.frames;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import kashtkarzarai.bean.CompanyBeans;
+import kashtkarzarai.bean.CustomerBeans;
+import kashtkarzarai.dao.CompanyDao;
+import kashtkarzarai.dao.CustomerDao;
+import kashtkarzarai.daoImpl.CompanyDaoImpl;
 import kashtkarzarai.util.playAudio;
 
 /**
@@ -17,8 +28,44 @@ public class CompanyForm extends javax.swing.JFrame {
     /**
      * Creates new form CompanyForm
      */
+    DefaultTableModel tableModelCustomer;
+    public ArrayList<CompanyBeans> company_list;
+
+    CompanyDao companyDao;
+
     public CompanyForm() {
         initComponents();
+
+        companyDao = new CompanyDaoImpl();
+        tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
+        JTableHeader header = this.jTableCustomer.getTableHeader();
+        header.setBackground(new Color(0, 204, 0));
+        header.setForeground(new Color(255, 255, 255));
+        header.setFont(new Font("SansSerif", Font.BOLD, 18));
+        this.jButtonUpdate.setEnabled(false);
+        this.jButtonDelete.setEnabled(false);
+        showInTable();
+    }
+
+    public void showInTable() {
+        tableModelCustomer.setRowCount(0);
+
+        int serial = 0;
+        company_list = companyDao.getAllCompanies();
+        for (CompanyBeans company : company_list) {
+            Vector V = new Vector();
+            serial++;
+
+            V.add(serial);
+            V.add(company.getCompany_id());
+            V.add(company.getCompany_name());
+            V.add(company.getCompany_contact());
+            V.add(company.getCompany_address());
+            V.add(company.getDealer_name());
+//            V.add(customer.getCreation_date());
+
+            tableModelCustomer.addRow(V);
+        }
     }
 
     /**
@@ -49,6 +96,7 @@ public class CompanyForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1280, 570));
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -195,14 +243,14 @@ public class CompanyForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sr #", "Customer Id", "Customer Name", "CNIC", "Contact #", "Address", "Creation Date"
+                "Sr #", "Company_Id", "Company_name", "Company_contact", "Company_address", "Dealer_name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -254,10 +302,10 @@ public class CompanyForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1270, Short.MAX_VALUE)
+            .addGap(0, 1356, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 43, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,14 +332,14 @@ public class CompanyForm extends javax.swing.JFrame {
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(10, 10, 10)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 43, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 654, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 72, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
@@ -326,10 +374,11 @@ public class CompanyForm extends javax.swing.JFrame {
                             .addGap(10, 10, 10)
                             .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 72, Short.MAX_VALUE)))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
@@ -391,6 +440,9 @@ public class CompanyForm extends javax.swing.JFrame {
         String company_contact = this.jTextFieldCompanyContact.getText();
         String company_address = this.jTextFieldCompanyAddress.getText();
         String dealer_name = this.jTextFieldCompanyDealerName.getText();
+
+        companyDao.saveCompany(new CompanyBeans(1, company_name, company_contact, company_address, dealer_name, 1));
+        showInTable();
 //
 //        if (!(company_name.equals("") || company_contact.equals("") || company_address.equals("") || dealer_name.equals(""))) {
 ////            if (cnic.matches("/^[0-9]{14}[vVxX]$/")) {
@@ -411,6 +463,12 @@ public class CompanyForm extends javax.swing.JFrame {
 
     private void jButtonClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClear1ActionPerformed
         // TODO add your handling code here:
+        jTextFieldCompanyName.setText("");
+        this.jTextFieldCompanyContact.setText("");
+        this.jTextFieldCompanyAddress.setText("");
+        this.jTextFieldCompanyDealerName.setText("");
+
+
     }//GEN-LAST:event_jButtonClear1ActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed

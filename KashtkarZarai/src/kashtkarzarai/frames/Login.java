@@ -72,7 +72,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 370, -1));
 
         jTextFieldUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldUsername.setText("yasir");
+        jTextFieldUsername.setText("y");
         jTextFieldUsername.setBorder(null);
         jTextFieldUsername.setDisabledTextColor(new java.awt.Color(204, 204, 204));
         jTextFieldUsername.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,7 +98,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 370, -1));
 
         jPasswordFieldPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPasswordFieldPassword.setText("yasir");
+        jPasswordFieldPassword.setText("y");
         jPasswordFieldPassword.setBorder(null);
         jPasswordFieldPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
