@@ -49,6 +49,27 @@ public class CustomerPage extends javax.swing.JFrame {
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
         this.jButtonUpdate.setEnabled(false);
         this.jButtonDelete.setEnabled(false);
+        this.registerButton.setEnabled(false);
+        showInTable();
+
+    }
+
+    public CustomerPage(int reference) {
+        initComponents();
+
+        customerDao = new CustomerDaoImpl();
+        tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
+        this.jTableCustomer.setRowSorter(rowSorter);
+
+        JTableHeader header = this.jTableCustomer.getTableHeader();
+        header.setBackground(new Color(0, 204, 0));
+        header.setForeground(new Color(255, 255, 255));
+        header.setFont(new Font("SansSerif", Font.BOLD, 18));
+        this.jButtonUpdate.setEnabled(false);
+        this.jButtonDelete.setEnabled(false);
+        this.registerButton.setEnabled(true);
+
         showInTable();
 
     }
@@ -82,9 +103,10 @@ public class CustomerPage extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jButtoSave = new javax.swing.JButton();
-        jButtonClear = new javax.swing.JButton();
+        registerButton = new javax.swing.JButton();
         jButtonUpdate = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
+        jButtonClear1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,7 +153,7 @@ public class CustomerPage extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableCustomer);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 1000, 530));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 1000, 470));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
@@ -283,16 +305,16 @@ public class CustomerPage extends javax.swing.JFrame {
         });
         jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 240, 40));
 
-        jButtonClear.setBackground(new java.awt.Color(0, 204, 0));
-        jButtonClear.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonClear.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonClear.setText("Clear");
-        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+        registerButton.setBackground(new java.awt.Color(0, 204, 0));
+        registerButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        registerButton.setForeground(new java.awt.Color(255, 255, 255));
+        registerButton.setText("Register");
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClearActionPerformed(evt);
+                registerButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 240, 40));
+        jPanel1.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 530, 240, 40));
 
         jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -315,6 +337,17 @@ public class CustomerPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
+
+        jButtonClear1.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonClear1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonClear1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonClear1.setText("Clear");
+        jButtonClear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClear1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 240, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 590));
 
@@ -454,17 +487,14 @@ public class CustomerPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtoSaveActionPerformed
 
-    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-        this.jTextFieldCustomerAddress.setText("");
-        this.jTextFieldCustomername.setText("");
-        this.jTextFieldCustomerCnic.setText("");
-        this.jTextFieldCustomerContact.setText("");
-        this.jButtoSave.setEnabled(true);
-        this.jButtonUpdate.setEnabled(false);
-        this.jButtonDelete.setEnabled(false);
+//        int c_id= this.
+  int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+        CustomerBeans customer = customerDao.getCustomerById(customer_id);
+      new SalePage(customer).setVisible(true);
 
-    }//GEN-LAST:event_jButtonClearActionPerformed
+    }//GEN-LAST:event_registerButtonActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
 
@@ -506,6 +536,10 @@ public class CustomerPage extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jButtonClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClear1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonClear1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -564,7 +598,7 @@ public class CustomerPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtoSave;
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonClear;
+    private javax.swing.JButton jButtonClear1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel1;
@@ -586,5 +620,6 @@ public class CustomerPage extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCustomerContact;
     private javax.swing.JTextField jTextFieldCustomername;
     private javax.swing.JTextField jTextFieldSerach;
+    private javax.swing.JButton registerButton;
     // End of variables declaration//GEN-END:variables
 }

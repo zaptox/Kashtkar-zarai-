@@ -5,8 +5,12 @@
  */
 package kashtkarzarai.frames;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import javax.swing.table.JTableHeader;
+import kashtkarzarai.bean.CustomerBeans;
 
 /**
  *
@@ -19,6 +23,38 @@ public class SalePage extends javax.swing.JFrame {
      */
     public SalePage() {
         initComponents();
+        nameField.setEnabled(false);
+        numberField.setEnabled(false);
+        addressfield.setEnabled(false);
+
+        JTableHeader header = this.jTable1.getTableHeader();
+        header.setBackground(new Color(0, 204, 0));
+        header.setForeground(new Color(255, 255, 255));
+        header.setFont(new Font("SansSerif", Font.BOLD, 18));
+        JTableHeader header2 = this.jTable2.getTableHeader();
+        header2.setBackground(new Color(0, 204, 0));
+        header2.setForeground(new Color(255, 255, 255));
+        header2.setFont(new Font("SansSerif", Font.BOLD, 18));
+    }
+
+    public SalePage(CustomerBeans customer) {
+        initComponents();
+
+        nameField.setText(customer.getCustomer_name());
+        numberField.setText(customer.getContact());
+        addressfield.setText(customer.getAddress());
+        nameField.setEnabled(false);
+        numberField.setEnabled(false);
+        addressfield.setEnabled(false);
+        
+        JTableHeader header = this.jTable1.getTableHeader();
+        header.setBackground(new Color(0, 204, 0));
+        header.setForeground(new Color(255, 255, 255));
+        header.setFont(new Font("SansSerif", Font.BOLD, 18));
+        JTableHeader header2 = this.jTable2.getTableHeader();
+        header2.setBackground(new Color(0, 204, 0));
+        header2.setForeground(new Color(255, 255, 255));
+        header2.setFont(new Font("SansSerif", Font.BOLD, 18));
     }
 
     /**
@@ -61,6 +97,7 @@ public class SalePage extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sale");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Discount Type");
@@ -168,12 +205,13 @@ public class SalePage extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "name", "price", "quantity"
+                "Name", "Price", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -204,12 +242,13 @@ public class SalePage extends javax.swing.JFrame {
             }
         });
 
+        jTable2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "product_name", "price", "quantity", "total_price"
+                "Product_name", "Price", "Quantity", "Total_price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -460,7 +499,7 @@ public class SalePage extends javax.swing.JFrame {
         if (deliveryRadio.isSelected()) {
             System.out.println("Jradio 2 is selected");
             this.dispose();
-            new CustomerPage().setVisible(true);
+            new CustomerPage(1).setVisible(true);
 
             //            register.setEnabled(true);
         }
@@ -524,12 +563,11 @@ public class SalePage extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         LocalDate date = LocalDate.now();
-        float discount=0;
+        float discount = 0;
 //        int discount_id = discountList.get(jComboBox1.getSelectedIndex()).getDiscount_id();
-        try{
+        try {
             discount = Float.parseFloat(discountField.getText().toString());
-        }
-        catch(Exception e){
+        } catch (Exception e) {
 
         }
         float total_price = Float.parseFloat(totalField.getText().toString());
@@ -554,7 +592,6 @@ public class SalePage extends javax.swing.JFrame {
 //                }
 //
 //            }
-
 //            if (customer_id != -1) {
 //                obGlobal.insertOrder(new Order(0, date.toString(), customer_id, number,
 //                    1, 1, null, 1,
@@ -574,7 +611,6 @@ public class SalePage extends javax.swing.JFrame {
 //
 //                obGlobal.insertOrderDetails(new OrderDetails(1, order_id,
 //                    product_id, quantity, 1, 1, null, 1, null));
-
 //        }
 //        else{
 //            JOptionPane.showMessageDialog(this, "order_id  =-1");
