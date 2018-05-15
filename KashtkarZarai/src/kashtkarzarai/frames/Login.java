@@ -153,37 +153,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldUsernameActionPerformed
 
     private void jTextFieldUsernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUsernameKeyPressed
-        // TODO add your handling code here:
-//        if (this.jTextFieldUsername.getText().equalsIgnoreCase("Enter Username")) {
-//            this.jTextFieldUsername.setText("");
-//        }
-//
-//        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//
-//            if (!(this.jTextFieldUsername.getText().equals("Enter Username")
-//                && this.jPasswordFieldPassword.getText().equals("@Enter_Password"))) {
-//
-//            user = dbManager.userAuthentication(this.jTextFieldUsername.getText(),
-//                this.jPasswordFieldPassword.getText());
-//            if (user == null) {
-//                JOptionPane.showMessageDialog(this, "Invalid Password or username!");
-//                this.jTextFieldUsername.setText("Enter Username");
-//                this.jPasswordFieldPassword.setText("@Enter_Password");
-//            } else if ((user.getUser_name().equals(this.jTextFieldUsername.getText()))
-//                && (user.getPassword().equals(this.jPasswordFieldPassword.getText()))) {
-//                this.jTextFieldUsername.setText("");
-//                this.jPasswordFieldPassword.setText("@Enter_Password");
-//                user_id = user.getUser_id();
-//                user_cat_id = user.getUser_cat_id();
-//                new HomePage(user_id, user_cat_id).setVisible(true);// if pass correct than open homepage
-//                this.dispose();
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Please type Userna        this.jLabelExit.setBackground(new Color(0,0,51));\n" +
-//                "me & Password");
-//        }
-//        }
-    }//GEN-LAST:event_jTextFieldUsernameKeyPressed
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) {String name =  this.jTextFieldUsername.getText();
+        String pass=  this.jPasswordFieldPassword.getText();
+        if(!this.jTextFieldUsername.getText().matches("^([A-Za-z_][A-Za-z_]*)$")){
+            new playAudio().playErrorSound();
+               JOptionPane.showMessageDialog(rootPane, "Username doesn not contain number");
+        }
+        else{
+      
+            UserDao user = new UserDaoImpl();
+           if( user.userLogin(new UserBeans(0, name, pass))){
+               
+               new playAudio().playSuccessSound();
+               new HomePage().setVisible(true);
+               this.dispose();
+            
+           }
+           else{
+                new playAudio().playErrorSound();
+                   JOptionPane.showMessageDialog(rootPane, "Incorrect Password");
+           }
+        }}    }//GEN-LAST:event_jTextFieldUsernameKeyPressed
 
     private void jPasswordFieldPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordMouseClicked
         
@@ -194,34 +184,28 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFieldPasswordActionPerformed
 
     private void jPasswordFieldPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordKeyPressed
-//        if (this.jPasswordFieldPassword.getText().equalsIgnoreCase("@Enter_Password")) {
-//            this.jPasswordFieldPassword.setText("");
-//        }
-//        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-//
-//            if (!(this.jTextFieldUsername.getText().equals("Enter Username")
-//                && this.jPasswordFieldPassword.getText().equals("@Enter_Password"))) {
-//
-//            user = dbManager.userAuthentication(this.jTextFieldUsername.getText(),
-//                this.jPasswordFieldPassword.getText());
-//            if (user == null) {
-//                JOptionPane.showMessageDialog(this, "Invalid Password or username!");
-//                this.jTextFieldUsername.setText("Enter Username");
-//                this.jPasswordFieldPassword.setText("@Enter_Password");
-//            } else if ((user.getUser_name().equals(this.jTextFieldUsername.getText()))
-//                && (user.getPassword().equals(this.jPasswordFieldPassword.getText()))) {
-//                this.jTextFieldUsername.setText("");
-//                this.jPasswordFieldPassword.setText("");
-//                user_id = user.getUser_id();
-//                user_cat_id = user.getUser_cat_id();
-//                new HomePage(user_id, user_cat_id).setVisible(true);// if pass correct than open homepage
-//                this.dispose();
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "Please type Username & Password");
-//        }
-//
-//        }
+
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) {String name =  this.jTextFieldUsername.getText();
+        String pass=  this.jPasswordFieldPassword.getText();
+        if(!this.jTextFieldUsername.getText().matches("^([A-Za-z_][A-Za-z_]*)$")){
+            new playAudio().playErrorSound();
+               JOptionPane.showMessageDialog(rootPane, "Username doesn not contain number");
+        }
+        else{
+      
+            UserDao user = new UserDaoImpl();
+           if( user.userLogin(new UserBeans(0, name, pass))){
+               
+               new playAudio().playSuccessSound();
+               new HomePage().setVisible(true);
+               this.dispose();
+            
+           }
+           else{
+                new playAudio().playErrorSound();
+                   JOptionPane.showMessageDialog(rootPane, "Incorrect Password");
+           }
+        }}
     }//GEN-LAST:event_jPasswordFieldPasswordKeyPressed
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
@@ -238,7 +222,6 @@ public class Login extends javax.swing.JFrame {
            if( user.userLogin(new UserBeans(0, name, pass))){
                
                new playAudio().playSuccessSound();
-               JOptionPane.showMessageDialog(rootPane, "Login");
                new HomePage().setVisible(true);
                this.dispose();
             

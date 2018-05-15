@@ -463,6 +463,7 @@ public class SalePage extends javax.swing.JFrame {
     }//GEN-LAST:event_discountFieldKeyReleased
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new HomePage().setVisible(true);
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
