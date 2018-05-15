@@ -5,7 +5,7 @@
  */
 package kashtkarzarai.frames;
 
-import geeks.foodieesoft.util.CurrentDate;
+import zaptox.Kashkarzarai.util.CurrentDate;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
@@ -47,6 +47,8 @@ public class CustomerPage extends javax.swing.JFrame {
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
+        this.jButtonUpdate.setEnabled(false);
+        this.jButtonDelete.setEnabled(false);
         showInTable();
 
     }
@@ -82,6 +84,7 @@ public class CustomerPage extends javax.swing.JFrame {
         jButtoSave = new javax.swing.JButton();
         jButtonClear = new javax.swing.JButton();
         jButtonUpdate = new javax.swing.JButton();
+        jButtonBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,7 +94,7 @@ public class CustomerPage extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTableCustomer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTableCustomer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTableCustomer.setForeground(new java.awt.Color(0, 0, 51));
         jTableCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +131,7 @@ public class CustomerPage extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableCustomer);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 970, 500));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 1000, 530));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
@@ -151,12 +154,12 @@ public class CustomerPage extends javax.swing.JFrame {
                 jTextFieldSerachKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 430, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 40, 430, -1));
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 430, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, 430, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Search");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 60, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 60, -1));
 
         jButtonDelete.setBackground(new java.awt.Color(0, 204, 0));
         jButtonDelete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -302,7 +305,18 @@ public class CustomerPage extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 240, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 570));
+        jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack.setText("Back");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 590));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -311,7 +325,7 @@ public class CustomerPage extends javax.swing.JFrame {
         jLabel1.setText("All right reserved|2017");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1260, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 1290, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -324,6 +338,10 @@ public class CustomerPage extends javax.swing.JFrame {
         this.jTextFieldCustomername.setText(customer.getCustomer_name());
         this.jTextFieldCustomerCnic.setText(customer.getCnic());
         this.jTextFieldCustomerContact.setText(customer.getContact());
+        this.jButtonUpdate.setEnabled(true);
+        this.jButtonDelete.setEnabled(true);
+        this.jButtoSave.setEnabled(false);
+
 
     }//GEN-LAST:event_jTableCustomerMouseClicked
 
@@ -350,6 +368,9 @@ public class CustomerPage extends javax.swing.JFrame {
             this.jTextFieldCustomername.setText("");
             this.jTextFieldCustomerCnic.setText("");
             this.jTextFieldCustomerContact.setText("");
+            this.jButtonUpdate.setEnabled(false);
+            this.jButtonDelete.setEnabled(false);
+            this.jButtoSave.setEnabled(true);
             showInTable();
         }
 
@@ -409,15 +430,25 @@ public class CustomerPage extends javax.swing.JFrame {
         String contact = this.jTextFieldCustomerContact.getText();
         String address = this.jTextFieldCustomerAddress.getText();
 
-        if (customerDao.saveCustomer(new CustomerBeans(0, customer_name, contact, cnic, address, CurrentDate.getCurrentDate())) >= 0) {
-            this.jTextFieldCustomerAddress.setText("");
-            this.jTextFieldCustomername.setText("");
-            this.jTextFieldCustomerCnic.setText("");
-            this.jTextFieldCustomerContact.setText("");
+        if (!(customer_name.equals("") || cnic.equals("") || contact.equals("") || address.equals(""))) {
+            if (cnic.matches("/^[0-9]{14}[vVxX]$/")) {
+                if (customerDao.saveCustomer(new CustomerBeans(0, customer_name, contact, cnic, address, CurrentDate.getCurrentDate())) >= 0) {
+                    this.jTextFieldCustomerAddress.setText("");
+                    this.jTextFieldCustomername.setText("");
+                    this.jTextFieldCustomerCnic.setText("");
+                    this.jTextFieldCustomerContact.setText("");
 
-            JOptionPane.showMessageDialog(this, customer_name + " saved succesfully ", "Added", JOptionPane.DEFAULT_OPTION);
-            showInTable();
+                    JOptionPane.showMessageDialog(this, customer_name + " saved succesfully ", "Added", JOptionPane.DEFAULT_OPTION);
+                    showInTable();
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Invalid CNIC");
+                new playAudio().playErrorSound();
 
+            }
+        } else {
+            new playAudio().playErrorSound();
+            JOptionPane.showMessageDialog(rootPane, "Please fill require fields");
         }
 
 
@@ -429,6 +460,10 @@ public class CustomerPage extends javax.swing.JFrame {
         this.jTextFieldCustomername.setText("");
         this.jTextFieldCustomerCnic.setText("");
         this.jTextFieldCustomerContact.setText("");
+        this.jButtoSave.setEnabled(true);
+        this.jButtonUpdate.setEnabled(false);
+        this.jButtonDelete.setEnabled(false);
+
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
@@ -438,15 +473,23 @@ public class CustomerPage extends javax.swing.JFrame {
         String cnic = this.jTextFieldCustomerCnic.getText();
         String contact = this.jTextFieldCustomerContact.getText();
         String address = this.jTextFieldCustomerAddress.getText();
+        if (!(customer_name.equals("") || cnic.equals("") || contact.equals("") || address.equals(""))) {
 
-        customerDao.modifyCustomers(new CustomerBeans(customer_id, customer_name, contact, cnic, address, CurrentDate.getCurrentDate()));
-        JOptionPane.showMessageDialog(this, customer_name + " records updated succesfully ", "Update", JOptionPane.PLAIN_MESSAGE);
-        this.jTextFieldCustomerAddress.setText("");
-        this.jTextFieldCustomername.setText("");
-        this.jTextFieldCustomerCnic.setText("");
-        this.jTextFieldCustomerContact.setText("");
-        showInTable();
+            customerDao.modifyCustomers(new CustomerBeans(customer_id, customer_name, contact, cnic, address, CurrentDate.getCurrentDate()));
+            JOptionPane.showMessageDialog(this, customer_name + " records updated succesfully ", "Update", JOptionPane.PLAIN_MESSAGE);
+            this.jTextFieldCustomerAddress.setText("");
+            this.jTextFieldCustomername.setText("");
+            this.jTextFieldCustomerCnic.setText("");
+            this.jTextFieldCustomerContact.setText("");
+            this.jButtonUpdate.setEnabled(false);
+            this.jButtonDelete.setEnabled(false);
+            this.jButtoSave.setEnabled(true);
 
+            showInTable();
+        } else {
+            new playAudio().playErrorSound();
+            JOptionPane.showMessageDialog(rootPane, "Please fill require fields");
+        }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
@@ -456,6 +499,13 @@ public class CustomerPage extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jTextFieldSerachKeyReleased
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+
+        new HomePage().setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -499,7 +549,7 @@ public class CustomerPage extends javax.swing.JFrame {
         customers_list = customerDao.getAllCustomers();
         for (CustomerBeans customer : customers_list) {
             Vector V = new Vector();
-            V.add(1);
+            V.add(customers_list.size());
             V.add(customer.getCustomer_id());
             V.add(customer.getCustomer_name());
             V.add(customer.getCnic());
@@ -513,6 +563,7 @@ public class CustomerPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtoSave;
+    private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonUpdate;
