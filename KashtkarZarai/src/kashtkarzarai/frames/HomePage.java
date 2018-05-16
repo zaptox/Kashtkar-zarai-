@@ -151,6 +151,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductActionPerformed
         // TODO add your handling code here:
+        new ProductPage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonProductActionPerformed
 
     private void jButtonLogin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin9ActionPerformed
