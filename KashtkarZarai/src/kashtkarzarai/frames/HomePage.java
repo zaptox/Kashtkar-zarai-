@@ -28,13 +28,13 @@ public class HomePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButtonLogin1 = new javax.swing.JButton();
+        jButtonCompany = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButtonLogin6 = new javax.swing.JButton();
-        jButtonLogin7 = new javax.swing.JButton();
-        jButtonLogin8 = new javax.swing.JButton();
+        jButtonProduct = new javax.swing.JButton();
         jButtonLogin9 = new javax.swing.JButton();
         jButtonLogin10 = new javax.swing.JButton();
+        jButtonUsers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,16 +44,17 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonLogin1.setBackground(new java.awt.Color(0, 204, 0));
-        jButtonLogin1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonLogin1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin1.setText("Company");
-        jButtonLogin1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCompany.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonCompany.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonCompany.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCompany.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/company_1.png"))); // NOI18N
+        jButtonCompany.setText("Company");
+        jButtonCompany.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin1ActionPerformed(evt);
+                jButtonCompanyActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 310, 120));
+        jPanel1.add(jButtonCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 310, 120));
 
         jLabel2.setBackground(new java.awt.Color(0, 204, 0));
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 48)); // NOI18N
@@ -65,35 +66,26 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin6.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonLogin6.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLogin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/user-male-3.png"))); // NOI18N
         jButtonLogin6.setText("Customer");
         jButtonLogin6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogin6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 310, 120));
+        jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 310, 120));
 
-        jButtonLogin7.setBackground(new java.awt.Color(0, 204, 0));
-        jButtonLogin7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonLogin7.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin7.setText("Products");
-        jButtonLogin7.addActionListener(new java.awt.event.ActionListener() {
+        jButtonProduct.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonProduct.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonProduct.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/agructula products.png"))); // NOI18N
+        jButtonProduct.setText("Products");
+        jButtonProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin7ActionPerformed(evt);
+                jButtonProductActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 310, 120));
-
-        jButtonLogin8.setBackground(new java.awt.Color(0, 204, 0));
-        jButtonLogin8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonLogin8.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin8.setText("User");
-        jButtonLogin8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonLogin8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 310, 120));
+        jPanel1.add(jButtonProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 310, 120));
 
         jButtonLogin9.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -109,6 +101,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin10.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonLogin10.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLogin10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/sale.png"))); // NOI18N
         jButtonLogin10.setText("Sale");
         jButtonLogin10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +109,18 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonLogin10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 310, 120));
+
+        jButtonUsers.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonUsers.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonUsers.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/user login.png"))); // NOI18N
+        jButtonUsers.setText("User Acoounts");
+        jButtonUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUsersActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 310, 120));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
 
@@ -132,10 +137,11 @@ public class HomePage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin1ActionPerformed
-        new CompanyForm().setVisible(true);        // TODO add your handling code here:
+    private void jButtonCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompanyActionPerformed
+        new CompanyForm().setVisible(true); 
+        this.dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLogin1ActionPerformed
+    }//GEN-LAST:event_jButtonCompanyActionPerformed
 
     private void jButtonLogin6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin6ActionPerformed
         // TODO add your handling code here:
@@ -143,12 +149,11 @@ public class HomePage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonLogin6ActionPerformed
 
-    private void jButtonLogin7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin7ActionPerformed
+    private void jButtonProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLogin7ActionPerformed
-
-    private void jButtonLogin8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin8ActionPerformed
-new UserPage().setVisible(true);    }//GEN-LAST:event_jButtonLogin8ActionPerformed
+        new ProductPage().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonProductActionPerformed
 
     private void jButtonLogin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin9ActionPerformed
         // TODO add your handling code here:
@@ -157,7 +162,13 @@ new UserPage().setVisible(true);    }//GEN-LAST:event_jButtonLogin8ActionPerform
     private void jButtonLogin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin10ActionPerformed
         // TODO add your handling code here:
         new SalePage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonLogin10ActionPerformed
+
+    private void jButtonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsersActionPerformed
+        // TODO add your handling code here:
+        new UserPage().setVisible(true);
+    }//GEN-LAST:event_jButtonUsersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,12 +206,12 @@ new UserPage().setVisible(true);    }//GEN-LAST:event_jButtonLogin8ActionPerform
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonLogin1;
+    private javax.swing.JButton jButtonCompany;
     private javax.swing.JButton jButtonLogin10;
     private javax.swing.JButton jButtonLogin6;
-    private javax.swing.JButton jButtonLogin7;
-    private javax.swing.JButton jButtonLogin8;
     private javax.swing.JButton jButtonLogin9;
+    private javax.swing.JButton jButtonProduct;
+    private javax.swing.JButton jButtonUsers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

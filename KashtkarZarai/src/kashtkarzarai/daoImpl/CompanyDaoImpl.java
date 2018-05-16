@@ -140,5 +140,30 @@ public class CompanyDaoImpl implements CompanyDao {
         return company;
 
     }
+    
+      public String getCompanyName(int company_id) {
+      String name ="";
+        try {
+            String query = "SELECT * FROM company WHERE active=1 AND company_id="+company_id;
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+               
+                name = rs.getString("company_name");
+               
+
+         
+
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error in getting customer");
+            e.printStackTrace();
+        }
+
+        return name;
+    
+    }
 
 }
