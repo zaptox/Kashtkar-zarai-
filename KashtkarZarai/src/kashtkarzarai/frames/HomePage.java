@@ -73,7 +73,7 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonLogin6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 310, 120));
+        jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 310, 120));
 
         jButtonProduct.setBackground(new java.awt.Color(0, 204, 0));
         jButtonProduct.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
