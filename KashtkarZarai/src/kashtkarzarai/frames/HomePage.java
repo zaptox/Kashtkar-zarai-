@@ -35,6 +35,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin9 = new javax.swing.JButton();
         jButtonLogin10 = new javax.swing.JButton();
         jButtonUsers = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,6 +123,17 @@ public class HomePage extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 310, 120));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/setings.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 490, 70, 70));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
@@ -165,7 +177,13 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsersActionPerformed
         // TODO add your handling code here:
+        new UserPage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonUsersActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,6 +221,7 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonCompany;
     private javax.swing.JButton jButtonLogin10;
     private javax.swing.JButton jButtonLogin6;
