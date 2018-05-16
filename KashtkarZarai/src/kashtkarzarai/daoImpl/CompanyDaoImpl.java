@@ -76,7 +76,7 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public int modifyCompany(CompanyBeans companyBeans) {
-       int i = 0;
+        int i = 0;
         String query = "UPDATE company SET `company_name` = ? , `company_contact` = ? ,"
                 + " `company_address` = ? , `dealer_name` = ? WHERE `company_id` = ?; ";
         try {
@@ -94,13 +94,12 @@ public class CompanyDaoImpl implements CompanyDao {
             e.printStackTrace();
         }
         return i;
-   
-    
+
     }
 
     @Override
     public int removeCompany(CompanyBeans companyBeans) {
-int i = 0;
+        int i = 0;
         String query = "UPDATE company SET `active` = '0' WHERE `company_id` = ?;  ";
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -118,9 +117,9 @@ int i = 0;
 
     @Override
     public CompanyBeans getCompanyById(int company_id) {
-      CompanyBeans company = null;
+        CompanyBeans company = null;
         try {
-            String query = "SELECT * FROM company WHERE active=1 AND company_id="+company_id;
+            String query = "SELECT * FROM company WHERE active=1 AND company_id=" + company_id;
             PreparedStatement ps = con.prepareStatement(query);
 
             ResultSet rs = ps.executeQuery(query);
@@ -130,9 +129,7 @@ int i = 0;
                 String company_contact = rs.getString("company_contact");
                 String company_address = rs.getString("company_address");
                 String dealer_name = rs.getString("dealer_name");
-
-         CompanyBeans companyBean= new CompanyBeans(company_id1, company_name, company_contact, company_address, dealer_name, 1);
-
+                company = new CompanyBeans(company_id1, company_name, company_contact, company_address, dealer_name, 1);
 
             }
         } catch (Exception e) {
@@ -141,7 +138,7 @@ int i = 0;
         }
 
         return company;
-    
+
     }
 
 }

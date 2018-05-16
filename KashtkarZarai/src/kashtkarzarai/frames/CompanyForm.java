@@ -96,7 +96,6 @@ public class CompanyForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1280, 570));
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -270,6 +269,9 @@ public class CompanyForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableCustomerMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTableCustomerMouseReleased(evt);
+            }
         });
         jScrollPane3.setViewportView(jTableCustomer);
 
@@ -441,9 +443,16 @@ public class CompanyForm extends javax.swing.JFrame {
         String company_address = this.jTextFieldCompanyAddress.getText();
         String dealer_name = this.jTextFieldCompanyDealerName.getText();
 
-        companyDao.saveCompany(new CompanyBeans(1, company_name, company_contact, company_address, dealer_name, 1));
-        showInTable();
-//
+        if (company_name.equals("") || company_contact.equals("")
+                || company_address.equals("") || dealer_name.equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
+        } else {
+            companyDao.saveCompany(new CompanyBeans(1, company_name, company_contact, company_address, dealer_name, 1));
+            showInTable();
+
+        }
+//}
 //        if (!(company_name.equals("") || company_contact.equals("") || company_address.equals("") || dealer_name.equals(""))) {
 ////            if (cnic.matches("/^[0-9]{14}[vVxX]$/")) {
 ////                if (customerDao.saveCustomer(new CustomerBeans(0, customer_name, contact, cnic, address, CurrentDate.getCurrentDate())) >= 0) {
@@ -472,8 +481,32 @@ public class CompanyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClear1ActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
 
-//        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+        String company_name = this.jTextFieldCompanyName.getText();
+        String company_contact = this.jTextFieldCompanyContact.getText();
+        String company_address = this.jTextFieldCompanyAddress.getText();
+        String dealer_name = this.jTextFieldCompanyDealerName.getText();
+
+        if (company_name.equals("") || company_contact.equals("")
+                || company_address.equals("") || dealer_name.equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
+        } else {
+
+            companyDao.modifyCompany(new CompanyBeans(company_id, company_name, company_contact, company_address, dealer_name, 1));
+            showInTable();
+            jButtonUpdate.setEnabled(false);
+            jButtoSave.setEnabled(true);
+            jButtonClear1.setEnabled(true);
+
+            jTextFieldCompanyName.setText("");
+            this.jTextFieldCompanyContact.setText("");
+            this.jTextFieldCompanyAddress.setText("");
+            this.jTextFieldCompanyDealerName.setText("");
+            jButtonDelete.setEnabled(false);
+        }
+
 //        String customer_name = this.jTextFieldCustomername.getText();
 //        String cnic = this.jTextFieldCompanyContact.getText();
 //        String contact = this.jTextFieldCompanyAddress.getText();
@@ -499,6 +532,25 @@ public class CompanyForm extends javax.swing.JFrame {
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
+
+        int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+
+        String company_name = this.jTextFieldCompanyName.getText();
+        String company_contact = this.jTextFieldCompanyContact.getText();
+        String company_address = this.jTextFieldCompanyAddress.getText();
+        String dealer_name = this.jTextFieldCompanyDealerName.getText();
+
+        companyDao.removeCompany(new CompanyBeans(company_id, company_name, company_contact, company_address, dealer_name, 1));
+        showInTable();
+        jButtonUpdate.setEnabled(false);
+        jButtoSave.setEnabled(true);
+        jButtonClear1.setEnabled(true);
+        jButtonDelete.setEnabled(false);
+        jTextFieldCompanyName.setText("");
+        this.jTextFieldCompanyContact.setText("");
+        this.jTextFieldCompanyAddress.setText("");
+        this.jTextFieldCompanyDealerName.setText("");
+
 //        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
 //        String cust_name = customerDao.getCustomerById(customer_id).getCustomer_name();
 //
@@ -516,7 +568,7 @@ public class CompanyForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
-//        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+
 //        CustomerBeans customer = customerDao.getCustomerById(customer_id);
 //        this.jTextFieldCompanyDealerName.setText(customer.getAddress());
 //        this.jTextFieldCustomername.setText(customer.getCustomer_name());
@@ -546,6 +598,30 @@ public class CompanyForm extends javax.swing.JFrame {
 //        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
 
     }//GEN-LAST:event_jTextFieldSerachKeyReleased
+
+    private void jTableCustomerMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseReleased
+        CompanyBeans companyBeans = null;
+
+        try {
+
+            int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+            System.out.println("" + company_id);
+            companyBeans = companyDao.getCompanyById(company_id);
+            System.out.println("" + companyBeans.getCompany_name());
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+//        
+        jTextFieldCompanyName.setText("" + companyBeans.getCompany_name());
+        this.jTextFieldCompanyContact.setText("" + companyBeans.getCompany_contact());
+        this.jTextFieldCompanyAddress.setText("" + companyBeans.getCompany_address());
+        this.jTextFieldCompanyDealerName.setText("" + companyBeans.getDealer_name());
+        this.jButtonUpdate.setEnabled(true);
+        this.jButtonDelete.setEnabled(true);
+        jButtoSave.setEnabled(false);
+        jButtonClear1.setEnabled(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableCustomerMouseReleased
 
     /**
      * @param args the command line arguments
