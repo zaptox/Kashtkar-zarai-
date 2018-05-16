@@ -120,6 +120,8 @@ public class ProductPage extends javax.swing.JFrame {
         jButtonBack = new javax.swing.JButton();
         jButtonClear1 = new javax.swing.JButton();
         jComboBox1_Company = new javax.swing.JComboBox<>();
+        jComboBox1_Company1 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -275,17 +277,17 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldQuantityKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 260, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 260, -1));
+        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 100, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 100, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("QUANTITY*");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 120, -1));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 260, -1));
+        jLabel6.setText("UOM*");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 70, -1));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 322, 260, 10));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("COMPANY*");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 120, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 120, -1));
 
         jButtoSave.setBackground(new java.awt.Color(0, 204, 0));
         jButtoSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -348,7 +350,19 @@ public class ProductPage extends javax.swing.JFrame {
                 jComboBox1_CompanyActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1_Company, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 260, -1));
+        jPanel1.add(jComboBox1_Company, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 250, -1));
+
+        jComboBox1_Company1.setToolTipText("");
+        jComboBox1_Company1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1_Company1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1_Company1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 110, -1));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setText("QUANTITY*");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 120, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 590));
 
@@ -530,6 +544,10 @@ public class ProductPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1_CompanyActionPerformed
 
+    private void jComboBox1_Company1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_Company1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1_Company1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -613,12 +631,14 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JComboBox<String> jComboBox1_Company;
+    private javax.swing.JComboBox<String> jComboBox1_Company1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;

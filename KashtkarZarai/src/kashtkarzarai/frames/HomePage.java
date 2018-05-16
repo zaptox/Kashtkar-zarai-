@@ -167,7 +167,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsersActionPerformed
         // TODO add your handling code here:
-//        new UserPage().setVisible(true);
+     new UserPage().setVisible(true);
     }//GEN-LAST:event_jButtonUsersActionPerformed
 
     /**
