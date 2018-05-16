@@ -19,5 +19,6 @@ public interface CompanyDao {
     public int modifyCompany(CompanyBeans company);
     public int removeCompany(CompanyBeans company);
     public CompanyBeans getCompanyById(int company_id);
+     public String getCompanyName(int company_id);
     
 }
