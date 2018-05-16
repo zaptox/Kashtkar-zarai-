@@ -8,9 +8,14 @@ package kashtkarzarai.dialog;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import kashtkarzarai.bean.CustomerBeans;
+import kashtkarzarai.bean.UOMBeans;
+import kashtkarzarai.dao.UomDao;
+import kashtkarzarai.daoImpl.UomDaoImpl;
 
 /**
  *
@@ -19,7 +24,8 @@ import kashtkarzarai.bean.CustomerBeans;
 public class SetingJDialog extends javax.swing.JDialog {
 
     DefaultTableModel tableModelUOM;
-    public ArrayList<UOM> uom_list;
+    public ArrayList<UOMBeans> uom_list;
+    UomDao uom;
 
     /**
      * Creates new form SetingJDialog
@@ -27,10 +33,14 @@ public class SetingJDialog extends javax.swing.JDialog {
     public SetingJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        uom = new UomDaoImpl();
+        tableModelUOM = (DefaultTableModel) this.jTableUOM.getModel();
+
         JTableHeader header = this.jTableUOM.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
+        showInTable();
 
     }
 
@@ -161,6 +171,17 @@ public class SetingJDialog extends javax.swing.JDialog {
 
     private void jButtonAdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdActionPerformed
         // TODO add your handling code here:
+        if (!(this.jTextFieldUOM.getText().equals(""))) {
+            uom.saveUom(new UOMBeans(0, this.jTextFieldUOM.getText().trim()));
+            JOptionPane.showMessageDialog(this, this.jTextFieldUOM.getText() + " Added succesfully ", "Added", JOptionPane.DEFAULT_OPTION);
+            this.jTextFieldUOM.setText("");
+            showInTable();
+            
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill required field", "Added", JOptionPane.DEFAULT_OPTION);
+
+        }
     }//GEN-LAST:event_jButtonAdActionPerformed
 
     private void jTextFieldUOMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUOMMouseClicked
@@ -176,13 +197,22 @@ public class SetingJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldUOMKeyPressed
 
     private void jTableUOMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUOMMouseClicked
-        int customer_id = Integer.parseInt("" + this.jTableUOM.getValueAt(this.jTableUOM.getSelectedRow(), 1));
 
 
     }//GEN-LAST:event_jTableUOMMouseClicked
 
     private void jButtonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDelActionPerformed
         // TODO add your handling code here:
+
+        if (!(this.jTableUOM.getSelectedRow() == -1)) {
+            int uom_id = uom_list.get(this.jTableUOM.getSelectedRow()).getUom_id();
+            uom.removeUom(new UOMBeans(uom_id, ""));
+            showInTable();
+        }
+         else {
+            JOptionPane.showMessageDialog(this, "Select UOM from table to delete ", "Error", JOptionPane.DEFAULT_OPTION);
+
+        }
     }//GEN-LAST:event_jButtonDelActionPerformed
 
     /**
@@ -225,6 +255,18 @@ public class SetingJDialog extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+
+    public void showInTable() {
+        tableModelUOM.setRowCount(0);
+
+        uom_list = uom.getAllUom();
+        for (UOMBeans uom : uom_list) {
+            Vector V = new Vector();
+            V.add(uom.getUom());
+
+            tableModelUOM.addRow(V);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
