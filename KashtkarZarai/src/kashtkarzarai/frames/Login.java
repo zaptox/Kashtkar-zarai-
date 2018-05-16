@@ -228,6 +228,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {String name =  this.jTextFieldUserna
            }
            else{
                 new playAudio().playErrorSound();
+                
                    JOptionPane.showMessageDialog(rootPane, "Incorrect Password");
            }
         }

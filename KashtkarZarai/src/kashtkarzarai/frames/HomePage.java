@@ -138,7 +138,7 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCompanyActionPerformed
-        new CompanyForm().setVisible(true); 
+//        new CompanyForm().setVisible(true); 
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCompanyActionPerformed
@@ -167,7 +167,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsersActionPerformed
         // TODO add your handling code here:
-        new UserPage().setVisible(true);
+//        new UserPage().setVisible(true);
     }//GEN-LAST:event_jButtonUsersActionPerformed
 
     /**
