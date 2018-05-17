@@ -5,6 +5,19 @@
  */
 package kashtkarzarai.frames;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.util.ArrayList;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableRowSorter;
+import kashtkarzarai.bean.CustomerBeans;
+import kashtkarzarai.bean.SaleDetailBeans;
+import kashtkarzarai.dao.SaleDetailsDao;
+import kashtkarzarai.daoImpl.CustomerDaoImpl;
+import kashtkarzarai.daoImpl.SaleDetailDapImpl;
+
 /**
  *
  * @author Vksoni
@@ -14,8 +27,22 @@ public class CustomerDetails extends javax.swing.JFrame {
     /**
      * Creates new form HomePage
      */
+     DefaultTableModel tableModelCustomerSaleDetail;
+    public ArrayList<SaleDetailBeans> sale_details_list;
+    TableRowSorter<DefaultTableModel> rowSorter = null;
+    SaleDetailsDao saleDeatail;
     public CustomerDetails() {
         initComponents();
+         saleDeatail = new SaleDetailDapImpl();
+        tableModelCustomerSaleDetail = (DefaultTableModel) this.jTableCustomerSaleDetail.getModel();
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomerSaleDetail);
+        this.jTableCustomerSaleDetail.setRowSorter(rowSorter);
+
+        JTableHeader header = this.jTableCustomerSaleDetail.getTableHeader();
+        header.setBackground(new Color(0, 204, 0));
+        header.setForeground(new Color(255, 255, 255));
+        header.setFont(new Font("SansSerif", Font.BOLD, 18));
+   
     }
 
     /**
@@ -28,6 +55,11 @@ public class CustomerDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableCustomerSaleDetail = new javax.swing.JTable();
+        jSeparator1 = new javax.swing.JSeparator();
+        jTextFieldSerach = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -36,7 +68,75 @@ public class CustomerDetails extends javax.swing.JFrame {
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
+
+        jTableCustomerSaleDetail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTableCustomerSaleDetail.setForeground(new java.awt.Color(0, 0, 51));
+        jTableCustomerSaleDetail.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Sr #", "Sale Detail Id ", "Customer Name", "Quantity", "Price (Rs)", "Company Name", "UOM", "Sale Date"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableCustomerSaleDetail.setToolTipText("Products");
+        jTableCustomerSaleDetail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTableCustomerSaleDetail.setGridColor(new java.awt.Color(0, 0, 51));
+        jTableCustomerSaleDetail.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jTableCustomerSaleDetail.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCustomerSaleDetail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCustomerSaleDetailMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTableCustomerSaleDetail);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 900, 490));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 430, -1));
+
+        jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldSerach.setBorder(null);
+        jTextFieldSerach.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jTextFieldSerach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldSerachMouseClicked(evt);
+            }
+        });
+        jTextFieldSerach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSerachActionPerformed(evt);
+            }
+        });
+        jTextFieldSerach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldSerachKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldSerachKeyReleased(evt);
+            }
+        });
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, 430, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Search");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, 60, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 570));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -45,11 +145,35 @@ public class CustomerDetails extends javax.swing.JFrame {
         jLabel1.setText("All right reserved|2017");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1010, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1250, 30));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTableCustomerSaleDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerSaleDetailMouseClicked
+       
+
+    }//GEN-LAST:event_jTableCustomerSaleDetailMouseClicked
+
+    private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
+
+    }//GEN-LAST:event_jTextFieldSerachMouseClicked
+
+    private void jTextFieldSerachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerachActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSerachActionPerformed
+
+    private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
+
+    }//GEN-LAST:event_jTextFieldSerachKeyPressed
+
+    private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
+        // TODO add your handling code here:
+        String searchData = this.jTextFieldSerach.getText();
+        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
+
+    }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
     /**
      * @param args the command line arguments
@@ -89,6 +213,11 @@ public class CustomerDetails extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTableCustomerSaleDetail;
+    private javax.swing.JTextField jTextFieldSerach;
     // End of variables declaration//GEN-END:variables
 }

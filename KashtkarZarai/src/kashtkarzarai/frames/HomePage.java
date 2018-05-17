@@ -70,8 +70,8 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin6.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonLogin6.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/user-male-3.png"))); // NOI18N
-        jButtonLogin6.setText("Customer");
+        jButtonLogin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/user.png"))); // NOI18N
+        jButtonLogin6.setText("Customer Records");
         jButtonLogin6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogin6ActionPerformed(evt);
@@ -94,6 +94,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin9.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonLogin9.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLogin9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/user-male-3.png"))); // NOI18N
         jButtonLogin9.setText("Customer");
         jButtonLogin9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +164,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonLogin6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin6ActionPerformed
         // TODO add your handling code here:
-        new CustomerPage().setVisible(true);
+        new CustomerRecords().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonLogin6ActionPerformed
 
@@ -175,6 +176,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButtonLogin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin9ActionPerformed
         // TODO add your handling code here:
+        new CustomerPage().setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_jButtonLogin9ActionPerformed
 
     private void jButtonLogin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin10ActionPerformed
