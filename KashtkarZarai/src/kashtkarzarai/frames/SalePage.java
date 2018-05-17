@@ -8,9 +8,21 @@ package kashtkarzarai.frames;
 import java.awt.Color;
 import java.awt.Font;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableRowSorter;
+import kashtkarzarai.bean.CompanyBeans;
 import kashtkarzarai.bean.CustomerBeans;
+import kashtkarzarai.bean.ProductBeans;
+import kashtkarzarai.dao.CompanyDao;
+import kashtkarzarai.dao.ProductDao;
+import kashtkarzarai.dao.UomDao;
+import kashtkarzarai.daoImpl.ProductDaoImpl;
+import kashtkarzarai.daoImpl.UomDaoImpl;
 
 /**
  *
@@ -21,12 +33,29 @@ public class SalePage extends javax.swing.JFrame {
     /**
      * Creates new form SalePage
      */
+    DefaultTableModel tableModelProduct;
+    public ArrayList<ProductBeans> product_list;
+    public ArrayList<ProductBeans> orderedProductList;
+    ProductDao productDao;
+    UomDao uomDao;
+    public static int total_price = 0;
+    DefaultTableModel tableModel2;
+    int customer_id = -1;
+
+    public static int total_price_temp = 0;
+    TableRowSorter<DefaultTableModel> rowSorter = null;
+
     public SalePage() {
         initComponents();
+        productDao = new ProductDaoImpl();
+        uomDao = new UomDaoImpl();
+        tableModelProduct = (DefaultTableModel) this.jTable1.getModel();
+        tableModel2 = (DefaultTableModel) this.jTable2.getModel();
+        customer_id = -1;
+
         nameField.setEnabled(false);
         numberField.setEnabled(false);
         addressfield.setEnabled(false);
-
         JTableHeader header = this.jTable1.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
@@ -35,6 +64,12 @@ public class SalePage extends javax.swing.JFrame {
         header2.setBackground(new Color(0, 204, 0));
         header2.setForeground(new Color(255, 255, 255));
         header2.setFont(new Font("SansSerif", Font.BOLD, 18));
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelProduct);
+        this.jTable1.setRowSorter(rowSorter);
+        orderedProductList = new ArrayList<>();
+
+        showInTable();
+
     }
 
     public SalePage(CustomerBeans customer) {
@@ -46,7 +81,11 @@ public class SalePage extends javax.swing.JFrame {
         nameField.setEnabled(false);
         numberField.setEnabled(false);
         addressfield.setEnabled(false);
-        
+        tableModelProduct = (DefaultTableModel) this.jTable1.getModel();
+        tableModel2 = (DefaultTableModel) this.jTable2.getModel();
+        productDao = new ProductDaoImpl();
+        customer_id = customer.getCustomer_id();
+
         JTableHeader header = this.jTable1.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
@@ -55,6 +94,38 @@ public class SalePage extends javax.swing.JFrame {
         header2.setBackground(new Color(0, 204, 0));
         header2.setForeground(new Color(255, 255, 255));
         header2.setFont(new Font("SansSerif", Font.BOLD, 18));
+        showInTable();
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelProduct);
+        this.jTable1.setRowSorter(rowSorter);
+
+        orderedProductList = new ArrayList<>();
+
+    }
+
+    public void showInTable() {
+        tableModelProduct.setRowCount(0);
+        try {
+
+            int serial = 0;
+            product_list = productDao.getAllProducts();
+
+            for (ProductBeans p : product_list) {
+                Vector V = new Vector();
+                serial++;
+
+                V.add(serial);
+                V.add(p.getP_id());
+                V.add(p.getP_name());
+                V.add(p.getCost());
+                V.add(p.getQuantity());
+                V.add(p.getP_id());
+//            V.add(customer.getCreation_date());
+
+                tableModelProduct.addRow(V);
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
     }
 
     /**
@@ -77,7 +148,6 @@ public class SalePage extends javax.swing.JFrame {
         numberField = new javax.swing.JTextField();
         deliveryRadio = new javax.swing.JRadioButton();
         addressfield = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         itemField = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -95,6 +165,8 @@ public class SalePage extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        quantityField = new javax.swing.JTextField();
+        uomField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sale");
@@ -103,6 +175,7 @@ public class SalePage extends javax.swing.JFrame {
         jLabel7.setText("Discount Type");
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amount", "Percentage" }));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Discsount:");
@@ -179,8 +252,6 @@ public class SalePage extends javax.swing.JFrame {
             }
         });
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setText("Contact:");
 
@@ -205,17 +276,17 @@ public class SalePage extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Name", "Price", "Quantity"
+                "S#", "Product_id", "Name", "Price", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -242,17 +313,17 @@ public class SalePage extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jTable2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Product_name", "Price", "Quantity", "Total_price"
+                "Product_name", "Price", "Quantity", "Uom", "Total_price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -280,32 +351,12 @@ public class SalePage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("Name:");
 
+        uomField.setText("uom");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel8)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(discountField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(52, 52, 52))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -332,26 +383,51 @@ public class SalePage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
-                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(uomField))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
                         .addComponent(itemField))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(89, 89, 89))
+                        .addGap(86, 86, 86)
+                        .addComponent(addField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(942, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel8)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(discountField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(52, 52, 52))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(847, 847, 847)
-                        .addComponent(addField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jSeparator1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,9 +468,11 @@ public class SalePage extends javax.swing.JFrame {
                         .addGap(95, 95, 95)
                         .addComponent(itemField)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(quantityField)
+                                .addComponent(uomField)))
                         .addGap(18, 18, 18)
                         .addComponent(addField)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -425,41 +503,41 @@ public class SalePage extends javax.swing.JFrame {
 
     private void discountFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_discountFieldKeyReleased
         // TODO add your handling code here:
-//        if (discountField.equals("")) {
-//            totalField.setText(total_price + "");
-//
-//        } else if (jComboBox1.getSelectedItem().toString().equalsIgnoreCase("amount")) {
-//
-//            try {
-//                int discount = Integer.parseInt(discountField.getText().toString());
-//                int totalpriceget = total_price;
-//                totalpriceget -= discount;
-//                totalField.setText(totalpriceget + "");
-//
-//            } catch (Exception e) {
-//                totalField.setText(total_price + "");
-//
-//                //                JOptionPane.showMessageDialog(this, "Invalid amount");
-//            }
-//
-//            System.out.println("amount");
-//        } else if (jComboBox1.getSelectedItem().toString().equalsIgnoreCase("percentage")) {
-//
-//            try {
-//                float discount_percent = Integer.parseInt(discountField.getText().toString());
-//                float discount = (discount_percent * total_price) / 100;
-//
-//                int totalpriceget = total_price;
-//                totalpriceget -= discount;
-//                totalField.setText(totalpriceget + "");
-//
-//            } catch (Exception e) {
-//                totalField.setText(total_price + "");
-//
-//                //                JOptionPane.showMessageDialog(this, "Invalid amount");
-//            }
-//            System.out.println("percentage");
-//        }
+        if (discountField.equals("")) {
+            totalField.setText(total_price + "");
+
+        } else if (jComboBox1.getSelectedItem().toString().equalsIgnoreCase("amount")) {
+
+            try {
+                int discount = Integer.parseInt(discountField.getText().toString());
+                int totalpriceget = total_price;
+                totalpriceget -= discount;
+                totalField.setText(totalpriceget + "");
+
+            } catch (Exception e) {
+                totalField.setText(total_price + "");
+
+                //                JOptionPane.showMessageDialog(this, "Invalid amount");
+            }
+
+            System.out.println("amount");
+        } else if (jComboBox1.getSelectedItem().toString().equalsIgnoreCase("percentage")) {
+
+            try {
+                float discount_percent = Integer.parseInt(discountField.getText().toString());
+                float discount = (discount_percent * total_price) / 100;
+
+                int totalpriceget = total_price;
+                totalpriceget -= discount;
+                totalField.setText(totalpriceget + "");
+
+            } catch (Exception e) {
+                totalField.setText(total_price + "");
+
+                //                JOptionPane.showMessageDialog(this, "Invalid amount");
+            }
+            System.out.println("percentage");
+        }
     }//GEN-LAST:event_discountFieldKeyReleased
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -525,41 +603,91 @@ public class SalePage extends javax.swing.JFrame {
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
         // TODO add your handling code here:
-        String search_product = searchField.getText();
+//        String search_product = searchField.getText();
 //        showInTableSearched(search_product);
-        //        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + search_product));
+        String searchData = this.searchField.getText();
+        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
     }//GEN-LAST:event_searchFieldKeyReleased
 
     private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
         // TODO add your handling code here:
         int id = jTable1.getSelectedRow();
-//        int user_id_table = productList.get(id).getProduct_id();
+//        int id1=(int) tableModelProduct.getValueAt(id, 5);
+//        System.out.println("The id is"+id1);
+        int product_id_table = Integer.parseInt("" + this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 1));
 
+//        int product_id_table = product_list.get(id).getP_id();
 //        DbManagerInterface ob = new DbManager();
-//        Product p = ob.getProduct(user_id_table);
-//        itemField.setText("Item: " + p.getName());
+        ProductBeans p = null;
+        try {
+            p = productDao.getProductById(product_id_table);
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+        itemField.setText("Item: " + p.getP_name());
+        String uom = uomDao.getUomName(p.getUom());
+        uomField.setText("" + uom);
         addField.setEnabled(true);
     }//GEN-LAST:event_jTable1MouseReleased
 
     private void addFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFieldActionPerformed
         // TODO add your handling code here:
         //        if(jTable1.isRowSelected)
-        if ((int) jSpinner1.getValue() == 0) {
-            JOptionPane.showMessageDialog(this, "Must select Some Quantity");
+        int quantity = 0;
+        try {
+            quantity = Integer.parseInt(quantityField.getText().toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Quantity must be in numbers Format");
+        }
+
+        if ((int) quantity <= 0) {
+            JOptionPane.showMessageDialog(this, "Must write a valid Quantity");
         } else {
-            int id = jTable1.getSelectedRow();
+
+            int product_id_table = Integer.parseInt("" + this.jTable1.getValueAt(this.jTable1.getSelectedRow(), 1));
+
 //            int user_id_table = productList.get(id).getProduct_id();
 //
 //            DbManagerInterface ob = new DbManager();
-//            Product p = ob.getProduct(user_id_table);
-
-            int quantity = (int) jSpinner1.getValue();
-            int product_quantity = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 2);
-            jTable1.setValueAt(product_quantity - quantity, jTable1.getSelectedRow(), 2);
-//            showInBuy(p, quantity);
+            ProductBeans p = productDao.getProductById(product_id_table);
+//            int quantity = (int) jSpinner1.getValue();
+            int product_quantity = (int) jTable1.getValueAt(jTable1.getSelectedRow(), 4);
+            jTable1.setValueAt(product_quantity - quantity, jTable1.getSelectedRow(), 4);
+            showInBuy(p, quantity);
 
         }
     }//GEN-LAST:event_addFieldActionPerformed
+
+    private void showInBuy(ProductBeans p, int quantity) {
+//        DbManagerInterface ob = new DbManager();
+//        tableModel2.setRowCount(0);
+
+        Vector v = new Vector();
+//        int id = p.getCategory_id();
+//        String category = ob.getCategory(id).getName();
+//        System.out.println("" + p.getName());
+        v.add(p.getP_name());
+        System.out.println("" + p.getCost());
+        v.add(p.getCost());
+        String uom = uomDao.getUomName(p.getUom());
+        v.add(quantity);
+        v.add(uom);
+
+        int t_price = quantity * p.getCost();
+
+        v.add(t_price);
+        total_price += t_price;
+        totalField.setText("" + total_price);
+        total_price_temp = total_price;
+        try {
+            tableModel2.addRow(v);
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+//        orderedProductList.add(new ProductBeans(p.getP_id(), ICONIFIED, p_name, ABORT, quantity, t_price));
+//        System.out.println("" + orderedProductList + "\n");
+
+    }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -688,13 +816,14 @@ public class SalePage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField numberField;
+    private javax.swing.JTextField quantityField;
     private javax.swing.JTextField searchField;
     private javax.swing.JTextField totalField;
+    private javax.swing.JLabel uomField;
     private javax.swing.JRadioButton walkingRadio;
     // End of variables declaration//GEN-END:variables
 }
