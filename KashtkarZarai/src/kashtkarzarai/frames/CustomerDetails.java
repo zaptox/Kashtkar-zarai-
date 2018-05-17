@@ -28,7 +28,6 @@ public class CustomerDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButtonLogin9 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -37,18 +36,6 @@ public class CustomerDetails extends javax.swing.JFrame {
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButtonLogin9.setBackground(new java.awt.Color(0, 204, 0));
-        jButtonLogin9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonLogin9.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonLogin9.setText("Customer");
-        jButtonLogin9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin9ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonLogin9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 310, 120));
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
@@ -63,10 +50,6 @@ public class CustomerDetails extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonLogin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonLogin9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +88,6 @@ public class CustomerDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonLogin9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
