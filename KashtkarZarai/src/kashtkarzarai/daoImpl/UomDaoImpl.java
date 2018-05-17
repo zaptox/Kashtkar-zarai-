@@ -77,5 +77,30 @@ public class UomDaoImpl implements UomDao {
             e.printStackTrace();
         }
         return i;    }
+    
+      public String getUomName(int id) {
+      String uom ="";
+        try {
+            String query = "SELECT * FROM uom_table WHERE uom_id="+id;
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+               
+                uom = rs.getString("uom");
+               
+
+         
+
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error in getting UOM");
+            e.printStackTrace();
+        }
+
+        return uom;
+    
+    }
 
 }

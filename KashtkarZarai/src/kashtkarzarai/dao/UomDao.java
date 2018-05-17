@@ -16,4 +16,6 @@ public interface UomDao {
     public ArrayList<UOMBeans>getAllUom();
     public int saveUom(UOMBeans uom);
     public int removeUom(UOMBeans uom);
+    public String getUomName(int id);
+    
 }

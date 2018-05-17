@@ -23,14 +23,17 @@ public static Connection con = DbConnection.conn;
     @Override
     public int saveProduct(ProductBeans productBeans) {
         int i = 0;
-        String query = "INSERT INTO product (company_id, p_name,quantity,cost,active) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO product (company_id, p_name,quantity,uom,cost,active) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1,productBeans.getCompany_id() );
             ps.setString(2,productBeans.getP_name());
             ps.setInt(3,productBeans.getQuantity());
-            ps.setInt(4,productBeans.getCost());
-            ps.setInt(5,productBeans.getActive());
+            ps.setInt(4,productBeans.getUom());
+            
+            ps.setInt(5,productBeans.getCost());
+            ps.setInt(6,productBeans.getActive());
+          
 
             i = ps.executeUpdate();
 
@@ -55,16 +58,17 @@ public static Connection con = DbConnection.conn;
                 int company_id = rs.getInt("company_id");
                 String p_name = rs.getString("p_name");
                 int  quantity = rs.getInt("quantity");
+                 int  uom = rs.getInt("uom");
                 int cost = rs.getInt("cost");
 
                 int active = rs.getInt("active");
                // String creation_date = rs.getString("creation_date");
 
-                productlist.add(new ProductBeans(p_id, company_id, p_name, cost, quantity, active));
+                productlist.add(new ProductBeans(p_id, company_id, quantity, uom, p_name, cost, active));
 
             }
         } catch (Exception e) {
-            System.out.println("Error in getting Customer");
+            System.out.println("Error in getting Product");
             e.printStackTrace();
         }
 

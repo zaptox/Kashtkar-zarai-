@@ -19,11 +19,14 @@ import javax.swing.table.TableRowSorter;
 import kashtkarzarai.bean.CompanyBeans;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.ProductBeans;
+import kashtkarzarai.bean.UOMBeans;
 import kashtkarzarai.dao.CompanyDao;
 import kashtkarzarai.dao.ProductDao;
+import kashtkarzarai.dao.UomDao;
 import kashtkarzarai.daoImpl.CompanyDaoImpl;
 
 import kashtkarzarai.daoImpl.ProductDaoImpl;
+import kashtkarzarai.daoImpl.UomDaoImpl;
 import kashtkarzarai.util.playAudio;
 
 /**
@@ -37,24 +40,31 @@ public class ProductPage extends javax.swing.JFrame {
      */
     DefaultTableModel tableModelCustomer;
     DefaultComboBoxModel defaultComboBoxModel;
+    DefaultComboBoxModel defaultUomModel;
     public ArrayList<ProductBeans> productlist;
     public ArrayList<CompanyBeans> companylist;
+    public ArrayList<UOMBeans> uomlist;
+    
     TableRowSorter<DefaultTableModel> rowSorter = null;
-
+    
     ProductDao productDao;
     CompanyDao companyDao;
-
+    UomDao uomDao;
+    
     public ProductPage() {
         initComponents();
-
+        
         productDao = new ProductDaoImpl();
         companyDao = new CompanyDaoImpl();
+        uomDao = new UomDaoImpl();
+        uomlist = new ArrayList<UOMBeans>();
+         defaultUomModel = (DefaultComboBoxModel) this.jComboBox1_UOM.getModel();
         defaultComboBoxModel = (DefaultComboBoxModel) this.jComboBox1_Company.getModel();
         tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
         rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
         this.jTableCustomer.setRowSorter(rowSorter);
         companylist = new ArrayList<CompanyBeans>();
-
+        this.jComboBox1_UOM.setVisible(true);
         JTableHeader header = this.jTableCustomer.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
@@ -64,17 +74,17 @@ public class ProductPage extends javax.swing.JFrame {
         this.registerButton.setEnabled(false);
         showInTable();
         showInComboBox();
-
+        showInUOMBox();
     }
-
+    
     public ProductPage(int reference) {
         initComponents();
-
+        
         productDao = new ProductDaoImpl();
         tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
         rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
         this.jTableCustomer.setRowSorter(rowSorter);
-
+        
         JTableHeader header = this.jTableCustomer.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
@@ -82,9 +92,9 @@ public class ProductPage extends javax.swing.JFrame {
         this.jButtonUpdate.setEnabled(false);
         this.jButtonDelete.setEnabled(false);
         this.registerButton.setEnabled(true);
-
+        
         showInTable();
-
+        
     }
 
     /**
@@ -120,7 +130,7 @@ public class ProductPage extends javax.swing.JFrame {
         jButtonBack = new javax.swing.JButton();
         jButtonClear1 = new javax.swing.JButton();
         jComboBox1_Company = new javax.swing.JComboBox<>();
-        jComboBox1_Company1 = new javax.swing.JComboBox<>();
+        jComboBox1_UOM = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -138,14 +148,14 @@ public class ProductPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sr #", "Company", "Product Id", "Product Name", "Quantity", "Cost"
+                "Sr #", "Product Id", "Product Name", "Quantity", "UOM", "Cost", "Company"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false, true
+                false, false, false, false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -352,13 +362,13 @@ public class ProductPage extends javax.swing.JFrame {
         });
         jPanel1.add(jComboBox1_Company, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 250, -1));
 
-        jComboBox1_Company1.setToolTipText("");
-        jComboBox1_Company1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1_UOM.setToolTipText("");
+        jComboBox1_UOM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1_Company1ActionPerformed(evt);
+                jComboBox1_UOMActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1_Company1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 110, -1));
+        jPanel1.add(jComboBox1_UOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 110, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("QUANTITY*");
@@ -461,22 +471,23 @@ public class ProductPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldQuantityKeyPressed
 
     private void jButtoSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoSaveActionPerformed
-
+        
         if (checkTextBoxNoEmpty()) {
             String product_name = this.jTextFieldProductname.getText();
             int cost = Integer.parseInt(this.jTextFieldCost.getText());
             int quntity = Integer.parseInt(this.jTextFieldQuantity.getText());
             int company_id = this.jComboBox1_Company.getSelectedIndex() + 1;
-
-            if (productDao.saveProduct(new ProductBeans(0, company_id, product_name, cost, quntity, 1)) >= 0) {
+            int uom_id = this.jComboBox1_UOM.getSelectedIndex() + 1;
+            
+            if (productDao.saveProduct(new ProductBeans(0, company_id, quntity, uom_id, product_name, cost, 1)) >= 0) {
                 this.jTextFieldProductname.setText("");
                 this.jTextFieldQuantity.setText("");
                 this.jTextFieldCost.setText("");
                 //this.jTextFieldCustomerContact.setText("");
                 new playAudio().playSuccessSound();
-
+                
                 JOptionPane.showMessageDialog(this, product_name + " saved succesfully ", "Success", JOptionPane.DEFAULT_OPTION);
-
+                
                 showInTable();
             }
         } else {
@@ -525,12 +536,12 @@ public class ProductPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String searchData = this.jTextFieldSerach.getText();
         rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
-
+        
 
     }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-
+        
         new HomePage().setVisible(true);
         this.dispose();
 
@@ -544,9 +555,9 @@ public class ProductPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1_CompanyActionPerformed
 
-    private void jComboBox1_Company1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_Company1ActionPerformed
+    private void jComboBox1_UOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_UOMActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1_Company1ActionPerformed
+    }//GEN-LAST:event_jComboBox1_UOMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -585,7 +596,7 @@ public class ProductPage extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void showInTable() {
         tableModelCustomer.setRowCount(0);
         int i = 1;
@@ -595,34 +606,45 @@ public class ProductPage extends javax.swing.JFrame {
             //  V.add(customers_list.size());
 
             V.add(i++);
-            V.add(companyDao.getCompanyName(p.getCompany_id()));
+         
             V.add(p.getP_id());
             V.add(p.getP_name());
             V.add(p.getQuantity());
+            V.add(uomDao.getUomName(p.getUom()));
+            
             V.add(p.getCost());
-
+               V.add(companyDao.getCompanyName(p.getCompany_id()));
+            
             tableModelCustomer.addRow(V);
         }
-
+        
     }
-
+    
     public void showInComboBox() {
         companylist = companyDao.getAllCompanies();
         for (CompanyBeans c : companylist) {
             defaultComboBoxModel.addElement("" + c.getCompany_name());
         }
     }
-
+    
+    public void showInUOMBox() {
+        uomlist = uomDao.getAllUom();
+        for (UOMBeans u : uomlist) {
+            this.jComboBox1_UOM.addItem("" + u.getUom());
+        }
+    }
+    
     public boolean checkTextBoxNoEmpty() {
         boolean check = false;
         if (!this.jTextFieldProductname.getText().equals("")
                 && !this.jTextFieldCost.getText().equals("")
                 && !this.jTextFieldQuantity.getText().equals("")) {
-
+            
             check = true;
         }
         return check;
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtoSave;
@@ -631,7 +653,7 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JComboBox<String> jComboBox1_Company;
-    private javax.swing.JComboBox<String> jComboBox1_Company1;
+    private javax.swing.JComboBox<String> jComboBox1_UOM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
