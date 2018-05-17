@@ -470,8 +470,8 @@ public class ProductPage extends javax.swing.JFrame {
             String product_name = this.jTextFieldProductname.getText();
             int cost = Integer.parseInt(this.jTextFieldCost.getText());
             int quntity = Integer.parseInt(this.jTextFieldQuantity.getText());
-            int company_id = this.jComboBox1_Company.getSelectedIndex() + 1;
-            int uom_id = this.jComboBox1_UOM.getSelectedIndex() + 1;
+            int company_id = companylist.get(this.jComboBox1_Company.getSelectedIndex()).getCompany_id();
+            int uom_id = uomlist.get(this.jComboBox1_UOM.getSelectedIndex()).getUom_id();
             
             if (productDao.saveProduct(new ProductBeans(0, company_id, quntity, uom_id, product_name, cost, 1)) >= 0) {
                 this.jTextFieldProductname.setText("");
@@ -498,8 +498,9 @@ public class ProductPage extends javax.swing.JFrame {
         int cost =Integer.parseInt( this.jTextFieldCost.getText());
         int quantity =Integer.parseInt( this.jTextFieldQuantity.getText());
         
-        int uom =this.jComboBox1_UOM.getSelectedIndex()+1;
-        int company =this.jComboBox1_Company.getSelectedIndex()+1;
+        int company_id = companylist.get(this.jComboBox1_Company.getSelectedIndex()).getCompany_id();
+            int uom_id = uomlist.get(this.jComboBox1_UOM.getSelectedIndex()).getUom_id();
+            
         
         
         
@@ -508,7 +509,7 @@ public class ProductPage extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
         } else {
-            productDao.modifyProduct(new ProductBeans(product_id, company, quantity, uom, product_name, cost, 1));
+            productDao.modifyProduct(new ProductBeans(product_id, company_id, quantity, uom_id, product_name, cost, 1));
             new playAudio().playSuccessSound();
             showInTable();
             jButtonUpdate.setEnabled(false);
