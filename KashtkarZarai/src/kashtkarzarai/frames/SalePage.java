@@ -18,10 +18,15 @@ import javax.swing.table.TableRowSorter;
 import kashtkarzarai.bean.CompanyBeans;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.ProductBeans;
+import kashtkarzarai.bean.SaleBeans;
 import kashtkarzarai.dao.CompanyDao;
 import kashtkarzarai.dao.ProductDao;
+import kashtkarzarai.dao.SaleDao;
+import kashtkarzarai.dao.SaleDetailsDao;
 import kashtkarzarai.dao.UomDao;
 import kashtkarzarai.daoImpl.ProductDaoImpl;
+import kashtkarzarai.daoImpl.SaleDaoImpl;
+import kashtkarzarai.daoImpl.SaleDetailDapImpl;
 import kashtkarzarai.daoImpl.UomDaoImpl;
 
 /**
@@ -37,6 +42,9 @@ public class SalePage extends javax.swing.JFrame {
     public ArrayList<ProductBeans> product_list;
     public ArrayList<ProductBeans> orderedProductList;
     ProductDao productDao;
+    SaleDao saleDao;
+    SaleDetailsDao saleDetailDao;
+
     UomDao uomDao;
     public static int total_price = 0;
     DefaultTableModel tableModel2;
@@ -49,6 +57,8 @@ public class SalePage extends javax.swing.JFrame {
         initComponents();
         productDao = new ProductDaoImpl();
         uomDao = new UomDaoImpl();
+        saleDao = new SaleDaoImpl();
+        saleDetailDao = new SaleDetailDapImpl();
         tableModelProduct = (DefaultTableModel) this.jTable1.getModel();
         tableModel2 = (DefaultTableModel) this.jTable2.getModel();
         customer_id = -1;
@@ -99,7 +109,9 @@ public class SalePage extends javax.swing.JFrame {
         this.jTable1.setRowSorter(rowSorter);
 
         orderedProductList = new ArrayList<>();
-
+        uomDao = new UomDaoImpl();
+        saleDao = new SaleDaoImpl();
+        saleDetailDao = new SaleDetailDapImpl();
     }
 
     public void showInTable() {
@@ -550,26 +562,6 @@ public class SalePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nameFieldActionPerformed
 
-    private void walkingRadioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_walkingRadioMouseReleased
-        // TODO add your handling code here:
-        if (walkingRadio.isSelected()) {
-            System.out.println("Jradio 1 is selected");
-            nameField.setEnabled(false);
-            numberField.setEnabled(false);
-            addressfield.setEnabled(false);
-            //            register.setEnabled(false);
-
-        }
-        if (!walkingRadio.isSelected()) {
-            //    System.out.println("Jradio 1 is not not selected");
-        }
-    }//GEN-LAST:event_walkingRadioMouseReleased
-
-    private void walkingRadioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_walkingRadioPropertyChange
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_walkingRadioPropertyChange
-
     private void numberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numberFieldActionPerformed
@@ -684,6 +676,7 @@ public class SalePage extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("" + e.getMessage());
         }
+        orderedProductList.add(new ProductBeans(p.getP_id(), p.getCompany_id(), quantity, p.getUom(), p.getP_name(), p.getCost(), 1));
 //        orderedProductList.add(new ProductBeans(p.getP_id(), ICONIFIED, p_name, ABORT, quantity, t_price));
 //        System.out.println("" + orderedProductList + "\n");
 
@@ -721,14 +714,16 @@ public class SalePage extends javax.swing.JFrame {
 //                }
 //
 //            }
-//            if (customer_id != -1) {
-//                obGlobal.insertOrder(new Order(0, date.toString(), customer_id, number,
+        if (customer_id != -1) {
+            String discount_type = jComboBox1.getSelectedItem().toString();
+            int discount1 = Integer.parseInt(discountField.getText().toString());
+
+            saleDao.saveSale(new SaleBeans(1, customer_id, 1, discount_type, discount1, total_price));
+        }
+//else {
+//            saleDao.(new Order(0, date.toString(), customer_id, number,
 //                    1, 1, null, 1,
 //                    null, discount_id, discount, total_price));
-//        } else {
-//            obGlobal.insertOrderNoCustomer(new Order(0, date.toString(), customer_id, number,
-//                1, 1, null, 1,
-//                null, discount_id, discount, total_price));
 //        }
 //
 //        for (Product p : orderedProductList) {
@@ -755,9 +750,29 @@ public class SalePage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void walkingRadioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_walkingRadioPropertyChange
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_walkingRadioPropertyChange
+
     private void walkingRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walkingRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_walkingRadioActionPerformed
+
+    private void walkingRadioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_walkingRadioMouseReleased
+        // TODO add your handling code here:
+        if (walkingRadio.isSelected()) {
+            System.out.println("Jradio 1 is selected");
+            nameField.setEnabled(false);
+            numberField.setEnabled(false);
+            addressfield.setEnabled(false);
+            //            register.setEnabled(false);
+
+        }
+        if (!walkingRadio.isSelected()) {
+            //    System.out.println("Jradio 1 is not not selected");
+        }
+    }//GEN-LAST:event_walkingRadioMouseReleased
 
     /**
      * @param args the command line arguments
