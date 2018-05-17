@@ -71,7 +71,7 @@ public class ProductPage extends javax.swing.JFrame {
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
         this.jButtonUpdate.setEnabled(false);
         this.jButtonDelete.setEnabled(false);
-        this.registerButton.setEnabled(false);
+
         showInTable();
         showInComboBox();
         showInUOMBox();
@@ -91,7 +91,7 @@ public class ProductPage extends javax.swing.JFrame {
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
         this.jButtonUpdate.setEnabled(false);
         this.jButtonDelete.setEnabled(false);
-        this.registerButton.setEnabled(true);
+       // this.registerButton.setEnabled(true);
         
         showInTable();
         
@@ -125,7 +125,6 @@ public class ProductPage extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jButtoSave = new javax.swing.JButton();
-        registerButton = new javax.swing.JButton();
         jButtonUpdate = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jButtonClear1 = new javax.swing.JButton();
@@ -148,14 +147,14 @@ public class ProductPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sr #", "Product Id", "Product Name", "Quantity", "UOM", "Cost", "Company"
+                "Sr #", "Product Id", "Product Name", "Cost / per Item (Rs)", "Quantity", "UOM", "Company"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -310,17 +309,6 @@ public class ProductPage extends javax.swing.JFrame {
         });
         jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 240, 40));
 
-        registerButton.setBackground(new java.awt.Color(0, 204, 0));
-        registerButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        registerButton.setForeground(new java.awt.Color(255, 255, 255));
-        registerButton.setText("Register");
-        registerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 530, 240, 40));
-
         jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
@@ -390,17 +378,20 @@ public class ProductPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
-        /* int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-        CustomerBeans customer = productDao.getCustomerById(customer_id);
-        this.jTextFieldCustomerAddress.setText(customer.getAddress());
-        this.jTextFieldCustomername.setText(customer.getCustomer_name());
-        this.jTextFieldCustomerCnic.setText(customer.getCnic());
-        this.jTextFieldCustomerContact.setText(customer.getContact());
+      int product_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+      
+        
+  
+        ProductBeans productBeans = productDao.getProductById(product_id);
+        this.jTextFieldProductname.setText(productBeans.getP_name());
+        this.jTextFieldCost.setText(""+productBeans.getCost());
+        this.jTextFieldQuantity.setText(""+productBeans.getQuantity());
+        //this.jTextFieldCustomerContact.setText(customer.getContact());
         this.jButtonUpdate.setEnabled(true);
         this.jButtonDelete.setEnabled(true);
         this.jButtoSave.setEnabled(false);
 
-         */
+         
     }//GEN-LAST:event_jTableCustomerMouseClicked
 
     private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
@@ -417,21 +408,24 @@ public class ProductPage extends javax.swing.JFrame {
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
-        /*  int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-        String cust_name = productDao.getCustomerById(customer_id).getCustomer_name();
+          int product_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+        String product_name = productDao.getProductById(product_id).getP_name();
 
-        if (productDao.removeCustomer(new CustomerBeans(customer_id, "", "", "", "", "")) >= 0) {
-            JOptionPane.showMessageDialog(this, cust_name + " deleted succesfully ", "deleted", JOptionPane.OK_OPTION);
-            this.jTextFieldCustomerAddress.setText("");
-            this.jTextFieldCustomername.setText("");
-            this.jTextFieldCustomerCnic.setText("");
-            this.jTextFieldCustomerContact.setText("");
+        if (productDao.removeProduct(new ProductBeans(product_id,0, 0, 0, "", 0, 0)) >= 0) {
+            
+            JOptionPane.showMessageDialog(this, product_name + " deleted succesfully ", "deleted", JOptionPane.OK_OPTION);
+            new playAudio().playSuccessSound();
+            
+            this.jTextFieldProductname.setText("");
+            this.jTextFieldCost.setText("");
+            this.jTextFieldQuantity.setText("");
+            
             this.jButtonUpdate.setEnabled(false);
             this.jButtonDelete.setEnabled(false);
             this.jButtoSave.setEnabled(true);
             showInTable();
         }
-         */
+         
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jTextFieldProductnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldProductnameMouseClicked
@@ -496,16 +490,38 @@ public class ProductPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtoSaveActionPerformed
 
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
-//        int c_id= this.
-        /* int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-        CustomerBeans customer = productDao.getCustomerById(customer_id);
-      new SalePage(customer).setVisible(true);
-         */
-    }//GEN-LAST:event_registerButtonActionPerformed
-
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+  
+          int product_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+
+        String product_name = this.jTextFieldProductname.getText();
+        int cost =Integer.parseInt( this.jTextFieldCost.getText());
+        int quantity =Integer.parseInt( this.jTextFieldQuantity.getText());
+        
+        int uom =this.jComboBox1_UOM.getSelectedIndex()+1;
+        int company =this.jComboBox1_Company.getSelectedIndex()+1;
+        
+        
+        
+
+        if (product_name.equals("") || cost<=0 ) {
+
+            JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
+        } else {
+            productDao.modifyProduct(new ProductBeans(product_id, company, quantity, uom, product_name, cost, 1));
+            new playAudio().playSuccessSound();
+            showInTable();
+            jButtonUpdate.setEnabled(false);
+            jButtoSave.setEnabled(true);
+            jButtonClear1.setEnabled(true);
+
+            jTextFieldProductname.setText("");
+            this.jTextFieldCost.setText("");
+            this.jTextFieldQuantity.setText("");
+            //this.jTextFieldCompanyDealerName.setText("");
+            jButtonDelete.setEnabled(false);
+        }
+        
         /*
         int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
         String customer_name = this.jTextFieldCustomername.getText();
@@ -609,10 +625,11 @@ public class ProductPage extends javax.swing.JFrame {
          
             V.add(p.getP_id());
             V.add(p.getP_name());
+             V.add(p.getCost());
             V.add(p.getQuantity());
             V.add(uomDao.getUomName(p.getUom()));
             
-            V.add(p.getCost());
+           
                V.add(companyDao.getCompanyName(p.getCompany_id()));
             
             tableModelCustomer.addRow(V);
@@ -673,6 +690,5 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldProductname;
     private javax.swing.JTextField jTextFieldQuantity;
     private javax.swing.JTextField jTextFieldSerach;
-    private javax.swing.JButton registerButton;
     // End of variables declaration//GEN-END:variables
 }

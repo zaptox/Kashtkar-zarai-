@@ -20,6 +20,7 @@ import kashtkarzarai.db.DbConnection;
  */
 public class ProductDaoImpl  implements ProductDao{
 public static Connection con = DbConnection.conn;
+
     @Override
     public int saveProduct(ProductBeans productBeans) {
         int i = 0;
@@ -77,17 +78,78 @@ public static Connection con = DbConnection.conn;
 
     @Override
     public int modifyProduct(ProductBeans productBeans) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int i = 0;
+        String query = " UPDATE product SET `company_id` =? , `p_name` = ? , `quantity` = ? , `uom` = ? , `cost` = ? WHERE `p_id` = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, productBeans.getCompany_id());
+            ps.setString(2, productBeans.getP_name());
+            ps.setInt(3, productBeans.getQuantity());
+            ps.setInt(4, productBeans.getUom());
+            ps.setInt(5, productBeans.getCost());
+             ps.setInt(6, productBeans.getP_id());
+            
+
+            i = ps.executeUpdate();
+        } catch (Exception e) {
+
+            System.out.println("Error in modification of product");
+            e.printStackTrace();
+        }
+        return i;
     }
 
     @Override
     public int removeProduct(ProductBeans productBeans) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          int i = 0;
+        String query = "UPDATE product SET active=0 WHERE `p_id` =? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, productBeans.getP_id());
+
+            i = ps.executeUpdate();
+        } catch (Exception e) {
+
+            System.out.println("Error in deletion of product");
+            e.printStackTrace();
+        }
+        return i;
     }
 
     @Override
     public ProductBeans getProductById(int pro_id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ProductBeans productBeans=null;
+           
+    int i = 0;
+      
+        try {
+    String query = "SELECT * FROM product WHERE active=1 and p_id=" + pro_id;
+            PreparedStatement ps = con.prepareStatement(query);
+         
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+                int company_id = rs.getInt("company_id");
+                String p_name = rs.getString("p_name");
+              int quantity = rs.getInt("quantity");
+              int p_id = rs.getInt("p_id");
+                int uom = rs.getInt("uom");
+                 int active = rs.getInt("active");
+                String cost = rs.getString("cost");
+                
+
+               
+               
+
+                productBeans = new ProductBeans(p_id, company_id, quantity, uom, p_name, uom, active);
+
+            }
+        } catch (Exception e) {
+
+            System.out.println("Error in modification of Customer");
+            e.printStackTrace();
+        }
+        return productBeans;
+
     }
     
 }
