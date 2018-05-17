@@ -115,7 +115,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public int removeUser(UserBeans e) {
         int i = 0;
-        String query = "UPDATE user SET u_active=1 WHERE u_id =? ";
+        String query = "UPDATE user SET u_active=0 WHERE u_id =? ";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, e.getId());

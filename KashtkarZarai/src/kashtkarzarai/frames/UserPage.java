@@ -94,26 +94,24 @@ public class UserPage extends javax.swing.JFrame {
         jTableUser.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTableUser.setForeground(new java.awt.Color(0, 0, 51));
         jTableUser.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Sr #", "User Id ", "Username", "Password"
-            }
+                new Object[][]{},
+                new String[]{
+                    "Sr #", "User Id ", "Username", "Password"
+                }
         ) {
-            Class[] types = new Class [] {
+            Class[] types = new Class[]{
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                 false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jTableUser.setToolTipText("Products");
@@ -147,6 +145,7 @@ public class UserPage extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldSerachKeyPressed(evt);
             }
+
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldSerachKeyReleased(evt);
             }
@@ -278,14 +277,13 @@ public class UserPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUserMouseClicked
-         int user_id = Integer.parseInt("" + this.jTableUser.getValueAt(this.jTableUser.getSelectedRow(), 1));
+        int user_id = Integer.parseInt("" + this.jTableUser.getValueAt(this.jTableUser.getSelectedRow(), 1));
         UserBeans user = userDao.getUserById(user_id);
         this.jTextFieldUsername.setText(user.getName());
         this.jPasswordFieldPassword.setText(user.getPassword());
         this.jButtonUpdate.setEnabled(true);
         this.jButtonDelete.setEnabled(true);
         this.jButtoSave.setEnabled(false);
-
 
     }//GEN-LAST:event_jTableUserMouseClicked
 
@@ -303,11 +301,11 @@ public class UserPage extends javax.swing.JFrame {
 
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
         // TODO add your handling code here:
-         int user_id = Integer.parseInt("" + this.jTableUser.getValueAt(this.jTableUser.getSelectedRow(), 1));
+        int user_id = Integer.parseInt("" + this.jTableUser.getValueAt(this.jTableUser.getSelectedRow(), 1));
         String username = userDao.getUserById(user_id).getName();
-        String password=userDao.getUserById(user_id).getPassword();
+        String password = userDao.getUserById(user_id).getPassword();
 
-        if (userDao.removeUser(new UserBeans(user_id, "", "")) >= 0) {
+        userDao.removeUser(new UserBeans(user_id, "", ""));
             JOptionPane.showMessageDialog(this, username + " deleted succesfully ", "deleted", JOptionPane.OK_OPTION);
             this.jTextFieldUsername.setText("");
             this.jPasswordFieldPassword.setText("");
@@ -315,7 +313,7 @@ public class UserPage extends javax.swing.JFrame {
             this.jButtonDelete.setEnabled(false);
             this.jButtoSave.setEnabled(true);
             showInTable();
-        }
+        
 
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
@@ -346,7 +344,6 @@ public class UserPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please fill require fields");
         }
 
-
     }//GEN-LAST:event_jButtoSaveActionPerformed
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
@@ -361,14 +358,17 @@ public class UserPage extends javax.swing.JFrame {
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
 
-         int user_id = Integer.parseInt("" + this.jTableUser.getValueAt(this.jTableUser.getSelectedRow(), 1));
+        int user_id = Integer.parseInt("" + this.jTableUser.getValueAt(this.jTableUser.getSelectedRow(), 1));
         String username = this.jTextFieldUsername.getText().trim();
         String password = this.jPasswordFieldPassword.getText().trim();
-      
+
         if (!(username.equals("") || password.equals(""))) {
             if (userDao.modifyUser(new UserBeans(user_id, username, password)) >= 0) {
 
                 JOptionPane.showMessageDialog(this, username + " updated succesfully ", "Update", JOptionPane.DEFAULT_OPTION);
+                this.jButtoSave.setEnabled(true);
+                this.jButtonUpdate.setEnabled(false);
+                this.jButtonDelete.setEnabled(false);
                 showInTable();
             }
         } else {
@@ -382,7 +382,6 @@ public class UserPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String searchData = this.jTextFieldSerach.getText();
         rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
-
 
     }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
@@ -486,7 +485,6 @@ public class UserPage extends javax.swing.JFrame {
             tableModelUser.addRow(V);
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtoSave;
