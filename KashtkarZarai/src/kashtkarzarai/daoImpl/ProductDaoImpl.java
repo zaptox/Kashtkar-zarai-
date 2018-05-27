@@ -151,5 +151,39 @@ public class ProductDaoImpl implements ProductDao {
         return productBeans;
 
     }
+    
+    
+    @Override
+    public ArrayList<ProductBeans> getProductByCompany(int com_id) {
+        ArrayList<ProductBeans> productlist = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM product WHERE active=1 and company_id="+com_id;
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ResultSet rs = ps.executeQuery(query);
+            while (rs.next()) {
+                int p_id = rs.getInt("p_id");
+                int company_id = rs.getInt("company_id");
+                String p_name = rs.getString("p_name");
+                int quantity = rs.getInt("quantity");
+                int uom = rs.getInt("uom");
+                int cost = rs.getInt("cost");
+                int packsize=rs.getInt("packsize");
+
+                int active = rs.getInt("active");
+                // String creation_date = rs.getString("creation_date");
+
+                productlist.add(new ProductBeans(p_id, company_id, quantity, uom,packsize, p_name, cost, active));
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error in getting Product");
+            e.printStackTrace();
+        }
+
+        return productlist;
+
+    }
+    
 
 }
