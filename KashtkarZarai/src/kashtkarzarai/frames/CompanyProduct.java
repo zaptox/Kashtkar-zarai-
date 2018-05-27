@@ -37,8 +37,8 @@ public class CompanyProduct extends javax.swing.JFrame {
         initComponents();
 
         companyDao = new CompanyDaoImpl();
-        tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
-        JTableHeader header = this.jTableCustomer.getTableHeader();
+        tableModelCustomer = (DefaultTableModel) this.jTableCompany.getModel();
+        JTableHeader header = this.jTableCompany.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
@@ -76,9 +76,10 @@ public class CompanyProduct extends javax.swing.JFrame {
 
         jButtonBack = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTableCustomer = new javax.swing.JTable();
+        jTableCompany = new javax.swing.JTable();
         jTextFieldSerach = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,9 +93,9 @@ public class CompanyProduct extends javax.swing.JFrame {
             }
         });
 
-        jTableCustomer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jTableCustomer.setForeground(new java.awt.Color(0, 0, 51));
-        jTableCustomer.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCompany.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTableCompany.setForeground(new java.awt.Color(0, 0, 51));
+        jTableCompany.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -117,20 +118,20 @@ public class CompanyProduct extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableCustomer.setToolTipText("Products");
-        jTableCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTableCustomer.setGridColor(new java.awt.Color(0, 0, 51));
-        jTableCustomer.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        jTableCustomer.setSelectionForeground(new java.awt.Color(0, 240, 0));
-        jTableCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableCompany.setToolTipText("Products");
+        jTableCompany.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTableCompany.setGridColor(new java.awt.Color(0, 0, 51));
+        jTableCompany.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jTableCompany.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCompany.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableCustomerMouseClicked(evt);
+                jTableCompanyMouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTableCustomerMouseReleased(evt);
+                jTableCompanyMouseReleased(evt);
             }
         });
-        jScrollPane3.setViewportView(jTableCustomer);
+        jScrollPane3.setViewportView(jTableCompany);
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
@@ -164,30 +165,32 @@ public class CompanyProduct extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(332, 332, 332)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextFieldSerach, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(314, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSerach, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(85, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldSerach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldSerach)
+                    .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGap(76, 76, 76))
         );
 
         pack();
@@ -200,18 +203,13 @@ public class CompanyProduct extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
+    private void jTableCompanyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCompanyMouseClicked
+int product_id = Integer.parseInt("" + this.jTableCompany.getValueAt(this.jTableCompany.getSelectedRow(), 1));
+new ProductPage(product_id).setVisible(true);
 
-//        CustomerBeans customer = customerDao.getCustomerById(customer_id);
-//        this.jTextFieldCompanyDealerName.setText(customer.getAddress());
-//        this.jTextFieldCustomername.setText(customer.getCustomer_name());
-//        this.jTextFieldCompanyContact.setText(customer.getCnic());
-//        this.jTextFieldCompanyAddress.setText(customer.getContact());
-//        this.jButtonUpdate.setEnabled(true);
-//        this.jButtonDelete.setEnabled(true);
-//        this.jButtoSave.setEnabled(false);
 
-    }//GEN-LAST:event_jTableCustomerMouseClicked
+
+    }//GEN-LAST:event_jTableCompanyMouseClicked
 
     private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
 
@@ -232,10 +230,10 @@ public class CompanyProduct extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
-    private void jTableCustomerMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseReleased
+    private void jTableCompanyMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCompanyMouseReleased
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTableCustomerMouseReleased
+    }//GEN-LAST:event_jTableCompanyMouseReleased
 
     /**
      * @param args the command line arguments
@@ -277,7 +275,8 @@ public class CompanyProduct extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTableCustomer;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTableCompany;
     private javax.swing.JTextField jTextFieldSerach;
     // End of variables declaration//GEN-END:variables
 }

@@ -53,13 +53,18 @@ public class ProductPage extends javax.swing.JFrame {
     
     public ProductPage() {
         initComponents();
+  
+    }
+     int companyId=0;
+    public ProductPage(int comId) {
+        initComponents();
         
         productDao = new ProductDaoImpl();
         companyDao = new CompanyDaoImpl();
         uomDao = new UomDaoImpl();
         uomlist = new ArrayList<UOMBeans>();
          defaultUomModel = (DefaultComboBoxModel) this.jComboBox1_UOM.getModel();
-        defaultComboBoxModel = (DefaultComboBoxModel) this.jComboBox1_Company.getModel();
+       
         tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
         rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
         this.jTableCustomer.setRowSorter(rowSorter);
@@ -71,29 +76,13 @@ public class ProductPage extends javax.swing.JFrame {
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
         this.jButtonUpdate.setEnabled(false);
         this.jButtonDelete.setEnabled(false);
-
+        String companyNames =companyDao.getCompanyName(comId);
+        this.companyName.setText(companyNames);
+        this.companyId=comId;
         showInTable();
-        showInComboBox();
+       
         showInUOMBox();
-    }
-    
-    public ProductPage(int reference) {
-        initComponents();
-        
-        productDao = new ProductDaoImpl();
-        tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
-        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
-        this.jTableCustomer.setRowSorter(rowSorter);
-        
-        JTableHeader header = this.jTableCustomer.getTableHeader();
-        header.setBackground(new Color(0, 204, 0));
-        header.setForeground(new Color(255, 255, 255));
-        header.setFont(new Font("SansSerif", Font.BOLD, 18));
-        this.jButtonUpdate.setEnabled(false);
-        this.jButtonDelete.setEnabled(false);
-       // this.registerButton.setEnabled(true);
-        
-        showInTable();
+        JOptionPane.showMessageDialog(rootPane, ""+companyId);
         
     }
 
@@ -122,17 +111,15 @@ public class ProductPage extends javax.swing.JFrame {
         jTextFieldPack = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
         jButtoSave = new javax.swing.JButton();
         jButtonUpdate = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jButtonClear1 = new javax.swing.JButton();
-        jComboBox1_Company = new javax.swing.JComboBox<>();
         jComboBox1_UOM = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jTextFieldQuantity = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
+        companyName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -179,7 +166,7 @@ public class ProductPage extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableCustomer);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 1000, 470));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 840, 470));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
@@ -202,12 +189,12 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldSerachKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 430, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, 430, -1));
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, 430, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 430, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Search");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 60, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 60, -1));
 
         jButtonDelete.setBackground(new java.awt.Color(0, 204, 0));
         jButtonDelete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -294,11 +281,6 @@ public class ProductPage extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Pack Size*");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 130, -1));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 260, 10));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("COMPANY*");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, -1));
 
         jButtoSave.setBackground(new java.awt.Color(0, 204, 0));
         jButtoSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -344,14 +326,6 @@ public class ProductPage extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 240, 40));
 
-        jComboBox1_Company.setToolTipText("");
-        jComboBox1_Company.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1_CompanyActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBox1_Company, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 250, -1));
-
         jComboBox1_UOM.setToolTipText("");
         jComboBox1_UOM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,7 +359,10 @@ public class ProductPage extends javax.swing.JFrame {
         jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 80, 30));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 80, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1290, 590));
+        companyName.setText("jLabel2");
+        jPanel1.add(companyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 600));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -497,7 +474,7 @@ public class ProductPage extends javax.swing.JFrame {
             int cost = Integer.parseInt(this.jTextFieldCost.getText());
             int quntity = Integer.parseInt(this.jTextFieldQuantity.getText());
             int packsize = Integer.parseInt(this.jTextFieldPack.getText());
-            int company_id = companylist.get(this.jComboBox1_Company.getSelectedIndex()).getCompany_id();
+            int company_id = companyId;
             int uom_id = uomlist.get(this.jComboBox1_UOM.getSelectedIndex()).getUom_id();
             
             if (productDao.saveProduct(new ProductBeans(0, company_id, quntity, uom_id,packsize, product_name, cost, 1)) >= 0) {
@@ -526,7 +503,7 @@ public class ProductPage extends javax.swing.JFrame {
         int quantity =Integer.parseInt( this.jTextFieldQuantity.getText());
          int packsize =Integer.parseInt( this.jTextFieldPack.getText());
         
-        int company_id = companylist.get(this.jComboBox1_Company.getSelectedIndex()).getCompany_id();
+        int company_id = companyId;
             int uom_id = uomlist.get(this.jComboBox1_UOM.getSelectedIndex()).getUom_id();
             
         
@@ -612,10 +589,6 @@ public class ProductPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldQuantityKeyPressed
 
-    private void jComboBox1_CompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_CompanyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1_CompanyActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -657,7 +630,7 @@ public class ProductPage extends javax.swing.JFrame {
     public void showInTable() {
         tableModelCustomer.setRowCount(0);
         int i = 1;
-        productlist = productDao.getAllProducts();
+        productlist = productDao.getProductByCompany(companyId);
         for (ProductBeans p : productlist) {
             Vector V = new Vector();
             //  V.add(customers_list.size());
@@ -705,19 +678,18 @@ public class ProductPage extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel companyName;
     private javax.swing.JButton jButtoSave;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonClear1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JComboBox<String> jComboBox1_Company;
     private javax.swing.JComboBox<String> jComboBox1_UOM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
@@ -725,7 +697,6 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable jTableCustomer;
     private javax.swing.JTextField jTextFieldCost;
