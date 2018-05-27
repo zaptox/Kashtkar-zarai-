@@ -18,5 +18,6 @@ public interface SaleDao {
     public ArrayList<SaleBeans> getAllSales();
     public int modifySale(SaleBeans sale);
     public SaleBeans getSaleById(int sale_id);
+    public int getSaleId();
    
 }

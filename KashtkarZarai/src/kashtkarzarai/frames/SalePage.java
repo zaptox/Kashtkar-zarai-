@@ -19,6 +19,7 @@ import kashtkarzarai.bean.CompanyBeans;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.ProductBeans;
 import kashtkarzarai.bean.SaleBeans;
+import kashtkarzarai.bean.SaleDetailBeans;
 import kashtkarzarai.dao.CompanyDao;
 import kashtkarzarai.dao.ProductDao;
 import kashtkarzarai.dao.SaleDao;
@@ -44,12 +45,11 @@ public class SalePage extends javax.swing.JFrame {
     ProductDao productDao;
     SaleDao saleDao;
     SaleDetailsDao saleDetailDao;
-
+    public static boolean sale_customer = false;
     UomDao uomDao;
-    public static int total_price = 0;
     DefaultTableModel tableModel2;
     int customer_id = -1;
-
+    public static int total_price = 0;
     public static int total_price_temp = 0;
     TableRowSorter<DefaultTableModel> rowSorter = null;
 
@@ -77,6 +77,8 @@ public class SalePage extends javax.swing.JFrame {
         rowSorter = new TableRowSorter<DefaultTableModel>(tableModelProduct);
         this.jTable1.setRowSorter(rowSorter);
         orderedProductList = new ArrayList<>();
+        walkingRadio.setSelected(true);
+        sale_customer = false;
 
         showInTable();
 
@@ -84,7 +86,7 @@ public class SalePage extends javax.swing.JFrame {
 
     public SalePage(CustomerBeans customer) {
         initComponents();
-
+        sale_customer = true;
         nameField.setText(customer.getCustomer_name());
         numberField.setText(customer.getContact());
         addressfield.setText(customer.getAddress());
@@ -112,6 +114,10 @@ public class SalePage extends javax.swing.JFrame {
         uomDao = new UomDaoImpl();
         saleDao = new SaleDaoImpl();
         saleDetailDao = new SaleDetailDapImpl();
+
+        this.total_price = 0;
+        this.total_price_temp = 0;
+
     }
 
     public void showInTable() {
@@ -340,6 +346,11 @@ public class SalePage extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTable2MouseReleased(evt);
             }
         });
         jScrollPane2.setViewportView(jTable2);
@@ -716,20 +727,42 @@ public class SalePage extends javax.swing.JFrame {
 //            }
         if (customer_id != -1) {
             String discount_type = jComboBox1.getSelectedItem().toString();
-            int discount1 = Integer.parseInt(discountField.getText().toString());
+
+            int discount1 = 0;
+            try {
+                discount1 = Integer.parseInt(discountField.getText().toString());
+            } catch (Exception e) {
+                discount1 = 0;
+            }
 
             saleDao.saveSale(new SaleBeans(1, customer_id, 1, discount_type, discount1, total_price));
-        }
-//else {
+        } else {
+            String discount_type = jComboBox1.getSelectedItem().toString();
+
+            int discount1 = 0;
+            try {
+                discount1 = Integer.parseInt(discountField.getText().toString());
+            } catch (Exception e) {
+                discount1 = 0;
+            }
+            saleDao.saveSale(new SaleBeans(1, 0, 1, discount_type, discount1, total_price));
+
 //            saleDao.(new Order(0, date.toString(), customer_id, number,
 //                    1, 1, null, 1,
 //                    null, discount_id, discount, total_price));
-//        }
+        }
 //
-//        for (Product p : orderedProductList) {
-//            int quantity = p.getQuantity();
-//            int product_id = p.getProduct_id();
-//            obGlobal.updatequantity(quantity, product_id);
+        for (ProductBeans p : orderedProductList) {
+            int quantity = p.getQuantity();
+            int product_id = p.getP_id();
+            productDao.updatequantity(quantity, product_id);
+
+            if (sale_customer) {
+                int sale_id = saleDao.getSaleId();
+                System.out.println("sale_id"+sale_id);
+                System.out.println("customer_id "+customer_id );
+                saleDetailDao.saveSaleDetails(new SaleDetailBeans(1, sale_id, customer_id, product_id, quantity, p.getCompany_id(), p.getUom(), date+"", p.getCost()));
+            }
 //            int order_id=obGlobal.getOrderId(number);
 //            if(order_id!=-1){
 //
@@ -739,7 +772,7 @@ public class SalePage extends javax.swing.JFrame {
 //        else{
 //            JOptionPane.showMessageDialog(this, "order_id  =-1");
 //        }
-//        }
+        }
 //        }
 //        catch(Exception e){
 //            JOptionPane.showMessageDialog(this, ""+e.getMessage());
@@ -767,12 +800,18 @@ public class SalePage extends javax.swing.JFrame {
             numberField.setEnabled(false);
             addressfield.setEnabled(false);
             //            register.setEnabled(false);
+            sale_customer = false;
 
         }
         if (!walkingRadio.isSelected()) {
             //    System.out.println("Jradio 1 is not not selected");
         }
     }//GEN-LAST:event_walkingRadioMouseReleased
+
+    private void jTable2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTable2MouseReleased
 
     /**
      * @param args the command line arguments
