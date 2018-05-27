@@ -213,7 +213,9 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
         int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-      
+       new CustomerDetails(customer_id).setVisible(true);
+       this.dispose();
+       
     }//GEN-LAST:event_jTableCustomerMouseClicked
 
     /**

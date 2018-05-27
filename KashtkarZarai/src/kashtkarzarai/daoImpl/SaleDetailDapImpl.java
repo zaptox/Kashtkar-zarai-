@@ -37,9 +37,8 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
             ps.setInt(5, detail.getCompany_id());
             ps.setInt(6, detail.getUom_id());
             ps.setString(7, detail.getSale_date());
-            ps.setDouble(8,detail.getPrice() );
+            ps.setDouble(8, detail.getPrice());
 
-          
             i = ps.executeUpdate();
 
         } catch (Exception e) {
@@ -54,26 +53,25 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
     public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id) {
         ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
         try {
-            String query = "SELECT * FROM sale_detail WHERE customer_id=" + customer_id;
+            String query = "SELECT s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,cp.`company_name`,s.`price`, u.`uom`,s.`sale_date` FROM sale_detail s, product p, customer c ,company cp , uom_table u WHERE s.`company_id`=c.`customer_id` AND s.`product_id`=p.`p_id` AND s.`company_id`=cp.`company_id` AND s.`uom_id`=u.`uom_id` AND s.customer_id=" + customer_id + " ORDER BY sale_detail_id DESC";
             PreparedStatement ps = con.prepareStatement(query);
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
                 int sale_detail_id = rs.getInt("sale_detail_id");
-                int sale_id = rs.getInt("sale_id");
-                int cust_id = rs.getInt("customer_id");
-                int product_id = rs.getInt("product_id");
+                String p_name = rs.getString("p_name");
+                String customer_name = rs.getString("customer_name");
+                String company_name = rs.getString("company_name");
                 int quantity = rs.getInt("quantity");
-                int company_id = rs.getInt("company_id");
-                int uom_id=rs.getInt("uom_id");
+                String uom = rs.getString("uom");
                 String sale_date = rs.getString("sale_date");
-                double price = rs.getInt("price");
+                double price = rs.getDouble("price");
 
-                sale_details_list.add(new SaleDetailBeans(sale_detail_id, sale_id, cust_id, product_id, quantity, company_id,uom_id, sale_date, price));
+                sale_details_list.add(new SaleDetailBeans(sale_detail_id, quantity, sale_date, price, company_name, customer_name,uom,  p_name));
 
             }
         } catch (Exception e) {
-            System.out.println("Error in getting Sales Details");
+            System.out.println("Error in getting  customer Sales Details");
             e.printStackTrace();
         }
 
