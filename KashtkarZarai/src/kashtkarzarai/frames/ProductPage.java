@@ -77,7 +77,7 @@ public class ProductPage extends javax.swing.JFrame {
         this.jButtonUpdate.setEnabled(false);
         this.jButtonDelete.setEnabled(false);
         String companyNames =companyDao.getCompanyName(comId);
-        this.companyName.setText(companyNames);
+        this.jLabelCompanyName.setText(companyNames);
         this.companyId=comId;
         showInTable();
        
@@ -119,7 +119,7 @@ public class ProductPage extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextFieldQuantity = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        companyName = new javax.swing.JLabel();
+        jLabelCompanyName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -225,12 +225,12 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldProductnameKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldProductname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 260, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 260, -1));
+        jPanel1.add(jTextFieldProductname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 260, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 260, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("PRODUCT NAME*");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 170, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 170, -1));
 
         jTextFieldCost.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCost.setBorder(null);
@@ -250,12 +250,12 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldCostKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 260, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 260, -1));
+        jPanel1.add(jTextFieldCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 260, -1));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 260, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("COST*");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 90, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 90, -1));
 
         jTextFieldPack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldPack.setBorder(null);
@@ -275,12 +275,12 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldPackKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 60, 30));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 60, 20));
+        jPanel1.add(jTextFieldPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 60, 30));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 60, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Pack Size*");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 130, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 130, -1));
 
         jButtoSave.setBackground(new java.awt.Color(0, 204, 0));
         jButtoSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -332,11 +332,11 @@ public class ProductPage extends javax.swing.JFrame {
                 jComboBox1_UOMActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1_UOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 60, 30));
+        jPanel1.add(jComboBox1_UOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 70, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("QUANTITY*");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 120, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, -1));
 
         jTextFieldQuantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldQuantity.setBorder(null);
@@ -356,11 +356,17 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldQuantityKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 80, 30));
-        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 80, 20));
+        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 80, 30));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 80, 20));
 
-        companyName.setText("jLabel2");
-        jPanel1.add(companyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
+        jLabelCompanyName.setBackground(new java.awt.Color(0, 204, 0));
+        jLabelCompanyName.setFont(new java.awt.Font("Trajan Pro", 1, 36)); // NOI18N
+        jLabelCompanyName.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCompanyName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCompanyName.setText("Customer name");
+        jLabelCompanyName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
+        jLabelCompanyName.setOpaque(true);
+        jPanel1.add(jLabelCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 600));
 
@@ -524,6 +530,7 @@ public class ProductPage extends javax.swing.JFrame {
             jTextFieldProductname.setText("");
             this.jTextFieldCost.setText("");
             this.jTextFieldPack.setText("");
+            this.jTextFieldQuantity.setText("");
             //this.jTextFieldCompanyDealerName.setText("");
             jButtonDelete.setEnabled(false);
         }
@@ -678,7 +685,6 @@ public class ProductPage extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel companyName;
     private javax.swing.JButton jButtoSave;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonClear1;
@@ -691,6 +697,7 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelCompanyName;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
