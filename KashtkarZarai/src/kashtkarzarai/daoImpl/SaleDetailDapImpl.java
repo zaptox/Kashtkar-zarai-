@@ -27,17 +27,18 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
     @Override
     public int saveSaleDetails(SaleDetailBeans detail) {
         int i = 0;
-        String query = "INSERT INTO sale_detail (sale_id, customer_id, product_id, quantity, company_id, uom_id, sale_date, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO sale_detail (sale_id, customer_id, product_id, "
+                + "quantity, company_id, uom_id, sale_date, price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, detail.getSale_detail_id());
-            ps.setInt(2, detail.getCompany_id());
+            ps.setInt(1, detail.getSale_id());
+            ps.setInt(2, detail.getCustomer_id());
             ps.setInt(3, detail.getProduct_id());
             ps.setInt(4, detail.getQuantity());
             ps.setInt(5, detail.getCompany_id());
             ps.setInt(6, detail.getUom_id());
             ps.setString(7, detail.getSale_date());
-            ps.setDouble(8, detail.getPrice());
+            ps.setDouble(8, detail.getPrice() * detail.getQuantity() );
 
             i = ps.executeUpdate();
 

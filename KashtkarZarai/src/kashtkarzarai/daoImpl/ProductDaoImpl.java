@@ -8,6 +8,7 @@ package kashtkarzarai.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.ProductBeans;
@@ -151,8 +152,7 @@ public class ProductDaoImpl implements ProductDao {
         return productBeans;
 
     }
-    
-    
+        
     @Override
     public ArrayList<ProductBeans> getProductByCompany(int com_id) {
         ArrayList<ProductBeans> productlist = new ArrayList<>();
@@ -185,5 +185,24 @@ public class ProductDaoImpl implements ProductDao {
 
     }
     
+    public int updatequantity(int quantity, int product_id) {
+
+        String query = "UPDATE product SET quantity=quantity - ? WHERE p_id = ?;";
+        int i = 0;
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, quantity);
+            ps.setInt(2, product_id);
+
+            Statement s = con.createStatement();
+            i = ps.executeUpdate();
+
+        } catch (Exception ex) {
+            System.out.println("yahan hi hai" + ex.getMessage());
+        }
+
+        return i;
+
+    }
 
 }
