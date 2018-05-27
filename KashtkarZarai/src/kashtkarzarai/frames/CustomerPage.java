@@ -464,7 +464,7 @@ public class CustomerPage extends javax.swing.JFrame {
         String address = this.jTextFieldCustomerAddress.getText();
 
         if (!(customer_name.equals("") || cnic.equals("") || contact.equals("") || address.equals(""))) {
-            if (cnic.matches("/^[0-9]{14}[vVxX]$/")) {
+            if (true) {
                 if (customerDao.saveCustomer(new CustomerBeans(0, customer_name, contact, cnic, address, CurrentDate.getCurrentDate())) >= 0) {
                     this.jTextFieldCustomerAddress.setText("");
                     this.jTextFieldCustomername.setText("");
