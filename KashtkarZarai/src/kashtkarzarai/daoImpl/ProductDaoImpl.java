@@ -25,16 +25,17 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public int saveProduct(ProductBeans productBeans) {
         int i = 0;
-        String query = "INSERT INTO product (company_id, p_name,quantity,uom,cost,active) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO product (company_id, p_name,quantity,uom,packsize,cost,active) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, productBeans.getCompany_id());
             ps.setString(2, productBeans.getP_name());
             ps.setInt(3, productBeans.getQuantity());
             ps.setInt(4, productBeans.getUom());
+            ps.setInt(5, productBeans.getPacksize());
 
-            ps.setInt(5, productBeans.getCost());
-            ps.setInt(6, productBeans.getActive());
+            ps.setInt(6, productBeans.getCost());
+            ps.setInt(7, productBeans.getActive());
 
             i = ps.executeUpdate();
 
@@ -61,11 +62,12 @@ public class ProductDaoImpl implements ProductDao {
                 int quantity = rs.getInt("quantity");
                 int uom = rs.getInt("uom");
                 int cost = rs.getInt("cost");
+                int packsize=rs.getInt("packsize");
 
                 int active = rs.getInt("active");
                 // String creation_date = rs.getString("creation_date");
 
-                productlist.add(new ProductBeans(p_id, company_id, quantity, uom, p_name, cost, active));
+                productlist.add(new ProductBeans(p_id, company_id, quantity, uom,packsize, p_name, cost, active));
 
             }
         } catch (Exception e) {
@@ -79,15 +81,17 @@ public class ProductDaoImpl implements ProductDao {
     @Override
     public int modifyProduct(ProductBeans productBeans) {
         int i = 0;
-        String query = " UPDATE product SET `company_id` =? , `p_name` = ? , `quantity` = ? , `uom` = ? , `cost` = ? WHERE `p_id` = ?";
+        String query = " UPDATE product SET `company_id` =? , `p_name` = ? , `quantity` = ? , `uom` = ? ,`packsize` = ?,  `cost` = ? WHERE `p_id` = ?";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, productBeans.getCompany_id());
             ps.setString(2, productBeans.getP_name());
             ps.setInt(3, productBeans.getQuantity());
             ps.setInt(4, productBeans.getUom());
-            ps.setInt(5, productBeans.getCost());
-            ps.setInt(6, productBeans.getP_id());
+            ps.setInt(5, productBeans.getPacksize());
+            
+            ps.setInt(6, productBeans.getCost());
+            ps.setInt(7, productBeans.getP_id());
 
             i = ps.executeUpdate();
         } catch (Exception e) {
@@ -133,9 +137,10 @@ public class ProductDaoImpl implements ProductDao {
                 int p_id = rs.getInt("p_id");
                 int uom = rs.getInt("uom");
                 int active = rs.getInt("active");
+                int packsize = rs.getInt("packsize");
                 int cost = rs.getInt("cost");
 
-                productBeans = new ProductBeans(p_id, company_id, quantity, uom, p_name, cost, active);
+                productBeans = new ProductBeans(p_id, company_id, quantity,uom,packsize, p_name, cost, active);
 
             }
         } catch (Exception e) {
