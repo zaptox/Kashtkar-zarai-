@@ -134,6 +134,8 @@ public class SalePage extends javax.swing.JFrame {
                 V.add(serial);
                 V.add(p.getP_id());
                 V.add(p.getP_name());
+                V.add(p.getPacksize());
+
                 V.add(p.getCost());
                 V.add(p.getQuantity());
                 V.add(p.getP_id());
@@ -300,11 +302,11 @@ public class SalePage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "S#", "Product_id", "Name", "Price", "Quantity"
+                "S#", "Product_id", "Name", "Packsize", "Price", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -337,11 +339,11 @@ public class SalePage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product_name", "Price", "Quantity", "Uom", "Total_price"
+                "Product_name", "Packsize", "Price", "Quantity", "Uom", "Total_price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -405,7 +407,8 @@ public class SalePage extends javax.swing.JFrame {
                             .addComponent(addressfield, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -670,6 +673,7 @@ public class SalePage extends javax.swing.JFrame {
 //        String category = ob.getCategory(id).getName();
 //        System.out.println("" + p.getName());
         v.add(p.getP_name());
+        v.add(p.getPacksize());
         System.out.println("" + p.getCost());
         v.add(p.getCost());
         String uom = uomDao.getUomName(p.getUom());
@@ -687,7 +691,7 @@ public class SalePage extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("" + e.getMessage());
         }
-        orderedProductList.add(new ProductBeans(p.getP_id(), p.getCompany_id(), quantity, p.getUom(), p.getP_name(), p.getCost(), 1));
+        orderedProductList.add(new ProductBeans(p.getP_id(), p.getCompany_id(), quantity, p.getUom(), p.getPacksize(), p.getP_name(), p.getCost(), 1));
 //        orderedProductList.add(new ProductBeans(p.getP_id(), ICONIFIED, p_name, ABORT, quantity, t_price));
 //        System.out.println("" + orderedProductList + "\n");
 
@@ -759,9 +763,9 @@ public class SalePage extends javax.swing.JFrame {
 
             if (sale_customer) {
                 int sale_id = saleDao.getSaleId();
-                System.out.println("sale_id"+sale_id);
-                System.out.println("customer_id "+customer_id );
-                saleDetailDao.saveSaleDetails(new SaleDetailBeans(1, sale_id, customer_id, product_id, quantity, p.getCompany_id(), p.getUom(), date+"", p.getCost()));
+                System.out.println("sale_id" + sale_id);
+                System.out.println("customer_id " + customer_id);
+                saleDetailDao.saveSaleDetails(new SaleDetailBeans(1, sale_id, customer_id, product_id, quantity, p.getCompany_id(), p.getUom(), date + "", p.getCost()));
             }
 //            int order_id=obGlobal.getOrderId(number);
 //            if(order_id!=-1){
@@ -810,7 +814,7 @@ public class SalePage extends javax.swing.JFrame {
 
     private void jTable2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseReleased
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jTable2MouseReleased
 
     /**

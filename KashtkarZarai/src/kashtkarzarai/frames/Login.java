@@ -125,6 +125,11 @@ public class Login extends javax.swing.JFrame {
         jButtonCancel.setBackground(new java.awt.Color(0, 204, 0));
         jButtonCancel.setForeground(new java.awt.Color(255, 255, 255));
         jButtonCancel.setText("Cancel");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 203, 140, 40));
 
         jButtonLogin.setBackground(new java.awt.Color(0, 204, 0));
@@ -238,6 +243,11 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {String name =  this.jTextFieldUserna
         }
         
     }//GEN-LAST:event_jButtonLoginActionPerformed
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
     /**
      * @param args the command line arguments

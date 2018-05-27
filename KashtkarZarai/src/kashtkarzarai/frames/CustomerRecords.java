@@ -5,66 +5,66 @@
  */
 package kashtkarzarai.frames;
 
+import zaptox.Kashkarzarai.util.CurrentDate;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableRowSorter;
 import kashtkarzarai.bean.CustomerBeans;
-import kashtkarzarai.bean.SaleDetailBeans;
 import kashtkarzarai.dao.CustomerDao;
-import kashtkarzarai.dao.SaleDetailsDao;
 import kashtkarzarai.daoImpl.CustomerDaoImpl;
-import kashtkarzarai.daoImpl.SaleDetailDapImpl;
+import kashtkarzarai.util.playAudio;
 
 /**
  *
  * @author Vksoni
  */
-public class CustomerDetails extends javax.swing.JFrame {
+public class CustomerRecords extends javax.swing.JFrame {
 
     /**
      * Creates new form HomePage
      */
-    DefaultTableModel tableModelCustomerSaleDetail;
-    public ArrayList<SaleDetailBeans> sale_details_list;
+    DefaultTableModel tableModelCustomer;
+    public ArrayList<CustomerBeans> customers_list;
     TableRowSorter<DefaultTableModel> rowSorter = null;
-    ArrayList<SaleDetailBeans> sales_detail_list;
-    SaleDetailsDao saleDeatail;
+
     CustomerDao customerDao;
-    
 
-    public CustomerDetails() {
+    public CustomerRecords() {
         initComponents();
-        saleDeatail = new SaleDetailDapImpl();
-        tableModelCustomerSaleDetail = (DefaultTableModel) this.jTableCustomerSaleDetail.getModel();
-        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomerSaleDetail);
-        this.jTableCustomerSaleDetail.setRowSorter(rowSorter);
 
-        JTableHeader header = this.jTableCustomerSaleDetail.getTableHeader();
+        customerDao = new CustomerDaoImpl();
+        tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
+        this.jTableCustomer.setRowSorter(rowSorter);
+
+        JTableHeader header = this.jTableCustomer.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
+        showInTable();
 
     }
 
-    public CustomerDetails(int customer_id) {
+    public CustomerRecords(int reference) {
         initComponents();
-        saleDeatail = new SaleDetailDapImpl();
-        tableModelCustomerSaleDetail = (DefaultTableModel) this.jTableCustomerSaleDetail.getModel();
-        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomerSaleDetail);
-        this.jTableCustomerSaleDetail.setRowSorter(rowSorter);
 
-        JTableHeader header = this.jTableCustomerSaleDetail.getTableHeader();
+        customerDao = new CustomerDaoImpl();
+        tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
+        this.jTableCustomer.setRowSorter(rowSorter);
+
+        JTableHeader header = this.jTableCustomer.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
-        customerDao = new CustomerDaoImpl();
-        this.jLabelCustomerName.setText(customerDao.getCustomerById(customer_id).getCustomer_name());
-        showInTable(customer_id);
+
+        showInTable();
 
     }
 
@@ -79,11 +79,10 @@ public class CustomerDetails extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTableCustomerSaleDetail = new javax.swing.JTable();
-        jSeparator1 = new javax.swing.JSeparator();
+        jTableCustomer = new javax.swing.JTable();
         jTextFieldSerach = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        jLabelCustomerName = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -94,21 +93,21 @@ public class CustomerDetails extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTableCustomerSaleDetail.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jTableCustomerSaleDetail.setForeground(new java.awt.Color(0, 0, 51));
-        jTableCustomerSaleDetail.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCustomer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jTableCustomer.setForeground(new java.awt.Color(0, 0, 51));
+        jTableCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Sr #", "Sale Detail Id ", "Product Name", "Quantity", "Price (Rs)", "Company Name", "UOM", "Sale Date"
+                "Sr #", "Customer Id", "Customer Name", "CNIC", "Contact #", "Address", "Creation Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -119,20 +118,19 @@ public class CustomerDetails extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableCustomerSaleDetail.setToolTipText("Products");
-        jTableCustomerSaleDetail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTableCustomerSaleDetail.setGridColor(new java.awt.Color(0, 0, 51));
-        jTableCustomerSaleDetail.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        jTableCustomerSaleDetail.setSelectionForeground(new java.awt.Color(0, 240, 0));
-        jTableCustomerSaleDetail.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableCustomer.setToolTipText("Products");
+        jTableCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTableCustomer.setGridColor(new java.awt.Color(0, 0, 51));
+        jTableCustomer.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        jTableCustomer.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableCustomerSaleDetailMouseClicked(evt);
+                jTableCustomerMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(jTableCustomerSaleDetail);
+        jScrollPane3.setViewportView(jTableCustomer);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 940, 470));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 430, -1));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1260, 520));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
@@ -155,20 +153,12 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jTextFieldSerachKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, 430, -1));
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 430, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 40, 430, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Search");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, 60, -1));
-
-        jLabelCustomerName.setBackground(new java.awt.Color(0, 204, 0));
-        jLabelCustomerName.setFont(new java.awt.Font("Trajan Pro", 1, 36)); // NOI18N
-        jLabelCustomerName.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelCustomerName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCustomerName.setText("Customer name");
-        jLabelCustomerName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
-        jLabelCustomerName.setOpaque(true);
-        jPanel1.add(jLabelCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 430, 50));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 60, -1));
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -181,7 +171,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 590));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -190,28 +180,17 @@ public class CustomerDetails extends javax.swing.JFrame {
         jLabel1.setText("All right reserved|2017");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1250, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 1290, 30));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableCustomerSaleDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerSaleDetailMouseClicked
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
 
-
-    }//GEN-LAST:event_jTableCustomerSaleDetailMouseClicked
-
-    private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
-
-    }//GEN-LAST:event_jTextFieldSerachMouseClicked
-
-    private void jTextFieldSerachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerachActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSerachActionPerformed
-
-    private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
-
-    }//GEN-LAST:event_jTextFieldSerachKeyPressed
+        new HomePage().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
         // TODO add your handling code here:
@@ -220,10 +199,24 @@ public class CustomerDetails extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        new CustomerRecords().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonBackActionPerformed
+    private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
+
+    }//GEN-LAST:event_jTextFieldSerachKeyPressed
+
+    private void jTextFieldSerachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerachActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSerachActionPerformed
+
+    private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
+
+    }//GEN-LAST:event_jTextFieldSerachMouseClicked
+
+    private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
+        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+       new CustomerDetails(customer_id).setVisible(true);
+       this.dispose();
+       
+    }//GEN-LAST:event_jTableCustomerMouseClicked
 
     /**
      * @param args the command line arguments
@@ -242,41 +235,42 @@ public class CustomerDetails extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CustomerRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerDetails().setVisible(true);
+                new CustomerRecords().setVisible(true);
             }
         });
     }
-    
-    public void showInTable(int customer_id) {
-        tableModelCustomerSaleDetail.setRowCount(0);
-        int counter=1;
-        sale_details_list = saleDeatail.getAllSaleDetailbyCustomerId(customer_id);
-        for (SaleDetailBeans salesDetails : sale_details_list) {
-            Vector V = new Vector();
-            V.add(counter++);
-            V.add(salesDetails.getSale_detail_id());
-            V.add(salesDetails.getP_name());
-            V.add(salesDetails.getQuantity());
-            V.add(salesDetails.getPrice());
-            V.add(salesDetails.getCompany_name());
-            V.add(salesDetails.getUom());
-            V.add(salesDetails.getSale_date());
 
-            tableModelCustomerSaleDetail.addRow(V);
+    public void showInTable() {
+        tableModelCustomer.setRowCount(0);
+
+        customers_list = customerDao.getAllCustomers();
+        for (CustomerBeans customer : customers_list) {
+            Vector V = new Vector();
+            V.add(customers_list.size());
+            V.add(customer.getCustomer_id());
+            V.add(customer.getCustomer_name());
+            V.add(customer.getCnic());
+            V.add(customer.getContact());
+            V.add(customer.getAddress());
+            V.add(customer.getCreation_date());
+
+            tableModelCustomer.addRow(V);
         }
     }
 
@@ -284,11 +278,10 @@ public class CustomerDetails extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelCustomerName;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTableCustomerSaleDetail;
+    private javax.swing.JTable jTableCustomer;
     private javax.swing.JTextField jTextFieldSerach;
     // End of variables declaration//GEN-END:variables
 }

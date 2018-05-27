@@ -18,6 +18,7 @@ public interface ProductDao {
     public int modifyProduct(ProductBeans productBeans);
     public int removeProduct(ProductBeans productBeans);
     public ProductBeans getProductById(int pro_id);
+    public ArrayList<ProductBeans> getProductByCompany(int com_id);
     public int updatequantity(int quantity, int product_id);
     
 }

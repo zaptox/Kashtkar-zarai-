@@ -15,17 +15,20 @@ public class ProductBeans {
     private int company_id;
     private int quantity;
     private int uom;
+    private int packsize;
 
   
     private String p_name;
     private int cost;
     private int active;
 
-    public ProductBeans(int p_id, int company_id, int quantity, int uom, String p_name, int cost, int active) {
+    public ProductBeans(int p_id, int company_id, int quantity, int uom,int packsize, String p_name, int cost, int active) {
         this.p_id = p_id;
         this.company_id = company_id;
         this.quantity = quantity;
         this.uom = uom;
+        this.packsize = packsize;
+        
         this.p_name = p_name;
         this.cost = cost;
         this.active = active;
@@ -62,6 +65,14 @@ public class ProductBeans {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getPacksize() {
+        return packsize;
+    }
+
+    public void setPacksize(int packsize) {
+        this.packsize = packsize;
     }
 
     public String getP_name() {

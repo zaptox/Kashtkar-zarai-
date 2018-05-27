@@ -10,6 +10,7 @@ package kashtkarzarai.bean;
  * @author Vksoni
  */
 public class SaleDetailBeans {
+
     private int sale_detail_id;
     private int sale_id;
     private int customer_id;
@@ -19,7 +20,23 @@ public class SaleDetailBeans {
     private int uom_id;
     private String sale_date;
     private double price;
-    
+    private String company_name;
+    private String customer_name;
+    private String uom;
+    private String p_name;
+
+    public SaleDetailBeans(int sale_detail_id, int quantity, String sale_date, double price, String company_name, String customer_name, String uom, String p_name) {
+        this.sale_detail_id = sale_detail_id;
+        this.quantity = quantity;
+        this.sale_date = sale_date;
+        this.price = price;
+        this.company_name = company_name;
+        this.customer_name = customer_name;
+        this.uom = uom;
+        this.p_name = p_name;
+    }
+
+ 
 
     public SaleDetailBeans() {
     }
@@ -36,7 +53,6 @@ public class SaleDetailBeans {
         this.price = price;
     }
 
-   
     public int getSale_detail_id() {
         return sale_detail_id;
     }
@@ -52,6 +68,38 @@ public class SaleDetailBeans {
     public void setSale_id(int sale_id) {
         this.sale_id = sale_id;
     }
+       public String getCompany_name() {
+        return company_name;
+    }
+
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public String getUom() {
+        return uom;
+    }
+
+    public void setUom(String uom) {
+        this.uom = uom;
+    }
+
+    public String getP_name() {
+        return p_name;
+    }
+
+    public void setP_name(String p_name) {
+        this.p_name = p_name;
+    }
+    
 
     public int getCustomer_id() {
         return customer_id;
@@ -108,5 +156,5 @@ public class SaleDetailBeans {
     public void setUom_id(int uom_id) {
         this.uom_id = uom_id;
     }
-    
+
 }
