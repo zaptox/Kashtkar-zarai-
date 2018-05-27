@@ -119,7 +119,7 @@ public class ProductPage extends javax.swing.JFrame {
         jTextFieldCost = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jTextFieldQuantity = new javax.swing.JTextField();
+        jTextFieldPack = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
@@ -131,6 +131,8 @@ public class ProductPage extends javax.swing.JFrame {
         jComboBox1_Company = new javax.swing.JComboBox<>();
         jComboBox1_UOM = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        jTextFieldQuantity = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -147,14 +149,14 @@ public class ProductPage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sr #", "Product Id", "Product Name", "Cost / per Item (Rs)", "Quantity", "UOM", "Company"
+                "Sr #", "Product Id", "Product Name", "Cost / per Item (Rs)", "Quantity", "Packsize"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -216,7 +218,7 @@ public class ProductPage extends javax.swing.JFrame {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 240, 40));
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, 240, 40));
 
         jTextFieldProductname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldProductname.setBorder(null);
@@ -268,35 +270,35 @@ public class ProductPage extends javax.swing.JFrame {
         jLabel5.setText("COST*");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 90, -1));
 
-        jTextFieldQuantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldQuantity.setBorder(null);
-        jTextFieldQuantity.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextFieldQuantity.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTextFieldPack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldPack.setBorder(null);
+        jTextFieldPack.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jTextFieldPack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldQuantityMouseClicked(evt);
+                jTextFieldPackMouseClicked(evt);
             }
         });
-        jTextFieldQuantity.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldPack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldQuantityActionPerformed(evt);
+                jTextFieldPackActionPerformed(evt);
             }
         });
-        jTextFieldQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldPack.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldQuantityKeyPressed(evt);
+                jTextFieldPackKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 100, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 100, 20));
+        jPanel1.add(jTextFieldPack, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 60, 30));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 60, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("UOM*");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 70, -1));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 322, 260, 10));
+        jLabel6.setText("Pack Size*");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 130, -1));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 260, 10));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("COMPANY*");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 120, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 120, -1));
 
         jButtoSave.setBackground(new java.awt.Color(0, 204, 0));
         jButtoSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -307,7 +309,7 @@ public class ProductPage extends javax.swing.JFrame {
                 jButtoSaveActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 240, 40));
+        jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 240, 40));
 
         jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -318,7 +320,7 @@ public class ProductPage extends javax.swing.JFrame {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 240, 40));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 240, 40));
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -340,7 +342,7 @@ public class ProductPage extends javax.swing.JFrame {
                 jButtonClear1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 240, 40));
+        jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 240, 40));
 
         jComboBox1_Company.setToolTipText("");
         jComboBox1_Company.addActionListener(new java.awt.event.ActionListener() {
@@ -348,7 +350,7 @@ public class ProductPage extends javax.swing.JFrame {
                 jComboBox1_CompanyActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1_Company, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 250, -1));
+        jPanel1.add(jComboBox1_Company, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 250, -1));
 
         jComboBox1_UOM.setToolTipText("");
         jComboBox1_UOM.addActionListener(new java.awt.event.ActionListener() {
@@ -356,13 +358,34 @@ public class ProductPage extends javax.swing.JFrame {
                 jComboBox1_UOMActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1_UOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 110, -1));
+        jPanel1.add(jComboBox1_UOM, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 60, 30));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("QUANTITY*");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 120, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 590));
+        jTextFieldQuantity.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldQuantity.setBorder(null);
+        jTextFieldQuantity.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jTextFieldQuantity.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldQuantityMouseClicked(evt);
+            }
+        });
+        jTextFieldQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldQuantityActionPerformed(evt);
+            }
+        });
+        jTextFieldQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldQuantityKeyPressed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 80, 30));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 80, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1290, 590));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -386,6 +409,9 @@ public class ProductPage extends javax.swing.JFrame {
         this.jTextFieldProductname.setText(productBeans.getP_name());
         this.jTextFieldCost.setText(""+productBeans.getCost());
         this.jTextFieldQuantity.setText(""+productBeans.getQuantity());
+        this.jTextFieldPack.setText(""+productBeans.getPacksize());
+        
+        
         //this.jTextFieldCustomerContact.setText(customer.getContact());
         this.jButtonUpdate.setEnabled(true);
         this.jButtonDelete.setEnabled(true);
@@ -411,14 +437,14 @@ public class ProductPage extends javax.swing.JFrame {
           int product_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
         String product_name = productDao.getProductById(product_id).getP_name();
 
-        if (productDao.removeProduct(new ProductBeans(product_id,0, 0, 0, "", 0, 0)) >= 0) {
+        if (productDao.removeProduct(new ProductBeans(product_id,0, 0, 0,0, "", 0, 0)) >= 0) {
             
             JOptionPane.showMessageDialog(this, product_name + " deleted succesfully ", "deleted", JOptionPane.OK_OPTION);
             new playAudio().playSuccessSound();
             
             this.jTextFieldProductname.setText("");
             this.jTextFieldCost.setText("");
-            this.jTextFieldQuantity.setText("");
+            this.jTextFieldPack.setText("");
             
             this.jButtonUpdate.setEnabled(false);
             this.jButtonDelete.setEnabled(false);
@@ -452,17 +478,17 @@ public class ProductPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCostKeyPressed
 
-    private void jTextFieldQuantityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldQuantityMouseClicked
+    private void jTextFieldPackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPackMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldQuantityMouseClicked
+    }//GEN-LAST:event_jTextFieldPackMouseClicked
 
-    private void jTextFieldQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQuantityActionPerformed
+    private void jTextFieldPackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldQuantityActionPerformed
+    }//GEN-LAST:event_jTextFieldPackActionPerformed
 
-    private void jTextFieldQuantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldQuantityKeyPressed
+    private void jTextFieldPackKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPackKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldQuantityKeyPressed
+    }//GEN-LAST:event_jTextFieldPackKeyPressed
 
     private void jButtoSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoSaveActionPerformed
         
@@ -470,12 +496,13 @@ public class ProductPage extends javax.swing.JFrame {
             String product_name = this.jTextFieldProductname.getText();
             int cost = Integer.parseInt(this.jTextFieldCost.getText());
             int quntity = Integer.parseInt(this.jTextFieldQuantity.getText());
+            int packsize = Integer.parseInt(this.jTextFieldPack.getText());
             int company_id = companylist.get(this.jComboBox1_Company.getSelectedIndex()).getCompany_id();
             int uom_id = uomlist.get(this.jComboBox1_UOM.getSelectedIndex()).getUom_id();
             
-            if (productDao.saveProduct(new ProductBeans(0, company_id, quntity, uom_id, product_name, cost, 1)) >= 0) {
+            if (productDao.saveProduct(new ProductBeans(0, company_id, quntity, uom_id,packsize, product_name, cost, 1)) >= 0) {
                 this.jTextFieldProductname.setText("");
-                this.jTextFieldQuantity.setText("");
+                this.jTextFieldPack.setText("");
                 this.jTextFieldCost.setText("");
                 //this.jTextFieldCustomerContact.setText("");
                 new playAudio().playSuccessSound();
@@ -497,6 +524,7 @@ public class ProductPage extends javax.swing.JFrame {
         String product_name = this.jTextFieldProductname.getText();
         int cost =Integer.parseInt( this.jTextFieldCost.getText());
         int quantity =Integer.parseInt( this.jTextFieldQuantity.getText());
+         int packsize =Integer.parseInt( this.jTextFieldPack.getText());
         
         int company_id = companylist.get(this.jComboBox1_Company.getSelectedIndex()).getCompany_id();
             int uom_id = uomlist.get(this.jComboBox1_UOM.getSelectedIndex()).getUom_id();
@@ -509,7 +537,7 @@ public class ProductPage extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
         } else {
-            productDao.modifyProduct(new ProductBeans(product_id, company_id, quantity, uom_id, product_name, cost, 1));
+            productDao.modifyProduct(new ProductBeans(product_id, company_id, quantity , uom_id,packsize, product_name, cost, 1));
             new playAudio().playSuccessSound();
             showInTable();
             jButtonUpdate.setEnabled(false);
@@ -518,7 +546,7 @@ public class ProductPage extends javax.swing.JFrame {
 
             jTextFieldProductname.setText("");
             this.jTextFieldCost.setText("");
-            this.jTextFieldQuantity.setText("");
+            this.jTextFieldPack.setText("");
             //this.jTextFieldCompanyDealerName.setText("");
             jButtonDelete.setEnabled(false);
         }
@@ -568,13 +596,25 @@ public class ProductPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonClear1ActionPerformed
 
-    private void jComboBox1_CompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_CompanyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1_CompanyActionPerformed
-
     private void jComboBox1_UOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_UOMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1_UOMActionPerformed
+
+    private void jTextFieldQuantityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldQuantityMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldQuantityMouseClicked
+
+    private void jTextFieldQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldQuantityActionPerformed
+
+    private void jTextFieldQuantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldQuantityKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldQuantityKeyPressed
+
+    private void jComboBox1_CompanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_CompanyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1_CompanyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -628,7 +668,7 @@ public class ProductPage extends javax.swing.JFrame {
             V.add(p.getP_name());
              V.add(p.getCost());
             V.add(p.getQuantity());
-            V.add(uomDao.getUomName(p.getUom()));
+            V.add( p.getPacksize() +"  "+uomDao.getUomName(p.getUom()));
             
            
                V.add(companyDao.getCompanyName(p.getCompany_id()));
@@ -656,7 +696,7 @@ public class ProductPage extends javax.swing.JFrame {
         boolean check = false;
         if (!this.jTextFieldProductname.getText().equals("")
                 && !this.jTextFieldCost.getText().equals("")
-                && !this.jTextFieldQuantity.getText().equals("")) {
+                && !this.jTextFieldPack.getText().equals("")) {
             
             check = true;
         }
@@ -686,8 +726,10 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTable jTableCustomer;
     private javax.swing.JTextField jTextFieldCost;
+    private javax.swing.JTextField jTextFieldPack;
     private javax.swing.JTextField jTextFieldProductname;
     private javax.swing.JTextField jTextFieldQuantity;
     private javax.swing.JTextField jTextFieldSerach;

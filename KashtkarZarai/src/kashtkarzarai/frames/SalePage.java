@@ -676,7 +676,7 @@ public class SalePage extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("" + e.getMessage());
         }
-        orderedProductList.add(new ProductBeans(p.getP_id(), p.getCompany_id(), quantity, p.getUom(), p.getP_name(), p.getCost(), 1));
+        orderedProductList.add(new ProductBeans(p.getP_id(), p.getCompany_id(), quantity, p.getUom(),p.getPacksize(), p.getP_name(), p.getCost(), 1));
 //        orderedProductList.add(new ProductBeans(p.getP_id(), ICONIFIED, p_name, ABORT, quantity, t_price));
 //        System.out.println("" + orderedProductList + "\n");
 
