@@ -167,6 +167,11 @@ public class CompanyForm extends javax.swing.JFrame {
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("Update");
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 240, 40));
 
         jButtonDelete.setBackground(new java.awt.Color(0, 204, 0));
@@ -239,6 +244,10 @@ public class CompanyForm extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     /**
      * @param args the command line arguments

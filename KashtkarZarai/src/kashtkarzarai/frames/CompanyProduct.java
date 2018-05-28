@@ -140,6 +140,11 @@ public class CompanyProduct extends javax.swing.JFrame {
         jTableCompany.setGridColor(new java.awt.Color(0, 0, 51));
         jTableCompany.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTableCompany.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCompany.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTableCompanyMouseReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableCompany);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 600, 540));
@@ -165,6 +170,13 @@ public class CompanyProduct extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jTableCompanyMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCompanyMouseReleased
+        // TODO add your handling code here:
+        int com_id = Integer.parseInt("" + this.jTableCompany.getValueAt(this.jTableCompany.getSelectedRow(), 1));
+        new ProductPage(com_id).setVisible(true);
+        
+    }//GEN-LAST:event_jTableCompanyMouseReleased
 
     /**
      * @param args the command line arguments
