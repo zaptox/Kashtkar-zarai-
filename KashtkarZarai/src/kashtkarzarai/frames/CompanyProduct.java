@@ -10,8 +10,10 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableRowSorter;
 import kashtkarzarai.bean.CompanyBeans;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.dao.CompanyDao;
@@ -32,12 +34,16 @@ public class CompanyProduct extends javax.swing.JFrame {
     public ArrayList<CompanyBeans> company_list;
 
     CompanyDao companyDao;
+    TableRowSorter<DefaultTableModel> rowSorter = null;
 
     public CompanyProduct() {
         initComponents();
 
         companyDao = new CompanyDaoImpl();
         tableModelCustomer = (DefaultTableModel) this.jTableCompany.getModel();
+        rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
+        this.jTableCompany.setRowSorter(rowSorter);
+
         JTableHeader header = this.jTableCompany.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
@@ -92,6 +98,14 @@ public class CompanyProduct extends javax.swing.JFrame {
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
         jTextFieldSerach.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jTextFieldSerach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldSerachKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldSerachKeyReleased(evt);
+            }
+        });
         jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 304, -1));
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
@@ -175,8 +189,21 @@ public class CompanyProduct extends javax.swing.JFrame {
         // TODO add your handling code here:
         int com_id = Integer.parseInt("" + this.jTableCompany.getValueAt(this.jTableCompany.getSelectedRow(), 1));
         new ProductPage(com_id).setVisible(true);
-        
+
     }//GEN-LAST:event_jTableCompanyMouseReleased
+
+    private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_jTextFieldSerachKeyPressed
+
+    private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
+        // TODO add your handling code here:
+        String searchData = this.jTextFieldSerach.getText();
+        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
+
+    }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
     /**
      * @param args the command line arguments
