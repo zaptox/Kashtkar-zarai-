@@ -54,7 +54,7 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
     public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id) {
         ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
         try {
-            String query = "SELECT s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,cp.`company_name`,s.`price`, u.`uom`,s.`sale_date` FROM sale_detail s, product p, customer c ,company cp , uom_table u WHERE s.`company_id`=c.`customer_id` AND s.`product_id`=p.`p_id` AND s.`company_id`=cp.`company_id` AND s.`uom_id`=u.`uom_id` AND s.customer_id=" + customer_id + " ORDER BY sale_detail_id DESC";
+            String query = "SELECT s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,cp.`company_name`,s.`price`, u.`uom`,s.`sale_date`,p.`packsize` FROM sale_detail s, product p, customer c ,company cp , uom_table u WHERE s.`company_id`=c.`customer_id` AND s.`product_id`=p.`p_id` AND s.`company_id`=cp.`company_id` AND s.`uom_id`=u.`uom_id` AND s.customer_id=" + customer_id + " ORDER BY sale_detail_id DESC";
             PreparedStatement ps = con.prepareStatement(query);
 
             ResultSet rs = ps.executeQuery(query);
@@ -65,10 +65,11 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
                 String company_name = rs.getString("company_name");
                 int quantity = rs.getInt("quantity");
                 String uom = rs.getString("uom");
+                int packetsize=rs.getInt("packsize");
                 String sale_date = rs.getString("sale_date");
                 double price = rs.getDouble("price");
 
-                sale_details_list.add(new SaleDetailBeans(sale_detail_id, quantity, sale_date, price, company_name, customer_name,uom,  p_name));
+                sale_details_list.add(new SaleDetailBeans(sale_detail_id,packetsize ,quantity, sale_date, price, company_name, customer_name,uom,  p_name));
 
             }
         } catch (Exception e) {
