@@ -155,6 +155,11 @@ public class CompanyForm extends javax.swing.JFrame {
         jButtoSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtoSave.setForeground(new java.awt.Color(255, 255, 255));
         jButtoSave.setText("Save");
+        jButtoSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtoSaveActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 240, 40));
 
         jButtonClear1.setBackground(new java.awt.Color(0, 204, 0));
@@ -239,15 +244,244 @@ public class CompanyForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        // TODO add your handling code here:
+
         new HomePage().setVisible(true);
         this.dispose();
-
     }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+    private void jTextFieldCompanyNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyNameMouseClicked
+
+    }//GEN-LAST:event_jTextFieldCompanyNameMouseClicked
+
+    private void jTextFieldCompanyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCompanyNameActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyNameActionPerformed
+
+    private void jTextFieldCompanyNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCompanyNameKeyPressed
+
+    }//GEN-LAST:event_jTextFieldCompanyNameKeyPressed
+
+    private void jTextFieldCompanyContactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyContactMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyContactMouseClicked
+
+    private void jTextFieldCompanyContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCompanyContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyContactActionPerformed
+
+    private void jTextFieldCompanyContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCompanyContactKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyContactKeyPressed
+
+    private void jTextFieldCompanyAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyAddressMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyAddressMouseClicked
+
+    private void jTextFieldCompanyAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCompanyAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyAddressActionPerformed
+
+    private void jTextFieldCompanyAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCompanyAddressKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyAddressKeyPressed
+
+    private void jTextFieldCompanyDealerNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyDealerNameMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyDealerNameMouseClicked
+
+    private void jTextFieldCompanyDealerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCompanyDealerNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyDealerNameActionPerformed
+
+    private void jTextFieldCompanyDealerNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCompanyDealerNameKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCompanyDealerNameKeyPressed
+
+    private void jButtoSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoSaveActionPerformed
+        String company_name = this.jTextFieldCompanyName.getText();
+        String company_contact = this.jTextFieldCompanyContact.getText();
+        String company_address = this.jTextFieldCompanyAddress.getText();
+        String dealer_name = this.jTextFieldCompanyDealerName.getText();
+
+        if (company_name.equals("") || company_contact.equals("")
+                || company_address.equals("") || dealer_name.equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
+        } else {
+            companyDao.saveCompany(new CompanyBeans(1, company_name, company_contact, company_address, dealer_name, 1));
+            showInTable();
+
+        }
+//}
+//        if (!(company_name.equals("") || company_contact.equals("") || company_address.equals("") || dealer_name.equals(""))) {
+////            if (cnic.matches("/^[0-9]{14}[vVxX]$/")) {
+////                if (customerDao.saveCustomer(new CustomerBeans(0, customer_name, contact, cnic, address, CurrentDate.getCurrentDate())) >= 0) {
+////                }
+//            }
+//            else {
+//                JOptionPane.showMessageDialog(rootPane, "Invalid CNIC");
+//                new playAudio().playErrorSound();
+//
+//            }
+//        } else {
+//            new playAudio().playErrorSound();
+//            JOptionPane.showMessageDialog(rootPane, "Please fill require fields");
+//        }
+
+    }//GEN-LAST:event_jButtoSaveActionPerformed
+
+    private void jButtonClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClear1ActionPerformed
+        // TODO add your handling code here:
+        jTextFieldCompanyName.setText("");
+        this.jTextFieldCompanyContact.setText("");
+        this.jTextFieldCompanyAddress.setText("");
+        this.jTextFieldCompanyDealerName.setText("");
+
+
+    }//GEN-LAST:event_jButtonClear1ActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+        int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+
+        String company_name = this.jTextFieldCompanyName.getText();
+        String company_contact = this.jTextFieldCompanyContact.getText();
+        String company_address = this.jTextFieldCompanyAddress.getText();
+        String dealer_name = this.jTextFieldCompanyDealerName.getText();
+
+        if (company_name.equals("") || company_contact.equals("")
+                || company_address.equals("") || dealer_name.equals("")) {
+
+            JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
+        } else {
+
+            companyDao.modifyCompany(new CompanyBeans(company_id, company_name, company_contact, company_address, dealer_name, 1));
+            showInTable();
+            jButtonUpdate.setEnabled(false);
+            jButtoSave.setEnabled(true);
+            jButtonClear1.setEnabled(true);
+
+            jTextFieldCompanyName.setText("");
+            this.jTextFieldCompanyContact.setText("");
+            this.jTextFieldCompanyAddress.setText("");
+            this.jTextFieldCompanyDealerName.setText("");
+            jButtonDelete.setEnabled(false);
+        }
+
+//        String customer_name = this.jTextFieldCustomername.getText();
+//        String cnic = this.jTextFieldCompanyContact.getText();
+//        String contact = this.jTextFieldCompanyAddress.getText();
+//        String address = this.jTextFieldCompanyDealerName.getText();
+//        if (!(customer_name.equals("") || cnic.equals("") || contact.equals("") || address.equals(""))) {
+//
+//            customerDao.modifyCustomers(new CustomerBeans(customer_id, customer_name, contact, cnic, address, CurrentDate.getCurrentDate()));
+//            JOptionPane.showMessageDialog(this, customer_name + " records updated succesfully ", "Update", JOptionPane.PLAIN_MESSAGE);
+//            this.jTextFieldCompanyDealerName.setText("");
+//            this.jTextFieldCustomername.setText("");
+//            this.jTextFieldCompanyContact.setText("");
+//            this.jTextFieldCompanyAddress.setText("");
+//            this.jButtonUpdate.setEnabled(false);
+//            this.jButtonDelete.setEnabled(false);
+//            this.jButtoSave.setEnabled(true);
+//
+//            showInTable();
+//        } else {
+//            new playAudio().playErrorSound();
+//            JOptionPane.showMessageDialog(rootPane, "Please fill require fields");
+//        }
     }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        // TODO add your handling code here:
+
+        int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+
+        String company_name = this.jTextFieldCompanyName.getText();
+        String company_contact = this.jTextFieldCompanyContact.getText();
+        String company_address = this.jTextFieldCompanyAddress.getText();
+        String dealer_name = this.jTextFieldCompanyDealerName.getText();
+
+        companyDao.removeCompany(new CompanyBeans(company_id, company_name, company_contact, company_address, dealer_name, 1));
+        showInTable();
+        jButtonUpdate.setEnabled(false);
+        jButtoSave.setEnabled(true);
+        jButtonClear1.setEnabled(true);
+        jButtonDelete.setEnabled(false);
+        jTextFieldCompanyName.setText("");
+        this.jTextFieldCompanyContact.setText("");
+        this.jTextFieldCompanyAddress.setText("");
+        this.jTextFieldCompanyDealerName.setText("");
+
+//        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+//        String cust_name = customerDao.getCustomerById(customer_id).getCustomer_name();
+//
+//        if (customerDao.removeCustomer(new CustomerBeans(customer_id, "", "", "", "", "")) >= 0) {
+//            JOptionPane.showMessageDialog(this, cust_name + " deleted succesfully ", "deleted", JOptionPane.OK_OPTION);
+//            this.jTextFieldCompanyDealerName.setText("");
+//            this.jTextFieldCustomername.setText("");
+//            this.jTextFieldCompanyContact.setText("");
+//            this.jTextFieldCompanyAddress.setText("");
+//            this.jButtonUpdate.setEnabled(false);
+//            this.jButtonDelete.setEnabled(false);
+//            this.jButtoSave.setEnabled(true);
+//            showInTable();
+//        }
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
+
+//        CustomerBeans customer = customerDao.getCustomerById(customer_id);
+//        this.jTextFieldCompanyDealerName.setText(customer.getAddress());
+//        this.jTextFieldCustomername.setText(customer.getCustomer_name());
+//        this.jTextFieldCompanyContact.setText(customer.getCnic());
+//        this.jTextFieldCompanyAddress.setText(customer.getContact());
+//        this.jButtonUpdate.setEnabled(true);
+//        this.jButtonDelete.setEnabled(true);
+//        this.jButtoSave.setEnabled(false);
+
+    }//GEN-LAST:event_jTableCustomerMouseClicked
+
+    private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
+
+    }//GEN-LAST:event_jTextFieldSerachMouseClicked
+
+    private void jTextFieldSerachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerachActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSerachActionPerformed
+
+    private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
+
+    }//GEN-LAST:event_jTextFieldSerachKeyPressed
+
+    private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
+        // TODO add your handling code here:
+        String searchData = this.jTextFieldSerach.getText();
+//        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
+
+    }//GEN-LAST:event_jTextFieldSerachKeyReleased
+
+    private void jTableCustomerMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseReleased
+        CompanyBeans companyBeans = null;
+
+        try {
+
+            int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
+            System.out.println("" + company_id);
+            companyBeans = companyDao.getCompanyById(company_id);
+            System.out.println("" + companyBeans.getCompany_name());
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+//        
+        jTextFieldCompanyName.setText("" + companyBeans.getCompany_name());
+        this.jTextFieldCompanyContact.setText("" + companyBeans.getCompany_contact());
+        this.jTextFieldCompanyAddress.setText("" + companyBeans.getCompany_address());
+        this.jTextFieldCompanyDealerName.setText("" + companyBeans.getDealer_name());
+        this.jButtonUpdate.setEnabled(true);
+        this.jButtonDelete.setEnabled(true);
+        jButtoSave.setEnabled(false);
+        jButtonClear1.setEnabled(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableCustomerMouseReleased
 
     /**
      * @param args the command line arguments
