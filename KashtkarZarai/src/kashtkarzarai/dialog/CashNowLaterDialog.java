@@ -31,6 +31,7 @@ import kashtkarzarai.daoImpl.ProductDaoImpl;
 import kashtkarzarai.daoImpl.SaleDaoImpl;
 import kashtkarzarai.daoImpl.SaleDetailDapImpl;
 import kashtkarzarai.daoImpl.UomDaoImpl;
+import kashtkarzarai.frames.SalePage;
 import static kashtkarzarai.frames.SalePage.sale_customer;
 import static kashtkarzarai.frames.SalePage.total_price;
 
@@ -83,11 +84,13 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
         this.ob = ob;
         System.out.println("" + ob.getTotal_price());
         pricetoPayField.setText("Total Price To Pay:  " + ob.getTotal_price());
+        payNowField.setText(ob.getTotal_price() + "");
+        payLaterField.setText("0");
         saleDao = new SaleDaoImpl();
         saleDetailDao = new SaleDetailDapImpl();
         productDao = new ProductDaoImpl();
-        debtDao= new DebtDaoImpl();
-        customerDao= new CustomerDaoImpl();
+        debtDao = new DebtDaoImpl();
+        customerDao = new CustomerDaoImpl();
         payLaterField.setEnabled(false);
     }
 
@@ -183,6 +186,12 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
 
 //                    saleDao.saveSale(new SaleBeans(1, customer_id, 1, discount_type, (int) discount, total_price));
+
+        int i=JOptionPane.showConfirmDialog(this, "Are you sure ?");
+        
+                
+        if(i==0){
+
         saleDao.saveSale(new SaleBeans(1, ob.getCustomer_id(), 1, ob.getDiscount_type(), ob.getDiscount(), ob.getTotal_price()));
 
         for (ProductBeans p : ob.getOrderedProductList()) {
@@ -207,26 +216,48 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
 //        }
         }
 
-        double pay_now=Double.parseDouble(payNowField.getText().toString());
-        double pay_later=Double.parseDouble(payLaterField.getText().toString());
+        double pay_now = Double.parseDouble(payNowField.getText().toString());
+        double pay_later = Double.parseDouble(payLaterField.getText().toString());
+
+        double puranadebt = customerDao.getCustomerDebtByCustomerId(ob.getCustomer_id());
+        customerDao.modifyCustomerDebt(ob.getCustomer_id(), pay_later + puranadebt);
         
-       double puranadebt =customerDao.getCustomerDebtByCustomerId(ob.getCustomer_id());
-        customerDao.modifyCustomerDebt(ob.getCustomer_id(), pay_later+puranadebt);
+        this.dispose();
+        new  SalePage().setVisible(true);
+              
+        
+        }
+        else{
         
         
+            
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void payNowFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_payNowFieldKeyReleased
         // TODO add your handling code here:
-          if (payNowField.equals("")) {
-            payLaterField.setText(ob.getTotal_price()+ "");
+        try {
+            if (payNowField.equals("")) {
+                payLaterField.setText(ob.getTotal_price() + "");
 
-        } else  {
-                double pay_now=Double.parseDouble(payNowField.getText().toString());
-      
-              payLaterField.setText((ob.getTotal_price()-pay_now)+"");
-          }
-        
+            } else {
+                try {
+
+                    double pay_now = Double.parseDouble(payNowField.getText().toString());
+                    if (pay_now > ob.getTotal_price()) {
+                        JOptionPane.showMessageDialog(this, "Invalid Amount");
+                    } else {
+                        payLaterField.setText((ob.getTotal_price() - pay_now) + "");
+                    }
+                } catch (Exception e) {
+                    payLaterField.setText(ob.getTotal_price() + "");
+                }
+            }
+        } catch (Exception e) {
+            payLaterField.setText(ob.getTotal_price() + "");
+        }
+
     }//GEN-LAST:event_payNowFieldKeyReleased
 
     /**
