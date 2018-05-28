@@ -84,7 +84,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonProduct.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonProduct.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/agructula products.png"))); // NOI18N
-        jButtonProduct.setText("Products");
+        jButtonProduct.setText("Products By Company");
         jButtonProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProductActionPerformed(evt);

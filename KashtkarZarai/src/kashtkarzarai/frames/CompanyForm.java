@@ -96,6 +96,7 @@ public class CompanyForm extends javax.swing.JFrame {
         jTextFieldSerach = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -166,6 +167,11 @@ public class CompanyForm extends javax.swing.JFrame {
         jButtonClear1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonClear1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonClear1.setText("Clear");
+        jButtonClear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClear1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 240, 40));
 
         jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
@@ -183,6 +189,11 @@ public class CompanyForm extends javax.swing.JFrame {
         jButtonDelete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("Delete");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 240, 40));
 
         jTableCustomer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -215,6 +226,11 @@ public class CompanyForm extends javax.swing.JFrame {
         jTableCustomer.setGridColor(new java.awt.Color(0, 0, 51));
         jTableCustomer.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTableCustomer.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTableCustomerMouseReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableCustomer);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 980, 510));
@@ -236,6 +252,10 @@ public class CompanyForm extends javax.swing.JFrame {
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 1280, 30));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel8.setText("COMPANY Data");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 230, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 610));
 
@@ -400,7 +420,7 @@ public class CompanyForm extends javax.swing.JFrame {
         String company_address = this.jTextFieldCompanyAddress.getText();
         String dealer_name = this.jTextFieldCompanyDealerName.getText();
 
-        companyDao.removeCompany(new CompanyBeans(company_id, company_name, company_contact, company_address, dealer_name, 1));
+        companyDao.removeCompany(new CompanyBeans(company_id, "", "", "", "", 0));
         showInTable();
         jButtonUpdate.setEnabled(false);
         jButtoSave.setEnabled(true);
@@ -411,20 +431,6 @@ public class CompanyForm extends javax.swing.JFrame {
         this.jTextFieldCompanyAddress.setText("");
         this.jTextFieldCompanyDealerName.setText("");
 
-//        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-//        String cust_name = customerDao.getCustomerById(customer_id).getCustomer_name();
-//
-//        if (customerDao.removeCustomer(new CustomerBeans(customer_id, "", "", "", "", "")) >= 0) {
-//            JOptionPane.showMessageDialog(this, cust_name + " deleted succesfully ", "deleted", JOptionPane.OK_OPTION);
-//            this.jTextFieldCompanyDealerName.setText("");
-//            this.jTextFieldCustomername.setText("");
-//            this.jTextFieldCompanyContact.setText("");
-//            this.jTextFieldCompanyAddress.setText("");
-//            this.jButtonUpdate.setEnabled(false);
-//            this.jButtonDelete.setEnabled(false);
-//            this.jButtoSave.setEnabled(true);
-//            showInTable();
-//        }
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
@@ -467,7 +473,7 @@ public class CompanyForm extends javax.swing.JFrame {
             int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
             System.out.println("" + company_id);
             companyBeans = companyDao.getCompanyById(company_id);
-            System.out.println("" + companyBeans.getCompany_name());
+           
         } catch (Exception e) {
             System.out.println("" + e.getMessage());
         }
@@ -530,6 +536,7 @@ public class CompanyForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableCustomer;

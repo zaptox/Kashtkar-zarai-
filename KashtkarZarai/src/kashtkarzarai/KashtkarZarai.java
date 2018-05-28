@@ -8,6 +8,7 @@ package kashtkarzarai;
 import javax.swing.UIManager;
 import kashtkarzarai.db.DbConnection;
 import kashtkarzarai.frames.Login;
+import test.TestDemo;
 
 /**
  *
@@ -36,6 +37,7 @@ public class KashtkarZarai {
         }
          DbConnection.load();
          new Login().setVisible(true);
+        
     }
     
 }

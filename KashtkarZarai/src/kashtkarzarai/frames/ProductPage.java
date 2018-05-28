@@ -82,7 +82,7 @@ public class ProductPage extends javax.swing.JFrame {
         showInTable();
        
         showInUOMBox();
-        JOptionPane.showMessageDialog(rootPane, ""+companyId);
+        
         
     }
 
@@ -120,6 +120,7 @@ public class ProductPage extends javax.swing.JFrame {
         jTextFieldQuantity = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         jLabelCompanyName = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -368,6 +369,10 @@ public class ProductPage extends javax.swing.JFrame {
         jLabelCompanyName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
         jLabelCompanyName.setOpaque(true);
         jPanel1.add(jLabelCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, 50));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setText("Add New PRODUCT");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 600));
 
@@ -697,6 +702,7 @@ public class ProductPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelCompanyName;
     private javax.swing.JPanel jPanel1;

@@ -100,7 +100,7 @@ public class CompanyDaoImpl implements CompanyDao {
     @Override
     public int removeCompany(CompanyBeans companyBeans) {
         int i = 0;
-        String query = "UPDATE company SET `active` = '0' WHERE `company_id` = ?;  ";
+        String query = "UPDATE company SET `active` = '0' WHERE `company_id` = ?";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, companyBeans.getCompany_id());
