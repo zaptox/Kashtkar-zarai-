@@ -42,7 +42,7 @@ public class CompanyProduct extends javax.swing.JFrame {
         header.setBackground(new Color(0, 204, 0));
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
-     
+
         showInTable();
     }
 
@@ -58,9 +58,8 @@ public class CompanyProduct extends javax.swing.JFrame {
             V.add(serial);
             V.add(company.getCompany_id());
             V.add(company.getCompany_name());
-           
-//            V.add(customer.getCreation_date());
 
+//            V.add(customer.getCreation_date());
             tableModelCustomer.addRow(V);
         }
     }
@@ -74,24 +73,42 @@ public class CompanyProduct extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jTextFieldSerach = new javax.swing.JTextField();
         jButtonBack = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableCompany = new javax.swing.JTable();
-        jTextFieldSerach = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 304, 10));
+
+        jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldSerach.setBorder(null);
+        jTextFieldSerach.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 304, -1));
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Back");
+        jButtonBack.setFocusPainted(false);
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Search");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 60, -1));
 
         jTableCompany.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTableCompany.setForeground(new java.awt.Color(0, 0, 51));
@@ -123,117 +140,31 @@ public class CompanyProduct extends javax.swing.JFrame {
         jTableCompany.setGridColor(new java.awt.Color(0, 0, 51));
         jTableCompany.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTableCompany.setSelectionForeground(new java.awt.Color(0, 240, 0));
-        jTableCompany.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableCompanyMouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTableCompanyMouseReleased(evt);
-            }
-        });
         jScrollPane3.setViewportView(jTableCompany);
 
-        jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextFieldSerach.setBorder(null);
-        jTextFieldSerach.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextFieldSerach.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldSerachMouseClicked(evt);
-            }
-        });
-        jTextFieldSerach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSerachActionPerformed(evt);
-            }
-        });
-        jTextFieldSerach.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldSerachKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextFieldSerachKeyReleased(evt);
-            }
-        });
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 600, 540));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Search");
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 600));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSerach, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(85, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldSerach)
-                    .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76))
-        );
+        jLabel1.setBackground(new java.awt.Color(0, 204, 0));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("All right reserved|2017");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        jLabel1.setOpaque(true);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 630, 30));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-
+        // TODO add your handling code here:
         new HomePage().setVisible(true);
         this.dispose();
+
     }//GEN-LAST:event_jButtonBackActionPerformed
-
-    private void jTableCompanyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCompanyMouseClicked
-int product_id = Integer.parseInt("" + this.jTableCompany.getValueAt(this.jTableCompany.getSelectedRow(), 1));
-new ProductPage(product_id).setVisible(true);
-
-
-
-    }//GEN-LAST:event_jTableCompanyMouseClicked
-
-    private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
-
-    }//GEN-LAST:event_jTextFieldSerachMouseClicked
-
-    private void jTextFieldSerachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerachActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSerachActionPerformed
-
-    private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
-
-    }//GEN-LAST:event_jTextFieldSerachKeyPressed
-
-    private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
-        // TODO add your handling code here:
-        String searchData = this.jTextFieldSerach.getText();
-//        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
-
-    }//GEN-LAST:event_jTextFieldSerachKeyReleased
-
-    private void jTableCompanyMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCompanyMouseReleased
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableCompanyMouseReleased
 
     /**
      * @param args the command line arguments
@@ -273,7 +204,9 @@ new ProductPage(product_id).setVisible(true);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableCompany;

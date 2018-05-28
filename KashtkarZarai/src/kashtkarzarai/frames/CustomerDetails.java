@@ -14,11 +14,17 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableRowSorter;
 import kashtkarzarai.bean.CustomerBeans;
+import kashtkarzarai.bean.DebtDetailBeans;
 import kashtkarzarai.bean.SaleDetailBeans;
 import kashtkarzarai.dao.CustomerDao;
+import kashtkarzarai.dao.DebtDetailDao;
 import kashtkarzarai.dao.SaleDetailsDao;
 import kashtkarzarai.daoImpl.CustomerDaoImpl;
+import kashtkarzarai.daoImpl.DebtDaoImpl;
 import kashtkarzarai.daoImpl.SaleDetailDapImpl;
+import kashtkarzarai.dialog.DebtDetailJDialog;
+import kashtkarzarai.dialog.SetingJDialog;
+import zaptox.Kashkarzarai.util.CurrentDate;
 
 /**
  *
@@ -35,6 +41,7 @@ public class CustomerDetails extends javax.swing.JFrame {
     ArrayList<SaleDetailBeans> sales_detail_list;
     SaleDetailsDao saleDeatail;
     CustomerDao customerDao;
+    DebtDetailDao debtDao;
     int cust_id;
 
     public CustomerDetails() {
@@ -55,6 +62,7 @@ public class CustomerDetails extends javax.swing.JFrame {
     public CustomerDetails(int customer_id) {
         initComponents();
         saleDeatail = new SaleDetailDapImpl();
+        debtDao = new DebtDaoImpl();
         tableModelCustomerSaleDetail = (DefaultTableModel) this.jTableCustomerSaleDetail.getModel();
         rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomerSaleDetail);
         this.jTableCustomerSaleDetail.setRowSorter(rowSorter);
@@ -72,7 +80,13 @@ public class CustomerDetails extends javax.swing.JFrame {
         showInTable(customer_id);
         showCustomerDebt(customer_id);
         this.jLabelAddMoney.setVisible(false);
-        cust_id=customer_id;
+        cust_id = customer_id;
+        this.jCheckBoxCustomerName.setText("" + customerDao.getCustomerById(customer_id).getCustomer_name());
+        this.jTextFieldOther.setEnabled(false);
+        this.jCheckBoxCustomerName.setVisible(false);
+        this.jCheckBoxOther.setVisible(false);
+        this.jSeparatorother.setVisible(false);
+        this.jTextFieldOther.setVisible(false);
 
     }
 
@@ -85,6 +99,7 @@ public class CustomerDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableCustomerSaleDetail = new javax.swing.JTable();
@@ -100,6 +115,11 @@ public class CustomerDetails extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jTextFieldUpdateMoney = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jCheckBoxOther = new javax.swing.JCheckBox();
+        jCheckBoxCustomerName = new javax.swing.JCheckBox();
+        jSeparatorother = new javax.swing.JSeparator();
+        jTextFieldOther = new javax.swing.JTextField();
+        jButtonUpdateMoney1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -189,6 +209,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Back");
+        jButtonBack.setFocusPainted(false);
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
@@ -228,7 +249,7 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 230, 30));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 230, 30));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 430, -1));
 
         jTextFieldUpdateMoney.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -257,6 +278,64 @@ public class CustomerDetails extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Remaining Money:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, -1));
+
+        buttonGroup1.add(jCheckBoxOther);
+        jCheckBoxOther.setText("Other");
+        jCheckBoxOther.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBoxOtherItemStateChanged(evt);
+            }
+        });
+        jCheckBoxOther.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxOtherActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBoxOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 60, -1));
+
+        buttonGroup1.add(jCheckBoxCustomerName);
+        jCheckBoxCustomerName.setText("jCheckBox1");
+        jCheckBoxCustomerName.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBoxCustomerNameItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(jCheckBoxCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        jPanel1.add(jSeparatorother, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 180, -1));
+
+        jTextFieldOther.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldOther.setBorder(null);
+        jTextFieldOther.setDisabledTextColor(new java.awt.Color(204, 204, 204));
+        jTextFieldOther.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldOtherMouseClicked(evt);
+            }
+        });
+        jTextFieldOther.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldOtherActionPerformed(evt);
+            }
+        });
+        jTextFieldOther.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldOtherKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldOtherKeyReleased(evt);
+            }
+        });
+        jPanel1.add(jTextFieldOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 180, -1));
+
+        jButtonUpdateMoney1.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonUpdateMoney1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonUpdateMoney1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonUpdateMoney1.setText("Show Debt Details");
+        jButtonUpdateMoney1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateMoney1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonUpdateMoney1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 230, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 570));
 
@@ -304,19 +383,34 @@ public class CustomerDetails extends javax.swing.JFrame {
 
     private void jButtonUpdateMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateMoneyActionPerformed
         // TODO add your handling code here:
-        
-        double debt=Double.parseDouble(""+this.jLabelCustomerDebt.getText());
-        double addMoney=Double.parseDouble(this.jTextFieldUpdateMoney.getText());
-        double newDebt=debt-addMoney;
-        
-        customerDao.modifyCustomerDebt(cust_id, newDebt);
-        showCustomerDebt(cust_id);
-        
+              try {
+            double debt = Double.parseDouble("" + this.jLabelCustomerDebt.getText());
+            double addMoney = Double.parseDouble(this.jTextFieldUpdateMoney.getText());
+            double newDebt = debt - addMoney;
+
+            customerDao.modifyCustomerDebt(cust_id, newDebt);
+            if (this.jCheckBoxCustomerName.isSelected()) {
+                debtDao.saveDebtDetail(new DebtDetailBeans(0, this.jCheckBoxCustomerName.getText(), addMoney, cust_id, "" + CurrentDate.getCurrentDate()));
+            } else if (this.jCheckBoxOther.isSelected()) {
+
+                debtDao.saveDebtDetail(new DebtDetailBeans(0, this.jTextFieldOther.getText(), addMoney, cust_id, "" + CurrentDate.getCurrentDate()));
+            }
+
+            showCustomerDebt(cust_id);
+        } catch (Exception e) {
+        }
         this.jButtonUpdate.setVisible(true);
         this.jButtonUpdateMoney.setVisible(false);
         this.jTextFieldUpdateMoney.setVisible(false);
         this.jLabelAddMoney.setVisible(false);
         this.jSeparatorUpdate.setVisible(false);
+        this.jCheckBoxCustomerName.setVisible(false);
+        this.jCheckBoxOther.setVisible(false);
+        this.jSeparatorother.setVisible(false);
+        this.jTextFieldOther.setVisible(false);
+        this.jTextFieldOther.setText("");
+        this.jTextFieldUpdateMoney.setText("");
+
     }//GEN-LAST:event_jButtonUpdateMoneyActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
@@ -328,6 +422,11 @@ public class CustomerDetails extends javax.swing.JFrame {
 
         this.jSeparatorUpdate.setVisible(true);
         this.jButtonUpdateMoney.setVisible(true);
+        this.jCheckBoxCustomerName.setVisible(true);
+        this.jCheckBoxOther.setVisible(true);
+        this.jSeparatorother.setVisible(true);
+        this.jTextFieldOther.setVisible(true);
+
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jTextFieldUpdateMoneyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUpdateMoneyMouseClicked
@@ -345,6 +444,48 @@ public class CustomerDetails extends javax.swing.JFrame {
     private void jTextFieldUpdateMoneyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUpdateMoneyKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUpdateMoneyKeyReleased
+
+    private void jCheckBoxOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxOtherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxOtherActionPerformed
+
+    private void jTextFieldOtherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldOtherMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldOtherMouseClicked
+
+    private void jTextFieldOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldOtherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldOtherActionPerformed
+
+    private void jTextFieldOtherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldOtherKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldOtherKeyPressed
+
+    private void jTextFieldOtherKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldOtherKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldOtherKeyReleased
+
+    private void jCheckBoxCustomerNameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxCustomerNameItemStateChanged
+        // TODO add your handling code here:
+        if (this.jCheckBoxCustomerName.isSelected()) {
+            this.jTextFieldOther.setEnabled(false);
+
+        }
+    }//GEN-LAST:event_jCheckBoxCustomerNameItemStateChanged
+
+    private void jCheckBoxOtherItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxOtherItemStateChanged
+        // TODO add your handling code here:
+        if (this.jCheckBoxOther.isSelected()) {
+            this.jTextFieldOther.setEnabled(true);
+
+        }
+    }//GEN-LAST:event_jCheckBoxOtherItemStateChanged
+
+    private void jButtonUpdateMoney1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateMoney1ActionPerformed
+        // TODO add your handling code here:
+                new DebtDetailJDialog(this, true,cust_id,customerDao.getCustomerById(cust_id).getCustomer_name()).setVisible(true);
+
+    }//GEN-LAST:event_jButtonUpdateMoney1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,14 +541,19 @@ public class CustomerDetails extends javax.swing.JFrame {
             tableModelCustomerSaleDetail.addRow(V);
         }
     }
-    public void showCustomerDebt(int customer_id){
-    this.jLabelCustomerDebt.setText(""+customerDao.getCustomerDebtByCustomerId(customer_id));
+
+    public void showCustomerDebt(int customer_id) {
+        this.jLabelCustomerDebt.setText("" + customerDao.getCustomerDebtByCustomerId(customer_id));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JButton jButtonUpdateMoney;
+    private javax.swing.JButton jButtonUpdateMoney1;
+    private javax.swing.JCheckBox jCheckBoxCustomerName;
+    private javax.swing.JCheckBox jCheckBoxOther;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -418,7 +564,9 @@ public class CustomerDetails extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparatorUpdate;
+    private javax.swing.JSeparator jSeparatorother;
     private javax.swing.JTable jTableCustomerSaleDetail;
+    private javax.swing.JTextField jTextFieldOther;
     private javax.swing.JTextField jTextFieldSerach;
     private javax.swing.JTextField jTextFieldUpdateMoney;
     // End of variables declaration//GEN-END:variables

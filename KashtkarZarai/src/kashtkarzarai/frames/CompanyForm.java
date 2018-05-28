@@ -77,6 +77,7 @@ public class CompanyForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jButtonBack = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldCompanyName = new javax.swing.JTextField();
@@ -94,146 +95,85 @@ public class CompanyForm extends javax.swing.JFrame {
         jTableCustomer = new javax.swing.JTable();
         jTextFieldSerach = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Back");
+        jButtonBack.setFocusPainted(false);
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
+        jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("COMPANY NAME*");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 170, -1));
 
         jTextFieldCompanyName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCompanyName.setBorder(null);
         jTextFieldCompanyName.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextFieldCompanyName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldCompanyNameMouseClicked(evt);
-            }
-        });
-        jTextFieldCompanyName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCompanyNameActionPerformed(evt);
-            }
-        });
-        jTextFieldCompanyName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldCompanyNameKeyPressed(evt);
-            }
-        });
+        jPanel1.add(jTextFieldCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("COMPANY CONTACT*");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 206, -1));
 
         jTextFieldCompanyContact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCompanyContact.setBorder(null);
         jTextFieldCompanyContact.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextFieldCompanyContact.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldCompanyContactMouseClicked(evt);
-            }
-        });
-        jTextFieldCompanyContact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCompanyContactActionPerformed(evt);
-            }
-        });
-        jTextFieldCompanyContact.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldCompanyContactKeyPressed(evt);
-            }
-        });
+        jPanel1.add(jTextFieldCompanyContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 260, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("COMPANY ADDRESS*");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 185, -1));
 
         jTextFieldCompanyAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCompanyAddress.setBorder(null);
         jTextFieldCompanyAddress.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextFieldCompanyAddress.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldCompanyAddressMouseClicked(evt);
-            }
-        });
-        jTextFieldCompanyAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCompanyAddressActionPerformed(evt);
-            }
-        });
-        jTextFieldCompanyAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldCompanyAddressKeyPressed(evt);
-            }
-        });
+        jPanel1.add(jTextFieldCompanyAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("DEALER NAME*");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 155, -1));
 
         jTextFieldCompanyDealerName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCompanyDealerName.setBorder(null);
         jTextFieldCompanyDealerName.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextFieldCompanyDealerName.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldCompanyDealerNameMouseClicked(evt);
-            }
-        });
-        jTextFieldCompanyDealerName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCompanyDealerNameActionPerformed(evt);
-            }
-        });
-        jTextFieldCompanyDealerName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldCompanyDealerNameKeyPressed(evt);
-            }
-        });
+        jPanel1.add(jTextFieldCompanyDealerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 260, -1));
 
         jButtoSave.setBackground(new java.awt.Color(0, 204, 0));
         jButtoSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtoSave.setForeground(new java.awt.Color(255, 255, 255));
         jButtoSave.setText("Save");
-        jButtoSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtoSaveActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 240, 40));
 
         jButtonClear1.setBackground(new java.awt.Color(0, 204, 0));
         jButtonClear1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonClear1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonClear1.setText("Clear");
-        jButtonClear1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClear1ActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 240, 40));
 
         jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setText("Update");
-        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 240, 40));
 
         jButtonDelete.setBackground(new java.awt.Color(0, 204, 0));
         jButtonDelete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonDelete.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDelete.setText("Delete");
-        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 240, 40));
 
         jTableCustomer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTableCustomer.setForeground(new java.awt.Color(0, 0, 51));
@@ -265,363 +205,40 @@ public class CompanyForm extends javax.swing.JFrame {
         jTableCustomer.setGridColor(new java.awt.Color(0, 0, 51));
         jTableCustomer.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTableCustomer.setSelectionForeground(new java.awt.Color(0, 240, 0));
-        jTableCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableCustomerMouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTableCustomerMouseReleased(evt);
-            }
-        });
         jScrollPane3.setViewportView(jTableCustomer);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 980, 510));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
         jTextFieldSerach.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jTextFieldSerach.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextFieldSerachMouseClicked(evt);
-            }
-        });
-        jTextFieldSerach.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSerachActionPerformed(evt);
-            }
-        });
-        jTextFieldSerach.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextFieldSerachKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextFieldSerachKeyReleased(evt);
-            }
-        });
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 430, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Search");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 60, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1356, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 43, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(670, 670, 670)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jTextFieldSerach, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldCompanyName, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldCompanyContact, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldCompanyAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldCompanyDealerName, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButtoSave, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButtonClear1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 43, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 654, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 72, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jTextFieldSerach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(8, 8, 8)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(8, 8, 8)
-                            .addComponent(jTextFieldCompanyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(13, 13, 13)
-                            .addComponent(jLabel5)
-                            .addGap(8, 8, 8)
-                            .addComponent(jTextFieldCompanyContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(13, 13, 13)
-                            .addComponent(jLabel6)
-                            .addGap(8, 8, 8)
-                            .addComponent(jTextFieldCompanyAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(23, 23, 23)
-                            .addComponent(jLabel7)
-                            .addGap(8, 8, 8)
-                            .addComponent(jTextFieldCompanyDealerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
-                            .addComponent(jButtoSave, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(jButtonClear1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(jButtonDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 72, Short.MAX_VALUE)))
-        );
+        jLabel1.setBackground(new java.awt.Color(0, 204, 0));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("All right reserved|2017");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        jLabel1.setOpaque(true);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 1280, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 610));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-
+        // TODO add your handling code here:
         new HomePage().setVisible(true);
         this.dispose();
+
     }//GEN-LAST:event_jButtonBackActionPerformed
-
-    private void jTextFieldCompanyNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyNameMouseClicked
-
-    }//GEN-LAST:event_jTextFieldCompanyNameMouseClicked
-
-    private void jTextFieldCompanyNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCompanyNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyNameActionPerformed
-
-    private void jTextFieldCompanyNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCompanyNameKeyPressed
-
-    }//GEN-LAST:event_jTextFieldCompanyNameKeyPressed
-
-    private void jTextFieldCompanyContactMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyContactMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyContactMouseClicked
-
-    private void jTextFieldCompanyContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCompanyContactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyContactActionPerformed
-
-    private void jTextFieldCompanyContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCompanyContactKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyContactKeyPressed
-
-    private void jTextFieldCompanyAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyAddressMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyAddressMouseClicked
-
-    private void jTextFieldCompanyAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCompanyAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyAddressActionPerformed
-
-    private void jTextFieldCompanyAddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCompanyAddressKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyAddressKeyPressed
-
-    private void jTextFieldCompanyDealerNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCompanyDealerNameMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyDealerNameMouseClicked
-
-    private void jTextFieldCompanyDealerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCompanyDealerNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyDealerNameActionPerformed
-
-    private void jTextFieldCompanyDealerNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCompanyDealerNameKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCompanyDealerNameKeyPressed
-
-    private void jButtoSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoSaveActionPerformed
-        String company_name = this.jTextFieldCompanyName.getText();
-        String company_contact = this.jTextFieldCompanyContact.getText();
-        String company_address = this.jTextFieldCompanyAddress.getText();
-        String dealer_name = this.jTextFieldCompanyDealerName.getText();
-
-        if (company_name.equals("") || company_contact.equals("")
-                || company_address.equals("") || dealer_name.equals("")) {
-
-            JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
-        } else {
-            companyDao.saveCompany(new CompanyBeans(1, company_name, company_contact, company_address, dealer_name, 1));
-            showInTable();
-
-        }
-//}
-//        if (!(company_name.equals("") || company_contact.equals("") || company_address.equals("") || dealer_name.equals(""))) {
-////            if (cnic.matches("/^[0-9]{14}[vVxX]$/")) {
-////                if (customerDao.saveCustomer(new CustomerBeans(0, customer_name, contact, cnic, address, CurrentDate.getCurrentDate())) >= 0) {
-////                }
-//            }
-//            else {
-//                JOptionPane.showMessageDialog(rootPane, "Invalid CNIC");
-//                new playAudio().playErrorSound();
-//
-//            }
-//        } else {
-//            new playAudio().playErrorSound();
-//            JOptionPane.showMessageDialog(rootPane, "Please fill require fields");
-//        }
-
-    }//GEN-LAST:event_jButtoSaveActionPerformed
-
-    private void jButtonClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClear1ActionPerformed
-        // TODO add your handling code here:
-        jTextFieldCompanyName.setText("");
-        this.jTextFieldCompanyContact.setText("");
-        this.jTextFieldCompanyAddress.setText("");
-        this.jTextFieldCompanyDealerName.setText("");
-
-
-    }//GEN-LAST:event_jButtonClear1ActionPerformed
-
-    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-        int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-
-        String company_name = this.jTextFieldCompanyName.getText();
-        String company_contact = this.jTextFieldCompanyContact.getText();
-        String company_address = this.jTextFieldCompanyAddress.getText();
-        String dealer_name = this.jTextFieldCompanyDealerName.getText();
-
-        if (company_name.equals("") || company_contact.equals("")
-                || company_address.equals("") || dealer_name.equals("")) {
-
-            JOptionPane.showMessageDialog(this, "Empty Fields are not allowed");
-        } else {
-
-            companyDao.modifyCompany(new CompanyBeans(company_id, company_name, company_contact, company_address, dealer_name, 1));
-            showInTable();
-            jButtonUpdate.setEnabled(false);
-            jButtoSave.setEnabled(true);
-            jButtonClear1.setEnabled(true);
-
-            jTextFieldCompanyName.setText("");
-            this.jTextFieldCompanyContact.setText("");
-            this.jTextFieldCompanyAddress.setText("");
-            this.jTextFieldCompanyDealerName.setText("");
-            jButtonDelete.setEnabled(false);
-        }
-
-//        String customer_name = this.jTextFieldCustomername.getText();
-//        String cnic = this.jTextFieldCompanyContact.getText();
-//        String contact = this.jTextFieldCompanyAddress.getText();
-//        String address = this.jTextFieldCompanyDealerName.getText();
-//        if (!(customer_name.equals("") || cnic.equals("") || contact.equals("") || address.equals(""))) {
-//
-//            customerDao.modifyCustomers(new CustomerBeans(customer_id, customer_name, contact, cnic, address, CurrentDate.getCurrentDate()));
-//            JOptionPane.showMessageDialog(this, customer_name + " records updated succesfully ", "Update", JOptionPane.PLAIN_MESSAGE);
-//            this.jTextFieldCompanyDealerName.setText("");
-//            this.jTextFieldCustomername.setText("");
-//            this.jTextFieldCompanyContact.setText("");
-//            this.jTextFieldCompanyAddress.setText("");
-//            this.jButtonUpdate.setEnabled(false);
-//            this.jButtonDelete.setEnabled(false);
-//            this.jButtoSave.setEnabled(true);
-//
-//            showInTable();
-//        } else {
-//            new playAudio().playErrorSound();
-//            JOptionPane.showMessageDialog(rootPane, "Please fill require fields");
-//        }
-    }//GEN-LAST:event_jButtonUpdateActionPerformed
-
-    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
-        // TODO add your handling code here:
-
-        int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-
-        String company_name = this.jTextFieldCompanyName.getText();
-        String company_contact = this.jTextFieldCompanyContact.getText();
-        String company_address = this.jTextFieldCompanyAddress.getText();
-        String dealer_name = this.jTextFieldCompanyDealerName.getText();
-
-        companyDao.removeCompany(new CompanyBeans(company_id, company_name, company_contact, company_address, dealer_name, 1));
-        showInTable();
-        jButtonUpdate.setEnabled(false);
-        jButtoSave.setEnabled(true);
-        jButtonClear1.setEnabled(true);
-        jButtonDelete.setEnabled(false);
-        jTextFieldCompanyName.setText("");
-        this.jTextFieldCompanyContact.setText("");
-        this.jTextFieldCompanyAddress.setText("");
-        this.jTextFieldCompanyDealerName.setText("");
-
-//        int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-//        String cust_name = customerDao.getCustomerById(customer_id).getCustomer_name();
-//
-//        if (customerDao.removeCustomer(new CustomerBeans(customer_id, "", "", "", "", "")) >= 0) {
-//            JOptionPane.showMessageDialog(this, cust_name + " deleted succesfully ", "deleted", JOptionPane.OK_OPTION);
-//            this.jTextFieldCompanyDealerName.setText("");
-//            this.jTextFieldCustomername.setText("");
-//            this.jTextFieldCompanyContact.setText("");
-//            this.jTextFieldCompanyAddress.setText("");
-//            this.jButtonUpdate.setEnabled(false);
-//            this.jButtonDelete.setEnabled(false);
-//            this.jButtoSave.setEnabled(true);
-//            showInTable();
-//        }
-    }//GEN-LAST:event_jButtonDeleteActionPerformed
-
-    private void jTableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseClicked
-
-//        CustomerBeans customer = customerDao.getCustomerById(customer_id);
-//        this.jTextFieldCompanyDealerName.setText(customer.getAddress());
-//        this.jTextFieldCustomername.setText(customer.getCustomer_name());
-//        this.jTextFieldCompanyContact.setText(customer.getCnic());
-//        this.jTextFieldCompanyAddress.setText(customer.getContact());
-//        this.jButtonUpdate.setEnabled(true);
-//        this.jButtonDelete.setEnabled(true);
-//        this.jButtoSave.setEnabled(false);
-
-    }//GEN-LAST:event_jTableCustomerMouseClicked
-
-    private void jTextFieldSerachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSerachMouseClicked
-
-    }//GEN-LAST:event_jTextFieldSerachMouseClicked
-
-    private void jTextFieldSerachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerachActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSerachActionPerformed
-
-    private void jTextFieldSerachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyPressed
-
-    }//GEN-LAST:event_jTextFieldSerachKeyPressed
-
-    private void jTextFieldSerachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerachKeyReleased
-        // TODO add your handling code here:
-        String searchData = this.jTextFieldSerach.getText();
-//        rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchData));
-
-    }//GEN-LAST:event_jTextFieldSerachKeyReleased
-
-    private void jTableCustomerMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCustomerMouseReleased
-        CompanyBeans companyBeans = null;
-
-        try {
-
-            int company_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
-            System.out.println("" + company_id);
-            companyBeans = companyDao.getCompanyById(company_id);
-            System.out.println("" + companyBeans.getCompany_name());
-        } catch (Exception e) {
-            System.out.println("" + e.getMessage());
-        }
-//        
-        jTextFieldCompanyName.setText("" + companyBeans.getCompany_name());
-        this.jTextFieldCompanyContact.setText("" + companyBeans.getCompany_contact());
-        this.jTextFieldCompanyAddress.setText("" + companyBeans.getCompany_address());
-        this.jTextFieldCompanyDealerName.setText("" + companyBeans.getDealer_name());
-        this.jButtonUpdate.setEnabled(true);
-        this.jButtonDelete.setEnabled(true);
-        jButtoSave.setEnabled(false);
-        jButtonClear1.setEnabled(false);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableCustomerMouseReleased
 
     /**
      * @param args the command line arguments
@@ -664,11 +281,13 @@ public class CompanyForm extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClear1;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonUpdate;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableCustomer;
     private javax.swing.JTextField jTextFieldCompanyAddress;

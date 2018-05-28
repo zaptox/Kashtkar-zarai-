@@ -72,6 +72,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin6.setForeground(new java.awt.Color(255, 255, 255));
         jButtonLogin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/user.png"))); // NOI18N
         jButtonLogin6.setText("Customer Records");
+        jButtonLogin6.setFocusPainted(false);
         jButtonLogin6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogin6ActionPerformed(evt);
@@ -190,6 +191,7 @@ public class HomePage extends javax.swing.JFrame {
     private void jButtonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsersActionPerformed
         // TODO add your handling code here:
         new UserPage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButtonUsersActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
