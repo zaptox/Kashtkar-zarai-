@@ -136,7 +136,7 @@ public class CustomerDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sr #", "Sale Detail Id ", "Product Name", "Quantity", "Price (Rs)", "Company Name", "UOM", "Sale Date"
+                "Sr #", "Sale Detail Id ", "Product Name", "Quantity", "Price (Rs)", "Company Name", "Packsize", "Sale Date"
             }
         ) {
             Class[] types = new Class [] {
@@ -535,7 +535,7 @@ public class CustomerDetails extends javax.swing.JFrame {
             V.add(salesDetails.getQuantity());
             V.add(salesDetails.getPrice());
             V.add(salesDetails.getCompany_name());
-            V.add(salesDetails.getUom());
+            V.add(salesDetails.getPacketsize()+salesDetails.getUom());
             V.add(salesDetails.getSale_date());
 
             tableModelCustomerSaleDetail.addRow(V);

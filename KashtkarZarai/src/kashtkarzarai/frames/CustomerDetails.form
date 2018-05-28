@@ -78,7 +78,7 @@
                     <Column editable="false" title="Quantity" type="java.lang.String"/>
                     <Column editable="false" title="Price (Rs)" type="java.lang.String"/>
                     <Column editable="false" title="Company Name" type="java.lang.String"/>
-                    <Column editable="false" title="UOM" type="java.lang.String"/>
+                    <Column editable="false" title="Packsize" type="java.lang.String"/>
                     <Column editable="false" title="Sale Date" type="java.lang.String"/>
                   </Table>
                 </Property>
