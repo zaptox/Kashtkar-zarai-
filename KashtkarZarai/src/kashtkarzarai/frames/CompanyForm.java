@@ -215,6 +215,11 @@ public class CompanyForm extends javax.swing.JFrame {
         jTableCustomer.setGridColor(new java.awt.Color(0, 0, 51));
         jTableCustomer.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jTableCustomer.setSelectionForeground(new java.awt.Color(0, 240, 0));
+        jTableCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTableCustomerMouseReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableCustomer);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 980, 510));

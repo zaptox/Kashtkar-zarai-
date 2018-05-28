@@ -310,6 +310,9 @@
                   <Color blue="0" green="f0" red="0" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableCustomerMouseReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

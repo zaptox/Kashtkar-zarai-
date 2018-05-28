@@ -31,7 +31,7 @@ public class SaleDaoImpl implements SaleDao {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, sale.getCustomer_id());
             ps.setString(2, sale.getDiscount_type());
-            ps.setInt(3, sale.getDiscount());
+            ps.setFloat(3, sale.getDiscount());
             ps.setDouble(4, sale.getTotal_bill());
 
             i = ps.executeUpdate();

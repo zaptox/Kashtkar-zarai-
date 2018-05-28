@@ -14,13 +14,13 @@ public class SaleBeans {
     private int customer_id;
     private int active;
     private String discount_type;
-    private int discount;
+    private float discount;
     private double total_bill;
 
     public SaleBeans() {
     }
 
-    public SaleBeans(int sale_id, int customer_id, int active, String discount_type, int discount, double total_bill) {
+    public SaleBeans(int sale_id, int customer_id, int active, String discount_type, float discount, double total_bill) {
         this.sale_id = sale_id;
         this.customer_id = customer_id;
         this.active = active;
@@ -69,11 +69,11 @@ public class SaleBeans {
         this.discount_type = discount_type;
     }
 
-    public int getDiscount() {
+    public float getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(float discount) {
         this.discount = discount;
     }
     
