@@ -283,11 +283,11 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="0">
                     <Column editable="false" title="Sr #" type="java.lang.String"/>
-                    <Column editable="false" title="Company_Id" type="java.lang.String"/>
-                    <Column editable="false" title="Company_name" type="java.lang.String"/>
-                    <Column editable="false" title="Company_contact" type="java.lang.String"/>
-                    <Column editable="false" title="Company_address" type="java.lang.String"/>
-                    <Column editable="false" title="Dealer_name" type="java.lang.String"/>
+                    <Column editable="false" title="Company Id" type="java.lang.String"/>
+                    <Column editable="false" title="Company Name" type="java.lang.String"/>
+                    <Column editable="false" title="Company Contact" type="java.lang.String"/>
+                    <Column editable="false" title="Company Address" type="java.lang.String"/>
+                    <Column editable="false" title="Dealer Name" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Products"/>

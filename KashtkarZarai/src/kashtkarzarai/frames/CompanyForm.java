@@ -182,7 +182,7 @@ public class CompanyForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sr #", "Company_Id", "Company_name", "Company_contact", "Company_address", "Dealer_name"
+                "Sr #", "Company Id", "Company Name", "Company Contact", "Company Address", "Dealer Name"
             }
         ) {
             Class[] types = new Class [] {
