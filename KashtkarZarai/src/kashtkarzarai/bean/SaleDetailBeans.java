@@ -24,8 +24,17 @@ public class SaleDetailBeans {
     private String customer_name;
     private String uom;
     private String p_name;
+    private int packetsize;
 
-    public SaleDetailBeans(int sale_detail_id, int quantity, String sale_date, double price, String company_name, String customer_name, String uom, String p_name) {
+    public int getPacketsize() {
+        return packetsize;
+    }
+
+    public void setPacketsize(int packetsize) {
+        this.packetsize = packetsize;
+    }
+
+    public SaleDetailBeans(int sale_detail_id,int packetsize, int quantity, String sale_date, double price, String company_name, String customer_name, String uom, String p_name) {
         this.sale_detail_id = sale_detail_id;
         this.quantity = quantity;
         this.sale_date = sale_date;
@@ -34,6 +43,7 @@ public class SaleDetailBeans {
         this.customer_name = customer_name;
         this.uom = uom;
         this.p_name = p_name;
+        this.packetsize=packetsize;
     }
 
  
