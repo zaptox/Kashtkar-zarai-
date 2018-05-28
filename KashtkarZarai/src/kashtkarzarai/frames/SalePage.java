@@ -676,87 +676,15 @@ public class SalePage extends javax.swing.JFrame {
 
         }
         float total_price = Float.parseFloat(totalField.getText().toString());
-
-//        new DebtDetailJDialog(this, true,cust_id,customerDao.getCustomerById(cust_id).getCustomer_name()).setVisible(true);
-//        new CashNowLaterDialog(this, true).setVisible(true);
-//        try{
-////            ArrayList numbers = obGlobal.getOrderNumbers();
-//            boolean new_number = false;
-//            int number = (int) ((Math.random() * 1000) + 1);
-//
-//            while (!new_number) {
-//
-//                for (Object o: numbers) {
-//                    if (number == (int) o) {
-//                        number = (int) ((Math.random() * 1000) + 1);
-//                        new_number = false;
-//                        break;
-//                    } else {
-//                        new_number = true;
-//
-//                    }
-//
-//                }
-//
-//            }
-//        if (customer_id != -1) {
-//            String discount_type = jComboBox1.getSelectedItem().toString();
-//
-//            discount = 0;
-//            try {
-//                discount = Integer.parseInt(discountField.getText().toString());
-//            } catch (Exception e) {
-//                discount = 0;
-//            }
-//
-//            saleDao.saveSale(new SaleBeans(1, customer_id, 1, discount_type, (int) discount, total_price));
-//        } else {
-//            String discount_type = jComboBox1.getSelectedItem().toString();
-//
-//            discount = 0;
-//            try {
-//                discount = Integer.parseInt(discountField.getText().toString());
-//            } catch (Exception e) {
-//                discount = 0;
-//            }
-//            saleDao.saveSale(new SaleBeans(1, 0, 1, discount_type, (int) discount, total_price));
-//
-////            saleDao.(new Order(0, date.toString(), customer_id, number,
-////                    1, 1, null, 1,
-////                    null, discount_id, discount, total_price));
-//        }
-////
-//        for (ProductBeans p : orderedProductList) {
-//            int quantity = p.getQuantity();
-//            int product_id = p.getP_id();
-//            productDao.updatequantity(quantity, product_id);
-//
-//            if (sale_customer) {
-//                int sale_id = saleDao.getSaleId();
-//                System.out.println("sale_id" + sale_id);
-//                System.out.println("customer_id " + customer_id);
-//                saleDetailDao.saveSaleDetails(new SaleDetailBeans(1, sale_id, customer_id, product_id, quantity, p.getCompany_id(), p.getUom(), date + "", p.getCost()));
-//            }
-////            int order_id=obGlobal.getOrderId(number);
-////            if(order_id!=-1){
-////
-////                obGlobal.insertOrderDetails(new OrderDetails(1, order_id,
-////                    product_id, quantity, 1, 1, null, 1, null));
-////        }
-////        else{
-////            JOptionPane.showMessageDialog(this, "order_id  =-1");
-////        }
-//        }
-//        }
-//        catch(Exception e){
-//            JOptionPane.showMessageDialog(this, ""+e.getMessage());
-//
-//        }
-        //        System.out.println(dtf.format(localDate)); //2016/11/16
-        //        System.out.println("");
+        
         String discount_type = jComboBox1.getSelectedItem().toString();
         Double total_priceGot = Double.parseDouble(totalField.getText().toString());
-        discount = Integer.parseInt(discountField.getText().toString());
+        try{
+            discount = Integer.parseInt(discountField.getText().toString());
+        }
+        catch(Exception e){
+        discount=0;
+        }
 
         new CashNowLaterDialog(this, true, new PaymentDoneBeans(date + "", discount,
                 discount_type,

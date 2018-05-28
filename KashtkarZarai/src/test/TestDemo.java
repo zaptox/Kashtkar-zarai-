@@ -22,7 +22,7 @@ public class TestDemo {
     public int saveCustomer(int num) {
      
         int i = 0;
-        String query = "INSERT INTO `kashtkarzarai`.`company` (`company_id`, `company_name`, `company_contact`, `company_address`, `dealer_name`) VALUES (NULL, 'Seed Fertilizer"+num+"', '030303003030', 'rahem yar khan', 'wajahat');  ";
+        String query = "INSERT INTO `kashtkarzarai`.`sale_detail` (`sale_id`, `customer_id`, `product_id`, `quantity`, `company_id`, `uom_id`, `sale_date`, `price`) VALUES ('23', '1', '2', '1', '1', '1', '2018-05-25', '100');";
         try {
                 Statement statement = con.createStatement();
             

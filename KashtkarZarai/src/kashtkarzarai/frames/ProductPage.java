@@ -584,6 +584,10 @@ public class ProductPage extends javax.swing.JFrame {
 
     private void jButtonClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClear1ActionPerformed
         // TODO add your handling code here:
+        this.jTextFieldCost.setText("");
+        this.jTextFieldPack.setText("");
+        this.jTextFieldProductname.setText("");
+        this.jTextFieldQuantity.setText("");
     }//GEN-LAST:event_jButtonClear1ActionPerformed
 
     private void jComboBox1_UOMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_UOMActionPerformed
