@@ -210,8 +210,8 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
         double pay_now=Double.parseDouble(payNowField.getText().toString());
         double pay_later=Double.parseDouble(payLaterField.getText().toString());
         
-        customerDao.getCustomerDebtByCustomerId(ob.getCustomer_id());
-        customerDao.modifyCustomerDebt(ob.getCustomer_id(), pay_later);
+       double puranadebt =customerDao.getCustomerDebtByCustomerId(ob.getCustomer_id());
+        customerDao.modifyCustomerDebt(ob.getCustomer_id(), pay_later+puranadebt);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
