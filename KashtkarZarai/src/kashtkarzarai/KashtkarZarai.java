@@ -36,10 +36,10 @@ public class KashtkarZarai {
             java.util.logging.Logger.getLogger(KashtkarZarai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
          DbConnection.load();
-     //    new Login().setVisible(true);
-     for (int i =0 ; i<4000 ; i++){
-      new TestDemo().saveCustomer(i);
-      }
+         new Login().setVisible(true);
+     //for (int i =0 ; i<4000 ; i++){
+      //new TestDemo().saveCustomer(i);
+      //}
         
     }
     
