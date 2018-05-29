@@ -23,8 +23,8 @@
                     <name>disabledContentBidiFormatStr</name>
                 </ex-property>
             </list-property>
-            <property name="odaDriverClass">com.mysql.jdbc.NonRegisteringDriver</property>
-            <property name="odaURL">jdbc:mysql://localhost/kashtkarzarai</property>
+            <property name="odaDriverClass">org.sqlite.JDBC</property>
+            <property name="odaURL">jdbc:sqlite:KashtkarSQLITE.sql</property>
             <property name="odaUser">root</property>
         </oda-data-source>
     </data-sources>
@@ -35,54 +35,63 @@
                     <property name="columnName">sale_detail_id</property>
                     <property name="analysis">measure</property>
                     <text-property name="displayName">sale_detail_id</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">sale_detail_id</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">p_name</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">p_name</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">p_name</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">customer_name</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">customer_name</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">customer_name</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">quantity</property>
                     <property name="analysis">measure</property>
                     <text-property name="displayName">quantity</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">quantity</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">company_name</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">company_name</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">company_name</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">price</property>
                     <property name="analysis">measure</property>
                     <text-property name="displayName">price</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">price</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">uom</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">uom</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">uom</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">packsize</property>
                     <property name="analysis">measure</property>
                     <text-property name="displayName">packsize</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">packsize</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">sale_date</property>
                     <property name="analysis">dimension</property>
                     <text-property name="displayName">sale_date</text-property>
+                    <property name="onColumnLayout">false</property>
                     <text-property name="heading">sale_date</text-property>
                 </structure>
             </list-property>
@@ -207,7 +216,7 @@ cp.`company_name`,s.`price`,u.`uom`,p.`packsize`,s.`sale_date` FROM sale_detail 
 INNER JOIN customer c ON s.`customer_id`=c.`customer_id`
 INNER JOIN product p ON s.`product_id`=p.`p_id`
 INNER JOIN company cp ON s.`company_id`=cp.`company_id`
-INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id`  WHERE sale_date BETWEEN   DATE_ADD(CURDATE(), INTERVAL -1 MONTH) AND CURDATE() ORDER BY sale_detail_id DESC
+INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id`  WHERE sale_date between date('now','-1 month') and date('now')
 ]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
