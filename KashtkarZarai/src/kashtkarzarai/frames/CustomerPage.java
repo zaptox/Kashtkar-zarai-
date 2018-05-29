@@ -107,6 +107,7 @@ public class CustomerPage extends javax.swing.JFrame {
         jButtonUpdate = new javax.swing.JButton();
         jButtonBack = new javax.swing.JButton();
         jButtonClear1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -215,9 +216,9 @@ public class CustomerPage extends javax.swing.JFrame {
         jPanel1.add(jTextFieldCustomername, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 260, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 260, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel4.setText("CUSTOMER NAME*");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 170, -1));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setText("CUSTOMERS Data");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 230, -1));
 
         jTextFieldCustomerCnic.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCustomerCnic.setBorder(null);
@@ -349,6 +350,10 @@ public class CustomerPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 240, 40));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setText("CUSTOMER NAME*");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 170, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 590));
 
@@ -540,6 +545,16 @@ public class CustomerPage extends javax.swing.JFrame {
 
     private void jButtonClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClear1ActionPerformed
         // TODO add your handling code here:
+        this.jTextFieldCustomerAddress.setText("");
+        this.jTextFieldCustomerCnic.setText("");
+        this.jTextFieldSerach.setText("");
+        this.jTextFieldCustomername.setText("");
+        this.jTextFieldCustomerContact.setText("");
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jButtonClear1ActionPerformed
 
     /**
@@ -580,11 +595,11 @@ public class CustomerPage extends javax.swing.JFrame {
 
     public void showInTable() {
         tableModelCustomer.setRowCount(0);
-
+int sr=1;
         customers_list = customerDao.getAllCustomers();
         for (CustomerBeans customer : customers_list) {
             Vector V = new Vector();
-            V.add(customers_list.size());
+            V.add(sr++);
             V.add(customer.getCustomer_id());
             V.add(customer.getCustomer_name());
             V.add(customer.getCnic());
@@ -608,6 +623,7 @@ public class CustomerPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;

@@ -118,9 +118,8 @@ public class CompanyDaoImpl implements CompanyDao {
     public CompanyBeans getCompanyById(int company_id) {
         CompanyBeans company = null;
         try {
-            String query = "SELECT * FROM company WHERE active=1 AND company_id= ?";
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, company_id);
+            String query = "SELECT * FROM company WHERE active=1 AND company_id= "+company_id;
+            Statement ps = con.createStatement();
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
                 int company_id1 = rs.getInt("company_id");

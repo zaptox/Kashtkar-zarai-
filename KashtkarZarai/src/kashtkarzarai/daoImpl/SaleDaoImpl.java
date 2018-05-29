@@ -8,6 +8,7 @@ package kashtkarzarai.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.SaleBeans;
@@ -31,7 +32,7 @@ public class SaleDaoImpl implements SaleDao {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, sale.getCustomer_id());
             ps.setString(2, sale.getDiscount_type());
-            ps.setInt(3, sale.getDiscount());
+            ps.setFloat(3, sale.getDiscount());
             ps.setDouble(4, sale.getTotal_bill());
 
             i = ps.executeUpdate();
@@ -64,7 +65,7 @@ public class SaleDaoImpl implements SaleDao {
         int sale_id=-1;
         try {
             String query = "SELECT sale_id FROM sale ORDER BY sale_id DESC LIMIT 1;";
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {

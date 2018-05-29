@@ -84,7 +84,7 @@ public class UomDaoImpl implements UomDao {
       String uom ="";
         try {
             String query = "SELECT * FROM uom_table WHERE uom_id="+id;
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {

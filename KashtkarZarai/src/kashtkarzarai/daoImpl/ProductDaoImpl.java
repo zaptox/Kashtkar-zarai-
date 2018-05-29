@@ -129,7 +129,7 @@ public class ProductDaoImpl implements ProductDao {
 
         try {
             String query = "SELECT * FROM product WHERE active=1 and p_id=" + pro_id;
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
