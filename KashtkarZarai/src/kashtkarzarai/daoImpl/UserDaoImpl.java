@@ -13,6 +13,7 @@ import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.UserBeans;
 import kashtkarzarai.dao.UserDao;
 import kashtkarzarai.db.DbConnection;
+import kashtkarzarai.db.SqliteDBCon;
 
 /**
  *
@@ -20,7 +21,7 @@ import kashtkarzarai.db.DbConnection;
  */
 public class UserDaoImpl implements UserDao {
 
-    public Connection con = DbConnection.conn;
+    public Connection con = SqliteDBCon.LoadDb();
 
     @Override
     public boolean userLogin(UserBeans e) {

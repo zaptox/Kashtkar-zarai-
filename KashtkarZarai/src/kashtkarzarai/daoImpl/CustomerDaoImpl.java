@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.dao.CustomerDao;
 import kashtkarzarai.db.DbConnection;
+import kashtkarzarai.db.SqliteDBCon;
 
 /**
  *
@@ -20,7 +21,7 @@ import kashtkarzarai.db.DbConnection;
  */
 public class CustomerDaoImpl implements CustomerDao {
 
-    private static Connection con = DbConnection.conn;
+    public Connection con = SqliteDBCon.LoadDb();
 
     @Override
     public int saveCustomer(CustomerBeans customer) {
@@ -49,7 +50,7 @@ public class CustomerDaoImpl implements CustomerDao {
         ArrayList<CustomerBeans> customers_list = new ArrayList<>();
         try {
             String query = "SELECT * FROM customer WHERE active=1";
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
@@ -117,7 +118,7 @@ public class CustomerDaoImpl implements CustomerDao {
         CustomerBeans customer = null;
         try {
             String query = "SELECT * FROM customer WHERE active=1 and customer_id=" + cust_id;
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
@@ -146,7 +147,7 @@ public class CustomerDaoImpl implements CustomerDao {
         Double debt = 0.0;
         try {
             String query = "SELECT debt FROM customer WHERE customer_id=" + cust_id;
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {

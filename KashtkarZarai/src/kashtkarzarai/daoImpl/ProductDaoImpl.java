@@ -14,6 +14,7 @@ import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.ProductBeans;
 import kashtkarzarai.dao.ProductDao;
 import kashtkarzarai.db.DbConnection;
+import kashtkarzarai.db.SqliteDBCon;
 
 /**
  *
@@ -21,7 +22,7 @@ import kashtkarzarai.db.DbConnection;
  */
 public class ProductDaoImpl implements ProductDao {
 
-    public static Connection con = DbConnection.conn;
+    public Connection con = SqliteDBCon.LoadDb();
 
     @Override
     public int saveProduct(ProductBeans productBeans) {
@@ -53,7 +54,7 @@ public class ProductDaoImpl implements ProductDao {
         ArrayList<ProductBeans> productlist = new ArrayList<>();
         try {
             String query = "SELECT * FROM product WHERE active=1";
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
@@ -158,7 +159,7 @@ public class ProductDaoImpl implements ProductDao {
         ArrayList<ProductBeans> productlist = new ArrayList<>();
         try {
             String query = "SELECT * FROM product WHERE active=1 and company_id="+com_id;
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {

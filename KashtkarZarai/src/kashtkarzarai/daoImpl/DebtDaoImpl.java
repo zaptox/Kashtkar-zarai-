@@ -8,25 +8,27 @@ package kashtkarzarai.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.DebtDetailBeans;
 import kashtkarzarai.dao.DebtDetailDao;
 import kashtkarzarai.db.DbConnection;
+import kashtkarzarai.db.SqliteDBCon;
 
 /**
  *
  * @author Vksoni
  */
 public class DebtDaoImpl implements DebtDetailDao{
-    private static Connection con = DbConnection.conn;
+    public Connection con = SqliteDBCon.LoadDb();
 
     @Override
     public ArrayList<DebtDetailBeans> getAllDetailByCustomerId(int customer_id) {
     ArrayList<DebtDetailBeans> debt_detail_list = new ArrayList<>();
         try {
             String query = "SELECT * FROM debt_detail WHERE customer_id="+customer_id+" ORDER BY debt_detail_id DESC";
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
                 int debt_detail_id=rs.getInt("debt_detail_id");

@@ -7,6 +7,7 @@ package kashtkarzarai;
 
 import javax.swing.UIManager;
 import kashtkarzarai.db.DbConnection;
+import kashtkarzarai.db.SqliteDBCon;
 import kashtkarzarai.frames.Login;
 
 /**
@@ -34,8 +35,13 @@ public class KashtkarZarai {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(KashtkarZarai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-         DbConnection.load();
-         new Login().setVisible(true);
+         SqliteDBCon.LoadDb();
+         
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
     }
     
 }

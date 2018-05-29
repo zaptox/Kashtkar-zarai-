@@ -6,6 +6,13 @@
 package kashtkarzarai.frames;
 
 import kashtkarzarai.dialog.SetingJDialog;
+import org.eclipse.birt.core.framework.Platform;
+import org.eclipse.birt.report.engine.api.EngineConfig;
+import org.eclipse.birt.report.engine.api.HTMLRenderOption;
+import org.eclipse.birt.report.engine.api.IReportEngine;
+import org.eclipse.birt.report.engine.api.IReportEngineFactory;
+import org.eclipse.birt.report.engine.api.IReportRunnable;
+import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
 
 /**
  *
@@ -39,6 +46,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonUsers = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,6 +150,17 @@ public class HomePage extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/logo1.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 130));
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/report.png"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, 60, 70));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
@@ -199,6 +218,11 @@ public class HomePage extends javax.swing.JFrame {
         new SetingJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        genReport();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -233,9 +257,54 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
     }
+public void genReport() {
 
+        IReportEngine engine = null;
+        EngineConfig config = null;
+
+        try {
+
+            config = new EngineConfig();
+            //config.setLogConfig("c:/temp/test", Level.FINEST);
+            Platform.startup(config);
+            IReportEngineFactory factory = (IReportEngineFactory) Platform
+                    .createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
+            engine = factory.createReportEngine(config);
+
+            IReportRunnable design = null;
+            //Open the report design
+            String rpath = "monthlySalesReport.rptdesign";
+
+            design = engine.openReportDesign(rpath);
+
+            IRunAndRenderTask task = engine.createRunAndRenderTask(design);
+            //task.setParameterValue("Top Count", (new Integer(5)));
+            //task.validateParameters();
+            // int order=DbManager.getMaxOrder();
+            HTMLRenderOption options = new HTMLRenderOption();
+            options.setOutputFileName("C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/Report" + 1+ ".pdf");
+            options.setOutputFormat("pdf");
+            //options.setHtmlRtLFlag(false);
+            //options.setEmbeddable(false);
+            //options.setImageDirectory("C:\\test\\images");
+
+            //PDFRenderOption options = new PDFRenderOption();
+            //options.setOutputFileName("c:/temp/test.pdf");
+            //options.setOutputFormat("pdf");
+            task.setRenderOption(options);
+            task.run();
+            task.close();
+            engine.destroy();
+        } catch (Exception ex) {
+            System.out.println("hello");
+            System.out.println(ex.getMessage());
+        } finally {
+            Platform.shutdown();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonCompany;
     private javax.swing.JButton jButtonLogin10;
     private javax.swing.JButton jButtonLogin6;

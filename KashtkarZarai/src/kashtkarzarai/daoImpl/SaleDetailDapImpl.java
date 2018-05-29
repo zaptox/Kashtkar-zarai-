@@ -8,13 +8,13 @@ package kashtkarzarai.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import kashtkarzarai.bean.ProductBeans;
 import kashtkarzarai.bean.SaleDetailBeans;
 import kashtkarzarai.dao.SaleDetailsDao;
-import static kashtkarzarai.daoImpl.ProductDaoImpl.con;
-import static kashtkarzarai.daoImpl.SaleDaoImpl.con;
 import kashtkarzarai.db.DbConnection;
+import kashtkarzarai.db.SqliteDBCon;
 
 /**
  *
@@ -22,7 +22,7 @@ import kashtkarzarai.db.DbConnection;
  */
 public class SaleDetailDapImpl implements SaleDetailsDao {
 
-    public static Connection con = DbConnection.conn;
+    public Connection con = SqliteDBCon.LoadDb();
 
     @Override
     public int saveSaleDetails(SaleDetailBeans detail) {
@@ -55,7 +55,7 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
         ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
         try {
             String query = "SELECT s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,cp.`company_name`,s.`price`, u.`uom`,s.`sale_date`,p.`packsize` FROM sale_detail s, product p, customer c ,company cp , uom_table u WHERE s.`company_id`=c.`customer_id` AND s.`product_id`=p.`p_id` AND s.`company_id`=cp.`company_id` AND s.`uom_id`=u.`uom_id` AND s.customer_id=" + customer_id + " ORDER BY sale_detail_id DESC";
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {

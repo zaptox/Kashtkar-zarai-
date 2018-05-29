@@ -8,10 +8,12 @@ package kashtkarzarai.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import kashtkarzarai.bean.UOMBeans;
 import kashtkarzarai.dao.UomDao;
 import kashtkarzarai.db.DbConnection;
+import kashtkarzarai.db.SqliteDBCon;
 
 /**
  *
@@ -19,14 +21,14 @@ import kashtkarzarai.db.DbConnection;
  */
 public class UomDaoImpl implements UomDao {
 
-    public static Connection con = DbConnection.conn;
+    public Connection con = SqliteDBCon.LoadDb();
 
     @Override
     public ArrayList<UOMBeans> getAllUom() {
         ArrayList<UOMBeans> uom_list = new ArrayList<>();
         try {
             String query = "SELECT * FROM uom_table";
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {

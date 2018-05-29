@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import kashtkarzarai.bean.CustomerBeans;
 import kashtkarzarai.bean.SaleBeans;
 import kashtkarzarai.dao.SaleDao;
-import static kashtkarzarai.daoImpl.ProductDaoImpl.con;
 import kashtkarzarai.db.DbConnection;
+import kashtkarzarai.db.SqliteDBCon;
 
 /**
  *
@@ -21,7 +21,7 @@ import kashtkarzarai.db.DbConnection;
  */
 public class SaleDaoImpl implements SaleDao {
 
-    public static Connection con = DbConnection.conn;
+    public Connection con = SqliteDBCon.LoadDb();
 
     @Override
     public int saveSale(SaleBeans sale) {

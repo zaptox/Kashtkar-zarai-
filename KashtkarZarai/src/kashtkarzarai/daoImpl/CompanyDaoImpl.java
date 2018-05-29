@@ -8,11 +8,11 @@ package kashtkarzarai.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import kashtkarzarai.bean.CompanyBeans;
-import kashtkarzarai.bean.CustomerBeans;
-import kashtkarzarai.db.DbConnection;
 import kashtkarzarai.dao.CompanyDao;
+import kashtkarzarai.db.SqliteDBCon;
 
 /**
  *
@@ -20,14 +20,14 @@ import kashtkarzarai.dao.CompanyDao;
  */
 public class CompanyDaoImpl implements CompanyDao {
 
-    private static Connection con = DbConnection.conn;
+    public Connection con = SqliteDBCon.LoadDb();
 
     @Override
     public int saveCompany(CompanyBeans company) {
         int i = 0;
         String query = "INSERT INTO company (`company_name`, `company_contact`,"
                 + " `company_address`, `dealer_name`)"
-                + " VALUES (?, ?, ?, ?); ";
+                + " VALUES (?, ?, ?, ?) ";
 
         try {
             PreparedStatement ps = con.prepareStatement(query);
@@ -51,9 +51,8 @@ public class CompanyDaoImpl implements CompanyDao {
     public ArrayList<CompanyBeans> getAllCompanies() {
         ArrayList<CompanyBeans> company_list = new ArrayList<>();
         try {
-            String query = "SELECT * FROM company WHERE active=1;";
-            PreparedStatement ps = con.prepareStatement(query);
-
+            String query = "SELECT * FROM company WHERE active=1";
+            Statement ps = con.createStatement();
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
                 int company_id = rs.getInt("company_id");
@@ -78,7 +77,7 @@ public class CompanyDaoImpl implements CompanyDao {
     public int modifyCompany(CompanyBeans companyBeans) {
         int i = 0;
         String query = "UPDATE company SET `company_name` = ? , `company_contact` = ? ,"
-                + " `company_address` = ? , `dealer_name` = ? WHERE `company_id` = ?; ";
+                + " `company_address` = ? , `dealer_name` = ? WHERE `company_id` = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, companyBeans.getCompany_name());
@@ -100,7 +99,7 @@ public class CompanyDaoImpl implements CompanyDao {
     @Override
     public int removeCompany(CompanyBeans companyBeans) {
         int i = 0;
-        String query = "UPDATE company SET `active` = '0' WHERE `company_id` = ?;  ";
+        String query = "UPDATE company SET `active` = '0' WHERE `company_id` = ?  ";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, companyBeans.getCompany_id());
@@ -119,9 +118,9 @@ public class CompanyDaoImpl implements CompanyDao {
     public CompanyBeans getCompanyById(int company_id) {
         CompanyBeans company = null;
         try {
-            String query = "SELECT * FROM company WHERE active=1 AND company_id=" + company_id;
+            String query = "SELECT * FROM company WHERE active=1 AND company_id= ?";
             PreparedStatement ps = con.prepareStatement(query);
-
+            ps.setInt(1, company_id);
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
                 int company_id1 = rs.getInt("company_id");
@@ -145,7 +144,7 @@ public class CompanyDaoImpl implements CompanyDao {
       String name ="";
         try {
             String query = "SELECT * FROM company WHERE active=1 AND company_id="+company_id;
-            PreparedStatement ps = con.prepareStatement(query);
+            Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
             while (rs.next()) {
