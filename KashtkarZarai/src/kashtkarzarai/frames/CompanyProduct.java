@@ -198,6 +198,7 @@ public class CompanyProduct extends javax.swing.JFrame {
         // TODO add your handling code here:
         int com_id = Integer.parseInt("" + this.jTableCompany.getValueAt(this.jTableCompany.getSelectedRow(), 1));
         new ProductPage(com_id).setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_jTableCompanyMouseReleased
 

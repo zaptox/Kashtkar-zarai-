@@ -136,14 +136,14 @@ public class CustomerDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sr #", "Sale Detail Id ", "Product Name", "Quantity", "Price (Rs)", "Company Name", "Packsize", "Sale Date"
+                "Sale Detail Id ", "Product Name", "Quantity", "Price (Rs)", "Sale Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -166,7 +166,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableCustomerSaleDetail);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 940, 470));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 1000, 470));
         jPanel1.add(jSeparatorUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 240, -1));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -203,7 +203,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         jLabelCustomerName.setText("Customer name");
         jLabelCustomerName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
         jLabelCustomerName.setOpaque(true);
-        jPanel1.add(jLabelCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 430, 50));
+        jPanel1.add(jLabelCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 430, 50));
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -337,7 +337,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonUpdateMoney1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 230, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 570));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -529,13 +529,10 @@ public class CustomerDetails extends javax.swing.JFrame {
         sale_details_list = saleDeatail.getAllSaleDetailbyCustomerId(customer_id);
         for (SaleDetailBeans salesDetails : sale_details_list) {
             Vector V = new Vector();
-            V.add(counter++);
             V.add(salesDetails.getSale_detail_id());
-            V.add(salesDetails.getP_name());
+            V.add(salesDetails.getP_name()+" "+salesDetails.getPacketsize()+salesDetails.getUom());
             V.add(salesDetails.getQuantity());
             V.add(salesDetails.getPrice());
-            V.add(salesDetails.getCompany_name());
-            V.add(salesDetails.getPacketsize()+salesDetails.getUom());
             V.add(salesDetails.getSale_date());
 
             tableModelCustomerSaleDetail.addRow(V);

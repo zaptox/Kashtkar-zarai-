@@ -53,14 +53,14 @@ public class CustomerPage extends javax.swing.JFrame {
         showInTable();
 
     }
-
+boolean ref=false;
     public CustomerPage(int reference) {
         initComponents();
-
         customerDao = new CustomerDaoImpl();
         tableModelCustomer = (DefaultTableModel) this.jTableCustomer.getModel();
         rowSorter = new TableRowSorter<DefaultTableModel>(tableModelCustomer);
         this.jTableCustomer.setRowSorter(rowSorter);
+ref=true;
 
         JTableHeader header = this.jTableCustomer.getTableHeader();
         header.setBackground(new Color(0, 204, 0));
@@ -68,8 +68,8 @@ public class CustomerPage extends javax.swing.JFrame {
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
         this.jButtonUpdate.setEnabled(false);
         this.jButtonDelete.setEnabled(false);
-        this.registerButton.setEnabled(true);
-
+        this.registerButton.setEnabled(false);
+        
         showInTable();
 
     }
@@ -309,7 +309,7 @@ public class CustomerPage extends javax.swing.JFrame {
         registerButton.setBackground(new java.awt.Color(0, 204, 0));
         registerButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         registerButton.setForeground(new java.awt.Color(255, 255, 255));
-        registerButton.setText("Register");
+        registerButton.setText("Select Customer");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
@@ -379,6 +379,9 @@ public class CustomerPage extends javax.swing.JFrame {
         this.jTextFieldCustomerContact.setText(customer.getContact());
         this.jButtonUpdate.setEnabled(true);
         this.jButtonDelete.setEnabled(true);
+        if(ref){
+        this.registerButton.setEnabled(true);
+        }
         this.jButtoSave.setEnabled(false);
 
 
@@ -410,6 +413,7 @@ public class CustomerPage extends javax.swing.JFrame {
             this.jButtonUpdate.setEnabled(false);
             this.jButtonDelete.setEnabled(false);
             this.jButtoSave.setEnabled(true);
+            
             showInTable();
         }
 
@@ -498,7 +502,9 @@ public class CustomerPage extends javax.swing.JFrame {
 //        int c_id= this.
   int customer_id = Integer.parseInt("" + this.jTableCustomer.getValueAt(this.jTableCustomer.getSelectedRow(), 1));
         CustomerBeans customer = customerDao.getCustomerById(customer_id);
-      new SalePage(customer).setVisible(true);
+        this.dispose();
+        new SalePage(customer).setVisible(true);
+      
 
     }//GEN-LAST:event_registerButtonActionPerformed
 
@@ -537,9 +543,9 @@ public class CustomerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSerachKeyReleased
 
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        this.dispose();
 
         new HomePage().setVisible(true);
-        this.dispose();
 
     }//GEN-LAST:event_jButtonBackActionPerformed
 

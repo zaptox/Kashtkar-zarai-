@@ -63,6 +63,7 @@ public class Login extends javax.swing.JFrame {
         jButtonCancel = new javax.swing.JButton();
         jButtonLogin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -145,7 +146,14 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/logo1.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 120, 140));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 270));
+        jLabel5.setBackground(new java.awt.Color(0, 204, 0));
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 204, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Kashtkar Zarai Markaz Sinjhoro");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 270));
 
         pack();
         setLocationRelativeTo(null);
@@ -246,7 +254,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {String name =  this.jTextFieldUserna
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
         // TODO add your handling code here:
-        
+         this.dispose();
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     /**
@@ -299,6 +307,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {String name =  this.jTextFieldUserna
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JSeparator jSeparator1;

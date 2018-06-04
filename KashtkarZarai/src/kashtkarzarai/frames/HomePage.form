@@ -83,11 +83,11 @@
               <Color blue="0" green="cc" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Kashtkar Enterprises"/>
+            <Property name="text" type="java.lang.String" value="Kashtkar Zarai Markaz Sinjhoro"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="280" y="70" width="-1" height="-1"/>
+              <AbsoluteConstraints x="290" y="70" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

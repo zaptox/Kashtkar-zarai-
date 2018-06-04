@@ -72,8 +72,8 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 204, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Kashtkar Enterprises");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+        jLabel2.setText("Kashtkar Zarai Markaz Sinjhoro");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
 
         jButtonLogin6.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -220,6 +220,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        
         genReport();
     }//GEN-LAST:event_jButton3ActionPerformed
 
