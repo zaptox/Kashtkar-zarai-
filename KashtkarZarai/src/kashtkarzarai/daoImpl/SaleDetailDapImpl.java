@@ -54,7 +54,14 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
     public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id) {
         ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
         try {
-            String query = "SELECT  s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,cp.`company_name`,s.`price`,u.`uom`,p.`packsize`,s.`sale_date` FROM sale_detail s  INNER JOIN customer c ON s.`customer_id`=c.`customer_id`INNER JOIN product p ON s.`product_id`=p.`p_id`INNER JOIN company cp ON s.`company_id`=cp.`company_id`INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id`  WHERE s.customer_id="+customer_id+" order by s.sale_detail_id";
+            String query = "SELECT  s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,"
+                    + "cp.`company_name`,"
+                    + "s.`price`,u.`uom`,p.`packsize`,s.`sale_date` FROM sale_detail s  "
+                    + "INNER JOIN customer c ON "
+                    + "s.`customer_id`=c.`customer_id`INNER JOIN "
+                    + "product p ON s.`product_id`=p.`p_id`INNER JOIN company cp ON "
+                    + "s.`company_id`=cp.`company_id`INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id`  "
+                    + "WHERE s.customer_id="+customer_id+" order by s.sale_detail_id";
             Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
@@ -68,8 +75,9 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
                 int packetsize=rs.getInt("packsize");
                 String sale_date = rs.getString("sale_date");
                 double price = rs.getDouble("price");
-
-                sale_details_list.add(new SaleDetailBeans(sale_detail_id,packetsize ,quantity, sale_date, price, company_name, customer_name,uom,  p_name));
+                double paid=rs.getDouble("paid");
+                String reference=rs.getString("reference");
+                sale_details_list.add(new SaleDetailBeans(sale_detail_id,packetsize ,quantity, sale_date, price, company_name, customer_name,uom,  p_name,paid,reference));
 
             }
         } catch (Exception e) {

@@ -136,14 +136,14 @@ public class CustomerDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sale Detail Id ", "Product Name", "Quantity", "Price (Rs)", "Sale Date"
+                "Sale_Id ", "Product Name", "Quantity", "Price (Rs)", "Paid", "Remaining", "Reference", "Sale Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -165,8 +165,17 @@ public class CustomerDetails extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(jTableCustomerSaleDetail);
+        if (jTableCustomerSaleDetail.getColumnModel().getColumnCount() > 0) {
+            jTableCustomerSaleDetail.getColumnModel().getColumn(0).setPreferredWidth(5);
+            jTableCustomerSaleDetail.getColumnModel().getColumn(1).setPreferredWidth(170);
+            jTableCustomerSaleDetail.getColumnModel().getColumn(2).setPreferredWidth(5);
+            jTableCustomerSaleDetail.getColumnModel().getColumn(3).setPreferredWidth(20);
+            jTableCustomerSaleDetail.getColumnModel().getColumn(4).setPreferredWidth(20);
+            jTableCustomerSaleDetail.getColumnModel().getColumn(5).setPreferredWidth(20);
+            jTableCustomerSaleDetail.getColumnModel().getColumn(6).setPreferredWidth(30);
+        }
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 1000, 470));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 1080, 470));
         jPanel1.add(jSeparatorUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 240, -1));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -337,7 +346,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonUpdateMoney1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 230, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 570));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -533,6 +542,7 @@ public class CustomerDetails extends javax.swing.JFrame {
             V.add(salesDetails.getP_name()+" "+salesDetails.getPacketsize()+salesDetails.getUom());
             V.add(salesDetails.getQuantity());
             V.add(salesDetails.getPrice());
+//            V.add(salesDetails.)
             V.add(salesDetails.getSale_date());
 
             tableModelCustomerSaleDetail.addRow(V);

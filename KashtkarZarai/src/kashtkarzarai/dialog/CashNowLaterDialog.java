@@ -192,7 +192,7 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
                 
         if(i==0){
 
-        saleDao.saveSale(new SaleBeans(1, ob.getCustomer_id(), 1, ob.getDiscount_type(), ob.getDiscount(), ob.getTotal_price()));
+//        saleDao.saveSale(new SaleBeans(1, ob.getCustomer_id(), 1, ob.getDiscount_type(), ob.getDiscount(), ob.getTotal_price()));
 
         for (ProductBeans p : ob.getOrderedProductList()) {
             int quantity = p.getQuantity();

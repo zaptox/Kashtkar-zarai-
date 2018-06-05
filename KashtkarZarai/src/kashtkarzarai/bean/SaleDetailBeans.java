@@ -25,6 +25,8 @@ public class SaleDetailBeans {
     private String uom;
     private String p_name;
     private int packetsize;
+    private double paid;
+    private String reference;
 
     public int getPacketsize() {
         return packetsize;
@@ -34,7 +36,7 @@ public class SaleDetailBeans {
         this.packetsize = packetsize;
     }
 
-    public SaleDetailBeans(int sale_detail_id,int packetsize, int quantity, String sale_date, double price, String company_name, String customer_name, String uom, String p_name) {
+    public SaleDetailBeans(int sale_detail_id, int packetsize, int quantity, String sale_date, double price, String company_name, String customer_name, String uom, String p_name) {
         this.sale_detail_id = sale_detail_id;
         this.quantity = quantity;
         this.sale_date = sale_date;
@@ -43,10 +45,39 @@ public class SaleDetailBeans {
         this.customer_name = customer_name;
         this.uom = uom;
         this.p_name = p_name;
-        this.packetsize=packetsize;
+        this.packetsize = packetsize;
+    }
+    public SaleDetailBeans(int sale_detail_id, int packetsize, int quantity, String sale_date, double price, String company_name, String customer_name, String uom, String p_name, double paid, String reference) {
+        this.sale_detail_id = sale_detail_id;
+        this.quantity = quantity;
+        this.sale_date = sale_date;
+        this.price = price;
+        this.company_name = company_name;
+        this.customer_name = customer_name;
+        this.uom = uom;
+        this.p_name = p_name;
+        this.packetsize = packetsize;
+        this.paid=paid;
+        this.reference=reference;
     }
 
- 
+    public double getPaid() {
+        return paid;
+    }
+
+    public void setPaid(double paid) {
+        this.paid = paid;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+    
+    
 
     public SaleDetailBeans() {
     }
@@ -78,7 +109,8 @@ public class SaleDetailBeans {
     public void setSale_id(int sale_id) {
         this.sale_id = sale_id;
     }
-       public String getCompany_name() {
+
+    public String getCompany_name() {
         return company_name;
     }
 
@@ -109,7 +141,6 @@ public class SaleDetailBeans {
     public void setP_name(String p_name) {
         this.p_name = p_name;
     }
-    
 
     public int getCustomer_id() {
         return customer_id;

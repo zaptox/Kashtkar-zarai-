@@ -27,14 +27,15 @@ public class SaleDaoImpl implements SaleDao {
     @Override
     public int saveSale(SaleBeans sale) {
         int i = 0;
-        String query = "INSERT INTO sale (customer_id, discount_type, discount, total_bill) VALUES (?,?,?,?); ";
+        String query = "INSERT INTO sale (customer_id, discount_type, discount, total_bill,paid,reference) VALUES (?,?,?,?,?,?); ";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, sale.getCustomer_id());
             ps.setString(2, sale.getDiscount_type());
             ps.setFloat(3, sale.getDiscount());
             ps.setDouble(4, sale.getTotal_bill());
-
+            ps.setDouble(5, sale.getPaid());
+            ps.setString(6, sale.getReference());
             i = ps.executeUpdate();
 
         } catch (Exception e) {

@@ -13,6 +13,13 @@ import org.eclipse.birt.report.engine.api.IReportEngine;
 import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.birt.report.engine.api.IReportRunnable;
 import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
+//import org.eclipse.birt.core.framework.Platform;
+//import org.eclipse.birt.report.engine.api.EngineConfig;
+//import org.eclipse.birt.report.engine.api.HTMLRenderOption;
+//import org.eclipse.birt.report.engine.api.IReportEngine;
+//import org.eclipse.birt.report.engine.api.IReportEngineFactory;
+//import org.eclipse.birt.report.engine.api.IReportRunnable;
+//import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
 
 /**
  *

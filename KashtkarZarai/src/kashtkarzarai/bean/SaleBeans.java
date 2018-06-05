@@ -10,24 +10,47 @@ package kashtkarzarai.bean;
  * @author Vksoni
  */
 public class SaleBeans {
+
     private int sale_id;
     private int customer_id;
     private int active;
     private String discount_type;
     private float discount;
     private double total_bill;
+    private double paid;
+    private String reference;
 
     public SaleBeans() {
     }
 
-    public SaleBeans(int sale_id, int customer_id, int active, String discount_type, float discount, double total_bill) {
+    public SaleBeans(int sale_id, int customer_id, int active, String discount_type, float discount, double total_bill, double paid, String reference) {
         this.sale_id = sale_id;
         this.customer_id = customer_id;
         this.active = active;
         this.discount_type = discount_type;
         this.discount = discount;
         this.total_bill = total_bill;
+        this.paid = paid;
+        this.reference = reference;
     }
+
+    public double getPaid() {
+        return paid;
+    }
+
+    public void setPaid(double paid) {
+        this.paid = paid;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    
 
     public double getTotal_bill() {
         return total_bill;
@@ -76,5 +99,5 @@ public class SaleBeans {
     public void setDiscount(float discount) {
         this.discount = discount;
     }
-    
+
 }
