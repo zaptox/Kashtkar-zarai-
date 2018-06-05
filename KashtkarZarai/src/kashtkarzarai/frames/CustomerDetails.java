@@ -392,7 +392,7 @@ public class CustomerDetails extends javax.swing.JFrame {
 
     private void jButtonUpdateMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateMoneyActionPerformed
         // TODO add your handling code here:
-              try {
+        try {
             double debt = Double.parseDouble("" + this.jLabelCustomerDebt.getText());
             double addMoney = Double.parseDouble(this.jTextFieldUpdateMoney.getText());
             double newDebt = debt - addMoney;
@@ -492,7 +492,7 @@ public class CustomerDetails extends javax.swing.JFrame {
 
     private void jButtonUpdateMoney1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateMoney1ActionPerformed
         // TODO add your handling code here:
-                new DebtDetailJDialog(this, true,cust_id,customerDao.getCustomerById(cust_id).getCustomer_name()).setVisible(true);
+        new DebtDetailJDialog(this, true, cust_id, customerDao.getCustomerById(cust_id).getCustomer_name()).setVisible(true);
 
     }//GEN-LAST:event_jButtonUpdateMoney1ActionPerformed
 
@@ -539,10 +539,14 @@ public class CustomerDetails extends javax.swing.JFrame {
         for (SaleDetailBeans salesDetails : sale_details_list) {
             Vector V = new Vector();
             V.add(salesDetails.getSale_detail_id());
-            V.add(salesDetails.getP_name()+" "+salesDetails.getPacketsize()+salesDetails.getUom());
+            V.add(salesDetails.getP_name() + " " + salesDetails.getPacketsize() + salesDetails.getUom());
             V.add(salesDetails.getQuantity());
             V.add(salesDetails.getPrice());
 //            V.add(salesDetails.)
+            V.add(salesDetails.getPaid());
+            V.add(salesDetails.getPrice() - salesDetails.getPaid());
+            V.add(salesDetails.getReference());
+
             V.add(salesDetails.getSale_date());
 
             tableModelCustomerSaleDetail.addRow(V);

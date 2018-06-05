@@ -54,14 +54,14 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
     public ArrayList<SaleDetailBeans> getAllSaleDetailbyCustomerId(int customer_id) {
         ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
         try {
-            String query = "SELECT  s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,"
-                    + "cp.`company_name`,"
-                    + "s.`price`,u.`uom`,p.`packsize`,s.`sale_date` FROM sale_detail s  "
-                    + "INNER JOIN customer c ON "
-                    + "s.`customer_id`=c.`customer_id`INNER JOIN "
-                    + "product p ON s.`product_id`=p.`p_id`INNER JOIN company cp ON "
-                    + "s.`company_id`=cp.`company_id`INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id`  "
-                    + "WHERE s.customer_id="+customer_id+" order by s.sale_detail_id";
+            String query = "SELECT  s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,\n" +
+"                    cp.`company_name`,\n" +
+"                    s.`price`,u.`uom`,p.`packsize`,s.`sale_date`,sl.paid,sl.reference FROM sale_detail s\n" +
+"                    INNER JOIN customer c ON \n" +
+"                    s.`customer_id`=c.`customer_id`INNER JOIN \n" +
+"                    product p ON s.`product_id`=p.`p_id`INNER JOIN company cp ON \n" +
+"                    s.`company_id`=cp.`company_id`INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id` inner join sale sl on s.sale_id=sl.sale_id\n" +
+"                    WHERE s.customer_id="+customer_id+" order by s.sale_detail_id";
             Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);
