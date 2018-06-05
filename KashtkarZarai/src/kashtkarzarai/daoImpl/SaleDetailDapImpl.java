@@ -55,7 +55,7 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
         ArrayList<SaleDetailBeans> sale_details_list = new ArrayList<>();
         try {
             String query = "SELECT  s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,\n" +
-"                    cp.`company_name`,\n" +
+"                    cp.`company_name`,sl.total_bill,\n" +
 "                    s.`price`,u.`uom`,p.`packsize`,s.`sale_date`,sl.paid,sl.reference FROM sale_detail s\n" +
 "                    INNER JOIN customer c ON \n" +
 "                    s.`customer_id`=c.`customer_id`INNER JOIN \n" +
