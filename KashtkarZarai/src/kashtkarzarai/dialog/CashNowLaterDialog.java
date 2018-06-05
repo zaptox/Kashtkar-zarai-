@@ -75,13 +75,15 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
         initComponents();
 
     }
+    String reference="";
 
-    public CashNowLaterDialog(java.awt.Frame parent, boolean modal, PaymentDoneBeans ob) {
+    public CashNowLaterDialog(java.awt.Frame parent, boolean modal, PaymentDoneBeans ob,String reference) {
         super(parent, modal);
         initComponents();
 
         cashGot = true;
         this.ob = ob;
+        this.reference=reference;
         System.out.println("" + ob.getTotal_price());
         pricetoPayField.setText("Total Price To Pay:  " + ob.getTotal_price());
         payNowField.setText(ob.getTotal_price() + "");
@@ -189,10 +191,11 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
 
         int i=JOptionPane.showConfirmDialog(this, "Are you sure ?");
         
-                
+       double paid=Double.parseDouble(this.payNowField.getText());
         if(i==0){
 
-//        saleDao.saveSale(new SaleBeans(1, ob.getCustomer_id(), 1, ob.getDiscount_type(), ob.getDiscount(), ob.getTotal_price()));
+      
+       saleDao.saveSale(new SaleBeans(1, ob.getCustomer_id(), 1,  ob.getDiscount_type(), ob.getDiscount(), ob.getTotal_price(),paid , reference));
 
         for (ProductBeans p : ob.getOrderedProductList()) {
             int quantity = p.getQuantity();

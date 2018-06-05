@@ -74,7 +74,7 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
                 String uom = rs.getString("uom");
                 int packetsize=rs.getInt("packsize");
                 String sale_date = rs.getString("sale_date");
-                double price = rs.getDouble("price");
+                double price = rs.getDouble("total_bill");
                 double paid=rs.getDouble("paid");
                 String reference=rs.getString("reference");
                 sale_details_list.add(new SaleDetailBeans(sale_detail_id,packetsize ,quantity, sale_date, price, company_name, customer_name,uom,  p_name,paid,reference));

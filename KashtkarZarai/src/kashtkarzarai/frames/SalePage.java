@@ -57,6 +57,7 @@ public class SalePage extends javax.swing.JFrame {
     public static boolean sale_customer = false;
     UomDao uomDao;
     DefaultTableModel tableModel2;
+    String reference="";
     int customer_id = -1;
     public static int total_price = 0;
     public static int total_price_temp = 0;
@@ -95,6 +96,7 @@ public class SalePage extends javax.swing.JFrame {
         showInTable();
         referenceField.setEnabled(false);
         jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        
     }
 
     public void resizeColumnWidth(JTable table) {
@@ -116,6 +118,7 @@ public class SalePage extends javax.swing.JFrame {
         initComponents();
         sale_customer = true;
         nameField.setText(customer.getCustomer_name());
+        reference=customer.getCustomer_name();
         numberField.setText(customer.getContact());
         addressfield.setText(customer.getAddress());
         nameField.setEnabled(false);
@@ -148,6 +151,7 @@ public class SalePage extends javax.swing.JFrame {
         this.total_price_temp = 0;
         generateButton.setEnabled(false);
         referenceField.setEnabled(false);
+        
 
     }
 
@@ -739,6 +743,7 @@ public class SalePage extends javax.swing.JFrame {
         float discount = 0;
 //        int discount_id = discountList.get(jComboBox1.getSelectedIndex()).getDiscount_id();
         try {
+            reference=this.referenceField.getText();
             discount = Float.parseFloat(discountField.getText().toString());
         } catch (Exception e) {
 
@@ -757,7 +762,7 @@ public class SalePage extends javax.swing.JFrame {
         new CashNowLaterDialog(this, true, new PaymentDoneBeans(date + "", discount,
                 discount_type,
                 total_priceGot, customer_id, orderedProductList,
-                sale_customer, 2)).setVisible(true);
+                sale_customer, 2),reference).setVisible(true);
 
 
     }//GEN-LAST:event_generateButtonActionPerformed
@@ -788,9 +793,12 @@ public class SalePage extends javax.swing.JFrame {
         if(sale_customer){
         if(referenceCheckBox.isSelected()){
         referenceField.setEnabled(true);
+        
+        
         }
         else{
                 referenceField.setEnabled(false);
+                
 
         }
         }
