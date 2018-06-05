@@ -5,6 +5,12 @@
  */
 package kashtkarzarai.frames;
 
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import kashtkarzarai.dialog.SetingJDialog;
 import org.eclipse.birt.core.framework.Platform;
 import org.eclipse.birt.report.engine.api.EngineConfig;
@@ -32,6 +38,8 @@ public class HomePage extends javax.swing.JFrame {
      */
     public HomePage() {
         initComponents();
+        this.jButtonReport.setVisible(true);
+        this.jLabelloading.setVisible(false);
     }
 
     /**
@@ -53,7 +61,8 @@ public class HomePage extends javax.swing.JFrame {
         jButtonUsers = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        jButtonReport = new javax.swing.JButton();
+        jLabelloading = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,7 +99,6 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin6.setFocusPainted(false);
         jButtonLogin6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin6ActionPerformed(evt);
             }
         });
         jPanel1.add(jButtonLogin6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 310, 120));
@@ -114,7 +122,6 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin9.setText("Customer");
         jButtonLogin9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin9ActionPerformed(evt);
             }
         });
         jPanel1.add(jButtonLogin9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 310, 120));
@@ -126,7 +133,6 @@ public class HomePage extends javax.swing.JFrame {
         jButtonLogin10.setText("Sale");
         jButtonLogin10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLogin10ActionPerformed(evt);
             }
         });
         jPanel1.add(jButtonLogin10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 310, 120));
@@ -157,16 +163,20 @@ public class HomePage extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/logo1.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 130));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/report.png"))); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/report.png"))); // NOI18N
+        jButtonReport.setBorder(null);
+        jButtonReport.setBorderPainted(false);
+        jButtonReport.setContentAreaFilled(false);
+        jButtonReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonReportActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, 60, 70));
+        jPanel1.add(jButtonReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, 60, 70));
+
+        jLabelloading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/loading.gif"))); // NOI18N
+        jLabelloading.setText("jLabel4");
+        jPanel1.add(jLabelloading, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 250, 100));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
 
@@ -189,11 +199,11 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCompanyActionPerformed
 
-    private void jButtonLogin6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin6ActionPerformed
+    private void jButtonCustomerRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCustomerRecordsActionPerformed
         // TODO add your handling code here:
         new CustomerRecords().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButtonLogin6ActionPerformed
+    }//GEN-LAST:event_jButtonCustomerRecordsActionPerformed
 
     private void jButtonProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProductActionPerformed
         // TODO add your handling code here:
@@ -201,18 +211,18 @@ public class HomePage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonProductActionPerformed
 
-    private void jButtonLogin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin9ActionPerformed
+    private void jButtonCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCustomerActionPerformed
         // TODO add your handling code here:
         new CustomerPage().setVisible(true);
         this.dispose();
 
-    }//GEN-LAST:event_jButtonLogin9ActionPerformed
+    }//GEN-LAST:event_jButtonCustomerActionPerformed
 
-    private void jButtonLogin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogin10ActionPerformed
+    private void jButtonSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaleActionPerformed
         // TODO add your handling code here:
         new SalePage().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButtonLogin10ActionPerformed
+    }//GEN-LAST:event_jButtonSaleActionPerformed
 
     private void jButtonUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsersActionPerformed
         // TODO add your handling code here:
@@ -225,11 +235,19 @@ public class HomePage extends javax.swing.JFrame {
         new SetingJDialog(this, true).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportActionPerformed
+        this.jLabelloading.setVisible(true);
+
+        this.jButtonReport.setVisible(false);
+   genReport();
+        this.jButtonReport.setVisible(true);
+        this.jLabelloading.setVisible(false);
+
+    }//GEN-LAST:event_jButtonReportActionPerformed
+
+    private void jButtonReportItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jButtonReportItemStateChanged
         // TODO add your handling code here:
-        
-        genReport();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonReportItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -265,11 +283,30 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
     }
-public void genReport() {
+
+    public void genReport() {
+
+        new Thread(new Runnable() {
+
+            int i = 1;
+
+            @Override
+            public void run() {
+                while (true) {
+                    i += 10;
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
 
         IReportEngine engine = null;
         EngineConfig config = null;
-
+        String report_name = "Report of Month ";
         try {
 
             config = new EngineConfig();
@@ -286,16 +323,16 @@ public void genReport() {
             design = engine.openReportDesign(rpath);
 
             IRunAndRenderTask task = engine.createRunAndRenderTask(design);
-            //task.setParameterValue("Top Count", (new Integer(5)));
-            //task.validateParameters();
-            // int order=DbManager.getMaxOrder();
+//           task.setParameterValue("custo_id", ""+6);
+//            task.validateParameters();
+//            // int order=DbManager.getMaxOrder();
             HTMLRenderOption options = new HTMLRenderOption();
-            options.setOutputFileName("C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/Report" + 1+ ".pdf");
+            options.setOutputFileName("C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + report_name + ".pdf");
             options.setOutputFormat("pdf");
+
             //options.setHtmlRtLFlag(false);
             //options.setEmbeddable(false);
             //options.setImageDirectory("C:\\test\\images");
-
             //PDFRenderOption options = new PDFRenderOption();
             //options.setOutputFileName("c:/temp/test.pdf");
             //options.setOutputFormat("pdf");
@@ -304,24 +341,48 @@ public void genReport() {
             task.close();
             engine.destroy();
         } catch (Exception ex) {
-            System.out.println("hello");
             System.out.println(ex.getMessage());
         } finally {
             Platform.shutdown();
+            System.out.println("reportGenerated");
+            JOptionPane.showMessageDialog(rootPane, "report scucessfully generated");
+
+            try {
+
+                if ((new File("C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + report_name + ".pdf")).exists()) {
+
+                    Process p = Runtime
+                            .getRuntime()
+                            .exec("rundll32 url.dll,FileProtocolHandler C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + report_name + ".pdf");
+                    p.waitFor();
+
+                } else {
+
+                    System.out.println("File is not exists");
+
+                }
+
+                System.out.println("Done");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonCompany;
     private javax.swing.JButton jButtonLogin10;
     private javax.swing.JButton jButtonLogin6;
     private javax.swing.JButton jButtonLogin9;
     private javax.swing.JButton jButtonProduct;
+    private javax.swing.JButton jButtonReport;
     private javax.swing.JButton jButtonUsers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelloading;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
