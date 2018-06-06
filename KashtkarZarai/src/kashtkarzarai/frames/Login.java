@@ -8,6 +8,7 @@ package kashtkarzarai.frames;
 import com.sun.glass.events.KeyEvent;
 import java.applet.AudioClip;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -38,10 +39,14 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-       
+       icon();
         
   
 
+    }
+    private void icon() {
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/icon.png")));
+        
     }
 
     /**
@@ -64,6 +69,8 @@ public class Login extends javax.swing.JFrame {
         jButtonLogin = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -71,9 +78,9 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 370, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 280, 10));
 
-        jTextFieldUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldUsername.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jTextFieldUsername.setText("y");
         jTextFieldUsername.setBorder(null);
         jTextFieldUsername.setDisabledTextColor(new java.awt.Color(204, 204, 204));
@@ -92,12 +99,12 @@ public class Login extends javax.swing.JFrame {
                 jTextFieldUsernameKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 370, -1));
+        jPanel1.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 280, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("USERNAME");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 200, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 370, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 200, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 280, 20));
 
         jPasswordFieldPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordFieldPassword.setText("y");
@@ -117,11 +124,11 @@ public class Login extends javax.swing.JFrame {
                 jPasswordFieldPasswordKeyPressed(evt);
             }
         });
-        jPanel1.add(jPasswordFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 370, -1));
+        jPanel1.add(jPasswordFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 280, 40));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("PASSWORD");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 200, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 200, -1));
 
         jButtonCancel.setBackground(new java.awt.Color(0, 204, 0));
         jButtonCancel.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,7 +138,7 @@ public class Login extends javax.swing.JFrame {
                 jButtonCancelActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 203, 140, 40));
+        jPanel1.add(jButtonCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 140, 40));
 
         jButtonLogin.setBackground(new java.awt.Color(0, 204, 0));
         jButtonLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,19 +148,30 @@ public class Login extends javax.swing.JFrame {
                 jButtonLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 203, 150, 40));
+        jPanel1.add(jButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 150, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/logo1.png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 120, 140));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 150, 150));
 
         jLabel5.setBackground(new java.awt.Color(0, 204, 0));
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 204, 0));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Kashtkar Zarai Markaz Sinjhoro");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+        jLabel5.setText("(Sinjhoro)");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 270));
+        jLabel6.setBackground(new java.awt.Color(0, 204, 0));
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 204, 0));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Kashtkar Zarai Markaz");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setText("Software Designed By: Zaptox");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 190, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 320));
 
         pack();
         setLocationRelativeTo(null);
@@ -304,10 +322,12 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) {String name =  this.jTextFieldUserna
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonLogin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JSeparator jSeparator1;

@@ -167,7 +167,7 @@ public class ProductPage extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTableCustomer);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 840, 470));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 870, 450));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
@@ -190,12 +190,12 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldSerachKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, 430, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 430, -1));
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 300, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 300, 10));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Search");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 60, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 50, 60, -1));
 
         jButtonDelete.setBackground(new java.awt.Color(0, 204, 0));
         jButtonDelete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -226,8 +226,8 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldProductnameKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldProductname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 260, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 260, -1));
+        jPanel1.add(jTextFieldProductname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 127, 240, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 240, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("PRODUCT NAME*");
@@ -251,8 +251,8 @@ public class ProductPage extends javax.swing.JFrame {
                 jTextFieldCostKeyPressed(evt);
             }
         });
-        jPanel1.add(jTextFieldCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 260, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 260, -1));
+        jPanel1.add(jTextFieldCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 187, 240, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 240, 10));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("COST*");
@@ -368,22 +368,22 @@ public class ProductPage extends javax.swing.JFrame {
         jLabelCompanyName.setText("Customer name");
         jLabelCompanyName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
         jLabelCompanyName.setOpaque(true);
-        jPanel1.add(jLabelCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, 50));
+        jPanel1.add(jLabelCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 420, 50));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel7.setText("Add New PRODUCT");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 590));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("All right reserved|2017");
+        jLabel1.setText("All rights reserved @kashtkarzarai|2017");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 1290, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 1190, 30));
 
         pack();
         setLocationRelativeTo(null);

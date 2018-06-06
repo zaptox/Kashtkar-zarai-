@@ -155,7 +155,7 @@ public class CustomerDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Sale_Id ", "Product Name", "Quantity", "Price (Rs)", "Paid", "Remaining", "Reference", "Sale Date"
+                "Sale Id ", "Product Name", "Quantity", "Price (Rs)", "Paid", "Remaining", "Reference", "Sale Date"
             }
         ) {
             Class[] types = new Class [] {
@@ -194,7 +194,7 @@ public class CustomerDetails extends javax.swing.JFrame {
             jTableCustomerSaleDetail.getColumnModel().getColumn(6).setPreferredWidth(30);
         }
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 1080, 470));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 850, 470));
         jPanel1.add(jSeparatorUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 240, -1));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -218,11 +218,11 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jTextFieldSerachKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 430, -1));
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 30, 280, 30));
 
         jLabelAddMoney.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelAddMoney.setText("Add Money:");
-        jPanel1.add(jLabelAddMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 150, -1));
+        jPanel1.add(jLabelAddMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, -1));
 
         jLabelCustomerName.setBackground(new java.awt.Color(0, 204, 0));
         jLabelCustomerName.setFont(new java.awt.Font("Trajan Pro", 1, 36)); // NOI18N
@@ -231,7 +231,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         jLabelCustomerName.setText("Customer name");
         jLabelCustomerName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
         jLabelCustomerName.setOpaque(true);
-        jPanel1.add(jLabelCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 430, 50));
+        jPanel1.add(jLabelCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 460, 50));
 
         jButtonBack.setBackground(new java.awt.Color(0, 204, 0));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -246,16 +246,16 @@ public class CustomerDetails extends javax.swing.JFrame {
         jPanel1.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
         jLabelCustomerDebt.setBackground(new java.awt.Color(0, 204, 0));
-        jLabelCustomerDebt.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 24)); // NOI18N
+        jLabelCustomerDebt.setFont(new java.awt.Font("Malgun Gothic Semilight", 1, 36)); // NOI18N
         jLabelCustomerDebt.setForeground(new java.awt.Color(255, 0, 0));
         jLabelCustomerDebt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCustomerDebt.setText("0.0");
         jLabelCustomerDebt.setOpaque(true);
-        jPanel1.add(jLabelCustomerDebt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 240, -1));
+        jPanel1.add(jLabelCustomerDebt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 240, 50));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Search");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, 60, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 60, -1));
 
         jButtonUpdateMoney.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdateMoney.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -266,7 +266,7 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jButtonUpdateMoneyActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdateMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 230, 30));
+        jPanel1.add(jButtonUpdateMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 230, 30));
 
         jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -277,8 +277,8 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 230, 30));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 430, -1));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 230, 30));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 280, 20));
 
         jTextFieldUpdateMoney.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldUpdateMoney.setBorder(null);
@@ -301,11 +301,11 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jTextFieldUpdateMoneyKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextFieldUpdateMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 240, -1));
+        jPanel1.add(jTextFieldUpdateMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 240, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Remaining Money:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 150, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, -1));
 
         buttonGroup1.add(jCheckBoxOther);
         jCheckBoxOther.setText("Other");
@@ -319,7 +319,7 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jCheckBoxOtherActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBoxOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 60, -1));
+        jPanel1.add(jCheckBoxOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 60, -1));
 
         buttonGroup1.add(jCheckBoxCustomerName);
         jCheckBoxCustomerName.setText("jCheckBox1");
@@ -329,7 +329,7 @@ public class CustomerDetails extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jCheckBoxCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-        jPanel1.add(jSeparatorother, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 180, -1));
+        jPanel1.add(jSeparatorother, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 180, 10));
 
         jTextFieldOther.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldOther.setBorder(null);
@@ -352,7 +352,7 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jTextFieldOtherKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextFieldOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 180, -1));
+        jPanel1.add(jTextFieldOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 180, 30));
 
         jButtonUpdateMoney1.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdateMoney1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -363,11 +363,11 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jButtonUpdateMoney1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdateMoney1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 230, 30));
+        jPanel1.add(jButtonUpdateMoney1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 230, 30));
 
         jLabelloading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/loading.gif"))); // NOI18N
         jLabelloading.setText("jLabel4");
-        jPanel1.add(jLabelloading, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, -10, 250, 100));
+        jPanel1.add(jLabelloading, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 0, 230, 80));
 
         jButtonReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/report.png"))); // NOI18N
         jButtonReport.setBorder(null);
@@ -378,18 +378,18 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jButtonReportActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 0, 60, 70));
+        jPanel1.add(jButtonReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 0, 60, 70));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 570));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 570));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("All right reserved|2017");
+        jLabel1.setText("All rights reserved @Kashtkarzarai|2018");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1250, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1150, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -508,14 +508,6 @@ public class CustomerDetails extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldOtherKeyReleased
 
-    private void jCheckBoxCustomerNameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxCustomerNameItemStateChanged
-        // TODO add your handling code here:
-        if (this.jCheckBoxCustomerName.isSelected()) {
-            this.jTextFieldOther.setEnabled(false);
-
-        }
-    }//GEN-LAST:event_jCheckBoxCustomerNameItemStateChanged
-
     private void jCheckBoxOtherItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxOtherItemStateChanged
         // TODO add your handling code here:
         if (this.jCheckBoxOther.isSelected()) {
@@ -538,6 +530,14 @@ public class CustomerDetails extends javax.swing.JFrame {
         this.jButtonReport.setVisible(true);
         this.jLabelloading.setVisible(false);
     }//GEN-LAST:event_jButtonReportActionPerformed
+
+    private void jCheckBoxCustomerNameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBoxCustomerNameItemStateChanged
+        // TODO add your handling code here:
+        if (this.jCheckBoxCustomerName.isSelected()) {
+            this.jTextFieldOther.setEnabled(false);
+
+        }
+    }//GEN-LAST:event_jCheckBoxCustomerNameItemStateChanged
 
     /**
      * @param args the command line arguments

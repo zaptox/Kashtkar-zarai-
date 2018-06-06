@@ -126,13 +126,13 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
         jLabelCustomerName.setText("Payment");
         jLabelCustomerName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 1, true));
         jLabelCustomerName.setOpaque(true);
-        jPanel1.add(jLabelCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 480, 50));
+        jPanel1.add(jLabelCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 50));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("All right reserved|2017");
+        jLabel1.setText("All rights reserved @Kashtkarzarai|2018");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 500, 30));
@@ -204,19 +204,10 @@ public class CashNowLaterDialog extends javax.swing.JDialog {
 
             if (sale_customer) {
                 int sale_id = saleDao.getSaleId();
-//                System.out.println("sale_id" + sale_id);
-//                System.out.println("customer_id " + customer_id);
+
                 saleDetailDao.saveSaleDetails(new SaleDetailBeans(1, sale_id, ob.getCustomer_id(), product_id, quantity, p.getCompany_id(), p.getUom(), ob.getDate() + "", p.getCost()));
             }
-//            int order_id=obGlobal.getOrderId(number);
-//            if(order_id!=-1){
-//
-//                obGlobal.insertOrderDetails(new OrderDetails(1, order_id,
-//                    product_id, quantity, 1, 1, null, 1, null));
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(this, "order_id  =-1");
-//        }
+
         }
 
         double pay_now = Double.parseDouble(payNowField.getText().toString());

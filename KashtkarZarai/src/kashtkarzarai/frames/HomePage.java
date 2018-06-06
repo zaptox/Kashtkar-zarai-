@@ -5,6 +5,7 @@
  */
 package kashtkarzarai.frames;
 
+import java.awt.Toolkit;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,13 +20,7 @@ import org.eclipse.birt.report.engine.api.IReportEngine;
 import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.birt.report.engine.api.IReportRunnable;
 import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
-//import org.eclipse.birt.core.framework.Platform;
-//import org.eclipse.birt.report.engine.api.EngineConfig;
-//import org.eclipse.birt.report.engine.api.HTMLRenderOption;
-//import org.eclipse.birt.report.engine.api.IReportEngine;
-//import org.eclipse.birt.report.engine.api.IReportEngineFactory;
-//import org.eclipse.birt.report.engine.api.IReportRunnable;
-//import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
+
 
 /**
  *
@@ -40,6 +35,11 @@ public class HomePage extends javax.swing.JFrame {
         initComponents();
         this.jButtonReport.setVisible(true);
         this.jLabelloading.setVisible(false);
+        icon();
+    }
+    private void icon() {
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/icon.jpg")));
+        
     }
 
     /**
@@ -63,6 +63,10 @@ public class HomePage extends javax.swing.JFrame {
         jButtonCustomerRecords = new javax.swing.JButton();
         jButtonLogin11 = new javax.swing.JButton();
         jButtonCustomer = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,14 +86,14 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonCompanyActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 310, 120));
+        jPanel1.add(jButtonCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 310, 120));
 
         jLabel2.setBackground(new java.awt.Color(0, 204, 0));
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 204, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Kashtkar Zarai Markaz Sinjhoro");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+        jLabel2.setText("Kashtkar Zarai Markaz");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
 
         jButtonProduct.setBackground(new java.awt.Color(0, 204, 0));
         jButtonProduct.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -107,7 +111,7 @@ public class HomePage extends javax.swing.JFrame {
         jButtonUsers.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonUsers.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/user login.png"))); // NOI18N
-        jButtonUsers.setText("User Acoounts");
+        jButtonUsers.setText("User Accounts");
         jButtonUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUsersActionPerformed(evt);
@@ -127,7 +131,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 480, 60, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/logo1.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 130));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 130));
 
         jButtonReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/report.png"))); // NOI18N
         jButtonReport.setBorder(null);
@@ -178,18 +182,37 @@ public class HomePage extends javax.swing.JFrame {
                 jButtonCustomerActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 310, 120));
+        jPanel1.add(jButtonCustomer, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 310, 120));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 204, 0));
+        jLabel6.setText("Sinjhoro");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 120, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/homebackgroun.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 180));
+
+        jLabel5.setBackground(new java.awt.Color(0, 204, 0));
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 204, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Kashtkar Zarai Markaz");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 560));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Software Designed By: Zaptox");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 560, 190, 30));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("All right reserved|2017");
+        jLabel1.setText("All rights reserved @Kashtkarzarai|2018");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 564, 1010, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 1010, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -392,6 +415,10 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelloading;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

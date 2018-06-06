@@ -96,7 +96,11 @@ public class CompanyForm extends javax.swing.JFrame {
         jTextFieldSerach = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -123,7 +127,7 @@ public class CompanyForm extends javax.swing.JFrame {
         jTextFieldCompanyName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCompanyName.setBorder(null);
         jTextFieldCompanyName.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jPanel1.add(jTextFieldCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 260, -1));
+        jPanel1.add(jTextFieldCompanyName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 77, 210, 20));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("COMPANY CONTACT*");
@@ -132,7 +136,7 @@ public class CompanyForm extends javax.swing.JFrame {
         jTextFieldCompanyContact.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCompanyContact.setBorder(null);
         jTextFieldCompanyContact.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jPanel1.add(jTextFieldCompanyContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 260, -1));
+        jPanel1.add(jTextFieldCompanyContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 210, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("COMPANY ADDRESS*");
@@ -141,7 +145,7 @@ public class CompanyForm extends javax.swing.JFrame {
         jTextFieldCompanyAddress.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCompanyAddress.setBorder(null);
         jTextFieldCompanyAddress.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jPanel1.add(jTextFieldCompanyAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, -1));
+        jPanel1.add(jTextFieldCompanyAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 197, 210, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("DEALER NAME*");
@@ -150,7 +154,7 @@ public class CompanyForm extends javax.swing.JFrame {
         jTextFieldCompanyDealerName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldCompanyDealerName.setBorder(null);
         jTextFieldCompanyDealerName.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jPanel1.add(jTextFieldCompanyDealerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 260, -1));
+        jPanel1.add(jTextFieldCompanyDealerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 210, 20));
 
         jButtoSave.setBackground(new java.awt.Color(0, 204, 0));
         jButtoSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -161,7 +165,7 @@ public class CompanyForm extends javax.swing.JFrame {
                 jButtoSaveActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 240, 40));
+        jPanel1.add(jButtoSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 220, 40));
 
         jButtonClear1.setBackground(new java.awt.Color(0, 204, 0));
         jButtonClear1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -172,7 +176,7 @@ public class CompanyForm extends javax.swing.JFrame {
                 jButtonClear1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 240, 40));
+        jPanel1.add(jButtonClear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 220, 40));
 
         jButtonUpdate.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdate.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -183,7 +187,7 @@ public class CompanyForm extends javax.swing.JFrame {
                 jButtonUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 240, 40));
+        jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 220, 40));
 
         jButtonDelete.setBackground(new java.awt.Color(0, 204, 0));
         jButtonDelete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -194,7 +198,7 @@ public class CompanyForm extends javax.swing.JFrame {
                 jButtonDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 240, 40));
+        jPanel1.add(jButtonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 220, 40));
 
         jTableCustomer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jTableCustomer.setForeground(new java.awt.Color(0, 0, 51));
@@ -232,32 +236,41 @@ public class CompanyForm extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(jTableCustomer);
+        if (jTableCustomer.getColumnModel().getColumnCount() > 0) {
+            jTableCustomer.getColumnModel().getColumn(0).setMinWidth(70);
+            jTableCustomer.getColumnModel().getColumn(0).setPreferredWidth(70);
+            jTableCustomer.getColumnModel().getColumn(0).setMaxWidth(70);
+            jTableCustomer.getColumnModel().getColumn(1).setMinWidth(80);
+            jTableCustomer.getColumnModel().getColumn(1).setPreferredWidth(80);
+            jTableCustomer.getColumnModel().getColumn(1).setMaxWidth(80);
+        }
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 980, 510));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 920, 510));
 
         jTextFieldSerach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldSerach.setBorder(null);
         jTextFieldSerach.setDisabledTextColor(new java.awt.Color(204, 204, 204));
-        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 430, -1));
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 350, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Search");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 60, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 60, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("All right reserved|2017");
+        jLabel1.setText("All rights reserved @Kashtkarzarai|2018");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jLabel1.setOpaque(true);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 1280, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 580, 1250, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 40, 350, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 210, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 210, -1));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 210, 20));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 210, 20));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel8.setText("COMPANY Data");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 230, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 610));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 610));
 
         pack();
         setLocationRelativeTo(null);
@@ -536,9 +549,13 @@ public class CompanyForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTableCustomer;
     private javax.swing.JTextField jTextFieldCompanyAddress;
     private javax.swing.JTextField jTextFieldCompanyContact;

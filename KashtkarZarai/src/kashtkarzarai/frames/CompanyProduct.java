@@ -88,7 +88,6 @@ public class CompanyProduct extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableCompany = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("CUSTOMERS Data");
@@ -165,6 +164,14 @@ public class CompanyProduct extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(jTableCompany);
+        if (jTableCompany.getColumnModel().getColumnCount() > 0) {
+            jTableCompany.getColumnModel().getColumn(0).setMinWidth(120);
+            jTableCompany.getColumnModel().getColumn(0).setPreferredWidth(120);
+            jTableCompany.getColumnModel().getColumn(0).setMaxWidth(120);
+            jTableCompany.getColumnModel().getColumn(1).setMinWidth(120);
+            jTableCompany.getColumnModel().getColumn(1).setPreferredWidth(120);
+            jTableCompany.getColumnModel().getColumn(1).setMaxWidth(120);
+        }
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 600, 540));
 
@@ -173,15 +180,6 @@ public class CompanyProduct extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 230, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 600));
-
-        jLabel1.setBackground(new java.awt.Color(0, 204, 0));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("All right reserved|2017");
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
-        jLabel1.setOpaque(true);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, 630, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -253,7 +251,6 @@ public class CompanyProduct extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
