@@ -61,7 +61,7 @@ public class SaleDetailDapImpl implements SaleDetailsDao {
 "                    s.`customer_id`=c.`customer_id`INNER JOIN \n" +
 "                    product p ON s.`product_id`=p.`p_id`INNER JOIN company cp ON \n" +
 "                    s.`company_id`=cp.`company_id`INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id` inner join sale sl on s.sale_id=sl.sale_id\n" +
-"                    WHERE s.customer_id="+customer_id+" order by s.sale_detail_id";
+"                    WHERE s.customer_id="+customer_id+" order by s.sale_detail_id desc";
             Statement ps = con.createStatement();
 
             ResultSet rs = ps.executeQuery(query);

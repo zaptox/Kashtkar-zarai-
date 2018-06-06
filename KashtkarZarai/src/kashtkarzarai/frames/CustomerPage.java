@@ -153,6 +153,9 @@ ref=true;
             }
         });
         jScrollPane3.setViewportView(jTableCustomer);
+        if (jTableCustomer.getColumnModel().getColumnCount() > 0) {
+            jTableCustomer.getColumnModel().getColumn(0).setPreferredWidth(20);
+        }
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 1000, 470));
 
@@ -217,7 +220,7 @@ ref=true;
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 260, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("CUSTOMERS Data");
+        jLabel4.setText("CUSTOMERS DATA");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 230, -1));
 
         jTextFieldCustomerCnic.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
