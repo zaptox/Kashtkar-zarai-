@@ -337,7 +337,7 @@ public class HomePage extends javax.swing.JFrame {
 //            task.validateParameters();
 //            // int order=DbManager.getMaxOrder();
             HTMLRenderOption options = new HTMLRenderOption();
-            options.setOutputFileName("C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + report_name + ".pdf");
+            options.setOutputFileName("Reports\\MonthlyReports/" + report_name + ".pdf");
             options.setOutputFormat("pdf");
 
             //options.setHtmlRtLFlag(false);
@@ -359,11 +359,11 @@ public class HomePage extends javax.swing.JFrame {
 
             try {
 
-                if ((new File("C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + report_name + ".pdf")).exists()) {
+                if ((new File("Reports\\MonthlyReports/" + report_name + ".pdf")).exists()) {
 
                     Process p = Runtime
                             .getRuntime()
-                            .exec("rundll32 url.dll,FileProtocolHandler C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + report_name + ".pdf");
+                            .exec("rundll32 url.dll,FileProtocolHandler Reports\\MonthlyReports/" + report_name + ".pdf");
                     p.waitFor();
 
                 } else {

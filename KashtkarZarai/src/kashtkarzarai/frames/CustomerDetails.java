@@ -625,7 +625,7 @@ public class CustomerDetails extends javax.swing.JFrame {
         Map parameters = new HashMap();
         parameters.put("custo_id", "" + cust_id);
         String reportTitle = "Montly report of " + customerDao.getCustomerById(cust_id).getCustomer_name();
-        String path = "C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + reportTitle + ".pdf";
+        String path = "Reports\\CustomerReports/" + reportTitle + ".pdf";
         try {
 
             config = new EngineConfig();
@@ -673,11 +673,11 @@ public class CustomerDetails extends javax.swing.JFrame {
            
             try {
 
-                if ((new File("C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + reportTitle + ".pdf")).exists()) {
+                if ((new File("Reports\\CustomerReports/" + reportTitle + ".pdf")).exists()) {
 
                     Process p = Runtime
                             .getRuntime()
-                            .exec("rundll32 url.dll,FileProtocolHandler C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + reportTitle + ".pdf");
+                            .exec("rundll32 url.dll,FileProtocolHandler Reports\\CustomerReports/" + reportTitle + ".pdf");
                     p.waitFor();
 
                 } else {
