@@ -7,8 +7,14 @@ package kashtkarzarai.frames;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -24,6 +30,13 @@ import kashtkarzarai.daoImpl.DebtDaoImpl;
 import kashtkarzarai.daoImpl.SaleDetailDapImpl;
 import kashtkarzarai.dialog.DebtDetailJDialog;
 import kashtkarzarai.dialog.SetingJDialog;
+import org.eclipse.birt.core.framework.Platform;
+import org.eclipse.birt.report.engine.api.EngineConfig;
+import org.eclipse.birt.report.engine.api.HTMLRenderOption;
+import org.eclipse.birt.report.engine.api.IReportEngine;
+import org.eclipse.birt.report.engine.api.IReportEngineFactory;
+import org.eclipse.birt.report.engine.api.IReportRunnable;
+import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
 import zaptox.Kashkarzarai.util.CurrentDate;
 
 /**
@@ -56,6 +69,8 @@ public class CustomerDetails extends javax.swing.JFrame {
         header.setForeground(new Color(255, 255, 255));
         header.setFont(new Font("SansSerif", Font.BOLD, 18));
         this.jLabelAddMoney.setVisible(false);
+        this.jButtonReport.setVisible(true);
+        this.jLabelloading.setVisible(false);
 
     }
 
@@ -87,6 +102,8 @@ public class CustomerDetails extends javax.swing.JFrame {
         this.jCheckBoxOther.setVisible(false);
         this.jSeparatorother.setVisible(false);
         this.jTextFieldOther.setVisible(false);
+        this.jButtonReport.setVisible(true);
+        this.jLabelloading.setVisible(false);
 
     }
 
@@ -120,6 +137,8 @@ public class CustomerDetails extends javax.swing.JFrame {
         jSeparatorother = new javax.swing.JSeparator();
         jTextFieldOther = new javax.swing.JTextField();
         jButtonUpdateMoney1 = new javax.swing.JButton();
+        jLabelloading = new javax.swing.JLabel();
+        jButtonReport = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -199,7 +218,7 @@ public class CustomerDetails extends javax.swing.JFrame {
                 jTextFieldSerachKeyReleased(evt);
             }
         });
-        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, 430, -1));
+        jPanel1.add(jTextFieldSerach, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 430, -1));
 
         jLabelAddMoney.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelAddMoney.setText("Add Money:");
@@ -236,7 +255,7 @@ public class CustomerDetails extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Search");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 30, 60, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 40, 60, -1));
 
         jButtonUpdateMoney.setBackground(new java.awt.Color(0, 204, 0));
         jButtonUpdateMoney.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -259,7 +278,7 @@ public class CustomerDetails extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 230, 30));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 430, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, 430, -1));
 
         jTextFieldUpdateMoney.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextFieldUpdateMoney.setBorder(null);
@@ -345,6 +364,21 @@ public class CustomerDetails extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonUpdateMoney1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 230, 30));
+
+        jLabelloading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/loading.gif"))); // NOI18N
+        jLabelloading.setText("jLabel4");
+        jPanel1.add(jLabelloading, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, -10, 250, 100));
+
+        jButtonReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kashtkarzarai/images/report.png"))); // NOI18N
+        jButtonReport.setBorder(null);
+        jButtonReport.setBorderPainted(false);
+        jButtonReport.setContentAreaFilled(false);
+        jButtonReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReportActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 0, 60, 70));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 570));
 
@@ -496,6 +530,15 @@ public class CustomerDetails extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonUpdateMoney1ActionPerformed
 
+    private void jButtonReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportActionPerformed
+        this.jLabelloading.setVisible(true);
+
+        this.jButtonReport.setVisible(false);
+        genReport();
+        this.jButtonReport.setVisible(true);
+        this.jLabelloading.setVisible(false);
+    }//GEN-LAST:event_jButtonReportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -557,9 +600,106 @@ public class CustomerDetails extends javax.swing.JFrame {
         this.jLabelCustomerDebt.setText("" + customerDao.getCustomerDebtByCustomerId(customer_id));
     }
 
+    public void genReport() {
+
+        new Thread(new Runnable() {
+
+            int i = 1;
+
+            @Override
+            public void run() {
+                while (true) {
+                    i += 10;
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+            }
+        }).start();
+
+        IReportEngine engine = null;
+        EngineConfig config = null;
+        Map parameters = new HashMap();
+        parameters.put("custo_id", "" + cust_id);
+        String reportTitle = "Montly report of " + customerDao.getCustomerById(cust_id).getCustomer_name();
+        String path = "C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + reportTitle + ".pdf";
+        try {
+
+            config = new EngineConfig();
+            //config.setLogConfig("c:/temp/test", Level.FINEST);
+            Platform.startup(config);
+            IReportEngineFactory factory = (IReportEngineFactory) Platform
+                    .createFactoryObject(IReportEngineFactory.EXTENSION_REPORT_ENGINE_FACTORY);
+            engine = factory.createReportEngine(config);
+
+            IReportRunnable design = null;
+            //Open the report design
+            String rpath = "customerMontlySaleReport.rptdesign";
+
+            design = engine.openReportDesign(rpath);
+
+            IRunAndRenderTask task = engine.createRunAndRenderTask(design);
+//           task.setParameterValue("custo_id", ""+6);
+//            task.validateParameters();
+//            // int order=DbManager.getMaxOrder();
+            HTMLRenderOption options = new HTMLRenderOption();
+            options.setOutputFileName(path);
+            options.setOutputFormat("pdf");
+
+            task.setRenderOption(options);
+
+            task.setParameterValues(parameters);
+
+            //options.setHtmlRtLFlag(false);
+            //options.setEmbeddable(false);
+            //options.setImageDirectory("C:\\test\\images");
+            //PDFRenderOption options = new PDFRenderOption();
+            //options.setOutputFileName("c:/temp/test.pdf");
+            //options.setOutputFormat("pdf");
+            task.setRenderOption(options);
+            task.run();
+            task.close();
+            engine.destroy();
+        } catch (Exception ex) {
+            System.out.println("report generated");
+            System.out.println(ex.getMessage());
+        } finally {
+            Platform.shutdown();
+            JOptionPane.showMessageDialog(rootPane, "report scucessfully generated");
+
+           
+            try {
+
+                if ((new File("C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + reportTitle + ".pdf")).exists()) {
+
+                    Process p = Runtime
+                            .getRuntime()
+                            .exec("rundll32 url.dll,FileProtocolHandler C:\\Users\\ALI SHAIKH PC\\Desktop\\MonthlyReport/" + reportTitle + ".pdf");
+                    p.waitFor();
+
+                } else {
+
+                    System.out.println("File is not exists");
+
+                }
+
+                System.out.println("Done");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+}
+        }
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonReport;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JButton jButtonUpdateMoney;
     private javax.swing.JButton jButtonUpdateMoney1;
@@ -571,6 +711,7 @@ public class CustomerDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelAddMoney;
     private javax.swing.JLabel jLabelCustomerDebt;
     private javax.swing.JLabel jLabelCustomerName;
+    private javax.swing.JLabel jLabelloading;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;

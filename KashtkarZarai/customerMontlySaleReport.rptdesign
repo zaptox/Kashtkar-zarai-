@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="custo_id" id="129">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="4">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">org.sqlite.JDBC</property>
+            <property name="odaURL">jdbc:sqlite:KashtkarSQLITE.sql</property>
+            <property name="odaUser">root</property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Data Set" id="5">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">sale_detail_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">sale_detail_id</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">sale_detail_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">p_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">p_name</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">p_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">customer_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">customer_name</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">customer_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">quantity</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">quantity</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">quantity</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">company_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">company_name</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">company_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">price</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">price</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">price</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">uom</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">uom</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">uom</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">packsize</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">packsize</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">packsize</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">sale_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">sale_date</text-property>
+                    <property name="onColumnLayout">false</property>
+                    <text-property name="heading">sale_date</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">param_1</property>
+                    <property name="paramName">custo_id</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">0</property>
+                    <property name="position">1</property>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">sale_detail_id</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">p_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">customer_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">quantity</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">company_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">price</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">uom</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">packsize</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">sale_date</property>
+                        <property name="dataType">date</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">Data Source</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">sale_detail_id</property>
+                    <property name="nativeName">sale_detail_id</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">p_name</property>
+                    <property name="nativeName">p_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">customer_name</property>
+                    <property name="nativeName">customer_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">quantity</property>
+                    <property name="nativeName">quantity</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">company_name</property>
+                    <property name="nativeName">company_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">price</property>
+                    <property name="nativeName">price</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">3</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">uom</property>
+                    <property name="nativeName">uom</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">packsize</property>
+                    <property name="nativeName">packsize</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">sale_date</property>
+                    <property name="nativeName">sale_date</property>
+                    <property name="dataType">date</property>
+                    <property name="nativeDataType">91</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[SELECT  s.`sale_detail_id`,p.`p_name`,c.`customer_name`,s.`quantity`,
+cp.`company_name`,s.`price`,u.`uom`,p.`packsize`,s.`sale_date` FROM sale_detail s 
+INNER JOIN customer c ON s.`customer_id`=c.`customer_id`
+INNER JOIN product p ON s.`product_id`=p.`p_id`
+INNER JOIN company cp ON s.`company_id`=cp.`company_id`
+INNER JOIN uom_table u ON s.`uom_id`=u.`uom_id`  WHERE (sale_date between date('now','-1 month') and date('now')) and s.customer_id= ? order by  s.`sale_detail_id` desc 
+
+]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>sale_detail_id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>sale_detail_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>sale_detail_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>p_name</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>p_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>p_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>customer_name</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>customer_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>customer_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>quantity</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>quantity</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>quantity</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>company_name</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>100</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>company_name</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>company_name</design:label>
+            <design:formattingHints>
+              <design:displaySize>100</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>price</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>3</design:nativeDataTypeCode>
+            <design:precision>16</design:precision>
+            <design:scale>4</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>price</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>price</design:label>
+            <design:formattingHints>
+              <design:displaySize>18</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>uom</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>uom</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>uom</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>sale_date</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>91</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>sale_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>sale_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>10</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>packsize</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>11</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>packsize</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>packsize</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <image id="92">
+            <property name="marginLeft">240pt</property>
+            <property name="height">1.0104166666666667in</property>
+            <property name="width">1.0208333333333333in</property>
+            <property name="source">embed</property>
+            <property name="imageName">logo1.png</property>
+        </image>
+        <label id="126">
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#008000</property>
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+            <property name="textAlign">center</property>
+            <structure name="toc">
+                <expression name="expressionValue" type="javascript">KK</expression>
+            </structure>
+            <text-property name="text">Kashtkar Zarai Markaz Sinjhoro</text-property>
+        </label>
+        <data id="132">
+            <property name="fontSize">16pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="marginTop">10pt</property>
+            <property name="marginBottom">10pt</property>
+            <structure name="numberFormat">
+                <property name="category">Custom</property>
+            </structure>
+            <property name="textAlign">center</property>
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">customer_name</property>
+                    <text-property name="displayName">customer_name</text-property>
+                    <expression name="expression" type="javascript">"Monthly Report :    "+dataSetRow["customer_name"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <property name="resultSetColumn">customer_name</property>
+        </data>
+        <table id="6">
+            <property name="borderBottomColor">#008000</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#008000</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#008000</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#008000</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="width">7.958333333333333in</property>
+            <property name="dataSet">Data Set</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">customer_name</property>
+                    <text-property name="displayName">customer_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["customer_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">company_name</property>
+                    <text-property name="displayName">company_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["company_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">p_name</property>
+                    <text-property name="displayName">p_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["p_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">price</property>
+                    <text-property name="displayName">price</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["price"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+                <structure>
+                    <property name="name">quantity</property>
+                    <text-property name="displayName">quantity</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["quantity"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">sale_detail_id</property>
+                    <text-property name="displayName">sale_detail_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sale_detail_id"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">packsize</property>
+                    <text-property name="displayName">packsize</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["packsize"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">uom</property>
+                    <text-property name="displayName">uom</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["packsize"]+dataSetRow["uom"]</expression>
+                    <property name="dataType">string</property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation</property>
+                    <property name="dataType">integer</property>
+                    <property name="aggregateFunction">RUNNINGCOUNT</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_1</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["price"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+                <structure>
+                    <property name="name">sale_date</property>
+                    <text-property name="displayName">sale_date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["sale_date"]</expression>
+                    <property name="dataType">date</property>
+                </structure>
+                <structure>
+                    <property name="name">Aggregation_2</property>
+                    <property name="dataType">float</property>
+                    <property name="aggregateFunction">SUM</property>
+                    <list-property name="arguments">
+                        <structure>
+                            <property name="name">Expression</property>
+                            <expression name="value" type="javascript">row["quantity"]</expression>
+                        </structure>
+                    </list-property>
+                    <property name="allowExport">true</property>
+                </structure>
+            </list-property>
+            <structure name="toc">
+                <expression name="expressionValue" type="javascript">ahshdadasasfds</expression>
+            </structure>
+            <column id="40">
+                <property name="width">0.4270833333333333in</property>
+            </column>
+            <column id="41">
+                <property name="width">1.3333333333333333in</property>
+            </column>
+            <column id="42">
+                <property name="width">1.1041666666666667in</property>
+            </column>
+            <column id="43">
+                <property name="width">1.2395833333333333in</property>
+            </column>
+            <column id="44">
+                <property name="width">1.3020833333333333in</property>
+            </column>
+            <column id="45">
+                <property name="width">0.4791666666666667in</property>
+            </column>
+            <column id="46">
+                <property name="width">0.8125in</property>
+            </column>
+            <column id="100">
+                <property name="width">1.2604166666666667in</property>
+            </column>
+            <header>
+                <row id="7">
+                    <property name="borderBottomStyle">none</property>
+                    <property name="borderLeftStyle">none</property>
+                    <property name="borderRightStyle">none</property>
+                    <property name="borderTopStyle">none</property>
+                    <property name="height">0.34375in</property>
+                    <cell id="8">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="74">
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Sr #</text-property>
+                        </label>
+                    </cell>
+                    <cell id="9">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="50">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Customer Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="10">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="53">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Product Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="11">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="55">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Company Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="12">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="59">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Product Price</text-property>
+                        </label>
+                    </cell>
+                    <cell id="13">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="61">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">QTY</text-property>
+                        </label>
+                    </cell>
+                    <cell id="14">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="70">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">left</property>
+                            <text-property name="text">Packsize</text-property>
+                        </label>
+                    </cell>
+                    <cell id="97">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="115">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <text-property name="text">Sale Date</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="18">
+                    <property name="height">0.25in</property>
+                    <cell id="19">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="73">
+                            <property name="resultSetColumn">Aggregation</property>
+                        </data>
+                    </cell>
+                    <cell id="20">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="51">
+                            <property name="resultSetColumn">customer_name</property>
+                        </data>
+                    </cell>
+                    <cell id="21">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="54">
+                            <property name="resultSetColumn">p_name</property>
+                        </data>
+                    </cell>
+                    <cell id="22">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="56">
+                            <property name="resultSetColumn">company_name</property>
+                        </data>
+                    </cell>
+                    <cell id="23">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="60">
+                            <property name="resultSetColumn">price</property>
+                        </data>
+                    </cell>
+                    <cell id="24">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="62">
+                            <property name="resultSetColumn">quantity</property>
+                        </data>
+                    </cell>
+                    <cell id="25">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="72">
+                            <property name="resultSetColumn">uom</property>
+                        </data>
+                    </cell>
+                    <cell id="98">
+                        <property name="borderBottomColor">#008000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftColor">#008000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightColor">#008000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopColor">#008000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <data id="114">
+                            <property name="resultSetColumn">sale_date</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="29">
+                    <property name="height">0.34375in</property>
+                    <cell id="30"/>
+                    <cell id="31">
+                        <label id="93">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textUnderline">underline</property>
+                            <text-property name="text">Total Sale</text-property>
+                        </label>
+                    </cell>
+                    <cell id="32">
+                        <data id="94">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textUnderline">underline</property>
+                            <structure name="numberFormat">
+                                <property name="category">Currency</property>
+                                <property name="pattern">#,##0.00{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">Aggregation_1</property>
+                        </data>
+                    </cell>
+                    <cell id="33"/>
+                    <cell id="34">
+                        <property name="fontWeight">bold</property>
+                        <property name="textUnderline">underline</property>
+                    </cell>
+                    <cell id="35">
+                        <property name="colSpan">2</property>
+                        <property name="rowSpan">1</property>
+                        <label id="127">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textUnderline">underline</property>
+                            <text-property name="text">Total Quantity </text-property>
+                        </label>
+                    </cell>
+                    <cell id="99">
+                        <data id="128">
+                            <property name="fontSize">12pt</property>
+                            <property name="fontWeight">bold</property>
+                            <property name="textUnderline">underline</property>
+                            <property name="resultSetColumn">Aggregation_2</property>
+                        </data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">logo1.png</property>
+            <property name="type">image/png</property>
+            <property name="data">
+                iVBORw0KGgoAAAANSUhEUgAAAGQAAAB2CAYAAAA+/DbEAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNI
+                Uk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAHX/SURBVHjavL11mCXXeef/OedU
+                1WVqZhhGDWvEkgUWy46ZYo6dOHHI2WSzoU02G3A2vDHEsWOKMUZJtmSxNGIN80wPNDNcLjzn98ftGUm2
+                5Dj77P5Kz6vup3v63rr1npfhK/7pn/7mVq35YRRqG6KkFCjbtqsaKwZWxZgojghrUlhCEjOejtBEdsxx
+                kNIKDAK0higEIVQojJZKSWlbRoehDgIfKVXaceKejvxAe3WkVAghANAChDYIQ+MygC2p1zwEmljcRkqB
+                kAKjjcBgMEYiDBi0MRoQgOTCZUzjxYTQGMLG741E6AApwZiL/1QBevldf7bLgLAlSPGf+SuMQUgljC2j
+                JoHJR9q0KiXHBTRF0ixo3ySMcU5bRoljANIIYyKdihwrrZSqR0FoCYQWQmopHKLIbzdYka2sWYMUnhsI
+                y0bZjhMZITCNB2GUJRESLXQERqNDjbRUhSgA3xcCIZYfAstP0ix/bdw2BikUYRhRLdbJ5XMI4SGkIZ5M
+                GK0jojDUYaAxxpDJxglDDSCllGb5etnDEAIiDXU3IhVXWPLCOxHxn70EaG1extWflSdhICzhqEUptKeN
+                GJPG+NIWFUITScFcGIVpKybFcBhGcWlJtLaLkbJnjFFSCLEkRBSXwg5MpIgiHQvxRNyyZhGW0NpEUWSU
+                feFDGRAC3Tj5jU/b+JlECEEU+hgdIqSSWmstpUQoaRqcMBJjhBEyRDaeoACUJRsPM4wIoxDP9RHKEPgR
+                EodIB5YTlyaeiEeBF+H7AUKClPLHTm/jnrQ2BIHEKI1lsSxkP9ullzkoZOPw8Z/mBxhjQqMBS9YiYaTC
+                pCLf5I0W40YYZaSoWvVK7WohhCVgyVj2UalkKKQjMdpo7YWI0BJSJiycilRmHmMExnjqgtoxBqIQgWnI
+                vo5QlnXxjo0Ag0EKgZHKIEQoXnJ0hRBIQ4QUSiNso01DDS4/RtuyAEmoDUEQYiEyQeCvltDs++7fnjkz
+                lVu1YsUtjpM4Ojs7RTafJWbFMJF5yVMzQiCMkA1pcX2wjSDuvERVvqqGatyLY8llFSsar/bKD/w/VFvL
+                ygSlMKEWPsYsSGW0NjoNyliu51di8XhdClkWUkRaG0foUEghAiltjNFCCO0ZRCIKSQl0XVrYti19YzQm
+                WNbRQoIOCd0AYzsoaSE1xJTgghAJJRufUDQeg1j+ELWaS+AHUgjZC2I405SObMemXqmzVFr6ucCv/zaY
+                rjAM94blsN+y7O2l4hzxRJpiSXPo0Kmn8/nsZw3RUiab+vdYzDlar9aVlFYERkgpEUIhhAcYpDQEkUQE
+                /4EpEAIdBlgmJJlLIxAEWuOG0SsyREj5M6k8RMO0RZEOhBARRhmDqCOEseLJ9H7HlqANOpIWQoZaawuk
+                EVKFxmAZHSClXQ9DnbSkrBmExIQoIV5U/y8xBVHgIy2JlBJlGurCGLH8a/PiPwe01qANlm2FGDPp+4Ep
+                L1Q2JZLJfinl24uLlXeGBlKJBNMzxb5yxaW3r5/egRUMnRmmuWkFQVDOLC4u/Lplac6fGXvrypXWrkQq
+                UQ3CAM8NjaUs/KC+MooCEUskh1zPx2AII/HTNY+QaE8jRYgGhFm2HVq/4t9JIUD81Nc0YDBaEEXK6NAg
+                JBolbIwMdWS0uuPO10shLSGkMkhbYxAYImlJo42JRVGYVlK5UogAEdURWkopNRglhNAXeQ4Yo22tEVIq
+                o5Rq6AdzwVaLZfkXBrP8JwbQEkvaWJZDMpkOq9X6a0dGxp+amZ17RyjEJU68le6+jazbsJW6Z6jUI9Zv
+                3MbmLbvwfc2ZoTNk8k20t/cxMLCe6enF1rnF2esGB/s+53k1PNejXqu9s1ysPlIpVX7VmHDGicVesCyL
+                KIoQ4sUP8BMkBMJEWFLjJOIX1VJoGgbzx0n+BxIiBOhIEgUKEAihkEiEMlqAjgKMBcZoLRCiYeWMMUZI
+                acIwlKLB9YrWRkqr8RSN1qEm0giZMAIlhHCNNqJxTzIUwsQxwhNC6At80EIjtbxgGS54Vgga3rIfGoQw
+                BJFPLt/0wMT0wplz50ZWZguS196yFSEUlWoVZStWrVpJV2crdbfI6jUrMMIwOzeHsVJ09q0BpTh1at+2
+                s2eH/8lEwQqttaVD8Rpp50U+G2dxce4TpcrsB9ram693Yk4pCn+KoyUFUWD+0w6VALR+ZeYYLV7qETQe
+                UiCMWNb66vbbb3/xMS2fCqkkRhsplBRSqTAMNNJCCqksqZQnhDBaG0cIEWswRDeUsVAgtC2UMRLVkHIR
+                oaVunKBGrHBR/Uop0DrEC10MIZEO0GFojDS32rH8qpbWblYMDrK0WOTJPY/jWArX9fF9n7a2drQRDKwY
+                JJ/Pkc/lqVZrhFGAiVy7WCrtMiK+ylK5FcrJy/7V60nnWqi4EbVyrcvzaqtaW1u+aVBIqZDS+glSVgzj
+                uwjjE0smXpQQ/cocatiqxvdRpF5y7F5CjS/CGEMURVI0LtMw+ALrgm3VWqO1boipENiWrY002giJFRca
+                NEjhCYQUWmowVWOMFQSBpRwZGktaKCvEC+voC55wZDAayyhlQBuBEabxXg33WF54d4RoBAdLS6UfaWnd
+                1Nc/wODKzVi2Q0tLE739fUShTzqepKe3h9Onh5ienmbDxvXkclkwEt+JMTs7Qb6pnUhbZPMttLV2Yztx
+                MlmH4eER5mYXGexfR6U0/ebJiYWrWptb93i+99Jz8jIdYyJQ1n8qAFxmjkZryatZFCEESjUObeOZNyKA
+                ixISRRHGmISUcln/GGmMSaB1iGmYDISSQgihQ20LTCSEkEgZyriDFBdiioZ/L1AIDNI0DsSF32qtl+9H
+                SCGEaRwpRSyWYHFh6TfKlfAjLR0rUE6MtvY2EokYgVels6ubptYOuns6SSUTzM/PcvDQfpSS9A/0Ua/X
+                sS2DH7hUSjWa8y0oGp6fDj1Co0klk2QyGdLZPIWmVmanR/oTCfuLQqiLWuJFaoSwJiijFMReakN+ioS8
+                +MAbTo4x4qLUvAJTlqVDSiGkwQgjL0iEUhZCSF8uG2pjTAKjI7RWAolouA9ah9ogiLAUCLQVdxBSWTrS
+                lgl1gxF2DKMEJhINsVjWx8aYC766WXbpEcbgKIFFhA71dcpJsXHjNmrlGvfdczd+vUo+nyWZiJOMO0RR
+                SBAEdHV1sWbNGpqampBCkkjEEVKQiCdIJpIYo6nWSpTLi3i+i9aaVCrFqlUrae9oxaCp1/0bFuYWbkom
+                E1iWejnZNkpq0P4rS8/PcEnZcAh+ShxpXjQWGJR6UanbjoMVT0RCCqO1VoEfpYyWvsEYjUZI2Qh1AenY
+                oVAWWI42GHQUWEgjGlG2uRBgYCIwWmKkIBJglERKBcYglSQIIhYWSiwsllgqlpmeXki0tPaQyRTo7+tn
+                dmqce7/zHY6fOEalUkJEmiiM8IOAWCzGVVdeRUtrG5VKpZGYsmyiKELriPmFeSIEynYQUiIQJFNJfD8k
+                Ho+zuLiAIobW0W+7wRKhqb2cqBFF1YYOEv9nDAFQUmMvR5/mZWZfLpNo+JtKgpJIsSyqYRg2HOmYI7WQ
+                BSnUIgYhlJHoMGOQoVFKYNmRkNaLYbZBCCM8aclAqGUnPNQYT1+0Y+aiwyBBqob3awxhoLGsOIlEGieW
+                ii9Vyxtqbo1Q+7R1NPOWt7yNfDbPw/c9yGMPP4KlBLal0DpEKcnc7AzDZ8+wMDdHwolhCQUYKsUS+WSa
+                RMxGKgtloLg4x9EDBzh7/AjToyPYwiaVayfX1HXj5MT4bmM0nue9SK6L9usvyRm8mHh7ldMuX5bhvJhy
+                acTBzqtJijEGJRsMMQZ15+13oLWh7nq2QEjbiUVAVRiEtBSh1im0rEssjMAIJaUwCK21FI1kbSO/YwzG
+                1wJ/OWUnlm9SLOdUL5wzA5HWaAO27ZBMxHBiDulMKpxfmH/7yPmxrp7eHuKZJNlEhraOdjLZHHNLi6Sy
+                aQr5LNpoUukU83NznDpxAmEEfb09eIFPFEXUXJdiUCedtFHCJpfNkkjGGTp5gvmpSaquSzabJZnNkogl
+                mZ0d8QrNhR8opVDKQtk2Sgpk6GK0QdkWsUTsRdYIAbIR+L6ULtiEC2ag8d+LMqGEQRvxSrrtokegbr/t
+                NpAKy44pokgKrSMphWNAGmPSBuUoo1wpiKSlEEgitDQCNBihBCI0UI8QWogLRvEl0mmQy16FaLiCUXTB
+                CzPoyBCFEcKA7VjV0yeG3hgGIR39K1molFDC0Ns3SG9/H04shpKCIAguJhATsRizMzPMzc/R3NaM9ALK
+                UcSec0fojCdIOSm0EjiOTS6fI5vJ0trWQa6piVq1SjKWxOjo0sCv3JdJZ8YFAsuykBi0V8dgUFaDIcY0
+                MltKChqG9OXWRYgXM2PC8BN5sgsSpi8yyiyHCxdrAkJqS4ElpFIEEKGjSGGwhTbaREZYTqysLEs0soeG
+                RnIRJYyJxI+noX/SxzMX7iQKIjzPI9JR3LIsSymFlBJjIqIoIggDhDEP9PV3VTp7erCUxYnZKeZnJhAY
+                MvkMSdtmcmqK0fNjuFWPbCbDxks20796JbVandFzw2jfp+zXmQhq1D0XqQwm8KlVKxAZpJA4joVlCdx6
+                jXKlTHfPKup1/3fqtQqeW8et1wm8+svTT0IipFjORAscKbBfJU0izM+aDV5Ozhp9weER1vJx1sZECNvy
+                QMV0pD0RhQhlLWppbG0TikiiNMYIYYQxvlm23UQN905YEqNf3efWkSYMQizb8mKx2MWahXQkF9z8prbC
+                bOCG97TmC2+LxZMcmFpAx6p0F1qZqrlU56eZnh6nri16OntJNKco1kqsWbeeluZWFqcmKdar7J2dYLZS
+                JZVKIRFUo5DQreAv+SzNz9PR30nGzZNIJhAYap6LrWKtka8B2chOa69R4BKgjW6LwrAKVC8Wvy6S+Akp
+                +E+k5hv5I6OXZQ9j6TC8ENMjlHQERhBFoVFKYlmIKAqMbIhWI+x/eSpR6uVoSC7beP3S5OGLHlcjISxo
+                +N3LCTrbwtjLXpeUBCbsKBG8fm7iJD1tbah0G4+ce4TLWpspjoa8MD+JdmfZ2tlJIm3jBxqvVEb5EcqC
+                dMLm6EKJJ0bOc0k6R7OTQMsYz505QFMUkFNpLFtgxZIEPoQmQkc+i0szpBPxv7Ysa9mpUoSBRxS6gETr
+                qByEYSBeKcVu2T9mxV8xk/JqbBLLfoBRQqKFQQodIXSEDjWRF0phDDJmI2xbI6VBCyNCaRq11pczQ5kf
+                U47LBl5IgVyuH6D1K7rxRghqYUDVdal5HlXXRXvhVDWV+Mbd81NMDB/k57oKTEQpvnH8GE0Zw9YNmzmV
+                bmNGBqTq07iLcyRTKU6MDvHYvucp+nWenj1PFFW5tLWVbDLDvoUpzk5N0JNrxliS8/VFIt9HxyUT5clp
+                7RX/e0xFH5NKfRepGgZWWQhpv6iOhahLIcKLxvol9LMVfTH8hMsrAKGXCa21MJE20rIsLMvCthWWZbmA
+                jtBWIzo3L03mXny9lzHjpwijtBRCqp84G8I0Er5aKoxokEYSIVnf3fNLbrZ57OOHjjM6vp+B1ibuGRnj
+                0fMvsDrpctXq9XznzATfffoBrGCWMIz44fgo48UJxstL7J2fpKOQoi1b4LTvcu+hJ7l85WpaWts5tjhO
+                tpAjcGweGjpALC3/pJBJ/LFlqb8RQqL1BV2ulyXh/zz++OkFL/ETz9UYo4w2jrUsgkJIYYwRcQ1GRISg
+                L4b/L+MEFyqF+qcHTKYRnQsU5sc4YhoVf9KpxHKK/sXAKalE7b3r117+hdA++ef7TiTjtgf5NPeXfMYf
+                vpsVhQ6yxuZrp6ZI5A5i7DGeHD/H6/uaeebkEWJOjESoOVep8ejJQ8S0S0xEfPGZRygHHnZLO88d2cNl
+                gz1/uqK76xO1yUV0pJH2/xsG/ISoGPFK+S1pjJFSylDdccedL9qiSNraGEuA39BuEh1pdGRQSjUkTRuE
+                Ztld+9k+g1Ri+XU0UkmUbLyWsa2XZ+SAINLYVry0Nhf/ViGR7Ayc/Ia6a6gazbCyKRaLmPI8UWRxfmaB
+                CXcJKx6nHklKvk/CjmF5PmdnZ1mql8lnsjwxfJ6z5RqxVALfeGzv6/3YZWtX/1kYavxyDe35SEu9GAAK
+                iYk8TOQCAqkUTsx5tfzIy5yXVysJN5zUhiYQr5zWQggRWeZCsQiDELJuKVQjckA3eg8a+acLtaYL7Rrm
+                ZVrsp7fEhGGE0brhNi6fFT/wEaFCWQqMaETxyzFXLQgJovDka9aseNPVqZausZmpD59emH/tdLmcOTM2
+                tXFuqU5Beri+oTZeoaVnkDkR4jhxhOdTtQSLvsa3bMrFKs3N7fRkY2ZXc/ODq/LNvxrLpE8sVmskLbtx
+                7/9vBePHYoBX7qGQUmpjzEWP0zRCishWxjJSisgsh5SiEYTz01SquZC/+okKqEBHhoXJeRLxBE7SwaBx
+                PY/2zpVEyRjF4jxSakwYNhivFFIIgsgwV62RigcTqzs7/iiZzf5RfG6apfaOv3quu+Vjxyanxfx8kdaw
+                wuzCFOnOHmYX5ohsiUzE6e5q1y3xVDiYLTxSSCce6MzKbznaOl+vBSxWK+QzMf7/vsRP70hpOG3LdkBI
+                IYxGB0ZqoRsJKIkxkdY6LYQIAO8V38EgXpH5xqCUjY58giAgEU9gQkMkQvo6VtPXt5Exb4EwsBG2oB5W
+                UTogdKsYY9BRhCUgMoaqHzBXrWCVq2zu6/0vg4Md/2Vqvvju+06c/7v9hw8U2vMOJbdG0pZsWrNidG1r
+                17+msb6Qbms5u6apjdNjY2hTY6FSwTYW2MsZbtkooUoNwjRSChYgjERrgzAN5/KVTrojDAqBt/zxo/9L
+                FshaVhUCjJFGLjcGGiGN1KJRJw6Wo/2XxTIiAqNeRRKNQVoKYwzFuUXQjexuFPhYqQxtHavQYYDn1RoG
+                TsWQjiLuKKbGJ1FRQCKVIDCGKAzwdERCQDybZsGtoxXs7Ov7YtpJxM9Ojnx6qlokp6q8e8fln+hetfKX
+                49Li9PAY835AqR5QjyARk2BZECqUbNRl/NDDJyCyBEJGCBlRNgZjGaQtUQsGoSNwnIvqWglQQlAOoWgL
+                kjIiGQpsZRBYy22Q5v+cIcuRjDa6Ub9Y1vPGLKfqhRBeQ5xebH5DINAYIQTGahj6l4qeZVkIJZkZm6RW
+                ruLEYhfPllQWYRSghLWcLDagIwwB6EbxR2hNsrVAbXaeoLjIfGmWVa1tdGxYSb1UYaleYWRqlhYh7skX
+                WsKRmRHrTVvWfGZTd+8vny8WKRmwIhdZXqTigK7P4dVC4r5HqCyQUC5HVBphFiZrsHWdtBSUAzAS4hYk
+                21qQ8yXwfMikcdB4kcbFYjyUzKiIVdJQURkKwkbrMgkByshXiA9/VoaY5SK/UZYxRhqNv5y1xGAQUhp5
+                scZxUU0ZpIRIN9rjLOuipySUItKapalZ3God23F+THj0xSTdK5U/L1QIdBQ1joWASEeAwbFsnGQSg8/8
+                4iLtrX0Tr9ty6Z9fvnpd/9Wdmf827ZZIBy511ychA0oLi0yYOYKlJSJP0R138GM2RkqMVFhCIoREs5yt
+                0ALrQpXPD5D5AsTzMDmKFbjUnTRToUUqqGBbFnHAMuBLi5px8EyAFpKcsZb7iv9PGCIa/cZC6EgoJQAb
+                Y4ILgUej5G0ExhhpNWqHWje8L10roZSFFY9jGqVZbNtifrFIqVgmHo/9h918P61nRkmJE4uTS6Roiqcw
+                vt9TKpfaFmsVf65czM5VjljZpuavZm1VPjI90hsJb0dHZJ2PWWoiZWIVndBGJBuelrEkRtkIoRrZ1eU2
+                RgGv7KoKMK6HzOVRXV2EgccsOep+QOHH/kAagzIaS0BoBDVjkRD+8skV/1mVJTCmUVqSEh2FRqENQgkj
+                iJYTgwIhIQo1XuBjWzGEW8aEHspysEKNNnrZKEXIZRvyf+ITKqXIODa5dJawXI2Vy+U3jpZmLj9XnNsy
+                st+9dLa8FBMiQiEoBREz9TKu12iaaEnYDKQzOMJEmZh9qiOWeLZdOgdtJb6ZisfHc7EYWkLdRD/zoSAI
+                wLaJlAJPYJnop1pvhSEygpq2SMhGi+1/himWMQatjS2EDKUgFNJECIFYdj00AqGEkULh+yE1t05ceiS0
+                D0I2zMpLEo9GyJ+tpfIlakoJQTaZpCkVF9XZpfVnps7feX74yJtPLi5sPTU7r+p1j5iTw1MSZERegbFj
+                mDDg6v4N9HetIAyqzFRqPHT8CE02yi1F65Gl9elhl5XJ/N/G/fPne9OpZ3rb27/S2t50d12DpzXhf/CA
+                EUAYIbRudC7+LLV0DBGC+jJT1LLx1T+bhICQwsU0GsKkVKBrjQ42oxxhRIQUoRZxQCSVkoExJjBCIQyF
+                5VteeKlRD4KQKIqILgQx4ADSaO1Gvv8yc5SNxXGSqfjp2bHLHz0++Zd7jh7dVQ4WGK+WkXaCVa2dbOne
+                Qn9KIaXhmyfPMF6aJopCWqXPB9b2cdKXjC7OkwkFMijy4V2XI5yV/Omeu1mbb2VmrsJSuTyw59zsQGpy
+                8W03bBw4tCqb/6O2fPreABWU/PrLhiL+b1wXmWIU9rLfZRD8B82rWKjl5q5oufgEIGyDDBBhEKhAmABJ
+                zbgItC2FNAgCZTlIY9xG40iji9wRCjfU+EaQTWcuRuZCyFjge7YxkZvMNyE0ZJ04bU6O4ZnZj/zghWf/
+                6alzZ5lwayiRBFOg0JzBcuf4k92XMOms5B8e/jZ//ZrL8GNb+ZtH7yaecIihMSai7AXM1SPmXU0Cw0A8
+                xuqV3dxzvMCbV3bxRfcsK9Met2y5kYcnFN8bHb3ECc9+Z0eTDF/T0/fzbYX012q1xiyLMeL/KlO0kbgv
+                +Zm9nAZ5Nbao2++860JJDIxp9AtbMUwUInRkFIoQgR8JhMAzwoQi1CSlAilCjAhiKIwUFFVAxa6TTCSI
+                yRiWLbBtC4n2bcupd6/dRrK5nVwuTdGr7f73fc899w8Hn3nb8yeO4MfjtMYkf3XDDazo2sQj58apFhe4
+                pNUg7TyFXAeFRCufO3wIr75ASigSOuSyvj7Gq7DgTjGhA1LapzvfTLG2wJqWAgukeaFc5nxxlOvWDPKO
+                bbvBeJwtljg0NidPLJbeVHer71iRSexpSSamFgONkQqFj205CDuB1BHKGGraIgxCUsalLhR1ZchLCEUc
+                G0VEFQuBMs5FT+HHc7v6xS7Vl/9i+QfyYneQWS6vCGm0XyesuphINFp3hEDKCwGhQSTjhDGFDEKkgZqM
+                KCVCFpwAnwCRChApG2VlUHYSrARdKzfT27OSJifGoenzv/f7P/rqE5/Z93hX0fPp6lmLV66TUxFEZa7s
+                kLxhcABEJ8+cH6PfidBBEcuMcllrG+l0BzoMiMccLEtTdzXzi4rZYo0dfV2ksgW+vG8/u9ubkIkuJhfG
+                qQLjRZ/P7d/L3ceeoCcO//PWu9i1dgcPjUZrvnH8/P7x4uJ/yTo2llIYw/+T68JwhtaNZ8kFckOoB0ih
+                Dcu1cSGVhQkDgtICRocCIYUBLGVIypDIdYlns6RXrMTNSKK4zWJzjvFEQGgCYiiklkQ6IJbLk2tZRbKp
+                j2RTP62FVhJRcNuPhg7VfudbX/3TZ4dG7IzSfGzHVlY2t4CIsIIKpxcX+NQz+/no9hV85NobOee3Ml8r
+                852T0/z5A/dxTWfIYCFJpCV1H+4+PkQ+Ns2dK1q4sb3AvF/l0OQwx6Znma8W6cxoPK3Ylutga+9Knpqa
+                YWqmyK6uZiwnxRo74A9eeykjOs/Hnzn58b1nTz/VErOdVMxpTE39v7gkmNAgagbhGkTdYPwQtG54WUJc
+                7NBBmAi70VymhMDSxrgmDFE6It3djp1KIY1BRAH1dIp6MolcnG80jgpzsaasI01ICET0tzRTD6PrP/3k
+                /fd+4+gz9BVyXFHYxNj8GHktODRVhMjH1yGX5jLE4t185plH2dXVwuF8E986foLeuGD/osVH730YadsI
+                LBYjh+8PTROdPkdaCOLCoo4iFHO05HL8/QsH8GLHcJTPdWs2Uo00Q5PDXNLTzXWrN3J6vspY0eNM8RR2
+                VKS9vY89M/XLxxg69bqB7DsLuZYnS/+hGf4/DrN+rHzRaKC4UKBq9PPqCJSNTOexIi+MAi/UoYYgQPWu
+                QBSa0AtziKjRyCLCCBVFCCFxpCASAmEsMFGjIqg1LbkcJGJX/tVD9zz06PkjiGSW9qTNmwbjDLXvImvF
+                +PlNa/jKUR8RzVASgsfOnWTP4f0cXWyjEiU4M7VINq5Y09wTBZGa72oplFvjacu2YpPE7bO1mps3BuOE
+                YWQkK2ZdLy9NlDs+O5WZqU6gRMAj50cxw6MQLHDXit1MFSV3H3mG6wd7+dyzY3Tl0vz+DXewZ3yMv31u
+                b3+pPvboB3dkrs1kCk/VAvf/t4ywtVyt0i81NAYhAhUzItLg1bB6BrF6B6jNTpOSikImw3RJIqWDTCaY
+                XKwXZtxgEDveqYyfyabtb2GioCWZIjD6xr9+8DsPPHF+COwcSQnPnZ8hb1w+fsPP8a8nZvDLJ/ni667j
+                34+P8MmDJzg5PUo838LJWcG6lhy3bRg4u6Fn4NNBxf+mSsXObelfSYuTZqS8xJiuE9ZcvMjQYkk2dbQz
+                UqxSrtQSb9px1e1nF2fef258auvjI0OdS7Vp4k6S0wujdBUUa9vW8eUjpzDa4y9vfy8Pjs4zNH6AX7t0
+                I589etz65N6jT77rEvOW/tbOby4tLV0ogpKxLWqi4YZLoS8mE/9v+Gfq9tvvuFjt+vGw2QiJ1daJ3dUF
+                YUheSUaWFrZ/+YXnnmzKxdIzNc++7+DR79UD9Tc60/nhB8cn3/HC2dNv2lBoObOyffVBXyQu+6sn7374
+                6bP75evWrOOWtTupEWeyFnJmdo5VqSKBleTvnzvLzOxJZupVnj15mkxMsqN9ZfW6wQ0f39276p2r2lv/
+                tKe988l6zVuqmYCmbA5pYLZaZs6v47p16kGAjELyyQTznoc0Otzc139sVVvrv23s6fnbDS1Nz3XkO+ql
+                utryxNCI3Dtxipt7s5Trda5ev42mZJqhyWMM5rrpa2ll/9gE52ZmmVicf/Pa5uyhlnTmxIKrKdXdy6v1
+                0nunXJ1dDModnQ6T8URTlLESCNnodJTa5qdOkwqQUYNebBxpZBsuMiTwG2PHgR+iIx1DGrTnGiffinBS
+                xDUsVis3f+PY4Sf2TC4Vzi8tXG/88D2X9W5rv27TbsYqRe4/eZDOuBPeuHL7exPZTuufDzx+6PFjz8Wx
+                JW9a2ctNq9Yicbmsf5CK1cnzCxOsTitmogQvnD3NfLXElvaepbdvve6/XTew5m0d7S0/qvphacmtYNkO
+                xVIVT2has3li0qLkupRNiA5DIiAhBK3pNEU/IApCMskUC/UKXhSamDSnN3T33H1lz8q789mWjQemF/p+
+                NDSEozyuGOzj008+wfqMxeqBjXzm6SeoL03xgStu5Ni8z77zR26+qjv/lbSdK0356s1fPHzgL1uymXf0
+                57vfd2ja/cW6W5+YWJz/2Exp+q6uVPp7iiTR8kIDRymUkC8nqRBRowf6Ql/CRYbcccddaK0JPP/FmQhj
+                1oReILwgqNaFwfZ97GqFu0+c/F462dLmOwnOTx3gr294HdcObuVPn/gWX9/zfTKJJL++8+qPrOhc9dRX
+                ju2b+e6zP8xuGdxMoXklExOH0Qr2LQS8aaCTa9uzHCuGfP3UCcqlYQayBd5+yZVfvGnDpZc1pdPP1Nxa
+                sOC5+IFGm4hUMk21UieQhrZcgbi0KXkvYYhpMKQtk6YUhJgwoiWXJ9ARkdaUq2UqgU8+lp5a19nyr3ds
+                2f6toh9/26HppcSTJ4+iwhKvWbuBr5+cYN+ZA3z0qptY39JMW1zz7NhSvFaeet2WjtZ/aGlbP3RoIfjt
+                qcXzvH39ADes3Z16drz0hu8eP7A1MP629kRiW0828TVbaaSMWPR8qmGApwPcqEHVyEdGEDPqYin8IkNu
+                u/02hIBYzMF2LJy4jRJyUUaiqjq6jBf3SNiKWRVvPzc9+qcbWvvUfSPnSdshhCF/89zTPLf3UZqbWvjV
+                S2/688vXbPr4fedOff7Tjz9w2Y72Zt6y7XqeH5vl+OwwN3ZmuWX9Nfzenmf41pFHmS+XKS0usLml/dwH
+                LrvhrlUtXf8w77m4vofQmlApgtDgaU0ynaNUrhFJ/Z9iSIhBWQ5uEDQGUkJDJXDpbC7MrM5k/6HZTvSc
+                L7tb3SAkZoVIr877dl/FFYNr+fj997O+LUNvzxq+cehwoVnVerb0dX99oHOTuffgkdfce/wgV3WH9LV3
+                8aOhMS7vbaOnuXvduYmxuyueN1n2fcpRgBf5F5nhRgHl0CVmFBkRI7pgHpYZIhtDHBF6Of0hgxCpdRTv
+                ateJ1mbZZCs77y4R1NGawLQmInrTBUpLHp/ft5fjE0Ns3riTD1x+7YeuWb3xv51cKL31S/uffU9cCj54
+                5Y1sbs/Rlk0R+VmOzS+holGmSwtMLflMVma4YWDliQ9tvn5XOp3ds+jWCcLgQqEeE0VYIiSjfFJRBYcI
+                D0UkFLZSCGVjrDi+cKhqCy1UIxo2BiMUyopjdER5aQZdncMSIFSjJLBYrVD1au71q1e976NXX/++fKaT
+                7x8bJmWVcCOXf3zkW7xu0wBtTQOcGhvCMw4/mvI+eOTsk790iT35J7945TV/TbyHj3z/WT7/5IPEZEDC
+                UuTiTSyqRKfI5qmpDCLSOMrCluolZCGFfMXK4vJIW2P814snqMUShPE4IhFjvli95rFzJw9uSgRf7Ir1
+                TI36wS0TtYm+c9NVbCdkQ0crNw+u+bfX77zq0rU9A8/NLlQH/+Xpx544OXyKa9Z1M1kL2HtmL3/wmrV4
+                oof7z4zieouMl4pU/Ao/t2n7wbdsuGx3ya2XysYnoSwCY6GkILICapUlUgQ0x3zy/hJtdkDGkRDLorCo
+                1ueoVCZp0mXa7AitBc35NtwoQvg1bOpUyrPMTIwgy8O0qioi1o5rJ0g5gkqlwkKpTH9724F1/W0vnF0o
+                v+PsbIkzMzOcmi/jhVUeOnWEcsXlz97wDvZMVjl5/vztVzcHX+0d2PjVzQNr9y6VgnecmqtSc2vs6Omi
+                JZOh6M7dt3Pd+kNGW7Hi4pS0ldJcTC8aQiISwiKN8xMScnHG0NIRnhVnKdOOrxzQgnIoVn9x3+EP1oLq
+                Nbeubf+Xx6fdGx85eW7zxy6/Bs9OEA+L539xVf+1i14YdeR7eG54+G+/fuLZrSs72qj6KZ44d5rTS4uc
+                nzrPB7atoiITfPPQMaKgzrsv2fWjWzbvvKriecFSqYyTjAEK1y3RnItTVwFepUpMWFi2wRaQUBbNwkUG
+                dU5OTRD6C+DN0yFrrE2D508ThD5xaaF0nXqtBAiCSKO0T1rUEO4cUili+R6qlRIEIVLarGjtPD2Qatl7
+                YmrxHTOVGZqzcU7NFdnVvZJ3vOZWRorTpKlxYKpKJhamB3Lh9+x086kNHQN/SejeNdCabifeyfNnTrK7
+                N/+BKNXlPnbo4KgVBiNaWEe9SONrQz3S6AjaVRJHKvRPqKzleDFUFgmvSvvSOC3VWRJRlVJxvOX1K1Yy
+                E3bs/OUf3Ds+u3jm1o/f8AZW5dPcd/Bp5otzi/WwSnMsy9DY2Bu/ObT/vbgl7lzVzkd2bGRr/y5MrJWH
+                Jw1/8ejzzC9OgqzzutWbH3vN4Kabl4KAqu8SkwrbcTgRlZlcGidtCYyRy/nSF2caAiPwsDCRT+jXMEKB
+                lcAjRs04CBEQVUcxfhUhLZTlNMoJy81vWiURxiW2eIxo5hghCukkyao09YWQwULrPW/euv3d6VQTo4sL
+                3LphFW/ctZV6fYpP7T1MaybD1evXcu/p0fcV50bv0JNHiGnpai2eTvgLvHFtF4lkB2PV+GsfOXz4e6dn
+                FzrbCrlqX2uOtkyKtmSK1nSKrmSWpHAIjH55k50QF0ewGpG6VKh6nbT2iSvB5EJ15ZWded66dRcHThY7
+                tzSl8zs6M/za/XfDzAir8q2PLOgc8XQrB4rj7zw7OQx2gb977jnG5o7wxduv4H9cdxP97as4UgrZc/Ik
+                r23rPf+69Ztu8fw6FBexjEZmEkhL4REtdx81Rq8c2yamFAlbXSzlNxpfFcqylqsL5mKly6AQKglC0Yh1
+                DdpoHCVJxxyUEgg7gVFxwpkjZKpDWPhUghLlcIm50jTrmhNfet3G7f8qVQsLtTl+9/tf5tEDh/n8ba9j
+                ZXM706UZTpYMT02HvxDD4HllUsnM8NdOnGPfiYf476/ZxWNnJ782OTl217t3XU3Jc9+TTxta7SStkU2H
+                jtFk7JfbD0E8iqKBKAqXVZYAEzWmmaS0mK9Vd9v14p2BCO9c1dw6uCLXxQP1OmOVcZ4YPcPB0XH6Opu4
+                bdXm/xnPtp0OUFs+t3/P3wtT5/1XXMu8l6MtP8gD54+SMmN0WHGenR5lfT7jfuTKm3drIWarXoW0FUek
+                WqiEdWKWxWzgomo11nT1Ugx9++TwuXe7YfSxyPiFFsfaL1CNAR9hMe9FKAWhCUgKyMYcKmEdKWyEXVhm
+                qiFu2RyfnvzLM1PnPtXmOE9IYU95YURoLKS7gDEGT2UIgjqRMfhCsrq163uWjF1+77FTqzLK5427ruKR
+                s2f5xKPfoxBvYsPgZo6Pnlq7vjVzRNrW8Wy+3T05W/nQ/eeGSNkBJ6fnuKQzz+1bruXAxFxXQprPiyBe
+                DWt1It1oAlSApRRCSpSUyvM92w+DijQIlDHowMcLXNA+Qc2Lf+/U+U/unzvzmnpYYiCTZldrJ6dODPPY
+                uVGSmTTv2brzsyuyiXszsSwHiou/cW58nIQUrLTm+fIdV3HrilV8/9gMf/nIfh4aO0kmcLlj22V/nmxv
+                O7togU4nSbatQjpJTODjOA6xWJx83MKrzbM4P/uDrYWmf+3pXvWuB0bKnx0u1381ZUniShApZ7nM8wpp
+                VO0Rs0JiuTacdIF8oQ3XzqwYK7srE7HEsBYKIy2MtAitBEJKHBXDXiajLfww4qbVK3+xu9CtRTzBTHmE
+                +48f4brB7Xxk99W0OiEnZpZ4/tzIrxaCJdpi6oUPXn7D7xTSPfz1swc5OjvJ6mwWW0PkpK37Tp09N7ww
+                +uctHU042RhONobINKaDl1uoPCHElBAC9fo7bsXDZlZmCO0EdRkj19Q5/OD0/Dv3HT/d7Fs1bl6zkW8e
+                PkY2W2DX6m1MLk1ybWvmY/l8y3kr29H36ace+Nf54rTQKsPTU0vcc/Qx+tUCb9++k1E/zvEzJ7h9YMXz
+                r12z6V2zpUWMWyWX7yOTbMb3K7hBndHFua3H5qY/MDwxef252dF/LFWLl18+2Mv87BgdTd2MVIs9ranq
+                J30rhmsVqNVrpOIxlNA0ORb5WJwFr4JUNkkZUnQtqr4g8F0qgVwzmDU9l3Zn/kpZkkzcIh1XpBMWKTui
+                KmNEtg0yBKXxCMgmY0v5TKZ67/Gh13rlaf7bTXfQkm/iC499n5nFIk5hkPnyfN+mpuTnImQpm87vn5uZ
+                /KWBlraEHUuyqZClkC7wt0/tcUbmR+0rVrX8TSztnKjhEqoA1/YQPjihhZEQhAG60bliGIpCJowhsVxY
+                tmo+A62ZqBxu5MGhEd72rX+hN9PBP732bfzunkdZnBql2JFKt268ioPV6uWnzg6JHQMD3L7pcv5h39OY
+                WBv/NgqbvKNYSpOOp9jZ0/ln9eoctcUZ0k2DxKwmAq9OsVbtPj05/LneQvNrr851s9dP8PzMeWRQ5NEH
+                H2R7s0NXup3Ajz9nqSyLoU02nSfObPfowtz7y1F53Tz+oXhX14+ak7H9rrYbnfYL56ioFnQszvzCfMGl
+                HBSjOMXAIIVpbOFB4uDiR1UWvAQJgosdIlWvzKpC69/uGNj0kZnFUyueGDrAC1M1Mvk8H96yk/3TLl87
+                siCOlSvv29Gi/mSpVnbOLs7Fb+iL8RvXXMtnjw5z98PfoVpaZEv3AOCUZktFgqhhyEMRoaUhqZyXpb1k
+                qC3swCMReqgowtI+fr1Kn+3yrvUDRCLHwaFTvG/bFp4fOc0Pnn+IfCZHS1fvqTD0GRqduIYw5MbBTk4s
+                LnBNcwefufEG3rlpLfeeqfLcsUNcvaq72pNveqZe93CSLcxZcU5MH+Hs1AR7zpz6rTYnfO2vX3oZv7J7
+                F//9puvJJQqMzs9Si2DfnOTo3PjUZf2dn4iKVn5lIs25mYnXP3Dy4Pm7Txz6k/vPjb/j88dG/uLPnty3
+                79Hhib/wAr/NsR0sfOKqSqgNMiKREOqU7weYwKdS9wkCQUo4OCZBS1jCwsOXCi0NWhp8ExGqSF+1atWX
+                xxYNR8+dZkd/PwNt7RyYHEepIms6uxiamHuDqJZJW85SJtE09s2DR/Ar59nU1cVTZ2bZ3Z3n0o5eoopu
+                6UxmaYmlaYml6XRy2DGBa/lI86L6tbSBVTJOWzZLaCuktomcJvYeeiDckAnpyOdYt2Ibx+dm+eqRM6Y5
+                kxKbW3MnO9sGTk0v+ZwYP/8GHA8nqrCrZQ2ZNWt479c+zQe2b+Gq7jZ+NHWUDbmWv2uKx6ZmfCDTj+1E
+                ROE0GdvQ39lxdGx2iC+98CB1E+OhsXHi2uX2DVvoLrRzeK6KHc5Qqp//97FKbv5wqbzvK0NHPlT3Qta3
+                9LCqvYfeXBvznsvZ0tLvLA0tvn9XZ3S9ZTiiZAXlh0hpieZkoqsvnmVKh5SCkIxROAh8bFpsH9+UGA2a
+                cS7uxRT41YAey/ni2qaOP8zbdWLBPHMVm96eHmaLc4T1Jeb86havOnJ7Jtt67xUr1t57aPj0mt95dA/v
+                u/xKtve2saGpQFu6mcmw6IVGoEN1setGCUmgBHaoGzM32mAZIDCGpC4ShiFNiQLpZJw9rh6bmpvf9Nb1
+                G/jXI8/w6Ol7aMq0iHdesv1LqxOx/6HqDoux+DWjS9Md0o/x1PAo18VyfPXQGa5bv57WtnUcOng36zpa
+                au128h9PzZaIOS00J1Kcmj13yfDU+EcLibmYsXMDkUrxpTGXTmZYmc7SaUd89NJLse0O/uHMIean6h3n
+                ygLHrg5+69TMTkTAb15+BVf3DLCqc4DQWERCMFlxOTk/0xoj2rtYXHx4oj67PxvV/7YWBJnR0mx+wc9y
+                pKSJ2QpbmkaKhUbzQqueJbDiVJ0WYsa/sGWV7pamM7tWDfzzd58+/KFLOiq8c8sOvn1ymG/t30NgFH0J
+                hzkvuDrtztx72dpNv9nc8u7sp++/+wP//PCzFBzDql1bOVPyWXRLfhh1oyKfCP9iuVALcG0NjkJqULfd
+                dgdGQxhTaCnFXLXyvqyKDoSxTK1eXXzrVWtX8ZUjZ8HzSEmPm/oHfrUvnttvGZvjleo7nzx76IaWlMWx
+                uSUePHycmcoUV61Yw2PHRzk6epSrejp+cHln32drVpJUpomZ8vyVT5w5tWexHl7aFEtt6Uza/dtb8yRj
+                adpiaQZbOnhmepRuKySRaOZvnnqS17QL7lp/NY+cGeHs0jBX9jeTERmeHD7NzMJJXH+BhC3I2xZ9mSRt
+                qaxqiudX9Td1Xp1M5T72/NT0loOTIy2RjtpELHvGeOVYa9IpJ2270TcmBLaEmBUwVtMU3RpuUKceuNQD
+                FxH6pUMTk+8bWZzk6NQYw6UaV/Sv59oVmzk6PUfcBOP9yeS/W06eLZ0De46dPfVLpxcXYm0pyaVrtjAx
+                Nze6uqPjIwvVcHfglVtTMXvKYC5us4uEaTAkZjUYorUW0gha2nv43snTn/vy3uc/9Z7Nvb9QCv3mrx8d
+                2tHS3ENFGDam45UrOnp+G8/34oU8z8/NvfP42PhOT3tkYkk29axhZ/823DDGM7OjRN4iN6/s/85gd+dD
+                2li4FhwfOX3vzYNru966eRepRIpjs/NkRRonDLiif4A9C1W+d/oYfVaZy3vXcG6hxLnSPAXLY7QYcHKh
+                xI6CxXSU4isnz3NwbJxnpsc5PDlMsTaBHSyQUYqmQoYg9JmszIjebJ54opUlLXcVYulfma+4H0sYdRxt
+                HS27mrpvKPuSoO7hR41Zdcc0ll+KyCMbi9XGi8WPzhanrVs27OT9u69hXb6JDgdOVIuEQb187crOzy4U
+                SxQXqvXIUgPD1ZmdfW0d7D83yobupl+paqvrmweef7QlrQ7kUvG95dDFMwGeCfB146unA6zG/J9ozA6W
+                AjbkW78+UfG2/fO+oaeTLE2vzKxjwXHYP7bA+r7uh+24KEnPoRoJFjyvrRIu8qGt2+nOraBcW2JHXzeP
+                jpyl7i3QVWhhc3fveQKLeDXi2NzM9Zl4fPP65jwZEbKttZnmTIFyrULCVDk8P0STUWwtdPDC3BRm/2NE
+                qoYnNE9NjKCdPE2JHPsmp8k1SXb25HFEO9NeyBMLFR4dPk1PaoRVucPcvqqfKdHEo6cP8+a1G3jDhnWk
+                7ARNVgwvluChg0/+l6na0jcS8dRLGsIj0o4kqVJgwouGtjmRmu1p6XlscfHMzd1JeGDvk0yXFjAxRW++
+                lemp4uXaFPuS6ezInIqzItX32dTY0Iel9Ll2/SX8cGLij+vlhf6Nnb00JcVYPGFfmK15xZq6Uo6ILGLE
+                jEDJaO4tKwd4cibc+MjZpzb+3msSfGbvMVStTHvKOdaRFsy6El8lqYVBUvt1TLRAT6aPY57mgZFR/uWZ
+                pxHePAOrVpm0E7svdF2MTBApkW3FJh5P89zcNGdG93FJbz8n5zVl41Py6lzT2srl172W3/jRvfzvF/aS
+                QHPjhvXEHcVkeRapK1TsFEszi3RlUmhVp9VyaM/GsVsyVD3J/ZMzzNePM9CzjucWAjrGz7C2q4fp4gJP
+                Tk8zUq1S9csDl7W3JhyH+oWFZJYUVPwaMyWBki/6opUgIiXE3hD75onSFKdnPCw7wsKhXJyhFpYp+nbB
+                ieRIS0eaWT9yQivDgdlhCs1zHJ0YW/Er23eQtZuZXTpm4tJBS/GqzdaRsQRJTxJDMVvx3LqZ5yNbruGZ
+                yWH+8MGHSKo4kR/x1MTMb61MJD/pZ/pGssk01VopS7qNTx89x96FaX5j53ZCOcie3g2cHjtCOnQnsujx
+                aaOZ1QmyTiw1kM0SCMHnDx/hqWN7uax/hI/fcAcdfauZma1RrAYsBAGeMeSVokAzT4/N05rRCONgWQol
+                NLlUnoWqS6TBIyAeE/TmHPozaQp2G6ubEhjbZiCVYzay+KsnH0N7IfFYnJrQrE2lR5NOvO5HurELWmsi
+                QsDBSSYvpsoBjBOjLZc5JKVgaG6JioxzfmYeIwQylqQpYXN+obhtnZU7WHADhkx082R9joob58vP7+OK
+                7iy3rt/K1585hNRRreSFeEH0avMhjWUqdRMQ1IvsXrv6K08ceP73035x3c+vX8cnHzoKKcn2tduZdyes
+                2bp0muMObm0pH7OtjY6QRKkmjs3U+JMH93BZ+xG2tPZzYjpOX2vLc1YiHrlhRNWJU50vV4SxeGZqnLT2
+                +dzbfol7z57mGyeHSA+P0hSTXNI3wPTEIu+4ZDfHT7lc2tXD188vcnb6BFpbdGTThEITiBRa+US6TtGH
+                eZlmYQ6axQJOLCBuNbNQn+aSpgSFbDezi7N0NTk48SRuEFAQkVOvVDDLm3iUkihpkCYk7lehMQTQ6McN
+                6rRIcTzvJDk+OsG1O24knc1x55qVPD/t8d3jz6NjztqMFiwuFJkLw1N3DLbixtr5zuPPcsfazVTrASV3
+                5rtXr13xaMX1icWsV1mEGkksrVgwdTFfniYlItPd3rb/4MIZLu1pg2wTH9p9I7cMrieoFUttmexsrF4j
+                qJXtcj1wBtIWN/QPUA8VC14MkVpFaOfBhBSy6XIlaCzCT0YhNiYm0MwuLXDTQCdvHOzj6sFN7BmboFyc
+                4ztjHr/yg7tpU7NsaZYsLrocOHmahKqypqWFWzZfQSKdIZ+wwQiKoabdEXxg+27eu+sacvksRSWp+orn
+                ZkscnJwn5vj0x0KqExNUF2eo1croyCeWiIULgc+sW2Uh8MjHLdqTDu0JQzKusOIpEvE48Xi8sc8rlTmH
+                nShdNtBJQcVY197EQFywKqtobe5icmF2Yy1Vw7UCUlJNnRob4Y3tMe664nq0SrF/8iSRqodLlUpjYVwU
+                viJJTCPT6zhOU0bGGB8d23Z2ae7tPzp/ku8ffICbV/Rz/dpNfPGFR1mq17KyVlkVj+rUvLqZrVRdHVZ5
+                fafidWvX8cZN13DLlktZXFwkLTRRGAzHLJe4Yyjk8mQzab/u+TTHG50hh2YPsb2QJJPvZltvnq/efDP9
+                ha387p5j/P1j93CyXOLZpQrDkyO8c9NK3nXJemZdjXbn6YhDND/PO9av4mNX3MiaTAuYgLoJGoIfhmQz
+                ecaXPMruEn4QUA1cCkkbKTVeGNQ62prJJJI48TT5VJKUE6M9YZFKhpwUgvMShiWcFTCmjO85cS9KJCmX
+                FslYbRwYncHRIQkTsVCrOSZtYRKG1oQd7F2y+erBx/jTS3vZM1Hjz559mifODr1pen76LUmLxi7HVyB5
+                YWY0YcWWrFSSzrbOqTNLYf2BkzM8fG6I92/dxtcOPMPYyBAFJxOV04nZshRkDNmB5kx+aM7lz554gTeu
+                aGVddy9v++y/8Pjxw2QlZGPxnKhrVKAJ4g4mk/tRIM10S1Mznxsa5eN7vk2rU2F70yCPjE7x6Oh+Xre6
+                laZUgbHFgCvXr6SpJcuGziaeny7xiSe+S1irknA6SEaGjqRNswVjpRL/duwAMxMjtBqDsAJySiG9iIqn
+                WAoNbV2dhHGHehRScl0Cr9zVaglEBH4QoBpbqqhqwaBdZkU8xMgkceUQVw5pJ+G1JDKLT58bZtuKBOmE
+                zUOzM9x37iQnzx+lOZbuSZUjLJmmvXXgqa19GybvPTnHJ/Z8j5o/R6nk0pLuJGkzv1RaoF4vvyJZBm0B
+                ofFNVBeGtBWf3N7RcXyxXt7u12t868g+fnD6FDKV4I4tOz/Vlm0aWViapzWZLPp+NN2UTLe/ds066jLO
+                YE7yWzffzoHZCZ48uQ/P9TcHVQf8EF/N40d4IhWLcvkYvp3h0QnDfL1MbyHB2RmXJyYWeWLkKLe2GYaS
+                TdjKUKkHDBQSjFQr1Ban+eMrb+BoRXLozPOImCDUoDHLmw9SeBE4QiOkwZEh2g0JPENba45ApShXPRxh
+                MavD/L6x83/Rm+vQpTL7Jsvevzc7Nm5kyEhJV+Qx6yUvrJQCI1BGyHnf8E/P7SPUNqO1Gp7vErcMrlsv
+                lXSAV5rHEY7pjy3VTqWa+cqhMUruYW7cdDmb0+1UF0amdUpdWJf7SlO4GLTGCEEQTxFImy5HPfIbO9dt
+                /+7JMt94+iFy+QS5pjxHFxbe1OzVvt6Sb37CTybnbSOPoEy7G87ywJkikeeyuqsXN5jBl4aqDo4kmgSi
+                YggDH9vTUckLDnYl3a53Da7EWtWHEHmECpisV/mvm1dzvJTg7w/cw8+tG+TEyBSRDDg67YOU7M4kSFqK
+                +86dICyWsGSAiTng+fQkHAprW6i6IQtlmFmcJ+YofBES6DpJ4qStGFVbE4sr7h8r5k5MTv7Or29zuXHV
+                Fo7P8LuRX/uLTMKmHFrERYB0XOYigSMhsmxZ1248mcywUFcEvk8hESewFK5XI5/L1FKZHInsWh4/d/Y3
+                Z4qTK1d1tHLo7Bgb2zu5a91WDp868fymlq4jGM2r7HrDaixzlQgiMs05jADbcf5YB/X3vvuSVc37RoYp
+                Lg6xu38DT0/Nt7e2qQ+8qb3wxOEgxEmmRLXu8s1TZ4mqVaRI4Zw+TzbjYFPHM8GbikvB7/o1txpvS5Dq
+                aWduYuyTpcW5W3c0OXRkcqzs6OCJ+WFiEg6dH2ZTLoTVG3jszBTNKdAqTbFawXPHOJVrYeH4YXpyOU5W
+                WzDBBCkV0deax418To2dpTefpT+XpTPXzeT8AmHo4oYhOT9iqlJl1KsjXNjVvoaBtnV88sAT1MIKb9pw
+                1Z9PF51FSwafNlKQkhEdkYcbOqSUwQ78lK9UNogicvEERQ11PyKfi2OMTz30avN+jbQlWPL1oB0FvH3r
+                eg7NGd6+fQVtKQsn53whchjADyaMkv6rbHJoAJRYQmN7AUeXqq8fXph5YyyqnLoiYV2+va+dsDnBR3bc
+                xG8+/G1qQRgmfIu+nEPM0rPaCFLSpp60ScczxEUCR7pUw5CRqdnOeM/a9ryxzs5pja6HuG4wFSYDmpIp
+                nj5ziooOuP/ccWr1OvlsC9WFebodSTSQp8myuap14K8OL9bXjs419acta08+7rTt7ut/00jVCLdY40fD
+                o+wtPcALIyepVgU1v0ZcVWjK57FimpIXMV70iFmGlkIbq2SCnR0D9HW38cXnn+EJrfjMvrOsSqXZ1L7r
+                147PLX3atg069IklcqzMZIkLTWREsu7V4lGkmV0qsrKnk8hOc3z4DG0xSVMiPRxPJCgXqzTZmVNfmZjg
+                HZdM8aWfewPfOvIMj07uqQQl/2Ou0B++dt2qS2qhfsWRccsLA6SROeUI1xQXvWRNRXtHxt6l7YgnJiZZ
+                GXP449f9InefPsH88GFKzZecOWtidNR8Vucyk08lUtimzlJFsqMphZVo5vHDB0ilHcpCESYsy4pbOG6Z
+                8hw0O87zpxenn31NIrG7t6Wbe04Oc3J2kf5knmt7e4jFBvngPfvpTAcE2mPbYOvUjv4tv71/ZhCvNs+M
+                8TBBtOHWlav/7rHT+qZ/P32agZzN+pZBzqQWqS1NY8I6o4tVNIZ1MYc3rtjOxtUriFsCr17n4PwZ/tdz
+                3+TYzDwtqRQ108pXj53mF8LC+shqf1chpb8cU4aKdJkWCm3HqVbLG7xqzXFsTXMiwR2rN5PIdfJFP4lf
+                PYv2wvn5hTImX6WzRTyXza3gC4eO8513XMun9guePHgo/drVu9K5XPwbji3xXk1l+Z6HoxzXMskgiGr0
+                tWTuv2X1qmNFN9rw5aef567XDJJKw2f2PU4im+Gyvt5kKVkj7SfoTrcdsmKCJkdx49qt3NDUT1Xm6e9c
+                xb6xk5xZOs/ZmdlL17R3n7KoE2ETsy3qgXz0+MTY7svXbiWda2F4foar+jdyslzn20efoiVtMzYzS8qq
+                cbYeWpuUC0GF+UqFWDpBf7bz2Aqh3nM0eu74GzauyH34qttYqMfZP73AfeeOkklFnC1X2T83ixg/h5s4
+                xv32IvvOnGOsVGGqsoSWklwiSUxKbMvhyNICxxdG2NAU/x+6pr7R3Jz100HAoldCmwwLtcrOWuiRsiW7
+                OxLctqKXZHqQQ8OTPHH8EC3xllOBrzhx5gyBCN8Z6Yj90yX++pkfMDa9wO2rd/CuHdfx2NCe/VNhQD16
+                ZaMus4kU8ZgThUbrIFS20MJHy3139nXz3quv557hUf78R99moTSFsS32Dp37Nbtcyqhslkyi+XB7qoXp
+                YpWCWmJzZzO3r9vE6nyS+UqRiXKJpVr52lgQkdAuWRkhozgdqa4/OluJ9lbr09RLS+wqdPG6wTVMuT73
+                jA0xvjiJJ0I2N7UP5eKFj4/MTWCZCis7utnROUghmeXbxw9+6uj8WO5gucjdRx+iVB5iW97nDSs62ZFt
+                4b9u3MZ/33kzTb27+fjRfXzv8HNME3C+VMQhRnumGUsJ3NDHD+tkYklKkUt71h1Ix+RNcWVwLINMWSTz
+                CWaqi9sjr0rd1xwen2FkdpL50jCnpk4QBR4JRx8hlaBj5WbG3WhNSzKOjHfzV08cJGuF/PEdb+bs0iJV
+                vzxvW/ZPLGG+SA18QB0LI88RlgiksfCMeuDpuVE+dtl2bNnFN/bsIUXAYH41C05bpjuhOk19gpQtX+hI
+                548v1TVPjszx1Pw4h6ae59DwEaYmR0g5CcZKs9crIHAdlFtjuu4hYnFPpJr//usnDrI6schHr9rN6dlp
+                vn3gMYwdUvV9CskEO3vWfyaSCUqVkKQTx41bzARlTpane5+bG7uTeJp9k0V+5+E9/M3zD/NvB3/Aqryi
+                Gub50YnnuLHfsH1lCxUjWZvq5Nq2Vbxj2/VcvWk3uUyOMPAQOkQZQ1Ja7F8occ/wEFhcYwKfqgZjxQiI
+                Mqcnzt+iQ4/Q98jm2vnnfXv5w/u/iEp4rGxpmfQ9fUyoOFt6VpB2ZNNv7Bjgj2+8C0Q3H73iKpqzKfYO
+                H9f9Tb2PBDqDlNlXJMugpJC6JmQoEFIGXqC3ZFsf/OHYYf/E1BHnT6+/kfcXR/mtTdvYvuk1/Olz32L/
+                zMi6gWbnlGSRvpbWJ8g0r1epBP928ihzpQkKdjN9LS1UqlVOLi6tcE35rclU/usxXaNXl3Bt6Orq+9Lx
+                USf3188c+sdU8iz7y0UOjZwG6XBN/5rZG1ZtfOtgJvtI4JZoT2RxQ82+iXECIYkCf00KI1LpDLGwxgcv
+                fQMniiH/cuBBtnUNcf2mm3jv9w7wha9+DWtpiT+48SZ2rdtKpVakEMvw7VMnOVmpktIGVxhk6ENkMRLY
+                DJ8eZ0v34Iltg+sZn62zVHHxJibXVGulvBUL6Ui3MrHoseRNEQKVcImf6+89emn36vBwVXD05JBzenKm
+                q0OW+Yefu4GF8m2MFGf4vfu/STmcHNnV1jNW05ro1SAvEMIIpQwypo2OyUj7dCTUhFfj5H97+GEePfUQ
+                v7lzFx+48gaOzA/z7PHjnPfkpqIC17JpjzXvaXYSTM7Ocn5ihsDYxB0Hz04jnBgHZ5bYNz91Y1dzHGxF
+                PHDJ1WZpCorsai787872Te8frzp3S2N/88ZtN335A1tv+tXrV21oc2LxR4IgJB5qvCjCEppthQJbW7sY
+                bOpI2UYzV1qkYAt2tHYxXylTihQ/HDpBq5jl+hWbmV+SrOntprmtjSNjI//83NnTqx88eiS+UPf/cWR+
+                DqUsEjJOYAQmLhBSUnAcuvK50VBY5ASssEICrS85Nj5FwZa8dcelOJkWUDbNqRxZBUlbnR3zq2gRsjLv
+                +p3d3UOfPHCeh08+xYd3beGrh4/ylWefpuLrgYnFqavqXoVyvfSKZAmFAUtIbGNMZKQULPguFSHs01U4
+                vedxvv7Wt1GXEV849CyWqbOyuVMXsjH8oEjedva2JeNM1CNCJGk/4CM7N/GD4YgHTg8Rs22eHJt6z86W
+                4p8Y3xr1TSSF1MoqTgbJUHBJ18C/9qYS/3pmaZT02jVc6kcsLkxSD7wGRCsCDYQI2sIaacfiuRAdmYBe
+                W7Aq18Q3j+7n+PhZ4o7FM9OzzM6Ncse63dx7tI145M6eWJx9c2cm/1gCi/ZsnnXrtvzeqUr5LUfHjrf3
+                Jxu6u6YjFqqLbOtsH8lQePTUyVlCC9pkRC6Y+fCHr9qIpTNsaOojVShSnpsgKQzNMUlX3NpXNzGS+T5G
+                Fk9+XDF+JTLO/3ryKQY6i4zMneH1W66mPR5bnPX8p20D2rxytlfdcvNtCJBKSiPAmMiQyOUIldywqpDZ
+                5Sa7+P6pwxyeGeLZkWG6WvO65AY3JaoLyYHm3IO9qzfPTs5OX7vv/NBgezYHdopWYfjlLTvJpApM14qc
+                mR9Xl3c3x7NW/l7X0yYyQhihjNaSEAORh9YBnZFLIXCJK4uMaSw201KgEVgCHNlIi5RAHZqb+uVLW9M4
+                8SZ+OHSWvpxNNfAQYY3eXJbjM1MMpvjamzZsvixMJIczkc1KK0MBYWnju6tXb/63E+Nz7zs5OZyo+TVK
+                5RKbcnnvA9fc/JqmwEzN+7DQ1M++2elf+9K+xz+4tV3y0cuvoRYl0ZFiJvCZXBxjY2th8fqe3g9bhZVu
+                74qd3H/85O8/cmp/f1+2jXMLRfYce44/uOUtXL96A5OT5z7Z1955j0FgKfsVSd16y+1IpYwQkjCKiKJI
+                WMqgrcRYktovvWfzJr5/eokDJ15AWhBTKTFZcelPq0fbs4mHA1kgn8hWnz595i0DKZ83bNrBbF2zKqO4
+                Z+g0x+ZnEE6KtCnt2t7S/nw9sk5H2hhhBChF0vjklKYzFiOjoRpovCBEymVcQBqroZxQY2mEawT1TNPS
+                Y6fP/cKGjJd5/cZLCWUztdCiLhRJy+J8ucj3Txzj1v7WyRtX9X2p7hVJuBJHO9QjT2jXNaK1qzKYb3rC
+                dpIDhVyrvamt+8hdm7e+ta+Q2V/3I5aSWUQyw32Hn/tf7el4X9HNcnRyiEI8zmDbIA+cPUyxMsmNHb3f
+                WdPe8m9TkYVrJTk/ceKyK7sKO5OZQV44fZx3XbKTX7j6Tr7zwsM0pZPvyabzC0YIpLJemSzLagz5Rz5G
+                aIQUTr1cl4PtrYcm/eCvzw4f5st33Ea6ayuR6/PLWy7jlk1XMiVj1SAIKS/M0p/r/Pc1K9cdOlEpcXmL
+                YGtHD3/81POkEhl+fvf16MjmWyfHmKiP/WZ7xsE4EpmUWKoxdhAgcLXGMwahaeAQLO8FFsYsr8c3hJER
+                rucTC/2wJdc6+sLELBuzIR/euYFf3b6RX7nqGgISHJktY4s4parrTlaqZBVkUhq/Md4WIRULo+dQMevp
+                O6+66sYP3XhL3xt3v+aqbCr1/HS5xMlYBpNJc2Li7PuOTgxddXV7xB9deyU9ha1kC83cf2o/J86fICNC
+                eltbP7doYljBEkuTY8yX/fzqtM3bN2xk5+pNvP+GG/jUY/cyXSr+TWdv9+my8PEdXpXUHXfc1VilpDWx
+                hINEGqFs7Smfznz7j54YmdxdYHH15SvX4Sn42KXX8MT4OZg9vrQ5W/hGvZG6B5lq23P0yGtCquzqXsW6
+                5gFeu2ojQ/PD7JsYYrrkYonaiuv6ui8p1axvoAOEamxgCyKBFlo1Vn0ZY1nywnoqI6wLu80ly4vSsZJx
+                uvLN01/ff+Tt04vHaE/FeWp8nMOTI5xbmkFHAaFX5dq+/v/d39bz3FI9JLTAVjaRJ5iaHseemySXSjLj
+                OAQIasUFdOgSWGksJ46MdP5bex68OzRu8sxSlZ6Uz7bBbsbnizx2/hTD0yNc09d/Zm17x28skSJnKn3r
+                m+LFR8eqV9XKZy57/+W3MBUa/vGRb+C6i0euXzf4i8b4FRPWENp9VbrQw9gWBmEicAOQRhOLcPwaGRnR
+                3tFy+H8eeJ6vHHiQ27rTtKSypEVEd1rGmtpWU9bWpvLiMbZm7E/v6t0QLNaLFN0Z5solvnZ0D48d38+W
+                ti76mlp5aqzCPaf3v6E7z1bjQ2RCEnmwHIPRUodYRkuJMcYY3YDhvoC2IJYbY4SOKEUW/V19d9+wbtc3
+                v7h/gu8dfY5jC3M8enII41VxvTpd6VS4qmvgnsWKhx8KtHGYLy4xMn6ecrWCTKboiDxWFudx6lUsIbHs
+                NDGVoCeZ4vC5od85PTHccmlHjru2XsOXT5b51t5DuFgseTVaJWzMNN3d1tRJrLk98d3Tc2cPDD/32ZW5
+                ojVbVzw/fpTvP/cwh09N0NK2ZtML58/c77llojAgCLxXJXX7bXeitc5JKbVEecIWkDDEHEmx6u944Mjh
+                L4QqxfGhEaaqs2xpa+E7Q8Pg2E9FVqH6nX2PP31lh9RddtsP6nbz+LmZA69bkxWMe1meOn+c21f00xNP
+                UaxVmCqVOLQww67e7KbuTMe/ztdCUhkpEcYEviAKG1BMtqWWcWXBRFoYjVCN3a4mCiNcJ00oLTa0tB4e
+                Lnm/8sDxoyy5VTJxSdlzCd2AD+2++o/WtnR9f6niIaVN6GnOnzpHrV5BKQvX998bT2fi6TAcy5SKGB1C
+                rUJTW55jxbm3f/nRB/7WC6E7VuNXLttFd/MW0ok8942c5PHDz3NFT1dw1ep1bwtDu3R+Yu7m0drUuzxP
+                bJsvL1w6XHP524d/QNqJ8/kP/ldqXsT8UvGHK9u6v+dHcnmf2yuTuv32O5FSukoprWwrNEhUKAllhLZj
+                k0E96ryqNb3zIzfezpPjNf7mqfsphhWS6fT6UtV9+7bObksxtc4Sqb/uLDTvf2JSvvc7x4/nb1/bxbWr
+                t7G9kOX42BiHhs+TiCvG/BinJs737WhKXNvV2vWFuWrNBD5IIYHQBixLSGMESiwbNbG8zsgsAwDbJqIC
+                xNOxuU2tLd/2IuetpSBIVMOQXCzJazdv/+0rB1b9BZ6PT4SyFZViFd8NSaYzWI6DE4ulE6nUtDRysSQM
+                CwSk4ylml0p3/O+HvvetwWzIzWs3MFaN4dUrNCuwMnmemhhjbmKIuzZs/IPujt4fdGeTPH128ZaTcwdu
+                /fWrrmf/VIJHTu/nA5feyD+/5zc4vzjLvmPP3HfFmnVvTsTT2MohbsdfldTtt9+5jLBjIoMRwpLCREZG
+                ASZUgr62tntOTY7cGROVro9dcS2uSfHs+REq5UXrozuvtUJl88jx5+fXrVz19zoKWNncdWTEd9+dj3v0
+                tfZyaHyMw2Pn2NHeS1t7O4cX5hhbchkuTnRvanNamxLtTy560scYbEcYy0htNBe22htjxDKzWF6Mb2H5
+                HiIKKEmLfDI1s6K17bOLQfDopU3d3/q5DVv+sFAo3K39OkmpiAzYSmJqAcIHO2ajlEUqmRpJWdaiG3eY
+                zsdINjdhJzI9X3j68UfOzs86mwsJ3ruuj86u7YzWI5qURdVOcv+BJ9mcSczdsHHXO0pRxpfeyJ1Sse3r
+                R0cvv3YgTTrZRksmx3+78SY+9ewT/O59X2VTc/bhzU0t97j1CiZwIfBeldStt95+YeF+TgophRBBhDZS
+                g4ogYzmM+OINf/HYfavOThzig+s2MtAywHxxmmt6VvKl48+zIi3ctuxq99zkiR1XrBz8Zjlqcp8/d+TG
+                yzt7mY1SxPQCu7u6eWJ+iYWwSsbJcmp+SR2dHNl97ZoB0Z7MP7RQ1thCE5MCP9QGhTFCyHB55bdYxisX
+                QqCFEI5Xx9KGilQs+m697NaG7ujqODGYSs5bXoBUsuE6m0aH1UjoUiHCUQoTRlgGvGSC2fY8qViMJmnz
+                1aeeeOSpsaP9t27ZhqObqNYr5HMOXakCG/o38PfP3M/IyAnes+uKt2db+w7Pa3nJp+7//uMDOXfntGgy
+                SePLtR1dPHP+FN8+9CSHppYQJOnKxFp7W1o+G1jKD6UkUupVSd1xx10srxT3jDEZrY1QRgRKSITR4PsU
+                69Wuybq8KeHE2TM5yhPnT7G1OUFnc4FPPb+XTW291kMj83ftHz593W0DHf+7I9X68MG56BrPnRi8efUa
+                JiuKp6aGGCmWeN3qS9CJFOcWSsyZGOdnz111aV/HyLr+5gNL88VcqeStasrEZjUQhEZEoSGMLvRNLXeM
+                GyMjKUwyDFBCMC4kM8UFVsWcBo6vUaTiDkYYbBQny4ucjVxI2cSb8gQpB6ezhTkpacnnySAKn3novsPP
+                D5/Z2NncwVvWdvP6LZdyYs4FI+lu7eTuk0f4/nM/4h2XbPne7sFNf2xiCfaeOf6385XFzblEiyp6dTlc
+                rvD4yQO8cPoU77/yFm695FJ0ff7IrZfsWKMt4QsByrJ+Or2EISKKIkcYfKka0AlCCBkZrdY0tT7R29o6
+                FEr9hjev28HhmTIPDI9wYuY8CctgbGllyTFflY725y7b1dH2heZs6w+/d27kQ6XS2fiKbBOO3cLrVq/k
+                iv51PDh8jhUdndjJLIemJtk3OnrDYIfVsjoWf3tQMdPJ5tTxSERERpuEbRGPSyIjkMtNfUY3VlValk1c
+                RwhgqlqlLxanJZakpD0O1GeJpKJVJRj2StR1RApFIp4gtAXx5gIpEWNpYWHtV55+7KknjuwfvHnHenb2
+                rWJyYYHepgxhaZGNK1bw3NwSf3f/N7mqf3DsdZdee0uqfdA9PzX689965oE/fNfO9WxduZsvHDrB+Pws
+                7bEMv3/Tz3HX7qv5wrOP0p5Uv9Gezx9eqtYII0MQ6Z9K6rZb77igsiQNIJdQCCHNBSgYqYynI7risVOP
+                Twy/M/TKhT+/5lY8leOpqSkW5udJ2YI/u+4m5qIY3zx5crCvLd6zrZD4WiYx8Nzf7T/wnoyaZeuKDRye
+                nWbf3DDoiDvXrme0VmO6Ume65jk/PHb68nSiuunyVe2PpQqFFyqBTzwV0t2SRinBUjlqSIgxREFjQbG0
+                GsvvmzH0JBxijiFQhoPBJE/PT9KVLNDrpJj0qlS1Ji4VcSdG3HbobGrh3NjEL3zmh3fff3hqLHfZxi20
+                oblloI39C3D3wUMYy+LI/BSff+phBtOKn9953ZsGV+08un9k9Bc/uecHn52tL/LmlT1s7t/Gs2eHec8l
+                q/jLO9/FitZOfv++r7OwWPzOZau2/v50uUoYCfyQ/5DUHbff9RKcLmHkchwghDCNjWYIY4yQkQ7Xtfd/
+                7qGxsTv3T51s+5VLt/DuSy7FTncThWXefslOzmnJQ5OjPD12ensmnH7DawdW/E5P65b9Xxw6//anzj1L
+                T1MKzzSzo62V6VqF4clzXLd6I2NeQN0zPD05zd7ZmdtbHdM92Fk4lHNSxWSsUQ8pljTOMgDL4tL8ZQiZ
+                SSWSc4EOhRtAMhahkj5T2mXGr+H6msF0E10qzphbpmw0TYkUfa0dlKqVlfc988z3Pv/8E7+yqCOuWbeS
+                d2/ZyKSbZO/4ObY05bnuku2M+Jq79z9LRoR86PKbf2lF//pvzPlm8J8f+u4DY8UlgkgykNC0p5o5NTtJ
+                d0Hw+NBx/uzBb5Pz3JF3b915Q1yYIGVCcsK8KuWFvvi9uv32O1+KOCaEELZpiIcUUpplJGrjay1i4G3r
+                6b/3/pHRX/7agceUhYu2FWVvgZa4w0PDQ5waO053WydDFdO+KlU7d2lv3zdS2RU8eOzMdd3ZkI/s2sKS
+                Z/Pw8Bjb8za9LQM8PzFKUyHBkskxNVvkycmJHaOzE7/uBOHqjnRiqTmbmkdpL9QBjpLU695OjXETifiE
+                0UYoJ8RYPhqBbyRLgceS59OTbqI3kWWJECwLt1zednz0/J/efWTv5x8/faK/O5/n6k2Xc3Zqmls7s/R1
+                rGM+kDSlUpyeHuGeQ08SLhb54OXX/93GwQ3/k3QzT5w89dHnzj/1mp/ftpXRYpyzixMcGh9i38QkD58d
+                Ys+ZU8wvzfOenbsfXJkr/FutWsQ2IZYOXpFs7TfW0OqwQbfddkd8GQtcA0oIYQkhogu5pAb8jgaD8MM6
+                rYXmopGx1ffsO7Dl8fNDvDB7lrMLc+wZOc3Y4gI9CXjD+kvZtxCgdanz6pb8Z7sS2cdyrSvtr+w/fs19
+                Q09zfU8L1wyuoyPdxnS9zrMjx/m1S7fjqnYmKzOAYGh+kWNjE5c8O3zuPWPVxQ9k42FCmEqYiatyX3vX
+                2aZs7Jw2FXJZRXtTDBuIqQTCsagSEoaGQiZDWUbdZ6Ym3vrs2JkvPXjmyO8/f+r0dk9KCu0FPrT9Si5p
+                X8v9Qyfpsnw2txTYNLiRLz7zCN/Y+yh2GPHzWy//98tWb/6Am0wz45e2fvfZPf+6UB2337FxM7FkF4+d
+                OMJULaS9tZN0KkdSxrhr42UPrO/tuVOHESECLeQrEsLgixgVsvgijifiiH/6359WxhgHRCilCBqxlzAX
+                ACAbS1FAG2MJExipYpGVyIsDsxPf+OaBp99kxaG10MlIscbCzDx3rWvhppVb+K0n9pAW87xtsPdH71i3
+                5uZydg2Pz4oP/dmPvv7pmDfGf79qN00tXRybCXlhYoz/unMTsfQAv7d3L6fOHiByF4nZMeq1GvXIpzWb
+                oCOVjLrSiVp/Pn0258SejglrOJNwkolY0g28MPKDaLFoTPp0aWHdeKm21g2i1lm/vK5YrYiqFxCLJ2hz
+                siRsm5193fzyzisYrxkOTM3TkbE4Mz/Bw8eOMLwwRXM8zmtXbPzrHR39v5Vr7WHcrb75a/se/8b+yXlk
+                bYrfuf565qMUpj5Hc66X/VPnmSvOc1XfJb/dmWn5qyiYpMuOEbxKZVAR4ROjblLLw+jLKaJPfuIzGGOE
+                aUANy2W1FS5jtjTAeS8uaw8JtcGK53Aycc6NjP/2MzNTf2kloENJyloj9BIrW7v4zLGTREuzdBTauLY7
+                98Ltq1dcnWre4h5Z8t76X+/51tfc2dPcfEkrO9sH2dS0mmoQEak03x+d4vnxg1ySS7LkS6Z8n8ivsFSv
+                YsIIrUOC0CVu21gIfAHaiuEIgfJdhJHUjCZsIAWBiehubSeMIrY3tdPa3MOz42fY3d7OdSvXkkw4eDWP
+                J0aH+eHJI4xPTbAyl+e2vnWf27B23Qdi6QK+dLb99+98dt9NK7uJFy7hs0//kKu7C0yUl2iPO7Qk29k/
+                fpY3rljx6Vs2X/WLR6dncKjTJB2iV9r9KzQ+9jIzBC+Ff1F33H4Xy4AGpoHiIhxEA4ZYN3CNBaGBCClV
+                Ay1aS4uS77Em0/pk2slMfPnws3f6ssx8uc7zI2cYKs5SCwQ3rejmzk2X8xeP7evKiNL2LRnrK04yffSy
+                1ZfuP+Xqtz9/4ASHpoeZrU9R0h6uDOlNJmjNFLh55Wqu617NybJPOSph3Cq21mRiNrZykFgoZRFZFoEB
+                EUXYwkIpRcK2kVgEdQ9HKBw7xlVdK3nnpm0U4jadqSwdyQwj5TKPnj7GZ599gD1nhihXqqzLN/G+y679
+                g42Dq34rN7iCQMN3nn78O/uHj/R8cPcmejtWcvehowyPniYZS3NF306yLR3MV5bY0tL2x8mUc8rgIy2H
+                mgBfiZeRZ2t8YRFEmeXV4vrHWkmVQuhoeVGs0EI2wL8auK+SBsaNWV6SbGMbQz0KKCuL06FLEOdHW1ta
+                o/akVlet3M6R6W18+8RzlMdOk+5roz/hoNIpvnRu8rZApr57XV/xTf2FVd//9Uuvij/d1f25e4889Y4f
+                nThNKrfAlv4yndksWSfHfaeO0pczfHCwhRF/C08vBDx17iyLCzOgXRzLEE/EkEoSxyduGuv7PBniVzyM
+                VqzrW80Vq9exOp3HIeTzB55kbmmeXDzFkog4NzeLW29IPUHAdQNr5m5Zu/mGtmThkFVoJbJU96d+9N3n
+                jkxNddnpDG4IgRtSSCX4lRs+yOvWbGbv5Ahff+EJdhTa/zrb0XnPiF9f3qMY/cQcoRERlrFIhGmUMa+4
+                uVR84p//VQhjIIrMKwHqGgE6CC9iSynAk4IlWxItw034S8U7Hzt37PvrOvLcvm4XZc/w2QMHIZzgHZt2
+                8jvPHGN07ghxQq5b2Xf2HWvWXJ6wO2a8bBeHpybf8uihw/94YOZ8m1ebamC6xmOgBZiAazuz7OobIJns
+                wK1Kyp7HbOBztlbjzOwsZddF6wBbCDqTMXqbm1iVayaNpL29laqOmFkq8tDhA4wsTKEsB8dSYEmQEl33
+                GSi0sK2r++5d/St/O5XOncjKNONu5YpvPPvDb+QLHd1H6gGzY0f47BvfymxgE5M1Lu/Zwheff5IXRg4F
+                u3vW/eLart7P1YLqq+/uFQ3khZiXQWmFlq880ib+6ROfsYSUoVhuj7+wenz5awP46yK4ZMP0SAOWLcBq
+                oEMn43FK2s5898TxTzw38fy7PrR2I3duupbPHHic7e3N3D3u8eDeB/jla3YxFSR56sxRfveSDXd1d3Xf
+                7YVpfCuXOLQ08+l7Xnj858/MzhGpEiJukdAOdTfCNgG9sTrrcy1kcgUKLWnWNK2mO93N0aUyw16JQeWw
+                ra+f6dIix2dnOTEzzqGxE4yWlsA1xDMp0raNjDTVwKcWBbTGkuwcWFW8adOW2xOBeXLJRPT1DDIyNfVr
+                v/fVT/7dZYPd/Mlbf5OP3H8v5048xes2bmaqNk1WKo5OFjl//gQfee2tj7954+5rzy4scGH2/CexCxvS
+                EIQ5ImM3IO5efZHyneYC/sdLH7x4EVGygYi7/E5i+X9ai0aGMvSI6lViYeh3FjqH98xMffjBw3t5eHGK
+                g6PTPDw8xIK7SLW0wJUdzfzW1W/k00dHuPvEobe/pidzvivUB0uLZTo7e761uXPtp3qaO9NYiS2zC3Xl
+                1X2StiBtSVqtNCdmFzi6uMC69j660i3UvRLzlXEWS+Nod5HIm2WpOkukA54Yn+D8wjyZVILIloRh2NgK
+                Wq/TmshyzYoNp16/44qfu2bVpl8JBCPTtQXShVYcmVjzF/d+495SfZovveujeMlOPvP0g7ilRY5NTLKo
+                JVGsnZFSjWtWr5/e1b/q7aExM3q5aV0L2VjCtoxz1fheEERJIuMghP6PVo03Vp9EUfAiVqRp2Het9QVG
+                SIT4MYxFs8xAiTEIEdZNazqz75d3vebtX4sl/2m0NNm0paeXsqeZqxSBDE+OjPNrUZE/e83tfORbE3xq
+                76F/+S9brzoilb23uHiGvJ2e3jHQ+UvbBgb+cKh79DcOTJzdPV9ZuGKsOBOfCzxK2EhHMFRe5OmJpzg+
+                PopxK6BUA1RRGNqzCbpbmpkueRCFlCsu0knR2dJJbzI5tyqT+8bapq7Huzs6vxs4ePNenUAZcvkmClaV
+                w+cXfmFseoLfvPJaNnev4Hf3PEGXo7jrijvo7GyliuHZc2dYlUg9f9v6Da9TKpj06i5SWbwUxVUs24dI
+                S7S2MDqGEP8x9pX4xCc+1/CCTYReZopa3nRmhEAoJXQQNAC/L0T0F2ANRXgBE0E0IJY0TZZDzZbrv3nq
+                xFELT7xuw0ZydppxD74x9Dzbkx5/dOPP83v7jvPP9/wLf3zzjb+m4z0V3z2396qOzEFXJwhkgUqUpFp3
+                iYTYMF2t3DZTXtp1tli88+z8nJqvFp06AQkLlO8SCXCERSAsiDQSqdsLhaA17kSDTS17O5zUfflc5kvN
+                qcx4xXe1qNaQmRypdBIsQala6n/04Atf2twhLx0pJ4IHDh9M/+NdNzLvWvzDMw/yhi3buaxzFXvPn2fP
+                +dP0Flq+tWvFJW+KFGh/iay0GqhvL0M/MISRRWgkwkiEtn46Gu5LGCIu7Fw0RC8CBQuDkAizvD8XE5kG
+                jN4FIOJGcKJ10GjU0UJAFMmwIu10WoepNnFgdPiPD0+e/oOlyhw7Bns4VIT9Q0e4YXULKtHM4+fOcGV7
+                QS9EGXlubpTNbYnhd60d/NSu/jV/cXbaZ8aHSDskwpB0Jk1ZivhI0Y0XlGz1U7FCpbiU9yAWoS3X6HK7
+                ZYV2MluTC9VaPBEbrqVVuLq9q16emGJoaZpMPI4bRhSSKVq7e/Gq1Uu//fyjn3jq5IEd2VyBSGiM71Oq
+                1lChy2IppLunh5a2PCfOnmZ9pnn6xl2737S20LVnrlzHSEhIj/QFGL6XSEYQWWgtGyrKKIic5RaNV4XI
+                NRcZsowGbaQSsKyCoNGTgxHLGIXRiwDVpjHdHpnIBNq3LGlZaOGCQRJghELYcbLZLCOV8o4fnj789SfO
+                n1nZ35ShL5dl38QcVbfWqICV58llEty4aQPfPTSJ0rN85PJLHr61f9WvuZ46MlkF40U2WgcinsBXgkLc
+                xsTShJUqNScJUlAOaqxQNsVUjnByHl/BlO3TW2jFnZ2nWC/S7jgoJ0FTVw+T1aU3fvKRH/77iUNPcc32
+                y2lrW8O/P/047bkE6/It5HMF2ltbmKouMTo3x4pY6ukr1q9/O3E1rEsurm9QjiIm6uSkakB+X4Qgt9BG
+                vgR5xIC2l7FqzasxxQCoW2+9E6ONEtIgpWg8aynQ2mCQjfKcaIT2QgiJNC+J8xsQClJKoWwrElJilIUQ
+                QogoVH6tbvIxZ/Ly/sF/2Fjos3xv6ZrejODNl+zmtes2sLVzNb0dA1RDyWVdaa7fuIOHj5d45ui+QSdZ
+                +ciuzoF7ZqvxSS2NUJExvpHCAhFg8JFUvIASAj8MKAceCQxVaeEtVQCB6wgysTgpt04eEFqLWDKJZye2
+                /f1D9z504pn7uXbHVbz/tW/ksaNPcdPKPt696yo2tbfQ397G+OwIk2PDXDGw9mM3XrL9g2W/XlysV4ij
+                8CJQSpISCqElenmtbRiqhmRI85NwCEY09kL+NLiKW2+9szFpimxgRkuFDqMLLpwlhVyWRt0QDiPUMs6q
+                3UBatTSgl3MujfV6RiMtZYyUBF4g/XpgBlP2I13Ztu8fqVvtZ2enBoemz1kIlwwG21J8/uAQl7bU+IXL
+                r+Z75w37R06wuz83uDLX+aWlimuksKR2pBWGEktLoyIPywRIIQiFhdYBTShcx8YmohbXzFXnkcYjinyM
+                AGVL+nNt3HP0yB8+9Mh3dt189Y185Oa38clH7md4+jzdmRwHx0c5PDHOsemps7Z0vri7Z+UHV/QPfn++
+                WqEeemhhsIwghiQtJI6xCLVALxNG/Lg5eQmCToQONUiBsmTjR/LH6JOf+SJCGzsKQiOUjJAQBSFSKiGk
+                kEKpkCjE6EAKBMYgdaTjUkkPiERDaQqtNVI2YK+NMUYpJYzR2hAhpBIi1MQsZYJcE3O14srpxaX3Hy/O
+                t+pqMZlRMrJTzXPj5YnbrumS6zqaN/NnL5zDVA9WP/+6y39NV1Ofna7FiIwiNCFFE9AcNZbvhzIkSsUQ
+                ERQDiU47JGIJJt0K45OjdGZzREbRJB26Wpo5cGb0A59++oF/uXL1Kt6y/TV8/7lnUFS+esnq7Z89ObVk
+                t6RkoTeWOJ5NpQ8m2prM9PgorvX/dXYtsZZdR3Wtqn3Ova/fz/3v9q/d/saWLBErEAuiSFgCYeEJsZgg
+                GGQCA4QEAsQIIUVigMQgCAcUjJSAGCEhgRQUIkgCCIcQsCxLkNg4HafTH7t/79fv3XfvObtqMdi32x0p
+                MGB0Zkf7nNpVu2rV2rUKNs2hxRzdMrj0TegbVfkDfvz/ru5SF2qt2q7c5ZzdG7L4mT/5/ESZJYe6Ubru
+                tpCDMuAsA8wIo+ricENSdXdmxAGAcyRPkHz9Tn2y7DjKrOH2mQEAaW3drqRQAybTYq3TickKUolaF1jt
+                piizisvYPP+5b371Xx+cXDr9whPP428v72Bn6128eH79L549fu43jsXGtVv9iG/MdvHo4So2MMGsm6Fb
+                A6gO3xuJ1ekEXXcEtw5nuHLrPTx56jQmnGC+e7v7rxsXX3nj8o1ffP7R8zi5NsVf/svreO7smd9/+YUf
+                /c2bexUXtmZ45ugK1oYDDGPFyIJZVqQVlDHQI2GNQYlompw/4OLm/22QWAA0R+nbjfR7gz8A8A8/+7mH
+                pTyZNR7su+5vFNlRGDnpAMEZmRGLqczYVEBzpogPRY37SfsKCacxlvLSTmOgtVr1QTbWsB1kAOwQU4Mp
+                0KVQayXpijkmq+vTBftJ9/dXLv3uxdtXf3WDs+79gwOEBe4rtv90v/Lm0488+jv7/fTLZ9XhqBXszmeI
+                iQAWvDcA65trOLZ2DNuLOb713f8+yzr81JXdnU++fzD7sfe3b9pGv4pz9x1DqfXrTz3w6K8/8/DDX9vZ
+                vo7DwXAQwvmJkJlEwnsgirsOauIwhVIMdjfr/38aZGgvMDdY5x+c8XcK71c++/knzLhXh3FK6WoxH2Vk
+                GNaMXlmr0XAgEyGSCdVhbjKiuLd5FHe01SXSqGU12QySTWkGvlxkPwHqCOVIGMm0ZAKJihjmNu09V08+
+                gHf3cP71i2//1r62X5iXePyNC+9yXmd49sFVPL5+5u3VsC89sNa9/fDmsQtHjx77EkTcyI6Hw/Dhd67d
+                +Imbs4PntsbbL164fGn9+t4uHn/wHM4dPXnL9oevP3P2gU9/6PSZf6jjApEVdTYCmfDiKCTEQCcQNA0C
+                hmxcIneqGYRos6lbe/sevci7amv3AIdcznqCgsgRS5VqgWawrny/Qf7o1T+jwEnOhw1JtevLllIlnRMI
+                Uq2lm3R7qWAOlQQNxgxkcbegleAYy/n+gpnd44DL9bgDboC3hQwHAxUjS0/Rmha7cpBqGMC+r9PFhFOV
+                +wLj+ibeubb1w1f2d3/t0t7uT17cunCMwxbXi2M2H3F8cxVPnjz9tRrdty9c33n59uzm6m3rMALYnE6w
+                ydUr548e/+L9G+t/98S5R//qvtWjGG9dx+2dG6DBMoGQqQmXuoQCY4VTiERTWpeoTCulBKnlVG27mzKl
+                8o7qRCsM4MDSsHelwAOIcSkX3ph/CQDed4DZB3r0n/nTP19VamJWJhnjLoEeYEtNaIWKBSGAxoykUuaT
+                EjJBogxiQ4ppgoxEtNNEIgtQSsOMJaFlFswhgBCoaC9RasTAzou5PG000pBZbiOHw0ln67l29sHRj6zg
+                4pUrr/zH+9/55W+8+y2EErOYQwc7WJ9MsL9I9OubUDfBkZjjudMndj/22OMvP3vyzJdvHgaubVfACooG
+                dBT2tnYey/nigeOnT/7zjK3XQ7V7SwlRCqMU2TL+YsaxIRS8s+nWISwADPeGK8KbrZhY6m03g9QlHdZo
+                kJJmsEmHD2RFCX/ppU8ERQjYpylkvF+ZU2TOKZmZBbCMQ0TWrKIbDK6oQUWaGQSaCCQMZCEoQiI+wCRJ
+                REv5kAIjiRSyRkeZkx5suACihGdJU1hWdaVfPTJc3V985K//87VXri9uvfj+4mD1xvwQh4vEohIPrp/Y
+                /ujDj1w4uXn01MEiMNvfwQQVtmL95b2dn/vHN9/41Jmplfs3jn91MZ+jJtmVgnG2/1DkOF05euxiqHl2
+                jOGRoy9JeUVmwaainbCmILE8GykyDVbtjpFsCcLegTrugLJqFbyZLWGqFufoBpZpqyCWRi6gJhKVEQTy
+                NAxTM+4peJyGK0C6RNGYASIgWQ0TZJKUkWyliiBQFIUqKlvejRBEE9Q0ybUcuIls+45uI4DGuUpCTiRD
+                WasVuhWzoe8c720dvPTFN9/5mfUTjofWN/DkyjrOnz6Oh06d/cqZ9eO/sOLd1e392VNPHrv6s5d39l68
+                Nsw+sjO/3b91bc9yf4aPP3FkT/0E6YJGMUsRJ6WMs5wtklCmMWsaIgdUGpj0vs0eL95wdWv7qh2kIZqP
+                KgaNFaEEYXCpMfms7cPvw0WwjE7Z3kXTMu0qS216kp/+zKtnivsNsx6R9Sk6K6Vvo+YahQpjlSEBC9KV
+                UQlVA9g8ggZzMCMKiGrWRnApsmHEZszWAIM1BFnL2qXtHrNlw6V18FmcoJiZSbpTQ6da57F6rL+0WHzq
+                +nsXjzxy/NjvPd71v62DvV+qK9Pns1/5t/lY0WXF5opDkw1cX6C/sX39x/cPdk/df/bsdzbXpq/NdrdY
+                YhUWhPcLbd269iMxH7pTD517baxyRoQ7Gci2HPqyXrbm6417YAAqRSTkAaXBBCVIA1NMpOTFS/vxIWWB
+                tAbwNhJx17iN0gMoyW4F8AL+wR+/esKIvivTaxJdwKCM9Yx0K2UP5CSjDkYDaYioMm8xHklKaTQmJKOx
+                gjCYQ7Wmot6lsABk1pFUks6xoWLtdMIS0hyVhLErBUO7tINVELBxMRNoq6sb0ZthEXPkwdbD1y599wsr
+                68d+5cjxk/9Ukc46xv7h7Oe7rn97rZv+e3FHVzocQjioCyhq5+y8WDdHPcQiYkOls76UHUquzAJqNHMi
+                ECAdzljS8dk8ZDmgK42CkJJMZAvKS8p+22M0CTQqFZPlXbABsPFekL49TLRCeGEx75/Jsc4qcgFDVaRB
+                fCzBmZEHJBakGWkBgmaWEogA3S1rhAPqaDYCsDrWU/Ac3cs2laYMA2xYfo5g5hCpkKoDbmwdsLvdMQwA
+                lcojMp84sCUvQK12uL/LmVuVsTP4906ff/Sji0Gbw2Lo3cxZ+kPv8y2aXx/hGDKIEYDCCpDgJOFIFkE+
+                LVPwUMoxMmlmoay9MjxhkrRSSjkMykOhruuSIDJsjcbD1q9o3VMYZA3Bg4o1pbhFbV5gBGiDkgNlYulb
+                1jUGEINgHeiT9v1J+E+/9In3zEpQ2CB5S8KHQYjGwWhqE4WZLRrmkbZbFIAmmTB3BgllZNGSd2PmMzNP
+                ojJrJVKJTNFM5l16tugaBXeVqpfUFxrQm1ksG2RjjmMo1bAxYblqF9BrFFjJ0WADQ4muqOv7q27dQRLO
+                wkBhLzqBEjQUUspo1+Uyo2ukQJs0RDbDrJgSIYnb2zsfc7fdvvQzhRwpi8gC5ECzAhEyl5e+pcGKpTKn
+                QZFGuNOmSZkB3lvXB1tbEfTSQpzZsrnUHKYgsUrh0NxuJuM0XI9Q9hZqRmQuBLDQI6FNUFOD79PgqZAy
+                EXlHzphj+7k2Jy1VE4CHdyUaZpNQVOThARJWYLZGlttLx6kyAok+q0oiFmZWmSBbRWCZKaR5Oqo7e5hX
+                1F7OOhfFtEw1bfhVkqFMKEX30qcwCAayFqa5yfbTKiFQUt/SDJFWTLSpmW4rshK2biyFZtCYCZmccaAQ
+                BO/YdZUtsVmB24LeJ2sSpQMnnjHUFZemZrZPIEJJT0qtIkvQJEUhIRgDlrAqfTyRK0ohQ4/nmN/MMbZy
+                HE7WYfFDpphH1GlL1Xw7o1WmZja6eyXoqSx32I7LHnAbQUtvPmuFKCvAMAPmO1gc3Hx6++b1T6IqyFJb
+                fSUSGOi2kNgr0dO9Q9/TpitGK9nUHQo0KiQVI8IE0g1WikzsCRshgrLR6FWpfROicJgaNVA+A0kj3cwq
+                yQogCFoCPZQAkgnZ8RPHv9D13a0GPViDckVSpREPhWCqy8gVKR0sEh3KaNmY25ymQzEhpKul1CZmKhMZ
+                gpqmfWuWCPY/6alKeFOxm8UAAAAASUVORK5CYII=
+</property>
+        </structure>
+    </list-property>
+</report>
