@@ -7,6 +7,8 @@ package kashtkarzarai.frames;
 
 import java.awt.Toolkit;
 import java.io.File;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -36,11 +38,43 @@ public class HomePage extends javax.swing.JFrame {
         this.jButtonReport.setVisible(true);
         this.jLabelloading.setVisible(false);
         icon();
+        watch();
     }
     private void icon() {
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/icon.jpg")));
         
     }
+        int hour,min,sec,am_pm =0;
+    String day,NowTime;
+    int time =0;
+    public void watch(){
+    
+    new Thread() {
+            public void run() {
+                while (time == 0) {
+                    Calendar cal = new GregorianCalendar();
+                     hour = cal.get(Calendar.HOUR);
+                     min = cal.get(Calendar.MINUTE);
+                     sec = cal.get(Calendar.SECOND);
+                     am_pm = cal.get(Calendar.AM_PM);
+                    
+                    
+                    if (am_pm == 1) {
+                        day = "PM";
+                    } else {
+                        day = "AM";
+                        
+                    }
+                    
+                     NowTime = hour + ":" + min + ":" + sec + " " + day;
+                    watch.setText(NowTime);
+                    
+                }
+                
+            }
+            
+        }.start();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -66,6 +100,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        watch = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -201,9 +236,15 @@ public class HomePage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 560));
 
+        watch.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        watch.setForeground(new java.awt.Color(255, 255, 255));
+        watch.setText("jLabel8");
+        getContentPane().add(watch, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 560, 160, 30));
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Software Designed By: Zaptox");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 560, 190, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, 190, 30));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 0));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -421,5 +462,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelloading;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel watch;
     // End of variables declaration//GEN-END:variables
 }
