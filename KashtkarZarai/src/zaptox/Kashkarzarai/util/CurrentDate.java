@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class CurrentDate {
     public static String getCurrentDate(){
-      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");  
+      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy");  
    LocalDateTime now = LocalDateTime.now();  
     return ""+now;}
 }

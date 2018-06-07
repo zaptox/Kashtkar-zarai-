@@ -19,11 +19,22 @@ public class SaleBeans {
     private double total_bill;
     private double paid;
     private String reference;
+    private String sale_date;
+    private String customer_name;
 
     public SaleBeans() {
     }
 
-    public SaleBeans(int sale_id, int customer_id, int active, String discount_type, float discount, double total_bill, double paid, String reference) {
+
+    public String getSale_date() {
+        return sale_date;
+    }
+
+    public void setSale_date(String sale_date) {
+        this.sale_date = sale_date;
+    }
+
+    public SaleBeans(int sale_id, int customer_id, int active, String discount_type, float discount, double total_bill, double paid, String reference,String sale_date) {
         this.sale_id = sale_id;
         this.customer_id = customer_id;
         this.active = active;
@@ -32,7 +43,18 @@ public class SaleBeans {
         this.total_bill = total_bill;
         this.paid = paid;
         this.reference = reference;
-    }
+        this.sale_date=sale_date;    }
+    
+    public SaleBeans(int sale_id, String customer_name, int active, String discount_type, float discount, double total_bill, double paid, String reference,String sale_date) {
+        this.sale_id = sale_id;
+        this.customer_id = customer_id;
+        this.active = active;
+        this.discount_type = discount_type;
+        this.discount = discount;
+        this.total_bill = total_bill;
+        this.paid = paid;
+        this.reference = reference;
+        this.sale_date=sale_date;    }
 
     public double getPaid() {
         return paid;

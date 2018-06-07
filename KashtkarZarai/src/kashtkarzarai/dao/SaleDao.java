@@ -15,7 +15,7 @@ import kashtkarzarai.bean.SaleBeans;
  */
 public interface SaleDao {
      public int saveSale(SaleBeans sale);
-    public ArrayList<SaleBeans> getAllSales();
+    public ArrayList<SaleBeans> getAllSalesByCustomId(int customer_id);
     public int modifySale(SaleBeans sale);
     public SaleBeans getSaleById(int sale_id);
     public int getSaleId();
