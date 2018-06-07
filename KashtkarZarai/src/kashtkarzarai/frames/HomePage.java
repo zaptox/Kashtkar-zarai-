@@ -23,7 +23,6 @@ import org.eclipse.birt.report.engine.api.IReportEngineFactory;
 import org.eclipse.birt.report.engine.api.IReportRunnable;
 import org.eclipse.birt.report.engine.api.IRunAndRenderTask;
 
-
 /**
  *
  * @author Vksoni
@@ -40,41 +39,42 @@ public class HomePage extends javax.swing.JFrame {
         icon();
         watch();
     }
+
     private void icon() {
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/icon.jpg")));
-        
+
     }
-        int hour,min,sec,am_pm =0;
-    String day,NowTime;
-    int time =0;
-    public void watch(){
-    
-    new Thread() {
+    int hour, min, sec, am_pm = 0;
+    String day, NowTime;
+    int time = 0;
+
+    public void watch() {
+
+        new Thread() {
             public void run() {
                 while (time == 0) {
                     Calendar cal = new GregorianCalendar();
-                     hour = cal.get(Calendar.HOUR);
-                     min = cal.get(Calendar.MINUTE);
-                     sec = cal.get(Calendar.SECOND);
-                     am_pm = cal.get(Calendar.AM_PM);
-                    
-                    
+                    hour = cal.get(Calendar.HOUR);
+                    min = cal.get(Calendar.MINUTE);
+                    sec = cal.get(Calendar.SECOND);
+                    am_pm = cal.get(Calendar.AM_PM);
+
                     if (am_pm == 1) {
                         day = "PM";
                     } else {
                         day = "AM";
-                        
+
                     }
-                    
-                     NowTime = hour + ":" + min + ":" + sec + " " + day;
+
+                    NowTime = hour + ":" + min + ":" + sec + " " + day;
                     watch.setText(NowTime);
-                    
+
                 }
-                
+
             }
-            
+
         }.start();
-}
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -321,8 +321,6 @@ public class HomePage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonLogin11ActionPerformed
 
-
-
     /**
      * @param args the command line arguments
      */
@@ -381,6 +379,11 @@ public class HomePage extends javax.swing.JFrame {
         IReportEngine engine = null;
         EngineConfig config = null;
         String report_name = "Report of Month ";
+
+        File f = new File("Reports\\MonthlyReports/" + report_name + ".pdf");
+        if (f.exists()) {
+            f.delete();
+        }
         try {
 
             config = new EngineConfig();

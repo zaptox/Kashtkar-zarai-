@@ -626,6 +626,10 @@ public class CustomerDetails extends javax.swing.JFrame {
         parameters.put("custo_id", "" + cust_id);
         String reportTitle = "Montly report of " + customerDao.getCustomerById(cust_id).getCustomer_name();
         String path = "Reports\\CustomerReports/" + reportTitle + ".pdf";
+        File f = new File(path);
+        if (f.exists()) {
+            f.delete();
+        }
         try {
 
             config = new EngineConfig();
